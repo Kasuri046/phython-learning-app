@@ -166,200 +166,124 @@ class _HomepageState extends State<Homepage> {
   }
 
   final List<Map<String, dynamic>> courses = [
-    {'icon': Icons.computer_rounded, 'title': 'Introduction to C++'},
-    {'icon': Icons.input, 'title': 'Basic Input & Output'},
-    {'icon': Icons.assessment, 'title': 'Variables & Constants'},
-    {'icon': Icons.category, 'title': 'Data Types'},
-    {'icon': Icons.calculate, 'title': 'Operators & Expressions'},
-    {'icon': Icons.check_circle, 'title': 'Conditional Statements'},
-    {'icon': Icons.loop, 'title': 'Loops & Iterations'},
-    {'icon': Icons.repeat_one, 'title': 'Loop Examples'},
-    {'icon': Icons.functions, 'title': 'Functions & Methods'},
-    {'icon': Icons.stacked_line_chart, 'title': 'Function Overloading'},
-    {'icon': Icons.class_, 'title': 'Classes & Objects'},
-    {'icon': Icons.construction, 'title': 'Constructors & Inheritance'},
-    {'icon': Icons.lock, 'title': 'Polymorphism & Encapsulation'},
-    {'icon': Icons.merge, 'title': 'Pointers & References'},
-    {'icon': Icons.text_fields, 'title': 'Strings & String Manipulation'},
-    {'icon': Icons.grid_view, 'title': 'Array Handling'},
-    {'icon': Icons.data_array, 'title': 'Multidimensional Arrays'},
-    {'icon': Icons.storage, 'title': 'STL Basics'},
-    {'icon': Icons.storage_outlined, 'title': 'STL Advanced'},
-    {'icon': Icons.calculate_outlined, 'title': 'C++ Math Essentials'},
-    {'icon': Icons.error_outline, 'title': 'Exception Handling'},
-    {'icon': Icons.file_copy, 'title': 'File Handling & Streams'},
-    {'icon': Icons.library_books, 'title': 'C++ Standard Libraries'},
-    {'icon': Icons.book_online, 'title': 'C++ Additional Libraries'},
-    {'icon': Icons.label_important, 'title': 'C++ Keywords & Identifiers'},
+    {'icon': Icons.code, 'title': 'Python Syntax & Basics'},
+    {'icon': Icons.comment, 'title': 'Comments & Variables'},
+    {'icon': Icons.data_object, 'title': 'Data Types & Casting'},
+    {'icon': Icons.calculate, 'title': 'Operators & Booleans'},
+    {'icon': Icons.list, 'title': 'Lists & Arrays'},
+    {'icon': Icons.table_rows, 'title': 'Tuples'},
+    {'icon': Icons.account_box, 'title': 'Sets'},
+    {'icon': Icons.book, 'title': 'Dictionaries'},
+    {'icon': Icons.compare_arrows, 'title': 'Conditions & Match'},
+    {'icon': Icons.repeat, 'title': 'Loops'},
+    {'icon': Icons.functions, 'title': 'Functions & Lambda'},
+    {'icon': Icons.class_, 'title': 'Classes & OOP'},
+    {'icon': Icons.text_fields, 'title': 'Strings & Input'},
+    {'icon': Icons.search, 'title': 'Regular Expressions & JSON'},
+    {'icon': Icons.cloud, 'title': 'Advanced Python'},
   ];
 
   final Map<String, List<String>> topicSubtopicFiles = {
-    'Introduction to C++': [
-      'assets/cpp_topics/Cpp_Introduction.json',
-      'assets/cpp_topics/Cpp_History.json',
-      'assets/cpp_topics/Cpp_Syntax.json',
-      'assets/cpp_topics/Cpp_Getting_Started.json',
-      'assets/quiz/Quiz_Introduction_to_Cpp.json',
+    'Python Syntax & Basics': [
+      'assets/python_topics/00_python_syntax.json',
+      'assets/python_topics/01_python_comments.json',
+      'assets/quiz/Quiz_Python_Syntax.json', // Placeholder: Create if needed
     ],
-    'Basic Input & Output': [
-      'assets/cpp_topics/Cpp_Output_(Print_Text).json',
-      'assets/cpp_topics/Cpp_New_Lines.json',
-      'assets/cpp_topics/Cpp_Special_Characters.json',
-      'assets/cpp_topics/Cpp_User_Input_Strings.json',
-      'assets/cpp_topics/Cpp_Comments.json',
-      'assets/quiz/Quiz_Basic_Input_&_Output.json'
+    'Comments & Variables': [
+      'assets/python_topics/02_python_variables.json',
+      'assets/python_topics/03_python_variables_names.json',
+      'assets/python_topics/04_python_variables_multiple.json',
+      'assets/python_topics/05_python_variables_output.json',
+      'assets/python_topics/06_python_variables_global.json',
+      'assets/python_topics/07_python_variables_exercises.json',
+      'assets/quiz/Quiz_Variables.json', // Placeholder
     ],
-    'Variables & Constants': [
-      'assets/cpp_topics/Cpp_Variables.json',
-      'assets/cpp_topics/Cpp_Declare_Multiple_Variables.json',
-      'assets/cpp_topics/Cpp_Variable_Scope.json',
-      'assets/cpp_topics/Cpp_Constants.json',
-      'assets/quiz/Quiz_Variables_&_Constants.json'
+    'Data Types & Casting': [
+      'assets/python_topics/08_python_datatypes.json',
+      'assets/python_topics/09_python_numbers.json',
+      'assets/python_topics/10_python_casting.json',
+      'assets/quiz/Quiz_Data_Types.json', // Placeholder
     ],
-    'Data Types': [
-      'assets/cpp_topics/Cpp_Data_Types.json',
-      'assets/cpp_topics/Cpp_Numeric_Data_Types.json',
-      'assets/cpp_topics/Cpp_Character_Data_Types.json',
-      'assets/cpp_topics/Cpp_Boolean_Data_Types.json',
-      'assets/cpp_topics/Cpp_String_Data_Types.json',
-      'assets/quiz/Quiz_Data_Types.json'
+    'Operators & Booleans': [
+      'assets/python_topics/12_python_booleans.json',
+      'assets/python_topics/13_python_operators.json',
+      'assets/quiz/Quiz_Operators.json', // Placeholder
     ],
-    'Operators & Expressions': [
-      'assets/cpp_topics/Cpp_Operators.json',
-      'assets/cpp_topics/Cpp_Assignment_Operators.json',
-      'assets/cpp_topics/Cpp_Comparison_Operators.json',
-      'assets/cpp_topics/Cpp_Logical_Operators.json',
-      'assets/quiz/Quiz_Operators_&_Expressions.json'
+    'Lists & Arrays': [
+      'assets/python_topics/14_python_lists.json',
+      'assets/python_topics/15_python_lists_access.json',
+      'assets/python_topics/16_python_lists_change.json',
+      'assets/python_topics/17_python_lists_add.json',
+      'assets/python_topics/18_python_lists_remove.json',
+      'assets/python_topics/52_python_arrays.json',
+      'assets/quiz/Quiz_Lists.json', // Placeholder
     ],
-    'Conditional Statements': [
-      'assets/cpp_topics/Cpp_If_..._Else.json',
-      'assets/cpp_topics/Cpp_Else_If.json',
-      'assets/cpp_topics/Cpp_Switch.json',
-      'assets/cpp_topics/Cpp_Short_Hand_If_Else.json',
-      'assets/quiz/Quiz_Conditional_Statements.json'
+    'Tuples': [
+      'assets/python_topics/25_python_tuples.json',
+      'assets/python_topics/26_python_tuples_access.json',
+      'assets/python_topics/27_python_tuples_update.json',
+      'assets/python_topics/28_python_tuples_unpack.json',
+      'assets/python_topics/30_python_tuples_join.json',
+      'assets/quiz/Quiz_Tuples.json', // Placeholder
     ],
-    'Loops & Iterations': [
-      'assets/cpp_topics/Cpp_While_Loop.json',
-      'assets/cpp_topics/Cpp_Do_While_Loop.json',
-      'assets/cpp_topics/Cpp_For_Loop.json',
-      'assets/cpp_topics/Cpp_Nested_Loops.json',
-      'assets/quiz/Quiz_Loops_&_Iterations.json'
+    'Sets': [
+      'assets/python_topics/31_python_sets.json',
+      'assets/python_topics/32_python_sets_access.json',
+      'assets/python_topics/33_python_sets_add.json',
+      'assets/python_topics/34_python_sets_remove.json',
+      'assets/python_topics/35_python_sets_loop.json',
+      'assets/python_topics/36_python_sets_join.json',
+      'assets/quiz/Quiz_Sets.json', // Placeholder
     ],
-    'Loop Examples': [
-      'assets/cpp_topics/Cpp_While_Loop_Examples.json',
-      'assets/cpp_topics/Cpp_For_Loop_Examples.json',
-      'assets/cpp_topics/Cpp_The_foreach_Loop.json',
-      'assets/cpp_topics/Cpp_Break_and_Continue.json',
-      'assets/quiz/Quiz_Loop_Examples.json'
+    'Dictionaries': [
+      'assets/python_topics/37_python_dictionaries.json',
+      'assets/python_topics/38_python_dictionaries_access.json',
+      'assets/python_topics/39_python_dictionaries_change.json',
+      'assets/python_topics/40_python_dictionaries_add.json',
+      'assets/python_topics/41_python_dictionaries_remove.json',
+      'assets/python_topics/42_python_dictionaries_loop.json',
+      'assets/quiz/Quiz_Dictionaries.json', // Placeholder
     ],
-    'Functions & Methods': [
-      'assets/cpp_topics/Cpp_Functions.json',
-      'assets/cpp_topics/Cpp_Function_Examples.json',
-      'assets/cpp_topics/Cpp_Function_Parameters.json',
-      'assets/cpp_topics/Cpp_Functions_-_Pass_By_Reference.json',
-      'assets/quiz/Quiz_Functions_&_Methods.json'
+    'Conditions & Match': [
+      'assets/python_topics/45_python_conditions.json',
+      'assets/python_topics/46_python_match.json',
+      'assets/python_topics/47_python_match.json',
+      'assets/quiz/Quiz_Conditions.json', // Placeholder
     ],
-    'Function Overloading': [
-      'assets/cpp_topics/Cpp_Multiple_Parameters.json',
-      'assets/cpp_topics/Cpp_Default_Parameters.json',
-      'assets/cpp_topics/Cpp_Function_Overloading.json',
-      'assets/cpp_topics/Cpp_Recursion.json',
-      'assets/quiz/Quiz_Function_Overloading.json'
+    'Loops': [
+      'assets/python_topics/19_python_lists_loop.json',
+      'assets/python_topics/48_python_while_loops.json',
+      'assets/python_topics/49_python_for_loops.json',
+      'assets/quiz/Quiz_Loops.json', // Placeholder
     ],
-    'Classes & Objects': [
-      'assets/cpp_topics/Cpp_OOP.json',
-      'assets/cpp_topics/Cpp_Classes_and_Objects.json',
-      'assets/cpp_topics/Cpp_Class_Methods.json',
-      'assets/quiz/Quiz_Classes_&_Objects.json'
+    'Functions & Lambda': [
+      'assets/python_topics/50_python_functions.json',
+      'assets/python_topics/51_python_lambda.json',
+      'assets/quiz/Quiz_Functions.json', // Placeholder
     ],
-    'Constructors & Inheritance': [
-      'assets/cpp_topics/Cpp_Constructors.json',
-      'assets/cpp_topics/Cpp_Inheritance.json',
-      'assets/cpp_topics/Cpp_Multiple_Inheritance.json',
-      'assets/cpp_topics/Cpp_Multilevel_Inheritance.json',
-      'assets/quiz/Quiz_Constructors_&_Inheritance.json'
+    'Classes & OOP': [
+      'assets/python_topics/53_python_classes.json',
+      'assets/python_topics/54_python_inheritance.json',
+      'assets/python_topics/56_python_polymorphism.json',
+      'assets/quiz/Quiz_Classes.json', // Placeholder
     ],
-    'Polymorphism & Encapsulation': [
-      'assets/cpp_topics/Cpp_Polymorphism.json',
-      'assets/cpp_topics/Cpp_Encapsulation.json',
-      'assets/quiz/Quiz_Polymorphism_&_Encapsulation.json'
+    'Strings & Input': [
+      'assets/python_topics/11_python_strings.json',
+      'assets/python_topics/59_python_user_input.json',
+      'assets/quiz/Quiz_Strings.json', // Placeholder
     ],
-    'Pointers & References': [
-      'assets/cpp_topics/Cpp_Pointers.json',
-      'assets/cpp_topics/Cpp_References.json',
-      'assets/cpp_topics/Cpp_Dereference.json',
-      'assets/cpp_topics/Cpp_Modify_Pointers.json',
-      'assets/cpp_topics/Cpp_Memory_Address.json',
-      'assets/quiz/Quiz_Pointers.json'
+    'Regular Expressions & JSON': [
+      'assets/python_topics/57_python_json.json',
+      'assets/python_topics/58_python_regex.json',
+      'assets/quiz/Quiz_Regex_JSON.json', // Placeholder
     ],
-    'Strings & String Manipulation': [
-      'assets/cpp_topics/Cpp_Strings.json',
-      'assets/cpp_topics/Cpp_String_Length.json',
-      'assets/cpp_topics/Cpp_String_Concatenation.json',
-      'assets/quiz/Quiz_Strings_&_String_Manipulation.json'
-    ],
-    'Array Handling': [
-      'assets/cpp_topics/Cpp_Arrays.json',
-      'assets/cpp_topics/Cpp_Arrays_and_Loops.json',
-      'assets/cpp_topics/Cpp_Array_Size.json',
-      'assets/cpp_topics/Cpp_Omit_Array_Size.json',
-      'assets/quiz/Quiz_Arrays.json'
-    ],
-    'Multidimensional Arrays': [
-      'assets/cpp_topics/Cpp_Pass_Array_to_a_Function.json',
-      'assets/cpp_topics/Cpp_Multi-Dimensional_Arrays.json',
-      'assets/quiz/Quiz_Multidimensional_Arrays.json'
-    ],
-    'STL Basics': [
-      'assets/cpp_topics/Cpp_Data_Structures_and_STL.json',
-      'assets/cpp_topics/Cpp_List.json',
-      'assets/cpp_topics/Cpp_Deque.json',
-      'assets/quiz/Quiz_STL_Basics.json'
-    ],
-    'STL Advanced': [
-      'assets/cpp_topics/Cpp_Stacks.json',
-      'assets/cpp_topics/Cpp_Queues.json',
-      'assets/cpp_topics/Cpp_Sets.json',
-      'assets/cpp_topics/Cpp_Maps.json',
-      'assets/cpp_topics/Cpp_Vectors.json',
-      'assets/cpp_topics/Cpp_Iterator.json',
-      'assets/quiz/Quiz_STL_Advanced.json'
-    ],
-    'C++ Math Essentials': [
-      'assets/cpp_topics/Cpp_Math.json',
-      'assets/cpp_topics/Cpp_How_To_Add_Two_Numbers.json',
-      'assets/cpp_topics/Cpp_How_To_Generate_Random_Numbers.json',
-      'assets/cpp_topics/Cpp_Output_Numbers.json',
-      'assets/quiz/Quiz_Cpp_Math_Essentials.json'
-    ],
-    'Exception Handling': [
-      'assets/cpp_topics/Cpp_Exceptions.json',
-      'assets/cpp_topics/Cpp_exceptions_more.json'
-      'assets/quiz/Quiz_Exception_Handling.json'
-    ],
-    'File Handling & Streams': [
-      'assets/cpp_topics/Cpp_Files.json',
-      'assets/cpp_topics/Cpp_fstream_Library_(File_Streams).json',
-      'assets/quiz/Quiz_File_Handling.json'
-    ],
-    'C++ Standard Libraries': [
-      'assets/cpp_topics/Cpp_algorithm_Library.json',
-      'assets/cpp_topics/Cpp_cmath_Library.json',
-      'assets/cpp_topics/Cpp_cstring_Library.json',
-      'assets/quiz/Quiz_Cpp_Standard_Libraries.json'
-    ],
-    'C++ Additional Libraries': [
-      'assets/cpp_topics/Cpp_string_Library.json',
-      'assets/cpp_topics/Cpp_vector_Library.json',
-      'assets/cpp_topics/Cpp_ctime_Library.json',
-      'assets/cpp_topics/Cpp_iostream_Library_(Standard_Input___Output_Streams).json',
-      'assets/quiz/Quiz_Cpp_Additional_Libraries.json'
-    ],
-    'C++ Keywords & Identifiers': [
-      'assets/cpp_topics/Cpp_Keywords.json',
-      'assets/cpp_topics/Cpp_Identifiers.json',
-      'assets/cpp_topics/Cpp_Enumeration_(enum).json',
-      'assets/quiz/Quiz_Cpp_Keywords_&_Identifiers.json'
+    'Advanced Python': [
+      'assets/python_topics/20_python_lists_comprehension.json',
+      'assets/python_topics/43_python_dictionaries_copy.json',
+      'assets/python_topics/44_python_dictionaries_nested.json',
+      'assets/python_topics/55_python_iterators.json',
+      'assets/python_topics/60_python_virtualenv.json',
+      'assets/quiz/Quiz_Advanced_Python.json', // Placeholder
     ],
   };
 

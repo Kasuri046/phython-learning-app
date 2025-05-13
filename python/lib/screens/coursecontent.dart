@@ -1,11 +1,12 @@
 import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cplus/screens/topicdetails.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart'; // NEW: For ProgressProvider
-import '../resources/model_class.dart';
+import 'package:provider/provider.dart';
 import 'content_quiz.dart';
-import 'progressprovider.dart'; // NEW: Import ProgressProvider
+import 'progressprovider.dart';
 
 class CourseContentScreen extends StatefulWidget {
   final List<String> filenames;
@@ -23,10 +24,7 @@ class CourseContentScreen extends StatefulWidget {
 
 class _CourseContentScreenState extends State<CourseContentScreen> {
   List<Map<String, dynamic>> courseContent = [];
-  final int _currentIndex = 0;
   List<String> fileL = [];
-
-  ModelCpp? _courseData;
   bool _isLoading = true;
 
   @override
@@ -35,30 +33,27 @@ class _CourseContentScreenState extends State<CourseContentScreen> {
     _loadCourseContent();
   }
 
-  void _loadCourseContent() async {
+  Future<void> _loadCourseContent() async {
     List<Map<String, dynamic>> allTopics = [];
     Map<String, dynamic>? currentQuizData;
-    print('number of files 😊 ${widget.filenames}');
 
     for (String file in widget.filenames) {
       try {
-        print("🔍 Loading file: $file");
+        print("DEBUG: 🔍 Loading file: $file");
         setState(() {
           fileL.add(file);
         });
         String jsonString = await rootBundle.loadString(file);
 
         if (jsonString.isEmpty) {
-          print("⚠️ Empty JSON file: $file");
+          print("DEBUG: ⚠️ Empty JSON file: $file");
           continue;
         }
 
-        print('file location is $fileL');
-
-        Map<String, dynamic> jsonData = json.decode(jsonString);
+        Map<String, dynamic> jsonData = jsonDecode(jsonString);
 
         if (jsonData.isEmpty) {
-          print("❌ JSON data empty for file: $file");
+          print("DEBUG: ❌ JSON data empty for file: $file");
           continue;
         }
 
@@ -68,15 +63,19 @@ class _CourseContentScreenState extends State<CourseContentScreen> {
               "isQuizTile": true,
               "quizData": List<Map<String, dynamic>>.from(jsonData["questions"]),
             };
-            print("✅ Quiz data added for $file");
+            print("DEBUG: ✅ Quiz data added for $file");
           } else {
-            print("⚠️ Quiz key missing or incorrect format in: $file");
+            print("DEBUG: ⚠️ Quiz key missing or incorrect format in: $file");
           }
         } else {
-          allTopics.add(jsonData);
+          allTopics.add({
+            "title": jsonData["topic"] ?? "No Title",
+            "sections": jsonData["sections"] ?? [],
+            "file": file,
+          });
         }
       } catch (e) {
-        print("❌ Error loading file: $file - $e");
+        print("DEBUG: ❌ Error loading file: $file - $e");
       }
     }
 
@@ -89,7 +88,26 @@ class _CourseContentScreenState extends State<CourseContentScreen> {
       _isLoading = false;
     });
 
-    print("🏁 Course content loaded successfully!");
+    print("DEBUG: 🏁 Course content loaded successfully!");
+  }
+
+  Future<void> _markFileAsRead(String topic, String file) async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      try {
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(user.uid)
+            .collection('progress')
+            .doc('readFiles')
+            .set({
+          '$topic:$file': true,
+        }, SetOptions(merge: true));
+        print("DEBUG: ✅ Marked file as read: $file for topic: $topic");
+      } catch (e) {
+        print("DEBUG: ❌ Error marking file as read: $e");
+      }
+    }
   }
 
   @override
@@ -194,26 +212,21 @@ class _CourseContentScreenState extends State<CourseContentScreen> {
             ),
             child: _isLoading
                 ? const Center(child: CircularProgressIndicator())
-                : Consumer<ProgressProvider>( // NEW: Wrap ListView in Consumer
+                : Consumer<ProgressProvider>(
               builder: (context, progressProvider, child) {
                 return ListView.builder(
-                  itemCount: courseContent.length + 1,
+                  itemCount: courseContent.length,
                   itemBuilder: (context, index) {
-                    if (index == courseContent.length) {
-                      var lastQuizData = courseContent.lastWhere(
-                            (topic) =>
-                        topic.containsKey("isQuizTile") &&
-                            topic["isQuizTile"] == true,
-                        orElse: () => {"quizData": []},
-                      );
+                    var topic = courseContent[index];
 
+                    if (topic.containsKey("isQuizTile") && topic["isQuizTile"] == true) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8),
                         child: ElevatedButton(
                           onPressed: () {
-                            var quizData = lastQuizData["quizData"] ?? [];
+                            var quizData = topic["quizData"] ?? [];
                             if (quizData.isEmpty) {
-                              print("🚨 No quiz data available!");
+                              print("DEBUG: 🚨 No quiz data available!");
                               return;
                             }
 
@@ -229,8 +242,7 @@ class _CourseContentScreenState extends State<CourseContentScreen> {
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xff023047),
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 18, horizontal: 20),
+                            padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 20),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -238,38 +250,27 @@ class _CourseContentScreenState extends State<CourseContentScreen> {
                           child: const Text(
                             "Take Quiz",
                             style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'Poppins',
-                                fontSize: 18),
+                              color: Colors.white,
+                              fontFamily: 'Poppins',
+                              fontSize: 18,
+                            ),
                           ),
                         ),
                       );
                     }
 
-                    var topic = courseContent[index];
-                    List<dynamic>? contentList = topic["content"];
-
-                    if (contentList == null || contentList.isEmpty) {
-                      return ListTile();
-                    }
-
-                    // NEW: Check if file is read
-                    bool isRead = progressProvider.isFileRead(
-                        widget.title, fileL[index]);
+                    String file = topic["file"] ?? "";
+                    bool isRead = progressProvider.isFileRead(widget.title, file);
 
                     return Card(
-                      color: isRead
-                          ? Colors.blue[50]
-                          : Colors.white.withOpacity(0.9), // NEW: Teal for read
+                      color: isRead ? Colors.teal[50] : Colors.white.withOpacity(0.9),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
                       elevation: 2,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 5, horizontal: 4),
+                      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 4),
                       child: ListTile(
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 6, horizontal: 10),
+                        contentPadding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
                         title: Text(
                           topic["title"] ?? "No Title",
                           style: const TextStyle(
@@ -279,25 +280,19 @@ class _CourseContentScreenState extends State<CourseContentScreen> {
                             fontFamily: 'Poppins',
                           ),
                         ),
-                        trailing: const Icon(Icons.arrow_forward_ios_rounded,
-                            color: Color(0xff023047)),
+                        trailing: const Icon(Icons.arrow_forward_ios_rounded, color: Color(0xff023047)),
                         onTap: () {
+                          _markFileAsRead(widget.title, file);
+                          progressProvider.markFileRead(widget.title, file);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => TopicDetailScreen(
                                 title: topic["title"] ?? widget.title,
-                                content: contentList
-                                    .map((section) => {
-                                  "heading": section["heading"],
-                                  "paragraphs":
-                                  section["paragraphs"] ?? []
-                                })
-                                    .toList(),
                                 fileL: fileL,
                                 currentIndex: index,
                                 filesLength: fileL.length,
-                                topic: widget.title,
+                                topic: widget.title, content: [],
                               ),
                             ),
                           );
@@ -308,94 +303,6 @@ class _CourseContentScreenState extends State<CourseContentScreen> {
                 );
               },
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildNavIcon(IconData icon, int index) {
-    bool isSelected = _currentIndex == index;
-    return AnimatedContainer(
-      duration: Duration(milliseconds: 300),
-      padding: EdgeInsets.all(isSelected ? 10 : 5),
-      decoration: BoxDecoration(
-        color: isSelected ? Colors.teal.withOpacity(0.2) : Colors.transparent,
-        shape: BoxShape.circle,
-      ),
-      child: Icon(
-        icon,
-        size: isSelected ? 26 : 22,
-        color: isSelected ? Colors.teal : Colors.grey.shade600,
-      ),
-    );
-  }
-
-  Widget _buildTopicCard(ContentSection topic, BuildContext context) {
-    return Card(
-      elevation: 5,
-      margin: const EdgeInsets.symmetric(vertical: 10),
-      child: ExpansionTile(
-        tilePadding: const EdgeInsets.all(5),
-        title: Text(
-          topic.heading,
-          style: const TextStyle(
-            color: Color(0xff15BE9D),
-            fontSize: 18,
-            fontWeight: FontWeight.w500,
-            fontFamily: 'Poppins',
-          ),
-        ),
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            child: Text(
-              topic.paragraphs.join("\n\n"),
-              style: const TextStyle(fontSize: 14, fontFamily: 'Poppins'),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 160, bottom: 10),
-            child: TextButton(
-              onPressed: () {},
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.white,
-                backgroundColor: const Color(0xff15be9d),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              child: const Text('Continue >>',
-                  style: TextStyle(fontFamily: 'Poppins')),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildBottomNavIcon(IconData icon, int index) {
-    Color? iconColor = Colors.black;
-
-    return AnimatedScale(
-      scale: 1.2,
-      duration: const Duration(milliseconds: 150),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, color: iconColor),
-          Text(
-            index == 0
-                ? 'Home'
-                : index == 1
-                ? 'Compiler'
-                : index == 2
-                ? 'Profile'
-                : index == 3
-                ? 'Courses'
-                : 'Settings',
-            style: TextStyle(color: iconColor, fontFamily: 'Poppins'),
           ),
         ],
       ),

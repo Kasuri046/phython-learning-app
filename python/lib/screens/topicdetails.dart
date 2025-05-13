@@ -60,7 +60,6 @@ class _TopicDetailScreenState extends State<TopicDetailScreen> {
     print("DEBUG: Scroll listener set up for 90% scroll detection");
   }
 
-  // CHANGED: Mark file read at 90% scroll
   void _markFileRead() {
     String currentFile = widget.fileL[_currentIndex];
     if (!currentFile.toLowerCase().contains("quiz")) {
@@ -81,7 +80,6 @@ class _TopicDetailScreenState extends State<TopicDetailScreen> {
     super.dispose();
   }
 
-  // CHANGED: Mark file read on "Next", handle quiz
   void _navigateToTopic(int direction) {
     int newIndex = _currentIndex + direction;
     int totalFiles = widget.fileL.length;
@@ -89,7 +87,7 @@ class _TopicDetailScreenState extends State<TopicDetailScreen> {
 
     if (newIndex >= 0 && newIndex < totalFiles) {
       if (!_hasMarkedRead && !widget.fileL[_currentIndex].toLowerCase().contains("quiz")) {
-        _markFileRead(); // Mark current file read before moving
+        _markFileRead();
       }
       setState(() {
         _currentIndex = newIndex;
@@ -134,13 +132,21 @@ class _TopicDetailScreenState extends State<TopicDetailScreen> {
                 ? result / 100.0
                 : 0.0;
             print("DEBUG: Quiz result for ${widget.topic}: score=$score, passed=${score >= 0.7}");
-            Provider.of<ProgressProvider>(context, listen: false).updateQuizResult(widget.topic, score);
+            Provider.of<ProgressProvider>(context, listen: false)
+                .updateQuizResult(widget.topic, score);
           });
         } else {
           print("DEBUG: Quiz JSON empty for $lastFile");
         }
       }).catchError((e) {
         print("DEBUG: Error loading quiz JSON: $e");
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error loading quiz: $e',
+                style: const TextStyle(fontFamily: 'Poppins')),
+            backgroundColor: Colors.redAccent,
+          ),
+        );
       });
     }
   }
@@ -165,12 +171,15 @@ class _TopicDetailScreenState extends State<TopicDetailScreen> {
         return;
       }
       if (!currentFile.toLowerCase().contains("quiz")) {
-        allTopics.add(jsonData);
+        allTopics.add({
+          "topic": jsonData["topic"] ?? widget.title,
+          "sections": jsonData["sections"] ?? [],
+        });
       }
       setState(() {
         courseContent = allTopics;
         _filteredContent = courseContent;
-        currentTitle = jsonData['title'] ?? widget.title;
+        currentTitle = jsonData["topic"] ?? widget.title;
         _hasMarkedRead = false;
         print("DEBUG: Updated currentTitle to: $currentTitle, content loaded");
       });
@@ -180,40 +189,107 @@ class _TopicDetailScreenState extends State<TopicDetailScreen> {
         currentTitle = widget.title;
         _hasMarkedRead = false;
       });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error loading content: $e',
+              style: const TextStyle(fontFamily: 'Poppins')),
+          backgroundColor: Colors.redAccent,
+        ),
+      );
     }
     print("DEBUG: 🏁 Course content loaded successfully for topic index $_currentIndex!");
+  }
+
+  String cleanPythonCode(String code) {
+    // Remove »» (Unicode U+00BB) and trim
+    code = code.replaceAll('\u00bb', '').trim();
+    List<String> lines = code.split('\n');
+    List<String> indentedLines = [];
+    int indentLevel = 0; // Track indentation level
+    const int spacesPerLevel = 2; // Python standard: 2 spaces per level
+
+    for (String line in lines) {
+      line = line.trim(); // Remove leading/trailing whitespace
+      if (line.isEmpty) continue; // Skip empty lines
+
+      // Decrease indent if line is '}' or similar (not common in Python, but for robustness)
+      if (line.startsWith('}')) {
+        indentLevel = (indentLevel - 1).clamp(0, indentLevel);
+      }
+
+      // Add indentation based on current level
+      String indent = ' ' * (indentLevel * spacesPerLevel);
+      indentedLines.add('$indent$line');
+
+      // Increase indent if line ends with ':' (e.g., while, if, for)
+      if (line.endsWith(':')) {
+        indentLevel++;
+      } else if (line.startsWith('print') || line.contains('=')) {
+        // Maintain indent for statements like print or assignments
+        // No change in indentLevel
+      } else {
+        // Decrease indent for lines that don't continue the block
+        indentLevel = (indentLevel - 1).clamp(0, indentLevel);
+      }
+    }
+
+    String result = indentedLines.join('\n');
+    print('Raw code: $code');
+    print('Cleaned code: $result');
+    return result;
   }
 
   void _filterContent(String query) {
     print("DEBUG: 🔍 Filter called with query: '$query'");
     setState(() {
-      _filteredContent = courseContent.map((section) {
-        Map<String, dynamic> updatedSection = Map<String, dynamic>.from(section);
-        var contentList = updatedSection["content"] as List<dynamic>?;
-        if (contentList != null) {
-          print("DEBUG: 📋 Content list found with ${contentList.length} items");
-          updatedSection["content"] = contentList.map((contentItem) {
-            Map<String, dynamic> updatedContent = Map<String, dynamic>.from(contentItem);
-            List<String> paragraphs = List<String>.from(updatedContent["paragraphs"] ?? []);
+      _filteredContent = courseContent.map((topic) {
+        Map<String, dynamic> updatedTopic = Map<String, dynamic>.from(topic);
+        var sections = updatedTopic["sections"] as List<dynamic>?;
+        if (sections != null) {
+          print("DEBUG: 📋 Sections list found with ${sections.length} items");
+          updatedTopic["sections"] = sections.map((sectionItem) {
+            Map<String, dynamic> updatedSection = Map<String, dynamic>.from(sectionItem);
+            // Handle description as String or Map
+            String description = updatedSection["description"] is String
+                ? updatedSection["description"]
+                : (updatedSection["description"] as Map<String, dynamic>?)?["value"] ?? "";
+            List<Map<String, dynamic>> codeBlocks =
+            List<Map<String, dynamic>>.from(updatedSection["code_blocks"] ?? []);
+            List<Map<String, dynamic>> filteredCodeBlocks = codeBlocks
+                .map((block) => Map<String, dynamic>.from(block))
+                .toList();
+
+            // Filter description
+            bool descriptionMatches = query.isEmpty ||
+                description.toLowerCase().contains(query.toLowerCase());
+
+            // Filter code blocks
             if (query.isNotEmpty) {
-              updatedContent["paragraphs"] = paragraphs.where((p) {
-                bool matches = p.toLowerCase().contains(query.toLowerCase());
-                if (matches) print("DEBUG: 🎯 Paragraph match: $p");
+              filteredCodeBlocks = filteredCodeBlocks.where((block) {
+                // Handle code as String or Map
+                String code = block["code"] is String
+                    ? block["code"]
+                    : (block["code"] as Map<String, dynamic>?)?["value"] ?? "";
+                bool matches = code.toLowerCase().contains(query.toLowerCase());
+                if (matches) print("DEBUG: 🎯 Code block match: $code");
                 return matches;
               }).toList();
-            } else {
-              print("DEBUG: 🌀 Query empty, resetting paragraphs");
             }
-            return updatedContent;
-          }).where((content) {
-            return (content["paragraphs"] as List).isNotEmpty;
+
+            updatedSection["description"] = descriptionMatches ? description : "";
+            updatedSection["code_blocks"] = filteredCodeBlocks;
+
+            return updatedSection;
+          }).where((section) {
+            return (section["description"] as String).isNotEmpty ||
+                (section["code_blocks"] as List).isNotEmpty;
           }).toList();
         } else {
-          print("DEBUG: ⚠️ No 'content' key in section: $updatedSection");
+          print("DEBUG: ⚠️ No 'sections' key in topic: $updatedTopic");
         }
-        return updatedSection;
-      }).where((section) {
-        return (section["content"] as List?)?.isNotEmpty ?? false;
+        return updatedTopic;
+      }).where((topic) {
+        return (topic["sections"] as List?)?.isNotEmpty ?? false;
       }).toList();
       print("DEBUG: ✅ Filtered content length: ${_filteredContent.length}");
     });
@@ -259,7 +335,7 @@ class _TopicDetailScreenState extends State<TopicDetailScreen> {
           style: TextStyle(
             fontSize: 14,
             height: 1.6,
-            color:Color(0xff023047),
+            color: Color(0xff023047),
             fontFamily: "Poppins",
           ),
         ),
@@ -417,22 +493,37 @@ class _TopicDetailScreenState extends State<TopicDetailScreen> {
                       ),
                     ),
                   ),
-                  ListView.builder(
+                  _filteredContent.isEmpty
+                      ? const Center(
+                    child: Text(
+                      'No content available',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        color: Colors.grey,
+                        fontSize: 16,
+                      ),
+                    ),
+                  )
+                      : ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: _filteredContent.length,
                     itemBuilder: (context, index) {
-                      var section = _filteredContent[index];
-                      var contentList = section["content"];
-                      if (contentList == null || contentList.isEmpty) {
-                        print("DEBUG: Empty content list for section at index $index");
+                      var topic = _filteredContent[index];
+                      var sections = topic["sections"] as List<dynamic>?;
+                      if (sections == null || sections.isEmpty) {
+                        print("DEBUG: Empty sections list for topic at index $index");
                         return const SizedBox.shrink();
                       }
-                      print("DEBUG: Building content list with ${contentList.length} items");
+                      print("DEBUG: Building sections list with ${sections.length} items");
                       return Column(
-                        children: contentList.map<Widget>((content) {
-                          String heading = content["heading"] ?? "No Heading";
-                          List<dynamic> paragraphs = content["paragraphs"] ?? [];
+                        children: sections.map<Widget>((section) {
+                          String heading = section["heading"] ?? "No Heading";
+                          // Handle description as String or Map
+                          String description = section["description"] is String
+                              ? section["description"]
+                              : (section["description"] as Map<String, dynamic>?)?["value"] ?? "";
+                          List<dynamic> codeBlocks = section["code_blocks"] ?? [];
                           print("DEBUG: Rendering card with heading: $heading");
                           return Card(
                             color: Colors.white.withOpacity(0.9),
@@ -442,59 +533,88 @@ class _TopicDetailScreenState extends State<TopicDetailScreen> {
                                 borderRadius: BorderRadius.circular(12)),
                             child: Padding(
                               padding: const EdgeInsets.all(15),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    heading,
-                                    style: const TextStyle(
-                                      fontSize: 18,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xff023047),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  ...paragraphs.map((p) {
-                                    bool isCodeExample = heading
-                                        .toLowerCase()
-                                        .contains("example") ||
-                                        heading.toLowerCase().contains("syntax");
-                                    print("DEBUG: Rendering paragraph, isCodeExample: $isCodeExample");
-                                    return Padding(
-                                      padding: const EdgeInsets.only(bottom: 10, top: 12),
-                                      child: Container(
-                                        width: double.infinity,
-                                        padding: const EdgeInsets.all(12),
-                                        decoration: BoxDecoration(
-                                          color: isCodeExample
-                                              ? Colors.white
-                                              : Colors.transparent,
-                                          borderRadius: BorderRadius.circular(8),
-                                          border: isCodeExample
-                                              ? Border.all(
-                                              color: Color(0xff023047),
-                                              width: 1)
-                                              : null,
-                                        ),
-                                        child: isCodeExample
-                                            ? HighlightView(
-                                          p,
-                                          language: 'cpp',
-                                          theme: arduinoLightTheme,
-                                          padding: const EdgeInsets.all(10),
-                                          textStyle: const TextStyle(
-                                            fontFamily: 'Poppins',
-                                            fontSize: 14,
-                                            height: 1.6,
-                                            color: Colors.black87,
-                                          ),
-                                        )
-                                            : _highlightText(p, _searchController.text),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      heading,
+                                      style: const TextStyle(
+                                        fontSize: 18,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(0xff023047),
                                       ),
-                                    );
-                                  }),
-                                ],
+                                    ),
+                                    if (description.isNotEmpty) ...[
+                                      const SizedBox(height: 8),
+                                      Padding(
+                                        padding: const EdgeInsets.only(bottom: 10, top: 12),
+                                        child: Container(
+                                          width: double.infinity,
+                                          padding: const EdgeInsets.all(12),
+                                          decoration: BoxDecoration(
+                                            color: Colors.transparent,
+                                            borderRadius: BorderRadius.circular(8),
+                                          ),
+                                          child: _highlightText(description, _searchController.text),
+                                        ),
+                                      ),
+                                    ],
+                                    ...codeBlocks.map((block) {
+                                      // Handle code as String or Map
+                                      String code = block["code"] is String
+                                          ? block["code"]
+                                          : (block["code"] as Map<String, dynamic>?)?["value"] ?? "";
+                                      // Clean the Python code for proper indentation
+                                      String cleanedCode = cleanPythonCode(code);
+                                      String exampleTitle = block["example_title"] ?? "Example";
+                                      print("DEBUG: Rendering code block, title: $exampleTitle");
+                                      return Padding(
+                                        padding: const EdgeInsets.only(bottom: 10, top: 12),
+                                        child: Container(
+                                          width: double.infinity,
+                                          padding: const EdgeInsets.all(12),
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(8),
+                                            border: Border.all(
+                                              color: Color(0xff023047),
+                                              width: 1,
+                                            ),
+                                          ),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                exampleTitle,
+                                                style: const TextStyle(
+                                                  fontSize: 16,
+                                                  fontFamily: 'Poppins',
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Color(0xff023047),
+                                                ),
+                                              ),
+                                              const SizedBox(height: 8),
+                                              HighlightView(
+                                                cleanedCode,
+                                                language: 'python',
+                                                theme: arduinoLightTheme,
+                                                padding: const EdgeInsets.all(10),
+                                                textStyle: const TextStyle(
+                                                  fontFamily: 'Poppins',
+                                                  fontSize: 14,
+                                                  height: 1.6,
+                                                  color: Colors.black87,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
+                                  ],
+                                ),
                               ),
                             ),
                           );
@@ -502,13 +622,15 @@ class _TopicDetailScreenState extends State<TopicDetailScreen> {
                       );
                     },
                   ),
+                  const SizedBox(height: 16),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ElevatedButton(
                         onPressed: _currentIndex > 0
                             ? () {
-                          print("DEBUG: Previous button pressed, navigating to index ${_currentIndex - 1}");
+                          print(
+                              "DEBUG: Previous button pressed, navigating to index ${_currentIndex - 1}");
                           _navigateToTopic(-1);
                         }
                             : null,
@@ -519,7 +641,10 @@ class _TopicDetailScreenState extends State<TopicDetailScreen> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12)),
                         ),
-                        child: const Text("Previous", style: TextStyle(fontFamily: 'Poppins'),),
+                        child: const Text(
+                          "Previous",
+                          style: TextStyle(fontFamily: 'Poppins'),
+                        ),
                       ),
                       _currentIndex == widget.fileL.length - 1
                           ? ElevatedButton(
@@ -530,25 +655,34 @@ class _TopicDetailScreenState extends State<TopicDetailScreen> {
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,
                           backgroundColor: Color(0xff023047),
-                          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                          padding:
+                          const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12)),
                         ),
-                        child: const Text("Take Quiz", style: TextStyle(fontFamily: 'Poppins'),),
+                        child: const Text(
+                          "Take Quiz",
+                          style: TextStyle(fontFamily: 'Poppins'),
+                        ),
                       )
                           : ElevatedButton(
                         onPressed: () {
-                          print("DEBUG: Next button pressed, navigating to index ${_currentIndex + 1}");
+                          print(
+                              "DEBUG: Next button pressed, navigating to index ${_currentIndex + 1}");
                           _navigateToTopic(1);
                         },
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,
                           backgroundColor: Color(0xff023047),
-                          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                          padding:
+                          const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12)),
                         ),
-                        child: const Text("Next",style: TextStyle(fontFamily: 'Poppins'),),
+                        child: const Text(
+                          "Next",
+                          style: TextStyle(fontFamily: 'Poppins'),
+                        ),
                       ),
                     ],
                   ),
