@@ -1,0 +1,20 @@
+{
+  "title": "C++ ctime Library",
+  "content": [
+    {
+      "heading": "C++ ctime Functions",
+      "paragraphs": [
+        "The <ctime> library has a variety of functions that allow you to measure dates and times.",
+        "With this library, you can retrieve the current date and time, manipulate time values, and perform time calculations. It is essential for applications that require time tracking or scheduling.",
+        "Common functions include time, localtime, and difftime, which help you work with time values and convert between different time formats.",
+        "Using the <ctime> library can significantly simplify the process of handling time-related tasks in your C++ programs."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Here is a simple example demonstrating how to use the time and localtime functions from the <ctime> library:\n\n#include <iostream>\n#include <ctime>\n\nint main() {\n    time_t currentTime;\n    struct tm *localTime;\n\n    time(&currentTime); // Get current time\n    localTime = localtime(&currentTime); // Convert to local time\n\n    std::cout << \"Current local time: \" << asctime(localTime);\n\n    return 0;\n}"
+      ]
+    }
+  ]
+}

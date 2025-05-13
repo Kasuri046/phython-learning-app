@@ -1,0 +1,27 @@
+{
+  "title": "C++ Booleans",
+  "content": [
+    {
+      "heading": "C++ Booleans",
+      "paragraphs": [
+        "Very often, in programming, you will need a data type that can only have one of two values, like:",
+        "YES / NO\n  ON / OFF\n  TRUE / FALSE",
+        "For this, C++ has a bool data type, which can take the values true \n(1) or false (0)."
+      ]
+    },
+    {
+      "heading": "Boolean Values",
+      "paragraphs": [
+        "A boolean variable is declared with the bool keyword and can take the values true or false:",
+        "From the example above, you can read that a true value returns 1, and false returns 0.",
+        "However, it is more common to return a boolean value by comparing values and variables (see next page)."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "bool isCodingFun = true ;\nbool isFishTasty = false ;\ncout << isCodingFun ;\n  \n  // Outputs 1 (true)\ncout << isFishTasty ;\n  // Outputs 0 (false)"
+      ]
+    }
+  ]
+}

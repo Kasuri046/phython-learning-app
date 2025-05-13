@@ -1,0 +1,105 @@
+{
+    "title": "Quiz: Loop Examples",
+    "questions": [
+      {
+        "question": "What is a loop in programming?",
+        "options": [
+          "A repeated execution of a block of code",
+          "A function that returns a value",
+          "A type of data structure",
+          "None of the above"
+        ],
+        "correctAnswer": "A repeated execution of a block of code"
+      },
+      {
+        "question": "Which of the following is a type of loop?",
+        "options": [
+          "For loop",
+          "While loop",
+          "Do-while loop",
+          "All of the above"
+        ],
+        "correctAnswer": "All of the above"
+      },
+      {
+        "question": "What does a 'for' loop do?",
+        "options": [
+          "Repeats a block of code a specific number of times",
+          "Repeats while a condition is true",
+          "Creates an infinite loop",
+          "None of the above"
+        ],
+        "correctAnswer": "Repeats a block of code a specific number of times"
+      },
+      {
+        "question": "What is the purpose of a 'break' statement in a loop?",
+        "options": [
+          "To exit the loop",
+          "To skip to the next iteration",
+          "To pause execution",
+          "None of the above"
+        ],
+        "correctAnswer": "To exit the loop"
+      },
+      {
+        "question": "What is the purpose of a 'continue' statement?",
+        "options": [
+          "To exit the loop",
+          "To skip the current iteration and continue with the next",
+          "To stop the program",
+          "None of the above"
+        ],
+        "correctAnswer": "To skip the current iteration and continue with the next"
+      },
+      {
+        "question": "In a 'while' loop, when does the loop terminate?",
+        "options": [
+          "When the condition becomes false",
+          "When the condition is true",
+          "After a fixed number of iterations",
+          "None of the above"
+        ],
+        "correctAnswer": "When the condition becomes false"
+      },
+      {
+        "question": "What is an infinite loop?",
+        "options": [
+          "A loop that runs indefinitely",
+          "A loop that runs a fixed number of times",
+          "A loop that contains a break statement",
+          "None of the above"
+        ],
+        "correctAnswer": "A loop that runs indefinitely"
+      },
+      {
+        "question": "Which loop is guaranteed to execute at least once?",
+        "options": [
+          "For loop",
+          "While loop",
+          "Do-while loop",
+          "None of the above"
+        ],
+        "correctAnswer": "Do-while loop"
+      },
+      {
+        "question": "What is a nested loop?",
+        "options": [
+          "A loop inside another loop",
+          "A loop that runs indefinitely",
+          "A loop with no body",
+          "None of the above"
+        ],
+        "correctAnswer": "A loop inside another loop"
+      },
+      {
+        "question": "What will happen if you forget to update the loop counter in a 'for' loop?",
+        "options": [
+          "The loop will terminate",
+          "The loop will run indefinitely",
+          "The loop will execute once",
+          "None of the above"
+        ],
+        "correctAnswer": "The loop will run indefinitely"
+      }
+    ]
+  }

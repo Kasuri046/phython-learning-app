@@ -1,0 +1,225 @@
+{
+  "title": "C++ Real-Life Examples",
+  "content": [
+    {
+      "heading": "Explanations",
+      "paragraphs": [
+        "This page contains a list of practical examples used in real world projects."
+      ]
+    },
+    {
+      "heading": "Variables and Data Types",
+      "paragraphs": [
+        "For a tutorial about variables and data types in C++, visit our Variables Chapter and Data Types Chapter."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Use variables to store different data of a college student:",
+        "// Student data\nint studentID = 15;\nint studentAge = 23;\nfloat studentFee = 75.25;\nchar studentGrade = 'B';\n// Print variables\ncout << \"Student ID: \" << studentID << \"\\n\";\ncout << \"Student Age: \" << studentAge << \"\\n\";\ncout << \"Student Fee: \" << studentFee << \"\\n\";\ncout << \"Student Grade: \" << studentGrade << \"\\n\";"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Calculate the area of a rectangle (by multiplying the length and width):",
+        "// Create integer variables\nint length = 4;\nint width = 6;\nint area;\n// Calculate the area of a rectangle\narea = length * width;\n// Print the variables\ncout << \"Length is: \" << length << \"\\n\";\ncout << \"Width is: \" << width << \"\\n\";\ncout << \"Area of the rectangle is: \" << area << \"\\n\";"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Use different data types to calculate and output the total cost of a number of items:",
+        "// Create variables of different data types\nint items = 50;\ndouble cost_per_item = 9.99;\ndouble total_cost = items * cost_per_item;\nchar currency = '$';\n// Print variables\ncout << \"Number of items: \" << items << \"\\n\";\ncout << \"Cost per item: \" << cost_per_item << \"\" << currency << \"\\n\";\ncout << \"Total cost = \" << total_cost << \"\" << currency << \"\\n\";"
+      ]
+    },
+    {
+      "heading": "Strings",
+      "paragraphs": [
+        "For a tutorial about strings in C++, visit our Strings Chapter."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Use strings to create a simple welcome message:",
+        "string message = \"Good to see you, \";\nstring fname = \"John\";\ncout << message + fname;"
+      ]
+    },
+    {
+      "heading": "Booleans",
+      "paragraphs": [
+        "For a tutorial about booleans in C++, visit our Booleans Chapter."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Find out if a person is old enough to vote:",
+        "int myAge = 25;\nint votingAge = 18;\ncout << (myAge >= votingAge); \n// returns 1 (true), meaning 25 year olds are allowed to vote!"
+      ]
+    },
+    {
+      "heading": "Conditions (If..Else)",
+      "paragraphs": [
+        "For a tutorial about conditions in C++, visit our If..Else Chapter."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Check whether the user enters the correct code:",
+        "int doorCode = 1337;\nif (doorCode == 1337) {\n  cout << \"Correct code.\\nThe door is now open.\\n\";\n} else {\n  cout << \"Wrong code.\\nThe door remains closed.\\n\";\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Find out if a number is positive or negative:",
+        "int myNum = 10; // Is this a positive or negative number?\nif (myNum > 0) {\n  cout << \"The value is a positive number.\\n\";\n} else if (myNum < 0) {\n  cout << \"The value is a negative number.\\n\";\n} else {\n  cout << \"The value is 0.\\n\";\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Find out if a number is even or odd:",
+        "int myNum = 5;\nif (myNum % 2 == 0) {\n  cout << myNum << \" is even.\\n\";\n} else {\n  cout << myNum << \" is odd.\\n\";\n}"
+      ]
+    },
+    {
+      "heading": "Switch",
+      "paragraphs": [
+        "For a tutorial about switch in C++, visit our Switch Chapter."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Use the weekday number to calculate and output the weekday name:",
+        "int day = 4;\nswitch (day) {\n  case 1:\n    cout << \"Monday\";\n    break;\n  case 2:\n    cout << \"Tuesday\";\n    break;\n  case 3:\n    cout << \"Wednesday\";\n    break;\n  case 4:\n    cout << \"Thursday\";\n    break;\n  case 5:\n    cout << \"Friday\";\n    break;\n  case 6:\n    cout << \"Saturday\";\n    break;\n  case 7:\n    cout << \"Sunday\";\n    break;\n}\n// Outputs \"Thursday\" (day 4)"
+      ]
+    },
+    {
+      "heading": "While Loops",
+      "paragraphs": [
+        "For a tutorial about while loops in C++, visit our While Loops Chapter."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Create a simple \"countdown\" program:",
+        "int countdown = 3;\nwhile (countdown > 0) {\n  cout << countdown << \"\\n\";\n  countdown--;\n}\ncout << \"Happy New Year!!\\n\";"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Create a program that only prints even numbers between 0 and 10 (inclusive):",
+        "int i = 0;\nwhile (i <= 10) {\n  cout << i << \"\\n\";\n  i += 2;\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Use a while loop to reverse some numbers:",
+        "// A variable with some specific numbers\nint numbers = 12345;\n// A variable to store the reversed number\nint revNumbers = 0;\n// Reverse and reorder the numbers\nwhile (numbers) {\n  // Get the last number of 'numbers' and add it to 'revNumbers'\n  revNumbers = revNumbers * 10 + numbers % 10;\n  // Remove the last number of 'numbers'\n  numbers /= 10;\n}\ncout << \"Reversed numbers: \" << revNumbers << \"\\n\";"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Use a while loop together with an if else statement to play a game of Yatzy:",
+        "int dice = 1;\nwhile (dice <= 6) {\n  if (dice < 6) {\n    cout << \"No Yatzy\\n\";\n  } else {\n    cout << \"Yatzy!\\n\";\n  }\n  dice = dice + 1;\n}"
+      ]
+    },
+    {
+      "heading": "For Loops",
+      "paragraphs": [
+        "For a tutorial about for loops in C++, visit our For Loops Chapter."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Use a for loop to create a program that counts to 100 by tens:",
+        "for (int i = 0; i <= 100; i += 10) {\n  cout << i << \"\\n\";\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Use a for loop to create a program that only prints even values between 0 and 10:",
+        "for (int i = 0; i <= 10; i = i + 2) {\n  cout << i << \"\\n\";\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Use a for loop to create a program that only prints odd numbers:",
+        "for (int i = 1; i <= 10; i = i + 2) {\n  cout << i << \"\\n\";\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Use a for loop to print the powers of 2 up to 512:",
+        "for (int i = 2; i <= 512; i *= 2) {\n  cout << i << \"\\n\";\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Use a for loop to create a program that prints the multiplication table of a specified number (2 in this example):",
+        "int number = 2;\nint i;\n// Print the multiplication table for the number 2\nfor (i = 1; i <= 10; i++) {\n  cout << number << \" x \" << i << \" = \" << number * i << \"\\n\";\n}"
+      ]
+    },
+    {
+      "heading": "Arrays",
+      "paragraphs": [
+        "For a tutorial about arrays in C++, visit our Arrays Chapter."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Create a program that calculates the average of different ages:",
+        "// An array storing different ages\nint ages[8] = {20, 22, 18, 35, 48, 26, 87, 70};\nfloat avg, sum = 0;\nint i;\n// Get the length of the array\nint length = sizeof(ages) / sizeof(ages[0]);\n// Loop through the elements of the array\nfor (int age : ages) {\n  sum += age;\n}\n// Calculate the average by dividing the sum by the length\navg = sum / length;\n// Print the average\ncout << \"The average age is: \" << avg << \"\\n\";"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Create a program that finds the lowest age among different ages:",
+        "// An array storing different ages\nint ages[8] = {20, 22, 18, 35, 48, 26, 87, 70};\nint i;\n// Get the length of the array\nint length = sizeof(ages) / sizeof(ages[0]);\n// Create a variable and assign the first array element of ages to it\nint lowestAge = ages[0];\n// Loop through the elements of the ages array to find the lowest age\nfor (int age : ages) {\n  if (lowestAge > age) {\n    lowestAge = age;\n  }\n}\n// Print the lowest age\ncout << \"The lowest age is: \" << lowestAge << \"\\n\";"
+      ]
+    },
+    {
+      "heading": "Structs",
+      "paragraphs": [
+        "For a tutorial about structs in C++, visit our Structures Chapter."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Use a structure to store and output different information about Cars:",
+        "// Declare a structure named \"car\"\nstruct car {\n  string brand;\n  string model;\n  int year;\n};\n\nint main() {\n  // Create a car structure and store it in myCar1;\n  car myCar1;\n  myCar1.brand = \"BMW\";\n  myCar1.model = \"X5\";\n  myCar1.year = 1999;\n\n  // Create another car structure and store it in myCar2;\n  car myCar2;\n  myCar2.brand = \"Ford\";\n  myCar2.model = \"Mustang\";\n  myCar2.year = 1969;\n\n  // Print the structure members\n  cout << myCar1.brand << \" \" << myCar1.model << \" \" << myCar1.year << \"\\n\";\n  cout << myCar2.brand << \" \" << myCar2.model << \" \" << myCar2.year << \"\\n\";\n\n  return 0;\n}"
+      ]
+    },
+    {
+      "heading": "Functions",
+      "paragraphs": [
+        "For a tutorial about functions in C++, visit our Functions Chapter."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Create a program that converts a value from fahrenheit to celsius:",
+        "// Function to convert Fahrenheit to Celsius\nfloat toCelsius(float fahrenheit) {\n  return (5.0 / 9.0) * (fahrenheit - 32.0);\n}\n\nint main() {\n  // Set a fahrenheit value\n  float f_value = 98.8;\n  // Call the function with the fahrenheit value\n  float result = toCelsius(f_value);\n  // Print the fahrenheit value\n  cout << \"Fahrenheit: \" << f_value << \"\\n\";\n  // Print the result\n  cout << \"Convert Fahrenheit to Celsius: \" << result << \"\\n\";\n  return 0;\n}"
+      ]
+    }
+  ]
+}

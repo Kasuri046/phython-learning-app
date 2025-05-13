@@ -1,0 +1,46 @@
+{
+  "title": "C++ Data Structures and STL",
+  "content": [
+    {
+      "heading": "Data Structures",
+      "paragraphs": [
+        "Data structures are used to store and organize data. An array is an example of a data structure, which \nallows multiple elements to be stored in a single variable.",
+        "C++ includes many other data structures as well, each is used to handle data \nin different ways.",
+        "These are part of the C++ STL, which stands for The Standard Template \nLibrary."
+      ]
+    },
+    {
+      "heading": "C++ STL",
+      "paragraphs": [
+        "STL is a library that consists of different data structures and \nalgorithms to effectively store and manipulate data.",
+        "If we say that data structures store data, we can say that algorithms are used to solve different problems, \noften by searching through and manipulating those data structures.",
+        "Using the right data structure and algorithm makes your program run faster, \nespecially when working with lots of data.",
+        "The most common data structures are:",
+        "Which one to use depends on your specific needs. One thing they all have in common is that you must include the \nappropriate header file to use them:",
+        "Here is an example of using vectors, after we have included the <vector> library:",
+        "The next chapters will explain how each data structure works and how to use them."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Include the vector library\n#include <vector>\n\n// Include the list library\n#include <list>\n\n// Include the set library\n#include <set>\n\n// Include the map library\n#include <map>\n\n// Include the stack library\n#include <stack>\n\n// Include the queue library\n#include <queue>"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a vector called cars that will store strings\nvector<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n\n// Print vector elements\nfor (string car : cars) {\n    cout << car << \"\\n\";\n}"
+      ]
+    },
+    {
+      "heading": "Key Concepts of the STL",
+      "paragraphs": [
+        "The key components of the STL consist of containers, iterators,\nand algorithms, and the relationship between them:",
+        "Containers are data structures that provide a way to store data, like vectors, lists, etc.\nIterators \nare objects used to access elements of \na data structure.\nAlgorithms \ninclude functions, like sort() and find(), \nthat perform operations on data structures through iterators.",
+        "In Computer Science, data structures and algorithms go hand in hand. A data structure is not worth \nmuch if you cannot search through it or manipulate it efficiently using \nalgorithms, and algorithms are not worth much without a data structure to work \non.",
+        "In the following chapters, you will see how everything is connected."
+      ]
+    }
+  ]
+}

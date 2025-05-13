@@ -1,0 +1,17 @@
+{
+  "title": "C++ Function Examples",
+  "content": [
+    {
+      "heading": "Real Life Example",
+      "paragraphs": [
+        "To demonstrate a practical example of using functions, let's create a program that converts a value from fahrenheit to celsius:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Function to convert \n  Fahrenheit to Celsiusfloat toCelsius(float fahrenheit) {  return \n  (5.0 / 9.0) * (fahrenheit - 32.0) ;\n}int main() {  // Set a \n  fahrenheit value  float f_value = 98.8 ;\n  // Call the \n  function with the fahrenheit value  float result = \n  toCelsius(f_value) ;\n  // Print the fahrenheit value  cout \n  << \"Fahrenheit: \" << f_value << \"\\n\" ;\n  // Print the result  \n  cout << \"Convert Fahrenheit to Celsius: \" << result << \"\\n\" ;\n  \n  return 0 ;\n}"
+      ]
+    }
+  ]
+}

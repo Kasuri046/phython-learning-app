@@ -1,0 +1,105 @@
+{
+    "title": "Quiz: Dynamic Memory Allocation",
+    "questions": [
+      {
+        "question": "What is dynamic memory allocation?",
+        "options": [
+          "Allocating memory at compile time",
+          "Allocating memory at runtime",
+          "Allocating memory for global variables",
+          "None of the above"
+        ],
+        "correctAnswer": "Allocating memory at runtime"
+      },
+      {
+        "question": "Which operator is used to allocate memory dynamically in C++?",
+        "options": [
+          "malloc",
+          "new",
+          "alloc",
+          "create"
+        ],
+        "correctAnswer": "new"
+      },
+      {
+        "question": "How do you allocate an array of 10 integers dynamically?",
+        "options": [
+          "int* arr = new int[10];",
+          "int arr = new int[10];",
+          "int* arr = malloc(10 * sizeof(int));",
+          "int arr[10] = new int;"
+        ],
+        "correctAnswer": "int* arr = new int[10];"
+      },
+      {
+        "question": "What is the purpose of the 'delete' operator?",
+        "options": [
+          "To allocate memory",
+          "To free dynamically allocated memory",
+          "To declare a pointer",
+          "To initialize a variable"
+        ],
+        "correctAnswer": "To free dynamically allocated memory"
+      },
+      {
+        "question": "What will happen if you forget to free dynamically allocated memory?",
+        "options": [
+          "Memory leak",
+          "Stack overflow",
+          "Segmentation fault",
+          "Nothing"
+        ],
+        "correctAnswer": "Memory leak"
+      },
+      {
+        "question": "Which operator is used to deallocate memory for a single variable?",
+        "options": [
+          "delete[]",
+          "free",
+          "delete",
+          "dispose"
+        ],
+        "correctAnswer": "delete"
+      },
+      {
+        "question": "How do you deallocate memory for an array allocated with 'new'?",
+        "options": [
+          "delete arr;",
+          "delete[] arr;",
+          "free(arr);",
+          "None of the above"
+        ],
+        "correctAnswer": "delete[] arr;"
+      },
+      {
+        "question": "What is the difference between 'new' and 'malloc'?",
+        "options": [
+          "'new' initializes objects, 'malloc' does not",
+          "'new' returns a pointer, 'malloc' does not",
+          "'new' is for arrays, 'malloc' is for single variables",
+          "There is no difference"
+        ],
+        "correctAnswer": "'new' initializes objects, 'malloc' does not"
+      },
+      {
+        "question": "What does the 'sizeof' operator do?",
+        "options": [
+          "Returns the size of a variable in bytes",
+          "Allocates memory",
+          "Deallocates memory",
+          "None of the above"
+        ],
+        "correctAnswer": "Returns the size of a variable in bytes"
+      },
+      {
+        "question": "Which of the following is a proper way to check if memory allocation was successful?",
+        "options": [
+          "if (ptr != NULL)",
+          "if (ptr)",
+          "if (ptr == NULL)",
+          "Both A and B"
+        ],
+        "correctAnswer": "Both A and B"
+      }
+    ]
+  }

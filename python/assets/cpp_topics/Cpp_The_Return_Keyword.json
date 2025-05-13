@@ -1,0 +1,31 @@
+{
+  "title": "C++ The Return Keyword",
+  "content": [
+    {
+      "heading": "Return Values",
+      "paragraphs": [
+        "The void keyword, used in the previous examples, indicates that the \nfunction should not return a value. If you \nwant the function to return a value, you can use a data type (such as int, \nstring, etc.) instead of void, and use the return \nkeyword inside the function:",
+        "This example returns the sum of a function with two parameters:",
+        "You can also store the result in a variable:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "int myFunction(int x) { \n return 5 + x ;\n}int main() { \n{\n cout << myFunction(3) ;\n   return 0 ;\n}// Outputs 8 (5 + 3)"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "int myFunction(int x, int y) { \n return x + y ;\n}int main() \n  { \ncout << myFunction(5, 3) ;\n  return 0 ;\n}\n  // Outputs 8 (5 + 3)"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "int myFunction(int x, int y) {  \nreturn x + y ;\n}int main() {  \n  int z = myFunction(5, 3) ;\n  cout << z ;\n  return 0 ;\n}\n  // Outputs 8 (5 + 3)"
+      ]
+    }
+  ]
+}

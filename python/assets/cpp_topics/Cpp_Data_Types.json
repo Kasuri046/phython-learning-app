@@ -1,0 +1,24 @@
+{
+  "title": "C++ Data Types",
+  "content": [
+    {
+      "heading": "C++ Data Types",
+      "paragraphs": [
+        "As explained in the Variables chapter, a variable in C++ must be a specified data type. \nData types dictate the kind of data a variable can hold, which in turn affects the operations that can be performed on that variable.",
+        "C++ provides several built-in data types, which can be classified into basic data types, derived data types, and user-defined data types."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "int myNum = 5;  // Integer (whole number)\nfloat myFloatNum = 5.99;  // Floating point number\n\ndouble myDoubleNum = 9.98;  // Floating point number\nchar myLetter = 'D';  // Character\n\nbool myBoolean = true;  // Boolean\nstring myText = \"Hello\";  // String"
+      ]
+    },
+    {
+      "heading": "Basic Data Types",
+      "paragraphs": [
+        "The data type specifies the size and type of information the variable will store:\n\n1. int: Used for storing integers (whole numbers).\n2. float: Used for storing single-precision floating point numbers.\n3. double: Used for storing double-precision floating point numbers.\n4. char: Used for storing single characters.\n5. bool: Used for storing boolean values (true or false).\n6. string: Used for storing a sequence of characters (text)."
+      ]
+    }
+  ]
+}

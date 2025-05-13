@@ -1,0 +1,193 @@
+{
+  "title": "C++ Maps",
+  "content": [
+    {
+      "heading": "C++ Map",
+      "paragraphs": [
+        "A map stores elements in \"key/value\" pairs.",
+        "Elements in a map are:",
+        "Accessible by keys (not index), and each key is unique.",
+        "Automatically sorted in ascending order by their keys.",
+        "To use a map, you have to include the <map> header file:"
+      ]
+    },
+    {
+      "heading": "Create a Map",
+      "paragraphs": [
+        "To create a map, use the map keyword, and specify the type of both the key and the value it should store within angle brackets <>. At last, specify the name of the map, like: map<keytype, valuetype> mapName:",
+        "If you want to add elements at the time of declaration, place them in a comma-separated list, inside curly braces {}:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a map called people that will store strings as keys and integers as values\nmap<string, int> people;"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a map that will store the name and age of different people\nmap<string, int> people = { {\"John\", 32}, {\"Adele\", 45}, {\"Bo\", 29} };"
+      ]
+    },
+    {
+      "heading": "Access a Map",
+      "paragraphs": [
+        "You cannot access map elements by referring to index numbers, like you would with arrays and vectors.",
+        "Instead, you can access a map element by referring to its key inside square brackets []:",
+        "You can also access elements with the .at() function:",
+        "Note: The .at() function is often preferred over square brackets [] because it throws an error message if the element does not exist:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a map that will store the name and age of different people\nmap<string, int> people = { {\"John\", 32}, {\"Adele\", 45}, {\"Bo\", 29} };\n\n// Get the value associated with the key \"John\"\ncout << \"John is: \" << people[\"John\"] << \"\\n\";\n// Get the value associated with the key \"Adele\"\ncout << \"Adele is: \" << people[\"Adele\"] << \"\\n\";"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a map that will store the name and age of different people\nmap<string, int> people = { {\"John\", 32}, {\"Adele\", 45}, {\"Bo\", 29} };\n// Get the value associated with the key \"Adele\"\ncout << \"Adele is: \" << people.at(\"Adele\") << \"\\n\";\n// Get the value associated with the key \"Bo\"\ncout << \"Bo is: \" << people.at(\"Bo\") << \"\\n\";"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a map that will store the name and age of different people\nmap<string, int> people = { {\"John\", 32}, {\"Adele\", 45}, {\"Bo\", 29} };\n// Try to access an element that does not exist (will throw an exception)\ncout << people.at(\"Jenny\");"
+      ]
+    },
+    {
+      "heading": "Change Values",
+      "paragraphs": [
+        "You can also change the value associated with a key:",
+        "However, it is safer to use the .at() function:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "map<string, int> people = { {\"John\", 32}, {\"Adele\", 45}, {\"Bo\", 29} };\n\n// Change John's value to 50 instead of 32\npeople[\"John\"] = 50;\n\ncout << \"John is: \" << people[\"John\"]; // Now outputs John is: 50"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "map<string, int> people = { {\"John\", 32}, {\"Adele\", 45}, {\"Bo\", 29} };\n\n// Change John's value to 50 instead of 32\npeople.at(\"John\") = 50;\n\ncout << \"John is: \" << people.at(\"John\"); // Now outputs John is: 50"
+      ]
+    },
+    {
+      "heading": "Add Elements",
+      "paragraphs": [
+        "To add elements to a map, it is ok to use square brackets []:",
+        "But you can also use the .insert() function:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "map<string, int> people = { {\"John\", 32}, {\"Adele\", 45}, {\"Bo\", 29} };\n// Add new elements\npeople[\"Jenny\"] = 22;\npeople[\"Liam\"] = 24;\n\npeople[\"Kasper\"] = 20;\npeople[\"Anja\"] = 30;"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "map<string, int> people = { {\"John\", 32}, {\"Adele\", 45}, {\"Bo\", 29} };\n\n// Add new elements\npeople.insert({\"Jenny\", 22});\n\npeople.insert({\"Liam\", 24});\npeople.insert({\"Kasper\", 20});\n\npeople.insert({\"Anja\", 30});"
+      ]
+    },
+    {
+      "heading": "Elements with Equal Keys",
+      "paragraphs": [
+        "A map cannot have elements with equal keys.",
+        "For example, if we try to add \"Jenny\" two times to the map, it will only keep the first one:",
+        "To sum up; values can be equal, but keys must be unique."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "map<string, int> people = { {\"John\", 32}, {\"Adele\", 45}, {\"Bo\", 29} };\n\n// Trying to add two elements with equal keys\npeople.insert({\"Jenny\", 22});\n\npeople.insert({\"Jenny\", 30});"
+      ]
+    },
+    {
+      "heading": "Remove Elements",
+      "paragraphs": [
+        "To remove specific elements from a map, you can use the .erase() function:",
+        "To remove all elements from a map, you can use the .clear() function:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "map<string, int> people = { {\"John\", 32}, {\"Adele\", 45}, {\"Bo\", 29} };\n\n// Remove an element by key\npeople.erase(\"John\");"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "map<string, int> people = { {\"John\", 32}, {\"Adele\", 45}, {\"Bo\", 29} };\n\n// Remove all elements\npeople.clear();"
+      ]
+    },
+    {
+      "heading": "Find the Size of a Map",
+      "paragraphs": [
+        "To find out how many elements a map has, use the .size() function:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "map<string, int> people = { {\"John\", 32}, {\"Adele\", 45}, {\"Bo\", 29} };\ncout << people.size(); // Outputs 3"
+      ]
+    },
+    {
+      "heading": "Check if a Map is Empty",
+      "paragraphs": [
+        "Use the .empty() function to find out if a map is empty or not.",
+        "The .empty() function returns 1 (true) if the map is empty and 0 (false) otherwise:",
+        "Note: You can also check if a specific element exists, by using the .count(key) function.",
+        "It returns 1 (true) if the element exists and 0 (false) otherwise:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "map<string, int> people;\ncout << people.empty(); // Outputs 1 (The map is empty)"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "map<string, int> people = { {\"John\", 32}, {\"Adele\", 45}, {\"Bo\", 29} };\ncout << people.empty(); // Outputs 0 (not empty)"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "map<string, int> people = { {\"John\", 32}, {\"Adele\", 45}, {\"Bo\", 29} };\ncout << people.count(\"John\"); // Outputs 1 (John exists)"
+      ]
+    },
+    {
+      "heading": "Loop Through a Map",
+      "paragraphs": [
+        "You can loop through a map with the for-each loop. However, there are a couple of things to be aware of:",
+        "You should use the auto keyword (introduced in C++ version 11) inside the for loop. This allows the compiler to automatically determine the correct data type for each key-value pair. Since map elements consist of both keys and values, you have to include .first to access the keys, and .second to access values in the loop.",
+        "Elements in the map are sorted automatically in ascending order by their keys:",
+        "If you want to reverse the order, you can use the greater<type> functor inside the angle brackets, like this:",
+        "Tip: It is also possible to loop through maps with an iterator, which you will learn more about in the next chapter."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "map<string, int> people = { {\"John\", 32}, {\"Adele\", 45}, {\"Bo\", 29} };\n\nfor (auto person : people) {\n    cout << person.first << \" is: \" << person.second << \"\\n\";\n}\n// The output will be:\n// John is: 32\n// Adele is: 45\n// Bo is: 29"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "map<string, int, greater<string>> people = { {\"John\", 32}, {\"Adele\", 45}, {\"Bo\", 29} };\n\nfor (auto person : people) {\n    cout << person.first << \" is: \" << person.second << \"\\n\";\n}\n// The output will be:\n// John is: 32\n// Bo is: 29\n// Adele is: 45"
+      ]
+    }
+  ]
+}

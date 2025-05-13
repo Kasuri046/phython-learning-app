@@ -1,0 +1,177 @@
+{
+  "title": "C++ Vectors",
+  "content": [
+    {
+      "heading": "C++ Vector",
+      "paragraphs": [
+        "A vector in C++ is like a resizable array.",
+        "Both vectors and arrays are data structures used to store multiple elements of the same data type.",
+        "The difference between an array and a vector is that the size of an array cannot be modified (you cannot add or remove elements from an array). A vector, however, can grow or shrink in size as needed.",
+        "To use a vector, you have to include the <vector> header file:"
+      ]
+    },
+    {
+      "heading": "Create a Vector",
+      "paragraphs": [
+        "To create a vector, use the vector keyword, and specify the type of values it should store within angle brackets <> and then the name of the vector, like: vector<type> vectorName.",
+        "If you want to add elements at the time of declaration, place them in a comma-separated list, inside curly braces {}, just like with arrays:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a vector called cars that will store strings\nvector<string> cars;"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a vector called cars that will store strings\nvector<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n// Print vector elements\nfor (string car : cars) { cout << car << \"\\n\"; }"
+      ]
+    },
+    {
+      "heading": "Access a Vector",
+      "paragraphs": [
+        "You can access a vector element by referring to the index number inside square brackets [].",
+        "Vectors, like arrays, are 0-indexed, meaning that [0] is the first element, [1] is the second element, and so on:",
+        "One advantage of using the vector library is that it includes many useful functions. For example, you can access the first or the last element of a vector with the .front() and .back() functions:",
+        "To access an element at a specified index, you can use the .at() function and specify the index number:",
+        "Note: The .at() function is often preferred over square brackets [] because it lets you know if an error occurs.",
+        "For example, if the element is out of range:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a vector called cars that will store strings\nvector<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n// Get the first element\ncout << cars[0]; // Outputs Volvo\n// Get the second element\ncout << cars[1]; // Outputs BMW"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a vector called cars that will store strings\nvector<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n// Get the first element\ncout << cars.front();\n// Get the last element\ncout << cars.back();"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a vector called cars that will store strings\nvector<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n// Get the second element\ncout << cars.at(1);\n// Get the third element\ncout << cars.at(2);"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a vector called cars that will store strings\nvector<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n// Try to access an element that does not exist (throws an error message)\ncout << cars.at(6);"
+      ]
+    },
+    {
+      "heading": "Change a Vector Element",
+      "paragraphs": [
+        "To change the value of a specific element, you can refer to the index number:",
+        "However, it is safer to use the .at() function:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "vector<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n\n// Change the value of the first element\ncars[0] = \"Opel\";\n\ncout << cars[0]; // Now outputs Opel instead of Volvo"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "vector<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n\n// Change the value of the first element\ncars.at(0) = \"Opel\";\n\ncout << cars.at(0); // Now outputs Opel instead of Volvo"
+      ]
+    },
+    {
+      "heading": "Add Vector Elements",
+      "paragraphs": [
+        "The biggest difference between a vector and an array is that vectors can grow dynamically. That means you can add or remove elements from the vector.",
+        "To add an element to the vector, you can use the .push_back() function, which will add an element at the end of the vector:",
+        "You can add as many elements as you want:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "vector<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\ncars.push_back(\"Tesla\");"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "vector<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\ncars.push_back(\"Tesla\");\ncars.push_back(\"VW\");\ncars.push_back(\"Mitsubishi\");\ncars.push_back(\"Mini\");"
+      ]
+    },
+    {
+      "heading": "Remove Vector Elements",
+      "paragraphs": [
+        "To remove an element from the vector, you can use the .pop_back() function, which removes an element from the end of the vector:",
+        "Note: Elements are usually only added and removed from the end of the vector. If you need to add or remove elements from both ends, it is often better to use a deque instead of a vector."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "vector<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\ncars.pop_back();"
+      ]
+    },
+    {
+      "heading": "Vector Size",
+      "paragraphs": [
+        "To find out how many elements a vector has, use the .size() function:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "vector<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\ncout << cars.size(); // Outputs 4"
+      ]
+    },
+    {
+      "heading": "Check if a Vector is Empty",
+      "paragraphs": [
+        "There is also a function to find out whether a vector is empty or not.",
+        "The .empty() function returns 1 (true) if the vector is empty and 0 (false) if it contains one or more elements:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "vector<string> cars;\ncout << cars.empty(); // Outputs 1 (The vector is empty)"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "vector<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\ncout << cars.empty(); // Outputs 0 (not empty)"
+      ]
+    },
+    {
+      "heading": "Loop Through a Vector",
+      "paragraphs": [
+        "You can loop through the vector elements by using a for loop combined with the .size() function:",
+        "You can also use a for-each loop (introduced in C++ version 11 (2011), which is cleaner and more readable):",
+        "Tip: It is also possible to loop through vectors with an iterator, which you will learn more about in a later chapter."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "vector<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\nfor (int i = 0; i < cars.size(); i++) { cout << cars[i] << \"\\n\"; }"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "vector<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\nfor (string car : cars) { cout << car << \"\\n\"; }"
+      ]
+    },
+    {
+      "heading": "Complete Vector Reference",
+      "paragraphs": [
+        "For a complete reference of vector functions, go to our C++ Vector Reference."
+      ]
+    }
+  ]
+}

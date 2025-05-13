@@ -1,0 +1,48 @@
+{
+  "title": "C++ Omit Array Size",
+  "content": [
+    {
+      "heading": "Omit Array Size",
+      "paragraphs": [
+        "In C++, you don't have to specify the size of the array. The compiler is \nsmart enough to determine the size of the array based on the number of inserted values:",
+        "The example above is equal to:",
+        "However, the last approach is considered as \"good practice\", because it will reduce \nthe chance of errors in your program."
+      ]
+    },
+    {
+      "heading": "Omit Elements on Declaration",
+      "paragraphs": [
+        "It is also possible to declare an array without specifying the elements on \ndeclaration, and add them later:",
+        "Note: The example above only works when you have specified the size of the array.",
+        "If you don't specify the array size, an error occurs:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "string cars[5] ;\ncars[0] = \"Volvo\" ;\ncars[1] = \"BMW\" ;\ncars[2]  = \"Ford\" ;\ncars[3] = \"Mazda\" ;\ncars[4] = \"Tesla\" ;\n"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "string cars[] ;\n  \n  // Array size is not specified\ncars[0] = \"Volvo\" ;\ncars[1] = \"BMW\" ;\ncars[2]  = \"Ford\" ;\ncars[3] = \"Mazda\" ;\ncars[4] = \"Tesla\" ;\n  // error: array size missing in 'cars'"
+      ]
+    },
+    {
+      "heading": "Fixed Size (Arrays) vs. Dynamic Size (Vectors)",
+      "paragraphs": [
+        "You will often hear the terms \"fixed size\" and \"dynamic size\" when discussing \narrays in C++.",
+        "This is because the size of an array in C++ is fixed, meaning you \ncannot add or remove elements \nafter it is created."
+      ]
+    },
+    {
+      "heading": "Vectors",
+      "paragraphs": [
+        "For operations that require adding and removing array elements, C++ provides\nvectors, which are resizable arrays.",
+        "The size of a vector is dynamic, meaning it can grow and shrink as needed.",
+        "Vectors are found in the <vector> library, and they come with many useful \nfunctions to add, remove and modify elements:"
+      ]
+    }
+  ]
+}

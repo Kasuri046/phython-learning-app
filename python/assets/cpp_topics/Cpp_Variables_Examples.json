@@ -1,0 +1,31 @@
+{
+  "title": "C++ Variables Examples",
+  "content": [
+    {
+      "heading": "Real-Life Examples",
+      "paragraphs": [
+        "Let's get a bit more practical!",
+        "Often in our examples, we simplify variable names to match their data type (myInt or myNum for int types, myChar for char types, and so on). This is done to avoid confusion.",
+        "However, for a practical example of using variables, we have created a program that stores different data about a college student:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Student data\nint studentID = 15;\nint studentAge = 23;\nfloat studentFee = 75.25;\nchar studentGrade = 'B';\n\n// Print variables\ncout << \"Student ID: \" << studentID << \"\\n\";\ncout << \"Student Age: \" << studentAge << \"\\n\";\ncout << \"Student Fee: \" << studentFee << \"\\n\";\ncout << \"Student Grade: \" << studentGrade << \"\\n\";"
+      ]
+    },
+    {
+      "heading": "Calculate the Area of a Rectangle",
+      "paragraphs": [
+        "In this real-life example, we create a program to calculate the area of a rectangle (by multiplying the length and width):"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create integer variables\nint length = 4;\nint width = 6;\nint area;\n\n// Calculate the area of a rectangle\narea = length * width;\n\n// Print the variables\ncout << \"Length is: \" << length << \"\\n\";\ncout << \"Width is: \" << width << \"\\n\";\ncout << \"Area of the rectangle is: \" << area << \"\\n\";"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "title": "C++ Inheritance",
+  "content": [
+    {
+      "heading": "Inheritance",
+      "paragraphs": [
+        "In C++, it is possible to inherit attributes and methods from one class to another. We group the \"inheritance concept\" into two categories:",
+        "derived class (child) - the class that inherits from another class\nbase class (parent) - the class being inherited from",
+        "To inherit from a class, use the : symbol.",
+        "In the example below, the Car class \n(child) inherits the attributes and methods from the Vehicle class \n(parent):"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Base class\nclass Vehicle {  \npublic: \n    string brand = \"Ford\" ;\n    void honk() {      \n    cout << \"Tuut, tuut! \\n\"  ;\n    }} ;\n// Derived class\nclass Car: public Vehicle { \n public:  \n    string model = \"Mustang\" ;\n} ;\nint main() { \n Car myCar ;\n  \n    myCar.honk() ;\n  cout << myCar.brand + \" \" + myCar.model ;\n  \n    return 0 ;\n}"
+      ]
+    }
+  ]
+}

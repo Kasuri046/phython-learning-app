@@ -1,0 +1,39 @@
+{
+  "title": "C++ Boolean Expressions",
+  "content": [
+    {
+      "heading": "Boolean Expression",
+      "paragraphs": [
+        "A Boolean expression returns a boolean value, which is either 1 (true) or 0 \n(false).",
+        "This is useful for building logic and finding answers.",
+        "You can use a comparison operator, such as the greater than (>) operator, \nto find out if an expression (or variable) is true or false:",
+        "Or even easier:",
+        "In the examples below, we use the equal to (==) operator to evaluate an expression:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "int x = 10 ;\nint y = 9 ;\ncout << (x > y) ;\n // returns 1 (true),\n because 10 is higher than 9"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "cout << (10 > 9) ;\n // returns 1 (true),\n because 10 is higher than 9"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "int x = 10 ;\ncout << (x == 10) ;\n  // returns 1 (true),\n because the value \n  of x is equal to 10"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "cout << (10 == 15) ;\n  // returns 0 (false),\n because 10 is not equal to 15"
+      ]
+    }
+  ]
+}

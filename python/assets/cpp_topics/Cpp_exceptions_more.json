@@ -1,0 +1,44 @@
+{
+  "title": "C++ Exception Handling Continued",
+  "content": [
+    {
+      "heading": "Multiple catch Blocks",
+      "paragraphs": [
+        "You can use more than one catch block to handle different types of exceptions separately.",
+        "Each catch block must have a different parameter type to catch specific exceptions."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "try {\n    throw 'A'; // char type\n} catch (int x) {\n    cout << \"Caught an integer: \" << x;\n} catch (char c) {\n    cout << \"Caught a character: \" << c;\n}"
+      ]
+    },
+    {
+      "heading": "Nested try-catch",
+      "paragraphs": [
+        "It is possible to nest one try-catch block inside another.",
+        "This is helpful when different parts of a program may throw exceptions."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "try {\n    try {\n        throw 20;\n    } catch (int x) {\n        cout << \"Inner catch: \" << x << endl;\n        throw;\n    }\n} catch (int y) {\n    cout << \"Outer catch: \" << y;\n}"
+      ]
+    },
+    {
+      "heading": "Catch by Reference",
+      "paragraphs": [
+        "Exceptions can also be caught by reference using the '&' symbol.",
+        "This is useful for performance and when working with user-defined types."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "try {\n    string error = \"Something went wrong\";\n    throw error;\n} catch (string &e) {\n    cout << \"Error: \" << e;\n}"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+    "title": "Quiz: File Handling",
+    "questions": [
+      {
+        "question": "What header file is required for file handling in C++?",
+        "options": [
+          "<fstream>",
+          "<file>",
+          "<iostream>",
+          "<cstdio>"
+        ],
+        "correctAnswer": "<fstream>"
+      },
+      {
+        "question": "What class is used to create an output file stream?",
+        "options": [
+          "ifstream",
+          "ofstream",
+          "fstream",
+          "file"
+        ],
+        "correctAnswer": "ofstream"
+      },
+      {
+        "question": "What function is used to open a file?",
+        "options": [
+          "open()",
+          "read()",
+          "write()",
+          "None of the above"
+        ],
+        "correctAnswer": "open()"
+      },
+      {
+        "question": "How do you check if a file has been successfully opened?",
+        "options": [
+          "file.is_open()",
+          "file.opened()",
+          "file.status()",
+          "None of the above"
+        ],
+        "correctAnswer": "file.is_open()"
+      },
+      {
+        "question": "Which of the following modes opens a file for reading only?",
+        "options": [
+          "ios::in",
+          "ios::out",
+          "ios::app",
+          "ios::trunc"
+        ],
+        "correctAnswer": "ios::in"
+      },
+      {
+        "question": "What does ios::app mode do when opening a file?",
+        "options": [
+          "Truncates the file to zero length",
+          "Appends data to the end of the file",
+          "Reads the file",
+          "None of the above"
+        ],
+        "correctAnswer": "Appends data to the end of the file"
+      },
+      {
+        "question": "Which function is used to read data from a file?",
+        "options": [
+          "read()",
+          "get()",
+          ">>",
+          "Both B and C"
+        ],
+        "correctAnswer": "Both B and C"
+      },
+      {
+        "question": "What function is used to close a file?",
+        "options": [
+          "close()",
+          "end()",
+          "exit()",
+          "None of the above"
+        ],
+        "correctAnswer": "close()"
+      },
+      {
+        "question": "What happens if you try to open a file that does not exist in read mode?",
+        "options": [
+          "An error is thrown",
+          "The program crashes",
+          "The file is created",
+          "None of the above"
+        ],
+        "correctAnswer": "An error is thrown"
+      },
+      {
+        "question": "Which class is used for both input and output file streams?",
+        "options": [
+          "ifstream",
+          "ofstream",
+          "fstream",
+          "file"
+        ],
+        "correctAnswer": "fstream"
+      }
+    ]
+  }

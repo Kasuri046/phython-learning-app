@@ -1,0 +1,72 @@
+{
+  "title": "C++ Multi-Dimensional Arrays",
+  "content": [
+    {
+      "heading": "Multi-Dimensional Arrays",
+      "paragraphs": [
+        "A multi-dimensional array is an array of arrays.",
+        "To declare a multi-dimensional array, define the variable type, specify the name of the array followed by square brackets which specify how many elements the main array has, followed by another set of square brackets which indicates how many elements the sub-arrays have:",
+        "As with ordinary arrays, you can insert values with an array literal - a comma-separated list inside curly braces. In a multi-dimensional array, each element in an array literal is another array literal.",
+        "Each set of square brackets in an array declaration adds another dimension to an array. An array like the one above is said to have two dimensions.",
+        "Arrays can have any number of dimensions. The more dimensions an array has, the more complex the code becomes. The following array has three dimensions:"
+      ]
+    },
+    {
+      "heading": "Access the Elements of a Multi-Dimensional Array",
+      "paragraphs": [
+        "To access an element of a multi-dimensional array, specify an index number in each of the array's dimensions.",
+        "This statement accesses the value of the element in the first row (0) and third column (2) of the letters array."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "string letters[2][4] = { { \"A\", \"B\", \"C\", \"D\" }, { \"E\", \"F\", \"G\", \"H\" }};\ncout << letters[0][2]; // Outputs \"C\""
+      ]
+    },
+    {
+      "heading": "Change Elements in a Multi-Dimensional Array",
+      "paragraphs": [
+        "To change the value of an element, refer to the index number of the element in each of the dimensions:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "string letters[2][4] = { { \"A\", \"B\", \"C\", \"D\" }, { \"E\", \"F\", \"G\", \"H\" }};\nletters[0][0] = \"Z\";\ncout << letters[0][0]; // Now outputs \"Z\" instead of \"A\""
+      ]
+    },
+    {
+      "heading": "Loop Through a Multi-Dimensional Array",
+      "paragraphs": [
+        "To loop through a multi-dimensional array, you need one loop for each of the array's dimensions.",
+        "The following example outputs all elements in the letters array:",
+        "This example shows how to loop through a three-dimensional array:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "string letters[2][4] = { { \"A\", \"B\", \"C\", \"D\" }, { \"E\", \"F\", \"G\", \"H\" }};\nfor (int i = 0; i < 2; i++) {\n    for (int j = 0; j < 4; j++) {\n        cout << letters[i][j] << \"\\n\";\n    }\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "string letters[2][2][2] = { { { \"A\", \"B\" }, { \"C\", \"D\" } }, { { \"E\", \"F\" }, { \"G\", \"H\" } } };\nfor (int i = 0; i < 2; i++) {\n    for (int j = 0; j < 2; j++) {\n        for (int k = 0; k < 2; k++) {\n            cout << letters[i][j][k] << \"\\n\";\n        }\n    }\n}"
+      ]
+    },
+    {
+      "heading": "Why Multi-Dimensional Arrays?",
+      "paragraphs": [
+        "Multi-dimensional arrays are great at representing grids. This example shows a practical use for them. In the following example we use a multi-dimensional array to represent a small game of Battleship:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// We put \"1\" to indicate there is a ship.\nbool ships[4][4] = { { 0, 1, 1, 0 }, { 0, 0, 0, 0 }, { 0, 0, 1, 0 }, { 0, 0, 1, 0 } };\n// Keep track of how many hits the player has and how many turns they have played in these variables\nint hits = 0;\nint numberOfTurns = 0;\n// Allow the player to keep going until they have hit all four ships\nwhile (hits < 4) {\n    int row, column;\n    cout << \"Selecting coordinates\\n\";\n    // Ask the player for a row\n    cout << \"Choose a row number between 0 and 3: \";\n    cin >> row;\n    // Ask the player for a column\n    cout << \"Choose a column number between 0 and 3: \";\n    cin >> column;\n    // Check if a ship exists in those coordinates\n    if (ships[row][column]) {\n        // If the player hit a ship, remove it by setting the value to zero.\n        ships[row][column] = 0;\n        // Increase the hit counter\n        hits++;\n        // Tell the player that they have hit a ship and how many ships are left\n        cout << \"Hit! \" << (4 - hits) << \" left.\\n\\n\";\n    } else {\n        // Tell the player that they missed\n        cout << \"Miss\\n\\n\";\n    }\n    // Count how many turns the player has taken\n    numberOfTurns++;\n}\ncout << \"Victory!\\n\";\ncout << \"You won in \" << numberOfTurns << \" turns\";"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "title": "C++ Identifiers",
+  "content": [
+    {
+      "heading": "C++ Identifiers",
+      "paragraphs": [
+        "All C++ variables must be\nidentified with unique names.",
+        "These unique names are called identifiers.",
+        "Identifiers can be short names (like x and y) or more descriptive names (age, sum, totalVolume).",
+        "Note: It is recommended to use descriptive names in order to \ncreate understandable and maintainable code:",
+        "The general rules for naming variables are:",
+        "Names can contain letters, digits and underscores\n  Names must begin with a letter or an underscore (_)\n  Names are case-sensitive (myVar and myvar are different variables)\n  Names cannot contain whitespaces or special characters like !, #, %, etc.\n  Reserved words (like C++ keywords, such as int) cannot be used as names"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Good\nint minutesPerHour = 60 ;\n// OK, but not so easy to understand what m actually is\nint  m = 60 ;\n"
+      ]
+    }
+  ]
+}

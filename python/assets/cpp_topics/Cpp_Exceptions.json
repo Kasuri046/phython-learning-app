@@ -1,0 +1,63 @@
+{
+  "title": "C++ Exceptions",
+  "content": [
+    {
+      "heading": "C++ Exceptions",
+      "paragraphs": [
+        "When executing C++ code, different errors can occur: coding errors made by the programmer, errors due to wrong input, \nor other unforeseeable things.",
+        "When an error occurs, C++ will normally stop and generate an error message. The technical term for this is: C++ will throw an exception (throw an error)."
+      ]
+    },
+    {
+      "heading": "C++ try and catch",
+      "paragraphs": [
+        "Exception handling in C++ consist of three keywords: try, throw and catch:",
+        "The try statement allows you to define a block of code to be \ntested for errors while it is being executed.",
+        "The throw keyword throws an exception when a \nproblem is detected, which lets us create a custom error.",
+        "The catch statement allows you to define a block of code to \nbe executed, if an error occurs in the try block.",
+        "The try and catch keywords \ncome in pairs:",
+        "Consider the following example:",
+        "We use the try block to test some code: If the age variable is less than 18, we will throw an exception, and handle it in our catch block.",
+        "In the catch block, we catch the error and \ndo something about it. The catch \nstatement takes a parameter: in our example we use an int variable (myNum) (because we are throwing an exception of int type in the try block (age)), \nto output the value of age.",
+        "If no error occurs (e.g. if age is 20 instead of 15, \nmeaning it will be greater \nthan 18), the catch block is skipped:",
+        "You can also use the throw keyword to output a reference number, like a \ncustom error number/code for organizing purposes (505 in our example):"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "try {\n    // Block of code to try\n    throw exception; // Throw an exception when a problem arises\n} catch () {\n    // Block of code to handle errors\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "try {\n    int age = 15;\n    if (age >= 18) {\n        cout << \"Access granted - you are old enough.\";\n    } else {\n        throw (age);\n    }\n} catch (int myNum) {\n    cout << \"Access denied - You must be at least 18 years old.\\n\";\n    cout << \"Age is: \" << myNum;\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "int age = 20;"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "try {\n    int age = 15;\n    if (age >= 18) {\n        cout << \"Access granted - you are old enough.\";\n    } else {\n        throw 505;\n    }\n} catch (int myNum) {\n    cout << \"Access denied - You must be at least 18 years old.\\n\";\n    cout << \"Error number: \" << myNum;\n}"
+      ]
+    },
+    {
+      "heading": "Handle Any Type of Exceptions (...)",
+      "paragraphs": [
+        "If you do not know the throw type used in the try block, you can use the \"three dots\" syntax (...) inside the catch block, which will handle any type of exception:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "try {\n    int age = 15;\n    if (age >= 18) {\n        cout << \"Access granted - you are old enough.\";\n    } else {\n        throw 505;\n    }\n} catch (...) {\n    cout << \"Access denied - You must be at least 18 years old.\\n\";\n}"
+      ]
+    }
+  ]
+}

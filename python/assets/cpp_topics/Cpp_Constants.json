@@ -1,0 +1,39 @@
+{
+  "title": "C++ Constants",
+  "content": [
+    {
+      "heading": "Constants",
+      "paragraphs": [
+        "When you do not want others (or yourself) to change existing variable values, use the const keyword (this will declare the \nvariable as \"constant\", which means unchangeable and read-only):",
+        "You should always declare the variable as constant when you have values that are unlikely to change:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        " int myNum = 15 ;\n // myNum will always be 15\nmyNum = 10 ;\n  // error: assignment of read-only variable 'myNum'"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        " int minutesPerHour = 60 ;\n  const float PI = 3.14 ;\n"
+      ]
+    },
+    {
+      "heading": "Notes On Constants",
+      "paragraphs": [
+        "When you declare a constant variable, it must be assigned with a value:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Like this:",
+        "const int minutesPerHour = 60 ;",
+        "This however, will not work:",
+        "const int minutesPerHour ;\nminutesPerHour = 60 ;\n // error"
+      ]
+    }
+  ]
+}

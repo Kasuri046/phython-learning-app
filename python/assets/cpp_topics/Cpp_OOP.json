@@ -1,0 +1,57 @@
+{
+  "title": "C++ OOP",
+  "content": [
+    {
+      "heading": "C++ What is OOP?",
+      "paragraphs": [
+        "OOP stands for Object-Oriented Programming.",
+        "Procedural programming is about writing procedures or functions that perform operations on the data, while object-oriented programming is about creating objects that contain both data and functions.",
+        "Object-oriented programming has several advantages over procedural programming:",
+        "- OOP is faster and easier to execute.\n- OOP provides a clear structure for programs.\n- OOP helps to keep the C++ code DRY ('Don't Repeat Yourself'), making the code easier to maintain, modify, and debug.\n- OOP makes it possible to create fully reusable applications with less code and shorter development time.",
+        "Tip: The 'Don't Repeat Yourself' (DRY) principle is about reducing code repetition. You should extract out the common code and place it in a single location for reuse instead of repeating it."
+      ]
+    },
+    {
+      "heading": "C++ What are Classes and Objects?",
+      "paragraphs": [
+        "Classes and objects are the two main building blocks of object-oriented programming.",
+        "A class is a template or blueprint from which objects are created. It defines properties (attributes) and behaviors (methods) that its objects will have.",
+        "An object is an instance of a class. Each object has its own identity, state, and behavior.",
+        "When an object is created, it inherits all the properties and behaviors of the class. This allows for code reusability and modularity, making applications easier to manage and scale.",
+        "Consider the following examples:"
+      ]
+    },
+    {
+      "heading": "Example: C++ Class and Object",
+      "paragraphs": [
+        "#include <iostream>\nusing namespace std;\n\nclass Car {\n  public: \n    string brand;\n    string model;\n    int year;\n};\n\nint main() {\n  Car car1;\n  car1.brand = \"Toyota\";\n  car1.model = \"Corolla\";\n  car1.year = 2022;\n\n  cout << \"Brand: \" << car1.brand << endl;\n  cout << \"Model: \" << car1.model << endl;\n  cout << \"Year: \" << car1.year << endl;\n\n  return 0;\n}"
+      ]
+    },
+    {
+      "heading": "C++ Class Methods",
+      "paragraphs": [
+        "Methods (functions) inside a class define the behavior of objects. Methods can be defined inside or outside the class definition.",
+        "Below is an example of defining a method inside a class:"
+      ]
+    },
+    {
+      "heading": "Example: C++ Class Method",
+      "paragraphs": [
+        "#include <iostream>\nusing namespace std;\n\nclass Car {\n  public: \n    string brand;\n    void honk() {\n      cout << \"Beep beep!\" << endl;\n    }\n};\n\nint main() {\n  Car car1;\n  car1.brand = \"Toyota\";\n  car1.honk();\n  return 0;\n}"
+      ]
+    },
+    {
+      "heading": "C++ Constructors",
+      "paragraphs": [
+        "A constructor is a special method that is automatically called when an object of a class is created. It initializes object properties.",
+        "Here is an example of a constructor in C++:"
+      ]
+    },
+    {
+      "heading": "Example: C++ Constructor",
+      "paragraphs": [
+        "#include <iostream>\nusing namespace std;\n\nclass Car {\n  public: \n    string brand;\n    Car(string b) {\n      brand = b;\n    }\n};\n\nint main() {\n  Car car1(\"Toyota\");\n  cout << \"Brand: \" << car1.brand << endl;\n  return 0;\n}"
+      ]
+    }
+  ]
+}

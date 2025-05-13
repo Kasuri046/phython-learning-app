@@ -1,0 +1,105 @@
+{
+    "title": "Quiz: Basic Input & Output",
+    "questions": [
+      {
+        "question": "Which function is used to output data to the console in C++?",
+        "options": [
+          "cout",
+          "print",
+          "write",
+          "display"
+        ],
+        "correctAnswer": "cout"
+      },
+      {
+        "question": "What is the purpose of the cin object in C++?",
+        "options": [
+          "To output data",
+          "To input data",
+          "To format data",
+          "To store data"
+        ],
+        "correctAnswer": "To input data"
+      },
+      {
+        "question": "Which of the following is used to include the iostream library?",
+        "options": [
+          "#include <iostream>",
+          "#include iostream.h",
+          "#include <io>",
+          "#include <stdio.h>"
+        ],
+        "correctAnswer": "#include <iostream>"
+      },
+      {
+        "question": "What operator is used to insert data into the output stream?",
+        "options": [
+          "<<",
+          ">>",
+          "&",
+          "%"
+        ],
+        "correctAnswer": "<<"
+      },
+      {
+        "question": "How do you end a line of output in C++?",
+        "options": [
+          "endl",
+          "new line",
+          "break",
+          "next"
+        ],
+        "correctAnswer": "endl"
+      },
+      {
+        "question": "What will the following code output: cout << 'A';?",
+        "options": [
+          "A",
+          "'A'",
+          "Error",
+          "Nothing"
+        ],
+        "correctAnswer": "A"
+      },
+      {
+        "question": "Which function is used to read a line of text from the input?",
+        "options": [
+          "getline",
+          "get",
+          "readline",
+          "input"
+        ],
+        "correctAnswer": "getline"
+      },
+      {
+        "question": "What does 'cin >> variable;' do?",
+        "options": [
+          "Outputs variable",
+          "Inputs variable",
+          "Declares variable",
+          "None of the above"
+        ],
+        "correctAnswer": "Inputs variable"
+      },
+      {
+        "question": "What is the syntax to print a variable 'x' using cout?",
+        "options": [
+          "cout(x);",
+          "cout << x;",
+          "print(x);",
+          "echo x;"
+        ],
+        "correctAnswer": "cout << x;"
+      },
+      {
+        "question": "What will happen if you try to input a letter into an integer variable?",
+        "options": [
+          "The program will crash",
+          "It will store 0",
+          "It will store the ASCII value",
+          "It will cause an error"
+        ],
+        "correctAnswer": "It will store 0"
+      }
+    ]
+  }

@@ -1,0 +1,105 @@
+{
+    "title": "Quiz: Pointers",
+    "questions": [
+      {
+        "question": "What is a pointer in C++?",
+        "options": [
+          "A variable that stores the address of another variable",
+          "A variable that stores a string",
+          "A type of function",
+          "A data structure"
+        ],
+        "correctAnswer": "A variable that stores the address of another variable"
+      },
+      {
+        "question": "How do you declare a pointer to an integer?",
+        "options": [
+          "int* ptr;",
+          "int ptr*;",
+          "ptr int*;",
+          "int ptr;"
+        ],
+        "correctAnswer": "int* ptr;"
+      },
+      {
+        "question": "What does the '*' operator do when used with a pointer?",
+        "options": [
+          "It declares a pointer",
+          "It dereferences the pointer",
+          "It assigns a value to the pointer",
+          "It compares two pointers"
+        ],
+        "correctAnswer": "It dereferences the pointer"
+      },
+      {
+        "question": "What is the result of the following code: 'int x = 10; int* p = &x; *p = 20;'?",
+        "options": [
+          "x is 10",
+          "x is 20",
+          "p points to 20",
+          "Error"
+        ],
+        "correctAnswer": "x is 20"
+      },
+      {
+        "question": "What does the '&' operator do?",
+        "options": [
+          "It dereferences a pointer",
+          "It returns the address of a variable",
+          "It defines a pointer",
+          "It performs bitwise AND"
+        ],
+        "correctAnswer": "It returns the address of a variable"
+      },
+      {
+        "question": "How do you initialize a pointer to a variable?",
+        "options": [
+          "ptr = &variable;",
+          "ptr = variable;",
+          "ptr = *variable;",
+          "ptr = new variable;"
+        ],
+        "correctAnswer": "ptr = &variable;"
+      },
+      {
+        "question": "What happens if you dereference a null pointer?",
+        "options": [
+          "It returns 0",
+          "It causes a runtime error",
+          "It returns the address of the variable",
+          "It does nothing"
+        ],
+        "correctAnswer": "It causes a runtime error"
+      },
+      {
+        "question": "What is a void pointer?",
+        "options": [
+          "A pointer that can point to any data type",
+          "A pointer that does not point to anything",
+          "A pointer to a function",
+          "None of the above"
+        ],
+        "correctAnswer": "A pointer that can point to any data type"
+      },
+      {
+        "question": "Which of the following correctly deletes a dynamically allocated pointer?",
+        "options": [
+          "delete ptr;",
+          "delete[] ptr;",
+          "free(ptr);",
+          "All of the above"
+        ],
+        "correctAnswer": "delete ptr;"
+      },
+      {
+        "question": "What is pointer arithmetic?",
+        "options": [
+          "Performing arithmetic operations on pointers",
+          "Adding integers to pointers",
+          "Subtracting addresses",
+          "All of the above"
+        ],
+        "correctAnswer": "All of the above"
+      }
+    ]
+  }

@@ -1,0 +1,105 @@
+{
+    "title": "Quiz: Function Overloading",
+    "questions": [
+      {
+        "question": "What is function overloading?",
+        "options": [
+          "Defining multiple functions with the same name but different parameters",
+          "Creating a function that calls itself",
+          "A function with no parameters",
+          "None of the above"
+        ],
+        "correctAnswer": "Defining multiple functions with the same name but different parameters"
+      },
+      {
+        "question": "Which of the following is a requirement for function overloading?",
+        "options": [
+          "Different parameter types or counts",
+          "Different return types only",
+          "Same parameter types",
+          "None of the above"
+        ],
+        "correctAnswer": "Different parameter types or counts"
+      },
+      {
+        "question": "Can a function be overloaded with the same parameter types?",
+        "options": [
+          "Yes, if the return type is different",
+          "No, it must have different parameter types",
+          "Yes, if it is defined in a different class",
+          "None of the above"
+        ],
+        "correctAnswer": "No, it must have different parameter types"
+      },
+      {
+        "question": "What happens if two overloaded functions have the same parameter list?",
+        "options": [
+          "Compilation error",
+          "Runtime error",
+          "The first function is executed",
+          "None of the above"
+        ],
+        "correctAnswer": "Compilation error"
+      },
+      {
+        "question": "Which of the following is an example of function overloading?",
+        "options": [
+          "int add(int a, int b)",
+          "float add(float a, float b)",
+          "Both A and B",
+          "None of the above"
+        ],
+        "correctAnswer": "Both A and B"
+      },
+      {
+        "question": "Function overloading improves code readability by:",
+        "options": [
+          "Reducing the number of function names",
+          "Making functions more complex",
+          "Creating longer code",
+          "None of the above"
+        ],
+        "correctAnswer": "Reducing the number of function names"
+      },
+      {
+        "question": "What is the main advantage of function overloading?",
+        "options": [
+          "Code reuse and clarity",
+          "Increased execution speed",
+          "Simpler error handling",
+          "None of the above"
+        ],
+        "correctAnswer": "Code reuse and clarity"
+      },
+      {
+        "question": "Can constructors be overloaded?",
+        "options": [
+          "Yes, constructors can be overloaded",
+          "No, constructors cannot be overloaded",
+          "Only default constructors can be overloaded",
+          "None of the above"
+        ],
+        "correctAnswer": "Yes, constructors can be overloaded"
+      },
+      {
+        "question": "Which of the following best describes the use of default arguments in overloaded functions?",
+        "options": [
+          "They can simplify function calls",
+          "They replace the need for overloading",
+          "They cannot be used with overloading",
+          "None of the above"
+        ],
+        "correctAnswer": "They can simplify function calls"
+      },
+      {
+        "question": "What is the return type of an overloaded function?",
+        "options": [
+          "It can be different for each overload",
+          "It must be the same for all overloads",
+          "It is ignored in overloading",
+          "None of the above"
+        ],
+        "correctAnswer": "It must be the same for all overloads"
+      }
+    ]
+  }

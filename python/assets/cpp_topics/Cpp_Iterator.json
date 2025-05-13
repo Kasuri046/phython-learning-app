@@ -1,0 +1,172 @@
+{
+  "title": "C++ Iterator",
+  "content": [
+    {
+      "heading": "C++ Iterators",
+      "paragraphs": [
+        "Iterators are used to access and iterate through elements of data structures (vectors, sets, etc.), by \"pointing\" to them.",
+        "It is called an \"iterator\" because \"iterating\" is the technical term for looping.",
+        "To iterate through a vector, look at the following example:",
+        "First, we create a vector of strings to store the names of different car manufacturers. Then we create a \"vector iterator\" called it, that we will use to loop through the vector. Next, we use a for loop to loop through the vector with the iterator. The iterator (it) points to the first element in the vector (cars.begin()) and the loop continues as long as it is not equal to cars.end(). The increment operator (++it) moves the iterator to the next element in the vector. The dereference operator (*it) accesses the element the iterator points to."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a vector called cars that will store strings\nvector<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n\n// Create a vector iterator called it\nvector<string>::iterator it;\n\n// Loop through the vector with the iterator\nfor (it = cars.begin(); it != cars.end(); ++it) {\n    cout << *it << \"\\n\";\n}"
+      ]
+    },
+    {
+      "heading": "What is begin() and end()?",
+      "paragraphs": [
+        "begin() and end() are functions that belong to data structures, such as vectors and lists. They do not belong to the iterator itself. Instead, they are used with iterators to access and iterate through the elements of these data structures.",
+        "begin() returns an iterator that points to the first element of the data structure. end() returns an iterator that points to one position after the last element.",
+        "To understand how they work, let's continue to use vectors as an example:"
+      ]
+    },
+    {
+      "heading": "Begin Examples",
+      "paragraphs": [
+        "begin() points to the first element in the vector (index 0, which is \"Volvo\"):",
+        "To point to the second element (BMW), you can write cars.begin() + 1:",
+        "And of course, that also means you can point to the third element with cars.begin() + 2:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Point to the first element in the vector\nit = cars.begin();"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Point to the second element\nit = cars.begin() + 1;"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Point to the third element\nit = cars.begin() + 2;"
+      ]
+    },
+    {
+      "heading": "End Example",
+      "paragraphs": [
+        "end() points to one position after the last element in the vector (meaning it doesn't point to an actual element, but rather indicates that this is the end of the vector).",
+        "So, to use end() to point to the last element in the cars vector (Mazda), you can use cars.end() - 1:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Point to the last element\nit = cars.end() - 1;"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Point to the first element in the vector\nit = cars.begin();\n// Modify the value of the first element\n*it = \"Tesla\";\n// Volvo is now Tesla"
+      ]
+    },
+    {
+      "heading": "The auto Keyword",
+      "paragraphs": [
+        "In C++ 11 and later versions, you can use the auto keyword instead of explicitly declaring and specifying the type of the iterator.",
+        "The auto keyword allows the compiler to automatically determine the correct data type, which simplifies the code and makes it more readable:",
+        "In the example above, the compiler knows the type of it based on the return type of cars.begin(), which is vector<string>::iterator.",
+        "The auto keyword works in for loops as well:"
+      ]
+    },
+    {
+      "heading": "For-Each Loop vs. Iterators",
+      "paragraphs": [
+        "You can use a for-each loop to just loop through elements of a data structure, like this:",
+        "When you are just reading the elements, and don't need to modify them, the for-each loop is much simpler and cleaner than iterators.",
+        "However, when you need to add, modify, or remove elements during iteration, iterate in reverse, or skip elements, you should use iterators:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a vector called cars that will store strings\nvector<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n\n// Print vector elements\nfor (string car : cars) {\n    cout << car << \"\\n\";\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a vector called cars that will store strings\nvector<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n\n// Loop through vector elements\nfor (auto it = cars.begin(); it != cars.end();) {\n    if (*it == \"BMW\") {\n        it = cars.erase(it); // Remove the BMW element\n    } else {\n        ++it;\n    }\n}\n\n// Print vector elements\nfor (const string& car : cars) {\n    cout << car << \"\\n\";\n}"
+      ]
+    },
+    {
+      "heading": "Iterate in Reverse",
+      "paragraphs": [
+        "To iterate in reverse order, you can use rbegin() and rend() instead of begin() and end():"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Iterate in reverse order\nfor (auto it = cars.rbegin(); it != cars.rend(); ++it) {\n    cout << *it << \"\\n\";\n}"
+      ]
+    },
+    {
+      "heading": "Iterate Through other Data Structures",
+      "paragraphs": [
+        "Iterators are great for code reusability since you can use the same syntax for iterating through vectors, lists, deques, sets, and maps:"
+      ]
+    },
+    {
+      "heading": "List Example",
+      "paragraphs": [
+        "// Create a list called cars that will store strings\nlist<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n\n// Loop through the list with an iterator\nfor (auto it = cars.begin(); it != cars.end(); ++it) {\n    cout << *it << \"\\n\";\n}"
+      ]
+    },
+    {
+      "heading": "Deque Example",
+      "paragraphs": [
+        "// Create a deque called cars that will store strings\ndeque<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n\n// Loop through the deque with an iterator\nfor (auto it = cars.begin(); it != cars.end(); ++it) {\n    cout << *it << \"\\n\";\n}"
+      ]
+    },
+    {
+      "heading": "Set Example",
+      "paragraphs": [
+        "// Create a set called cars that will store strings\nset<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n\n// Loop through the set with an iterator\nfor (auto it = cars.begin(); it != cars.end(); ++it) {\n    cout << *it << \"\\n\";\n}"
+      ]
+    },
+    {
+      "heading": "Map Example",
+      "paragraphs": [
+        "// Create a map that will store strings and integers\nmap<string, int> people = { {\"John\", 32}, {\"Adele\", 45}, {\"Bo\", 29} };\n\n// Loop through the map with an iterator\nfor (auto it = people.begin(); it != people.end(); ++it) {\n    cout << it->first << \" is: \" << it->second << \"\\n\";\n}"
+      ]
+    },
+    {
+      "heading": "Algorithms",
+      "paragraphs": [
+        "Another important feature of iterators is that they are used with different algorithm functions, such as sort() and find() (found in the <algorithm> library), to sort and search for elements in a data structure.",
+        "For example, the sort() function takes iterators (typically returned by begin() and end()) as parameters to sort elements in a data structure from the beginning to the end.",
+        "In this example, the elements are sorted alphabetically since they are strings:",
+        "And in this example, the elements are sorted numerically since they are integers:",
+        "To reverse the order, you can use rbegin() and rend() instead of begin() and end():"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\n\n// Include the <algorithm> library\nusing namespace std;\n\nint main() {\n    // Create a vector called cars that will store strings\n    vector<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n\n    // Sort cars in alphabetical order\n    sort(cars.begin(), cars.end());\n\n    // Print cars in alphabetical order\n    for (string car : cars) {\n        cout << car << \"\\n\";\n    }\n    return 0;\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    // Create a vector called numbers that will store integers\n    vector<int> numbers = {1, 7, 3, 5, 9, 2};\n\n    // Sort numbers numerically\n    sort(numbers.begin(), numbers.end());\n\n    for (int num : numbers) {\n        cout << num << \"\\n\";\n    }\n    return 0;\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    // Create a vector called numbers that will store integers\n    vector<int> numbers = {1, 7, 3, 5, 9, 2};\n\n    // Sort numbers numerically in reverse order\n    sort(numbers.rbegin(), numbers.rend());\n\n    for (int num : numbers) {\n        cout << num << \"\\n\";\n    }\n    return 0;\n}"
+      ]
+    }
+  ]
+}

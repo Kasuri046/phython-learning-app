@@ -1,0 +1,34 @@
+{
+  "title": "C++ Introduction",
+  "content": [
+    {
+      "heading": "What is C++?",
+      "paragraphs": [
+        "C++ is a powerful cross-platform programming language designed for creating high-performance applications. Developed by Bjarne Stroustrup as an extension of the C language, C++ provides developers with extensive control over system resources and memory management.",
+        "The language has evolved significantly over the years, with major updates released in 2011, 2014, 2017, 2020, and 2023, introducing enhancements that keep C++ relevant in modern software development."
+      ]
+    },
+    {
+      "heading": "Why Use C++?",
+      "paragraphs": [
+        "C++ ranks among the world's most popular programming languages, widely used in various domains including operating systems, graphical user interfaces, and embedded systems.",
+        "As an object-oriented programming language, C++ promotes a clear structure for programs, enabling code reuse and significantly reducing development costs.",
+        "Its portability allows developers to create applications that can easily adapt to multiple platforms, making C++ a versatile choice for software development.",
+        "Moreover, C++ is enjoyable to learn, and its similarities with languages like C, C#, and Java facilitate a smoother transition for programmers switching between these languages."
+      ]
+    },
+    {
+      "heading": "Difference between C and C++",
+      "paragraphs": [
+        "While C++ was developed as an enhancement of C, both languages share a similar syntax. However, the key distinction lies in C++'s support for classes and objects, enabling object-oriented programming—a feature that C lacks."
+      ]
+    },
+    {
+      "heading": "Get Started",
+      "paragraphs": [
+        "This tutorial is designed to guide you through the fundamentals of C++. By the end of this course, you will possess the skills necessary to write your own C++ programs and implement practical examples.",
+        "No prior programming experience is required, making this tutorial accessible to anyone interested in learning C++."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "title": "C++ Short Hand If Else",
+  "content": [
+    {
+      "heading": "Short Hand If...Else (Ternary Operator)",
+      "paragraphs": [
+        "There is also a short-hand if else, which is known as the ternary operator because it consists of three operands.",
+        "It can be used to replace multiple lines of code with a single line and is often used to replace simple if-else statements.",
+        "Instead of writing:"
+      ]
+    },
+    {
+      "heading": "Traditional If-Else Example",
+      "paragraphs": [
+        "#include <iostream>\nusing namespace std;\n\nint main() {\n  int time = 20;\n  if (time < 18) {\n    cout << \"Good day.\";\n  } else {\n    cout << \"Good evening.\";\n  }\n  return 0;\n} // Outputs 'Good evening.'"
+      ]
+    },
+    {
+      "heading": "You can simply write:",
+      "paragraphs": [
+        "Using the ternary operator, we can simplify the above code into a single line."
+      ]
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "variable = (condition) ? expressionTrue : expressionFalse;"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "#include <iostream>\nusing namespace std;\n\nint main() {\n  int time = 20;\n  string result = (time < 18) ? \"Good day.\" : \"Good evening.\";\n  cout << result;\n  return 0;\n} // Outputs 'Good evening.'"
+      ]
+    }
+  ]
+}

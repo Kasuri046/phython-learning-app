@@ -1,0 +1,44 @@
+{
+  "title": "C++ Statements",
+  "content": [
+    {
+      "heading": "C++ Statements",
+      "paragraphs": [
+        "A computer program is a list of \"instructions\" to be \"executed\" by a computer.",
+        "In a programming language, these programming instructions are called statements.",
+        "The following statement \"instructs\" the compiler to print the text \"Hello World\" \nto the screen:",
+        "It is important that you end the statement with a semicolon  ;\n",
+        "If you forget the semicolon ( ;\n), an error will occur \nand the program will not run:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "cout << \"Hello World!\" ;\n"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "cout << \"Hello World!\"",
+        "Try it Yourself »"
+      ]
+    },
+    {
+      "heading": "Many Statements",
+      "paragraphs": [
+        "Most C++ programs contain many statements.",
+        "The statements are executed, one by one, in the same order as they are \nwritten:",
+        "From the example above, we have three statements:",
+        "cout << \"Hello World!\" ;\n\n  cout << \"Have a good day!\" ;\n\n  return 0 ;\n",
+        "The first statement is executed first (print \"Hello World!\" to the screen).\nThen the second statement is executed (print \"Have a good day!\" to the screen).\nAnd at last, the third statement is executed (end the C++ program successfully)."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "cout << \"Hello World!\" ;\ncout << \"Have a good day!\" ;\nreturn 0 ;\n"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "title": "C++ Online Compiler",
+  "content": [
+    {
+      "heading": "C++ Compiler (Editor)",
+      "paragraphs": [
+        "With our online C++ compiler, you can edit C++ code, and view the result in your browser.",
+        "Click on the \"Try it Yourself\" button to see how it works."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "#include <iostream>\nusing namespace std ;\nint main() {  \n    cout << \"Hello World!\" ;\n  return 0 ;\n}"
+      ]
+    },
+    {
+      "heading": "C++ Compiler Explained",
+      "paragraphs": [
+        "The window to the left is editable - edit the code and click on the \"Run\" button to view the result in the right window.",
+        "The icons are explained in the table below:"
+      ]
+    }
+  ]
+}

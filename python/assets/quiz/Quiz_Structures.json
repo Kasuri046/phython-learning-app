@@ -1,0 +1,105 @@
+{
+    "title": "Quiz: Structures",
+    "questions": [
+      {
+        "question": "What is a structure in C++?",
+        "options": [
+          "A user-defined data type",
+          "A built-in data type",
+          "A type of function",
+          "None of the above"
+        ],
+        "correctAnswer": "A user-defined data type"
+      },
+      {
+        "question": "How do you define a structure?",
+        "options": [
+          "struct Name { dataType member1; };",
+          "structure Name { dataType member1; };",
+          "Name { dataType member1; };",
+          "struct Name: { dataType member1; };"
+        ],
+        "correctAnswer": "struct Name { dataType member1; };"
+      },
+      {
+        "question": "How do you access a member of a structure?",
+        "options": [
+          "Using the . operator",
+          "Using the -> operator",
+          "Using the * operator",
+          "Using the & operator"
+        ],
+        "correctAnswer": "Using the . operator"
+      },
+      {
+        "question": "What is the purpose of the 'typedef' keyword in relation to structures?",
+        "options": [
+          "To define a new data type",
+          "To create an alias for a structure",
+          "To allocate memory",
+          "None of the above"
+        ],
+        "correctAnswer": "To create an alias for a structure"
+      },
+      {
+        "question": "How do you declare a structure variable?",
+        "options": [
+          "Name varName;",
+          "struct Name varName;",
+          "varName = new Name;",
+          "struct varName = Name;"
+        ],
+        "correctAnswer": "struct Name varName;"
+      },
+      {
+        "question": "Which of the following can a structure contain?",
+        "options": [
+          "Data members",
+          "Member functions",
+          "Both A and B",
+          "None of the above"
+        ],
+        "correctAnswer": "Both A and B"
+      },
+      {
+        "question": "What is the default access specifier for members of a structure?",
+        "options": [
+          "private",
+          "protected",
+          "public",
+          "None of the above"
+        ],
+        "correctAnswer": "public"
+      },
+      {
+        "question": "How do you initialize a structure variable?",
+        "options": [
+          "Name varName = {value1, value2};",
+          "Name varName(value1, value2);",
+          "Name varName = new {value1, value2};",
+          "None of the above"
+        ],
+        "correctAnswer": "Name varName = {value1, value2};"
+      },
+      {
+        "question": "Can structures be nested in C++?",
+        "options": [
+          "Yes",
+          "No",
+          "Only if they are empty",
+          "Depends on the compiler"
+        ],
+        "correctAnswer": "Yes"
+      },
+      {
+        "question": "What is the difference between structures and classes?",
+        "options": [
+          "Structures are public by default; classes are private",
+          "Structures cannot contain functions; classes can",
+          "There is no difference",
+          "Both A and B"
+        ],
+        "correctAnswer": "Structures are public by default; classes are private"
+      }
+    ]
+  }

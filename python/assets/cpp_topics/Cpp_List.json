@@ -1,0 +1,134 @@
+{
+  "title": "C++ List",
+  "content": [
+    {
+      "heading": "C++ List",
+      "paragraphs": [
+        "A list is similar to a vector in that it can store multiple elements of the same type and dynamically grow in size.",
+        "However, two major differences between lists and vectors are:",
+        "You can add and remove elements from both the beginning and at the end of a list, while vectors are generally optimized for adding and removing at the end.",
+        "Unlike vectors, a list does not support random access, meaning you cannot directly jump to a specific index, or access elements by index numbers.",
+        "To use a list, you have to include the <list> header file:"
+      ]
+    },
+    {
+      "heading": "Create a List",
+      "paragraphs": [
+        "To create a list, use the list keyword, and specify the type of values it should store within angle brackets <> and then the name of the list, like: list<type> listName.",
+        "If you want to add elements at the time of declaration, place them in a comma-separated list, inside curly braces {}:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a list called cars that will store strings\nlist<string> cars;"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a list called cars that will store strings\nlist<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n// Print list elements\nfor (string car : cars) {\n    cout << car << \"\\n\";\n}"
+      ]
+    },
+    {
+      "heading": "Access a List",
+      "paragraphs": [
+        "You cannot access list elements by referring to index numbers, like with arrays and vectors.",
+        "However, you can access the first or the last element with the .front() and .back() functions, respectively:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a list called cars that will store strings\nlist<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n// Get the first element\ncout << cars.front(); // Outputs Volvo\n// Get the last element\ncout << cars.back(); // Outputs Mazda"
+      ]
+    },
+    {
+      "heading": "Change a List Element",
+      "paragraphs": [
+        "You can also change the value of the first or the last element with the .front() and .back() functions."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "list<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n// Change the value of the first element\ncars.front() = \"Opel\";\n// Change the value of the last element\ncars.back() = \"Toyota\";\ncout << cars.front(); // Now outputs Opel instead of Volvo\ncout << cars.back(); // Now outputs Toyota instead of Mazda"
+      ]
+    },
+    {
+      "heading": "Add List Elements",
+      "paragraphs": [
+        "To add elements to a list, you can use .push_front() to insert an element at the beginning of the list and .push_back() to add an element at the end:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "list<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n// Add an element at the beginning\ncars.push_front(\"Tesla\");\n// Add an element at the end\ncars.push_back(\"VW\");"
+      ]
+    },
+    {
+      "heading": "Remove List Elements",
+      "paragraphs": [
+        "To remove elements from a list, use .pop_front() to remove an element from the beginning of the list and .pop_back() to remove an element at the end:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "list<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n// Remove the first element\ncars.pop_front();\n// Remove the last element\ncars.pop_back();"
+      ]
+    },
+    {
+      "heading": "List Size",
+      "paragraphs": [
+        "To find out how many elements a list has, use the .size() function:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "list<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\ncout << cars.size(); // Outputs 4"
+      ]
+    },
+    {
+      "heading": "Check if a List is Empty",
+      "paragraphs": [
+        "Use the .empty() function to find out if a list is empty or not.",
+        "The .empty() function returns 1 (true) if the list is empty and 0 (false) otherwise:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "list<string> cars;\ncout << cars.empty(); // Outputs 1 (The list is empty)"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "list<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\ncout << cars.empty(); // Outputs 0 (not empty)"
+      ]
+    },
+    {
+      "heading": "Loop Through a List",
+      "paragraphs": [
+        "You cannot loop through the list elements with a traditional for loop combined with the .size() function, since it is not possible to access elements in a list by index.",
+        "The simplest way to loop through a list is with the for-each loop:",
+        "Tip: It is also possible to loop through lists with an iterator, which you will learn more about in a later chapter."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "list<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\nfor (int i = 0; i < cars.size(); i++) {\n    cout << cars[i] << \"\\n\";\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "list<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\nfor (string car : cars) {\n    cout << car << \"\\n\";\n}"
+      ]
+    }
+  ]
+}

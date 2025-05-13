@@ -1,0 +1,38 @@
+{
+  "title": "C++ vector Library",
+  "content": [
+    {
+      "heading": "C++ vector Library",
+      "paragraphs": [
+        "The <vector> library provides a dynamic array that can resize itself automatically when elements are added or removed. It is part of the Standard Template Library (STL).",
+        "A list of popular vector functions includes:",
+        "- `push_back(value)`: Adds an element to the end of the vector.",
+        "- `pop_back()`: Removes the last element of the vector.",
+        "- `size()`: Returns the number of elements in the vector.",
+        "- `empty()`: Checks if the vector is empty.",
+        "- `clear()`: Removes all elements from the vector.",
+        "- `at(index)`: Accesses the element at the specified index.",
+        "- `front()`: Returns the first element of the vector.",
+        "- `back()`: Returns the last element of the vector.",
+        "- `insert(position, value)`: Inserts an element at a specified position.",
+        "- `erase(position)`: Removes an element at a specified position.",
+        "Learn more about vectors in our C++ Vector Tutorial."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Here is a simple example demonstrating how to use the vector library:",
+        "```cpp\n#include <iostream>\n#include <vector>\n\nint main() {\n    std::vector<int> numbers;\n    // Adding elements to the vector\n    numbers.push_back(10);\n    numbers.push_back(20);\n    numbers.push_back(30);\n\n    // Displaying elements\n    std::cout << \"Numbers: \";\n    for (int i = 0; i < numbers.size(); i++) {\n        std::cout << numbers.at(i) << \" \";\n    }\n    std::cout << std::endl;\n\n    // Removing the last element\n    numbers.pop_back();\n    std::cout << \"After pop_back: \";\n    for (int num : numbers) {\n        std::cout << num << \" \";\n    }\n    std::cout << std::endl;\n\n    return 0;\n}\n```",
+        "In this example, we create a vector of integers, add elements, display them, and remove the last element."
+      ]
+    },
+    {
+      "heading": "Conclusion",
+      "paragraphs": [
+        "The <vector> library is a powerful tool in C++ that allows for flexible and efficient management of collections of data.",
+        "Understanding how to use vectors effectively can significantly enhance your programming capabilities in C++."
+      ]
+    }
+  ]
+}

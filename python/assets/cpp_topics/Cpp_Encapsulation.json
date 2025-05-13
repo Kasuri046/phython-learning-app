@@ -1,0 +1,33 @@
+{
+  "title": "C++ Encapsulation",
+  "content": [
+    {
+      "heading": "Encapsulation",
+      "paragraphs": [
+        "The meaning of Encapsulation, is to make sure that \n\"sensitive\" data is hidden from users. To achieve this, you must declare class variables/attributes as private (cannot \nbe accessed from outside the class). If you want others to read or modify the \nvalue of a private member, you can provide public get and \nset methods."
+      ]
+    },
+    {
+      "heading": "Access Private Members",
+      "paragraphs": [
+        "To access a private attribute, use public \"get\" and \"set\" methods:",
+        "The salary attribute is private, \nwhich have restricted access.",
+        "The public setSalary() method takes a parameter (s) and assigns it to the\nsalary attribute (salary = s).",
+        "The public getSalary() method returns the value of \nthe private salary attribute.",
+        "Inside main(), we create an object of the Employee class. Now we can use the \nsetSalary() method to set the value of the \nprivate attribute to 50000. Then we call the \ngetSalary() method on the object to return the value."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "#include <iostream>\nusing namespace std ;\nclass Employee {  \n    private:// Private attribute \nint salary ;\n  public:    \n    // Setter \n    void setSalary(int s) { \n salary = s ;\n }\n    // Getter    \nint getSalary() { \n    return salary ;\n    }\n} ;\nint main() { \n Employee myObj ;\n  myObj.setSalary(50000) ;\n cout << myObj.getSalary() ;\n  return 0 ;\n}"
+      ]
+    },
+    {
+      "heading": "Why Encapsulation?",
+      "paragraphs": [
+        "It is considered good practice to declare your class attributes as private (as \noften as you can). Encapsulation ensures better control of your data, \nbecause you (or others) can change one part of the code without affecting other parts\n  Increased security of data"
+      ]
+    }
+  ]
+}

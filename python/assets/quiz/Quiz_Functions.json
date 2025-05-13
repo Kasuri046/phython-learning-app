@@ -1,0 +1,105 @@
+{
+    "title": "Quiz: Functions",
+    "questions": [
+      {
+        "question": "What is the purpose of a function in C++?",
+        "options": [
+          "To execute a block of code",
+          "To store data",
+          "To define a variable",
+          "To create a loop"
+        ],
+        "correctAnswer": "To execute a block of code"
+      },
+      {
+        "question": "What is the correct syntax for declaring a function?",
+        "options": [
+          "returnType functionName(parameters) {}",
+          "function functionName(parameters) returnType {}",
+          "functionType functionName() {}",
+          "functionName(parameters) returnType {}"
+        ],
+        "correctAnswer": "returnType functionName(parameters) {}"
+      },
+      {
+        "question": "What is a function prototype?",
+        "options": [
+          "A function definition",
+          "A declaration of a function",
+          "A function call",
+          "An inline function"
+        ],
+        "correctAnswer": "A declaration of a function"
+      },
+      {
+        "question": "Which keyword is used to define a function that does not return a value?",
+        "options": [
+          "void",
+          "int",
+          "return",
+          "empty"
+        ],
+        "correctAnswer": "void"
+      },
+      {
+        "question": "What happens if you forget to return a value from a non-void function?",
+        "options": [
+          "The program will crash",
+          "It will return 0 by default",
+          "It will result in undefined behavior",
+          "None of the above"
+        ],
+        "correctAnswer": "It will result in undefined behavior"
+      },
+      {
+        "question": "How do you call a function named 'calculate'?",
+        "options": [
+          "calculate();",
+          "call calculate;",
+          "calculate{};",
+          "invoke calculate();"
+        ],
+        "correctAnswer": "calculate();"
+      },
+      {
+        "question": "What is function overloading?",
+        "options": [
+          "Defining multiple functions with the same name but different parameters",
+          "Defining functions with the same parameters",
+          "Creating recursive functions",
+          "None of the above"
+        ],
+        "correctAnswer": "Defining multiple functions with the same name but different parameters"
+      },
+      {
+        "question": "What is a recursive function?",
+        "options": [
+          "A function that calls itself",
+          "A function that cannot return a value",
+          "A function that is overloaded",
+          "A function that has no parameters"
+        ],
+        "correctAnswer": "A function that calls itself"
+      },
+      {
+        "question": "Which of the following is a valid function declaration?",
+        "options": [
+          "int add(int a, int b);",
+          "add(int a, int b) int;",
+          "function int add(int a, int b);",
+          "void add(int a, int b) int;"
+        ],
+        "correctAnswer": "int add(int a, int b);"
+      },
+      {
+        "question": "What is the purpose of the 'return' statement in a function?",
+        "options": [
+          "To exit the function",
+          "To return a value to the caller",
+          "To declare a function",
+          "Both A and B"
+        ],
+        "correctAnswer": "Both A and B"
+      }
+    ]
+  }

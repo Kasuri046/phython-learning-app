@@ -1,0 +1,40 @@
+{
+  "title": "C++ Class Methods",
+  "content": [
+    {
+      "heading": "Class Methods",
+      "paragraphs": [
+        "Methods are functions that belongs to the class.",
+        "There are two ways to define functions that belongs to a class:",
+        "Inside class definition\nOutside class definition",
+        "In the following example, we define a function inside the class, and we name \nit \"myMethod\".",
+        "Note: You access methods just like you access attributes ;\n by creating an object of \nthe class and using the dot syntax (.):",
+        "To define a function outside the class definition, you have to declare it \ninside the class and then define it outside of the class. This is done by specifiying the \nname of the class, followed the scope resolution :: operator, \nfollowed by the name of the function:"
+      ]
+    },
+    {
+      "heading": "Inside Example",
+      "paragraphs": [
+        "class MyClass { // The class  \n  public: \n  // Access specifier   \n void myMethod() { \n // Method/function defined inside the class     \n cout << \"Hello World!\" ;\n    \n  }\n} ;\nint main() {  \nMyClass \n  myObj ;\n     // Create an object of MyClass  \n  myObj.myMethod() ;\n  // Call the method \n return 0 ;\n}"
+      ]
+    },
+    {
+      "heading": "Outside Example",
+      "paragraphs": [
+        "class MyClass {\n // The class  \n  public: \n  // Access specifier    \nvoid myMethod() ;\n// Method/function \n  declaration} ;\n // Method/function definition outside the class\nvoid MyClass::myMethod() { \n cout << \"Hello World!\" ;\n}\nint main() { \n MyClass\n myObj ;\n// Create an object of MyClass  \n  myObj.myMethod() ;\n  // Call the method \n return 0 ;\n}"
+      ]
+    },
+    {
+      "heading": "Parameters",
+      "paragraphs": [
+        "You can also add parameters:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "#include <iostream>\nusing namespace std ;\nclass Car {  \n  public: int speed(int maxSpeed) ;\n} ;\nint Car::speed(int maxSpeed) { /n return maxSpeed ;\n}\nint main() {  \n  Car myObj ;\n // Create an object of Car \n cout << myObj.speed(200) ;\n //Call the method with an argument  \nreturn 0 ;\n}"
+      ]
+    }
+  ]
+}

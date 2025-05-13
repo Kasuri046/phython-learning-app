@@ -1,0 +1,26 @@
+{
+  "title": "C++ Examples",
+  "content": [
+    {
+      "heading": "Hello World",
+      "paragraphs": [
+        "A simple C++ program to display 'Hello, World!' on the screen:",
+        "#include <iostream>\n\nint main() {\n    std::cout << \"Hello, World!\" << std::endl;\n    return 0;\n}"
+      ]
+    },
+    {
+      "heading": "Basic Arithmetic",
+      "paragraphs": [
+        "Here’s an example of performing basic arithmetic operations:",
+        "#include <iostream>\n\nint main() {\n    int a = 10;\n    int b = 5;\n    std::cout << \"Sum: \" << (a + b) << std::endl;\n    std::cout << \"Difference: \" << (a - b) << std::endl;\n    return 0;\n}"
+      ]
+    },
+    {
+      "heading": "Conditional Statement",
+      "paragraphs": [
+        "An example of using an if-else statement:",
+        "#include <iostream>\n\nint main() {\n    int number = 10;\n    if (number % 2 == 0) {\n        std::cout << \"Even number\" << std::endl;\n    } else {\n        std::cout << \"Odd number\" << std::endl;\n    }\n    return 0;\n}"
+      ]
+    }
+  ]
+}

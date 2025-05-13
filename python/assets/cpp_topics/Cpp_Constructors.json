@@ -1,0 +1,38 @@
+{
+  "title": "C++ Constructors",
+  "content": [
+    {
+      "heading": "Constructors",
+      "paragraphs": [
+        "A constructor in C++ is a special method that is \nautomatically called when an object of a class is created.",
+        "To create a constructor, use the same name as the class, followed by \nparentheses ():"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "class MyClass {\n    // The class \n    public: \n        // Access specifier\n        MyClass() {     \n            // Constructor     \n            cout << \"Hello World!\" ;  \n        }\n};\n\nint main() {  \n    MyClass myObj ;\n    // Create an object of MyClass (this will call the constructor) \n    return 0 ;\n}"
+      ]
+    },
+    {
+      "heading": "Constructor Parameters",
+      "paragraphs": [
+        "Constructors can also take parameters (just like regular functions), which can be \nuseful for setting initial values for attributes.",
+        "The following class has brand, model, and year attributes, and a constructor with \ndifferent parameters. Inside the constructor, we set the attributes equal to the \nconstructor parameters (brand=x, etc.). When we call the constructor \n(by creating an object of the class), we pass parameters to the constructor, which will set the value of \nthe corresponding attributes to the same:",
+        "Just like functions, constructors can also be defined outside the class. \nFirst, declare the constructor inside the class, and then define it outside of the \nclass by specifying the name of the class, followed by the scope resolution :: \noperator, followed by the name of the constructor (which is the same as the \nclass):"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "class Car {        // The class  \n    public:          // Access specifier  \n    string brand;  // Attribute  \n    string model;  // Attribute  \n    int year;      // Attribute  \n    Car(string x, string y, int z) { // Constructor with parameters  \n        brand = x;  \n        model = y;  \n        year = z;  \n    }\n};\n\nint main() {  // Create Car objects and call the constructor with different values  \n    Car carObj1(\"BMW\", \"X5\", 1999);  \n    Car carObj2(\"Ford\", \"Mustang\", 1969);  \n    // Print values  \n    cout << carObj1.brand << \" \" << carObj1.model << \" \" << carObj1.year << \"\\n\";  \n    cout << carObj2.brand << \" \" << carObj2.model << \" \" << carObj2.year << \"\\n\";  \n    return 0;\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "class Car { // The class  \n    public: // Access specifier  \n    string brand; \n // Attribute  \n    string model;  // Attribute  \n    int year;      // Attribute  \n    Car(string x, string y, int z); \n// Constructor declaration  \n};\n// Constructor definition outside the class \nCar::Car(string x, string y, int z) {  \n    brand = x;  \n    model = y;  \n    year = z;  \n}\nint main() {  // Create Car objects and call the constructor with different values  \n    Car carObj1(\"BMW\", \"X5\", 1999);  \n    Car carObj2(\"Ford\", \"Mustang\", 1969);  \n    // Print values  \n    cout << carObj1.brand << \" \" << carObj1.model << \" \" << carObj1.year << \"\\n\";  \n    cout << carObj2.brand << \" \" << carObj2.model << \" \" << carObj2.year << \"\\n\";  \n    return 0;\n}"
+      ]
+    }
+  ]
+}

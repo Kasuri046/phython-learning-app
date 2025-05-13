@@ -1,0 +1,105 @@
+{
+    "title": "Quiz: C++ Standard Libraries",
+    "questions": [
+      {
+        "question": "What is the purpose of the C++ Standard Library?",
+        "options": [
+          "To provide a set of common functions and data structures",
+          "To create custom libraries",
+          "To manage memory",
+          "None of the above"
+        ],
+        "correctAnswer": "To provide a set of common functions and data structures"
+      },
+      {
+        "question": "Which header file is needed to use the standard input/output streams?",
+        "options": [
+          "<iostream>",
+          "<cstdio>",
+          "<stdlib>",
+          "None of the above"
+        ],
+        "correctAnswer": "<iostream>"
+      },
+      {
+        "question": "What does the 'std' namespace stand for?",
+        "options": [
+          "Standard",
+          "Structure",
+          "Static",
+          "None of the above"
+        ],
+        "correctAnswer": "Standard"
+      },
+      {
+        "question": "Which library provides functions for working with strings?",
+        "options": [
+          "string",
+          "iostream",
+          "vector",
+          "None of the above"
+        ],
+        "correctAnswer": "string"
+      },
+      {
+        "question": "What is the purpose of the <vector> header?",
+        "options": [
+          "To provide a dynamic array",
+          "To manage memory",
+          "To handle input/output",
+          "None of the above"
+        ],
+        "correctAnswer": "To provide a dynamic array"
+      },
+      {
+        "question": "Which of the following is a C++ Standard Library container?",
+        "options": [
+          "List",
+          "Vector",
+          "Map",
+          "All of the above"
+        ],
+        "correctAnswer": "All of the above"
+      },
+      {
+        "question": "What is the function of the <algorithm> header?",
+        "options": [
+          "To provide algorithms for sorting and searching",
+          "To manage input/output",
+          "To define data structures",
+          "None of the above"
+        ],
+        "correctAnswer": "To provide algorithms for sorting and searching"
+      },
+      {
+        "question": "What does the 'push_back' method do in a vector?",
+        "options": [
+          "Adds an element to the end of the vector",
+          "Removes the last element",
+          "Returns the size of the vector",
+          "None of the above"
+        ],
+        "correctAnswer": "Adds an element to the end of the vector"
+      },
+      {
+        "question": "Which of the following functions can be found in the <cmath> library?",
+        "options": [
+          "sqrt()",
+          "pow()",
+          "abs()",
+          "All of the above"
+        ],
+        "correctAnswer": "All of the above"
+      },
+      {
+        "question": "What is an iterator in the context of C++ Standard Libraries?",
+        "options": [
+          "An object that allows traversal of a container",
+          "A type of function",
+          "A special kind of loop",
+          "None of the above"
+        ],
+        "correctAnswer": "An object that allows traversal of a container"
+      }
+    ]
+  }

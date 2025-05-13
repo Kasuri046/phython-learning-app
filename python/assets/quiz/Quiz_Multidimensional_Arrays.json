@@ -1,0 +1,105 @@
+{
+    "title": "Quiz: Multidimensional Arrays",
+    "questions": [
+      {
+        "question": "What is a multidimensional array?",
+        "options": [
+          "An array with more than one dimension",
+          "An array that can hold functions",
+          "A single-dimensional array",
+          "None of the above"
+        ],
+        "correctAnswer": "An array with more than one dimension"
+      },
+      {
+        "question": "What is the syntax to declare a 2D array in C++?",
+        "options": [
+          "int arr[5][5];",
+          "int arr(5)(5);",
+          "int arr{5, 5};",
+          "None of the above"
+        ],
+        "correctAnswer": "int arr[5][5];"
+      },
+      {
+        "question": "How do you access the element in the second row and third column of a 2D array?",
+        "options": [
+          "arr[1][2]",
+          "arr[2][3]",
+          "arr[3][2]",
+          "None of the above"
+        ],
+        "correctAnswer": "arr[1][2]"
+      },
+      {
+        "question": "The default value of uninitialized elements in a multidimensional array is:",
+        "options": [
+          "0",
+          "Null",
+          "Undefined",
+          "None of the above"
+        ],
+        "correctAnswer": "0"
+      },
+      {
+        "question": "Which of the following is true about multidimensional arrays?",
+        "options": [
+          "They can have any number of dimensions",
+          "They can only have two dimensions",
+          "They can only store integers",
+          "None of the above"
+        ],
+        "correctAnswer": "They can have any number of dimensions"
+      },
+      {
+        "question": "How do you initialize a 2D array?",
+        "options": [
+          "int arr[2][3] = {{1, 2, 3}, {4, 5, 6}};",
+          "int arr[2][3] = (1, 2, 3)(4, 5, 6);",
+          "int arr[2][3] = [1, 2, 3], [4, 5, 6];",
+          "None of the above"
+        ],
+        "correctAnswer": "int arr[2][3] = {{1, 2, 3}, {4, 5, 6}};"
+      },
+      {
+        "question": "What is the size of a 3D array declared as int arr[2][3][4]?",
+        "options": [
+          "24",
+          "12",
+          "6",
+          "None of the above"
+        ],
+        "correctAnswer": "24"
+      },
+      {
+        "question": "How can you pass a 2D array to a function?",
+        "options": [
+          "By using a pointer to the first element",
+          "By passing the entire array by value",
+          "Only by reference",
+          "None of the above"
+        ],
+        "correctAnswer": "By using a pointer to the first element"
+      },
+      {
+        "question": "Which of the following is a valid way to loop through a 2D array?",
+        "options": [
+          "for(int i = 0; i < rows; i++)",
+          "for(int j = 0; j < cols; j++)",
+          "Both A and B",
+          "None of the above"
+        ],
+        "correctAnswer": "Both A and B"
+      },
+      {
+        "question": "What happens if you try to access an index outside the bounds of a multidimensional array?",
+        "options": [
+          "Undefined behavior",
+          "Compiler error",
+          "The program will terminate normally",
+          "None of the above"
+        ],
+        "correctAnswer": "Undefined behavior"
+      }
+    ]
+  }

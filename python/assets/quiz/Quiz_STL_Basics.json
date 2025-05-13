@@ -1,0 +1,106 @@
+{
+    "title": "Quiz: STL Basics",
+    "questions": [
+      {
+        "question": "What does STL stand for in C++?",
+        "options": [
+          "Standard Template Library",
+          "Standard Type Library",
+          "Standard Text Library",
+          "Standard Tool Library"
+        ],
+        "correctAnswer": "Standard Template Library"
+      },
+      {
+        "question": "Which of the following is a component of STL?",
+        "options": [
+          "Containers",
+          "Algorithms",
+          "Iterators",
+          "All of the above"
+        ],
+        "correctAnswer": "All of the above"
+      },
+      {
+        "question": "What is a container in STL?",
+        "options": [
+          "A data structure that holds objects",
+          "A function that performs operations",
+          "A type of iterator",
+          "None of the above"
+        ],
+        "correctAnswer": "A data structure that holds objects"
+      },
+      {
+        "question": "Which of the following is not a type of STL container?",
+        "options": [
+          "Vector",
+          "List",
+          "Map",
+          "Stack",
+          "ArrayList"
+        ],
+        "correctAnswer": "ArrayList"
+      },
+      {
+        "question": "What is an iterator in STL?",
+        "options": [
+          "An object that allows traversal of a container",
+          "A type of container",
+          "A function that sorts data",
+          "None of the above"
+        ],
+        "correctAnswer": "An object that allows traversal of a container"
+      },
+      {
+        "question": "How do you include the STL in your C++ program?",
+        "options": [
+          "#include <stl>",
+          "#include <vector>",
+          "#include <iostream>",
+          "#include <algorithm>"
+        ],
+        "correctAnswer": "#include <vector>"
+      },
+      {
+        "question": "What is a vector in STL?",
+        "options": [
+          "A dynamic array",
+          "A fixed-size array",
+          "A linked list",
+          "None of the above"
+        ],
+        "correctAnswer": "A dynamic array"
+      },
+      {
+        "question": "Which function is used to sort a vector?",
+        "options": [
+          "sort()",
+          "order()",
+          "arrange()",
+          "None of the above"
+        ],
+        "correctAnswer": "sort()"
+      },
+      {
+        "question": "What is the purpose of the 'find' algorithm in STL?",
+        "options": [
+          "To search for an element in a container",
+          "To sort elements",
+          "To insert elements",
+          "None of the above"
+        ],
+        "correctAnswer": "To search for an element in a container"
+      },
+      {
+        "question": "What is the difference between 'map' and 'unordered_map'?",
+        "options": [
+          "Map is ordered; unordered_map is not",
+          "Unordered_map allows duplicate keys; map does not",
+          "Both A and B",
+          "None of the above"
+        ],
+        "correctAnswer": "Map is ordered; unordered_map is not"
+      }
+    ]
+  }

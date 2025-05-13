@@ -1,0 +1,33 @@
+{
+  "title": "C++ cmath Library",
+  "content": [
+    {
+      "heading": "C++ Math Functions",
+      "paragraphs": [
+        "The <cmath> library has many functions that allow you to perform mathematical tasks on numbers.",
+        "This library includes functions for trigonometric calculations, logarithmic and exponential functions, and other common mathematical operations.",
+        "A list of all math functions can be found in the table below:",
+        "Learn more about math in our C++ Math Tutorial.",
+        "By utilizing these functions, developers can easily perform complex calculations and improve code efficiency."
+      ]
+    },
+    {
+      "heading": "Common Functions in the cmath Library",
+      "paragraphs": [
+        "1. sqrt: Computes the square root of a number.",
+        "2. pow: Raises a number to the power of another number.",
+        "3. sin: Calculates the sine of an angle (in radians).",
+        "4. cos: Calculates the cosine of an angle (in radians).",
+        "5. log: Computes the natural logarithm of a number."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Here is a simple example demonstrating how to use the sqrt and pow functions from the <cmath> library:",
+        "```cpp\n#include <iostream>\n#include <cmath>\n\nint main() {\n    double number = 16.0;\n    double squareRoot = sqrt(number);\n    double power = pow(2, 3);\n\n    std::cout << \"Square root of \" << number << \" is \" << squareRoot << std::endl;\n    std::cout << \"2 raised to the power of 3 is \" << power << std::endl;\n\n    return 0;\n}\n```",
+        "In this example, we calculate the square root of 16 and raise 2 to the power of 3, then display the results."
+      ]
+    }
+  ]
+}

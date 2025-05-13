@@ -1,0 +1,27 @@
+{
+  "title": "C++ Function Overloading",
+  "content": [
+    {
+      "heading": "Function Overloading",
+      "paragraphs": [
+        "With function overloading, multiple functions can have the same name with different\nparameters:",
+        "Consider the following example, which have two functions that add numbers of different type:",
+        "Instead of defining two functions that should do the same thing, it is better to overload one.",
+        "In the example below, we overload the plusFunc function to work for both int \nand double:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "int myFunction(int x)float myFunction(float x)double \n  myFunction(double x, double y)"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "int plusFuncInt(int x, int y) { \n return x + y ;\n}double plusFuncDouble(double x, double y) {  \n  return x + y ;\n}int main() { \n int myNum1 = plusFuncInt(8, \n  5) ;\n  double myNum2 = plusFuncDouble(4.3, 6.26) ;\n  cout << \n  \"Int: \" << myNum1 << \"\\n\" ;\n  cout << \"Double: \" << myNum2 ;\n  \n  return 0 ;\n}"
+      ]
+    },
+
+  ]
+}

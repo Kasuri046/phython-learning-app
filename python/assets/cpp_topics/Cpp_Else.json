@@ -1,0 +1,24 @@
+{
+  "title": "C++ Else",
+  "content": [
+    {
+      "heading": "The else Statement",
+      "paragraphs": [
+        "Use the else statement to specify a block of code to be executed if the condition is false.",
+        "In the example below, time (20) is greater than 18, so the condition is false. \nBecause of this, we move on to the else condition and print to the screen 'Good evening'. If the time was less than 18, the program would print 'Good day'."
+      ]
+    },
+    {
+      "heading": "Syntax",
+      "paragraphs": [
+        "if (condition) {\n  // block of code to be executed if the condition is true\n} else {\n  // block of code to be executed if the condition is false\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "#include <iostream>\nusing namespace std;\n\nint main() {\n  int time = 20;\n  if (time < 18) {\n    cout << \"Good day.\";\n  } else {\n    cout << \"Good evening.\";\n  }\n  return 0;\n} // Outputs 'Good evening.'"
+      ]
+    }
+  ]
+}

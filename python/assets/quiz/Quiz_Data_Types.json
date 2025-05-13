@@ -1,0 +1,105 @@
+{
+    "title": "Quiz: Data Types",
+    "questions": [
+      {
+        "question": "Which of the following is a fundamental data type in C++?",
+        "options": [
+          "int",
+          "string",
+          "array",
+          "structure"
+        ],
+        "correctAnswer": "int"
+      },
+      {
+        "question": "What type of data does the 'char' data type store?",
+        "options": [
+          "Integer values",
+          "Single characters",
+          "Floating-point numbers",
+          "Boolean values"
+        ],
+        "correctAnswer": "Single characters"
+      },
+      {
+        "question": "Which data type is used to store decimal numbers in C++?",
+        "options": [
+          "int",
+          "float",
+          "char",
+          "bool"
+        ],
+        "correctAnswer": "float"
+      },
+      {
+        "question": "What is the size of 'int' in C++ on most systems?",
+        "options": [
+          "2 bytes",
+          "4 bytes",
+          "8 bytes",
+          "16 bytes"
+        ],
+        "correctAnswer": "4 bytes"
+      },
+      {
+        "question": "Which of the following is not a user-defined data type?",
+        "options": [
+          "struct",
+          "enum",
+          "class",
+          "int"
+        ],
+        "correctAnswer": "int"
+      },
+      {
+        "question": "What is the range of values for a 'char' type variable?",
+        "options": [
+          "0 to 255",
+          "-128 to 127",
+          "-32768 to 32767",
+          "0 to 65535"
+        ],
+        "correctAnswer": "-128 to 127"
+      },
+      {
+        "question": "Which keyword is used to define a boolean type in C++?",
+        "options": [
+          "bool",
+          "boolean",
+          "bit",
+          "byte"
+        ],
+        "correctAnswer": "bool"
+      },
+      {
+        "question": "What is the appropriate data type for storing a large integer?",
+        "options": [
+          "int",
+          "long",
+          "short",
+          "float"
+        ],
+        "correctAnswer": "long"
+      },
+      {
+        "question": "Which of the following represents a float literal?",
+        "options": [
+          "10.0",
+          "10",
+          "10.0f",
+          "Both A and C"
+        ],
+        "correctAnswer": "Both A and C"
+      },
+      {
+        "question": "What is the correct way to declare a double variable?",
+        "options": [
+          "double x;",
+          "x double;",
+          "double x = 5;",
+          "Both A and C"
+        ],
+        "correctAnswer": "Both A and C"
+      }
+    ]
+  }

@@ -1,0 +1,17 @@
+{
+  "title": "C++ Inheritance Access",
+  "content": [
+    {
+      "heading": "Access Specifiers",
+      "paragraphs": [
+        "You learned from the Access Specifiers chapter that there are three \nspecifiers available in C++. Until now, we have only used public (members of a \nclass are accessible from outside the class) and private (members can only be \naccessed within the class). The third specifier, protected, is similar to \nprivate, but it can also be accessed in the \ninherited class:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Base class\nclass Employee {  \nprotected: // Protected access specifier    \n    int salary ;\n} ;\n // Derived class\nclass Programmer: public Employee {  \n    public:   \n int bonus ;\n    void setSalary(int s) {     \n salary = s ; \n    }\n int getSalary() {      \n return salary ;\n    }\n} ;\nint main() {  \n  Programmer myObj ;\n  myObj.setSalary(50000) ;\n  myObj.bonus = \n    15000 ;\n  cout <<  \"Salary: \" << myObj.getSalary() << \"\\n\" ;\n  cout << \"Bonus: \" <<   myObj.bonus << \"\\n\" ;\n  return 0 ;\n}"
+      ]
+    }
+  ]
+}

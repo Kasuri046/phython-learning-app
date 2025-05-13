@@ -1,0 +1,84 @@
+{
+  "title": "C++ Keywords",
+  "content": [
+    {
+      "heading": "C++ Keywords",
+      "paragraphs": [
+        "In C++, keywords are reserved words that have special meaning in the language. They cannot be used as identifiers (such as variable names or function names). Understanding these keywords is essential for writing effective C++ programs.",
+        "C++ keywords can be categorized based on how commonly they are used. Below are two categories that can help you prioritize learning them."
+      ]
+    },
+    {
+      "heading": "Commonly Used Keywords",
+      "paragraphs": [
+        "- auto: Automatically deduces the type of a variable from its initializer.",
+        "- bool: Represents Boolean values (true or false).",
+        "- break: Exits from a loop or switch statement.",
+        "- case: Defines a branch in a switch statement.",
+        "- catch: Defines a block of code to handle exceptions.",
+        "- char: Represents a character type.",
+        "- class: Defines a new class type.",
+        "- const: Declares a variable as constant, meaning its value cannot be changed.",
+        "- continue: Skips the current iteration of a loop and continues with the next iteration.",
+        "- default: Specifies the default case in a switch statement.",
+        "- delete: Deallocates memory previously allocated for an object.",
+        "- do: Starts a do-while loop.",
+        "- double: Represents a double-precision floating-point type.",
+        "- else: Specifies the block of code to execute if the condition in an if statement is false.",
+        "- enum: Defines an enumerated type.",
+        "- extern: Declares a variable or function that is defined in another translation unit.",
+        "- float: Represents a single-precision floating-point type.",
+        "- for: Starts a for loop.",
+        "- if: Starts a conditional statement.",
+        "- int: Represents an integer type.",
+        "- long: Represents a long integer type.",
+        "- namespace: Defines a scope for identifiers to avoid name collisions.",
+        "- new: Allocates memory for an object or array.",
+        "- private: Specifies that class members are accessible only within the class.",
+        "- protected: Specifies that class members are accessible within the class and by derived classes.",
+        "- public: Specifies that class members are accessible from any part of the program.",
+        "- return: Exits a function and optionally returns a value.",
+        "- short: Represents a short integer type.",
+        "- static: Indicates that a variable retains its value between function calls or limits its visibility to the file.",
+        "- struct: Defines a new structure type.",
+        "- switch: Starts a switch statement for multi-way branching.",
+        "- this: Refers to the current object instance within a class.",
+        "- try: Starts a block of code to handle exceptions.",
+        "- void: Represents a function that does not return a value.",
+        "- while: Starts a while loop."
+      ]
+    },
+    {
+      "heading": "Other Keywords",
+      "paragraphs": [
+        "- alignas: Specifies the alignment requirement for a variable or structure.",
+        "- alignof: Returns the alignment of a type.",
+        "- asm: Allows embedding assembly language within C++ code.",
+        "- constexpr: Indicates that a value can be computed at compile time.",
+        "- dynamic_cast: Safely converts pointers and references to base or derived classes.",
+        "- explicit: Indicates that a constructor or conversion operator should not be implicitly used.",
+        "- export: Declares the visibility of a template or function in other translation units.",
+        "- friend: Grants a function or class access to private and protected members of another class.",
+        "- goto: Jumps to a labeled statement in the code.",
+        "- inline: Suggests to the compiler to inline a function (replace the function call with the function code).",
+        "- operator: Defines an operator function.",
+        "- signed: Indicates that a variable can hold both positive and negative values.",
+        "- sizeof: Returns the size of a data type or object in bytes.",
+        "- template: Defines a template for generic programming.",
+        "- throw: Throws an exception.",
+        "- typedef: Creates an alias for a data type.",
+        "- union: Defines a new union type that can hold different data types in the same memory location.",
+        "- unsigned: Indicates that a variable can only hold non-negative values.",
+        "- using: Introduces a namespace or type into the current scope.",
+        "- virtual: Indicates that a function can be overridden in derived classes.",
+        "- volatile: Indicates that a variable may be changed by external factors."
+      ]
+    },
+    {
+      "heading": "Why Knowing Keywords Matters",
+      "paragraphs": [
+        "Mastering C++ keywords allows developers to write clear, efficient, and maintainable code. Understanding their categories and when to use them enables better problem-solving and programming practices, especially when dealing with complex systems or performance-critical applications."
+      ]
+    }
+  ]
+}

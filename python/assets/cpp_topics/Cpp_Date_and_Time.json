@@ -1,0 +1,147 @@
+{
+  "title": "C++ Date and Time",
+  "content": [
+    {
+      "heading": "Date and Time",
+      "paragraphs": [
+        "The <ctime> library allows us to work \nwith dates and times.",
+        "To use it, you must import the <ctime> header file:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "#include <ctime> // Import the ctime library"
+      ]
+    },
+    {
+      "heading": "Display Current Date and Time",
+      "paragraphs": [
+        "The <ctime> library has a variety of functions to measure dates and times.",
+        "The time() function gives us a timestamp representing the current date and time. We can use the ctime() \nfunction to show the date and time that a timestamp represents:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Display the current date:",
+        "// Get the timestamp for the current date and time\ntime_t timestamp;\n\ntime(&timestamp);\n\n// Display the date and time represented by the timestamp\ncout << ctime(&timestamp);"
+      ]
+    },
+    {
+      "heading": "Two ways to use the time() function",
+      "paragraphs": [
+        "The time() function writes a timestamp to the memory location given by the parameter, but it also returns the timestamp's value.",
+        "An alternative way to use the time() function is to pass in a NULL pointer and use the return value instead."
+      ]
+    },
+    {
+      "heading": "Data Types",
+      "paragraphs": [
+        "There are two different data types used to store the date and time: time_t for timestamps and struct tm for datetime structures.",
+        "Timestamps represent a moment in time as a single number, which makes it easier for the computer to do calculations.",
+        "Datetime structures are structures that represent different components of the date and time as members. This makes it easier for us to specify dates. Datetime structures have the following members:",
+        "tm_sec - The seconds within a minute\n  tm_min - The minutes within an hour\n  tm_hour - The hour within a day (from 0 to 23)\n  tm_mday - The day of the month\n  tm_mon - The month (from 0 to 11 starting with January)\n  tm_year - The number of years since 1900\n  tm_wday - The weekday (from 0 to 6 starting with Sunday)\n  tm_yday - The day of the year (from 0 to 365 with 0 being January 1)\n  tm_isdst - Positive when daylight saving time is in effect, zero when not in effect and negative when unknown"
+      ]
+    },
+    {
+      "heading": "Creating Timestamps",
+      "paragraphs": [
+        "The time() function can only create a timestamp for the current date, but we can create a timestamp for any date by using the mktime() function.",
+        "The mktime() function converts a datetime structure into a timestamp."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Create a timestamp using the mktime() function:",
+        "struct tm datetime;\n\ntime_t timestamp;\n\ndatetime.tm_year = 2023 - 1900; // Number of years since 1900\ndatetime.tm_mon = 12 - 1; // Number of months since January\ndatetime.tm_mday = 17;\n\ndatetime.tm_hour = 12;\ndatetime.tm_min = 30;\ndatetime.tm_sec = 1;\n\n// Daylight Savings must be specified\n// -1 uses the computer's timezone setting\ndatetime.tm_isdst = -1;\n\ntimestamp = mktime(&datetime);\n\ncout << ctime(&timestamp);"
+      ]
+    },
+    {
+      "heading": "Creating Datetime Structures",
+      "paragraphs": [
+        "The mktime() function also fills in the tm_wday and tm_yday members of the datetime structure with the correct values, which completes the structure and gives a valid datetime. It can be used, for example, to find the weekday of a given date:",
+        "The localtime() and gmtime() functions can convert timestamps into datetime structures.",
+        "The localtime() function returns a pointer to a structure representing the time in the computer's time zone.",
+        "The gmtime() function returns a pointer to a structure representing the time in the GMT time zone.",
+        "These functions return a pointer to a datetime structure. If we want to make sure its value does not change unexpectedly we should make a copy of it by dereferencing the pointer. To learn about dereferencing, see the C++ Dereference tutorial."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Find the weekday of a specified date:",
+        "// Create the datetime structure and use mktime to fill in the missing members\nstruct tm datetime;\n\ndatetime.tm_year = 2023 - 1900; // Number of years since 1900\ndatetime.tm_mon = 12 - 1; // Number of months since January\ndatetime.tm_mday = 17;\n\ndatetime.tm_hour = 0;\ndatetime.tm_min = 0;\ndatetime.tm_sec = 0;\n\ndatetime.tm_isdst = -1;\n\nmktime(&datetime);\n\nstring weekdays[] = {\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"};\n\ncout << \"The date is on a \" << weekdays[datetime.tm_wday];"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Get a datetime structure and output the current hour:",
+        "time_t timestamp = time(&timestamp);\n\nstruct tm datetime = *localtime(&timestamp);\n\ncout << datetime.tm_hour;"
+      ]
+    },
+    {
+      "heading": "Display Dates",
+      "paragraphs": [
+        "So far we have been using the ctime() function to display the date contained in a timestamp. To display dates from a datetime structure we can use the asctime() function.",
+        "The ctime() and asctime() functions allow us to display the date but they do not allow us to choose how it is displayed.",
+        "To choose how a date is displayed we can use the strftime() function.",
+        "The strftime() function formats a date and writes it as a C-style string into a char array. It has four parameters:",
+        "The first parameter points to the char array where the formatted date will be written.\n  The second parameter specifies the space available in the array.\n  The third parameter allows us to choose how the date is formatted using format specifiers.\n  The last parameter is a pointer to the datetime structure which contains the date we want to display.",
+        "The following table has some useful format specifiers. For a more complete list, look at the strftime() reference page."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Display the date represented by a datetime structure:",
+        "time_t timestamp = time(NULL);\n\nstruct tm datetime = *localtime(&timestamp);\n\ncout << asctime(&datetime);"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Correct a date before displaying it:",
+        "// Create the datetime structure and use mktime to correct mistakes\nstruct tm datetime;\n\ndatetime.tm_year = 2022 - 1900; // Number of years since 1900\ndatetime.tm_mon = 0; // 0 is January\ndatetime.tm_mday = 32;\n\ndatetime.tm_hour = 0;\ndatetime.tm_min = 0;\ndatetime.tm_sec = 0;\n\ndatetime.tm_isdst = -1;\n\nmktime(&datetime);\n\ncout << asctime(&datetime);"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Represent the current date in different ways:",
+        "time_t timestamp = time(NULL);\n\nstruct tm datetime = *localtime(&timestamp);\n\nchar output[50];\n\nstrftime(output, 50, \"%B %e, %Y\", &datetime);\n\ncout << output << \"\\n\";\n\nstrftime(output, 50, \"%I:%M:%S %p\", &datetime);\n\ncout << output << \"\\n\";\n\nstrftime(output, 50, \"%m/%d/%y\", &datetime);\n\ncout << output << \"\\n\";\n\nstrftime(output, 50, \"%a %b %e %H:%M:%S %Y\", &datetime);\n\ncout << output << \"\\n\";"
+      ]
+    },
+    {
+      "heading": "Measuring Time",
+      "paragraphs": [
+        "There are two different functions that can be used to measure differences in time.",
+        "The difftime() function measures the number of seconds that passed between two different time stamps. This is useful when measuring time differences between dates.",
+        "The clock() function is useful for measuring short intervals of time while the program is running. It is more precise than the difftime() function.",
+        "Each call to the clock function returns a special kind of timestamp measured in clocks (a unit of time that depends on how the library was implemented) which has a data type clock_t. To measure a time difference, store a timestamp at two different moments in time and then subtract them. The time difference is measured in clocks, but you can convert it into seconds by dividing it by the CLOCKS_PER_SEC constant."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Measure the time difference between two timestamps:",
+        "time_t now;\n\ntime_t nextyear;\n\nstruct tm datetime;\n\nnow = time(NULL);\n\ndatetime = *localtime(&now);\n\ndatetime.tm_year = datetime.tm_year + 1;\n\ndatetime.tm_mon = 0;\n\ndatetime.tm_mday = 1;\n\ndatetime.tm_hour = 0;\ndatetime.tm_min = 0;\ndatetime.tm_sec = 0;\n\ndatetime.tm_isdst = -1;\n\nnextyear = mktime(&datetime);\n\nint diff = difftime(nextyear, now);\n\ncout << diff << \" seconds until next year\";"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Measure how long it takes for the program to run:",
+        "clock_t before = clock();\n\nint k = 0;\n\nfor(int i = 0; i < 100000; i++) {\n  k += i;\n}\nclock_t duration = clock() - before;\n\ncout << \"Duration: \" << (float)duration / CLOCKS_PER_SEC << \" seconds\";"
+      ]
+    },
+    {
+      "heading": "Complete <ctime> Reference",
+      "paragraphs": [
+        "For a complete reference of <ctime> functions, go to our C++ ctime Reference."
+      ]
+    }
+  ]
+}

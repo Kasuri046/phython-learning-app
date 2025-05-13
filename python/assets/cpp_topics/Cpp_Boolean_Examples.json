@@ -1,0 +1,26 @@
+{
+  "title": "C++ Boolean Examples",
+  "content": [
+    {
+      "heading": "Real Life Example",
+      "paragraphs": [
+        "Let's think of a \"real life example\" where we need to find out if a person is old enough to vote.",
+        "In the example below, we use the >= comparison operator to find out if the age (25) is \ngreater than OR equal to the voting age limit, which is set to 18:",
+        "Cool, right? An even better approach (since we are on a roll now), would be to wrap the code above in an \nif...else statement, so we can perform \ndifferent actions depending on the result:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "int myAge = 25 ;\nint votingAge = 18 ;\ncout << (myAge >= votingAge) ;\n // returns 1 (true),\n meaning 25 year olds are allowed to vote!"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "Output \"Old enough to vote!\" if myAge is greater than or equal to 18.\n Otherwise output \"Not old enough to vote.\":",
+        "int myAge = 25 ;\nint votingAge = 18 ;\nif (myAge >= votingAge) { \n cout << \"Old enough to vote!\" ;\n  } else {  \ncout << \"Not old enough to vote.\" ;\n}\n  // Outputs: Old enough to vote!"
+      ]
+    }
+  ]
+}

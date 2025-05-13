@@ -1,0 +1,17 @@
+{
+  "title": "C++ Data Types Examples",
+  "content": [
+    {
+      "heading": "Real-Life Examples",
+      "paragraphs": [
+        "Here's a real-life example of using different data types to calculate and output the total cost of a number of items:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create variables of different data types\nint items = 50;\n\ndouble cost_per_item = 9.99;\n\ndouble total_cost = items * cost_per_item;\n\nchar currency = '$';\n\n// Print variables\ncout << \"Number of items: \" << items << \"\\n\";\ncout << \"Cost per item: \" << cost_per_item << \"\" << currency << \"\\n\";\ncout << \"Total cost = \" << total_cost << \"\" << currency << \"\\n\";"
+      ]
+    }
+  ]
+}

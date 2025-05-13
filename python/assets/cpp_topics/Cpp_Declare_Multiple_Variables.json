@@ -1,0 +1,29 @@
+{
+  "title": "C++ Declare Multiple Variables",
+  "content": [
+    {
+      "heading": "Declare Many Variables",
+      "paragraphs": [
+        "To declare more than one variable of the same type, \nuse a comma-separated list:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "int x = 5,\n y = 6,\n z = 50 ;\ncout << x + y + z ;\n"
+      ]
+    },
+    {
+      "heading": "One Value to Multiple Variables",
+      "paragraphs": [
+        "You can also assign the same value to multiple variables in one line:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "int x, y, z ;\nx = y = z = 50 ;\ncout << x + y + z ;\n"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "title": "C++ Access Specifiers",
+  "content": [
+    {
+      "heading": "Access Specifiers",
+      "paragraphs": [
+        "By now, you are quite familiar with the public keyword that appears in all of our class examples:",
+        "The public keyword is an access specifier. \nAccess specifiers define how the members (attributes and methods) of a class can \nbe accessed. In the example above, the members are public - which means that they \ncan be accessed and modified from outside the code.",
+        "However, what if we want \nmembers to be private and hidden from the outside world?",
+        "In C++, there are three access specifiers:",
+        "public - members are accessible from outside the class\nprivate - members cannot be accessed (or \nviewed) from outside the class\nprotected - members cannot be accessed from \noutside the class, however, they can be accessed in inherited classes. You will learn more about Inheritance later.",
+        "In the following example, we demonstrate the differences between public and private members:",
+        "Note: By default, all members of a class are private if you don't specify an access specifier:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "class MyClass { \n // The class\n  public: \n\n// Access specifier\n    \n  // class members goes here\n};"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "class \n    MyClass { \n    public:    \n// Public access \n    specifier    int x;  \n // Public attribute \n    private:   \n// Private access specifier \n    int y;\n // Private attribute\n};\n\nint main() {  \nMyClass \n    myObj; \nmyObj.x = 25;  \n// Allowed (public) \nmyObj.y = 50;\n // \n    Not allowed (private) \n    return 0;\n}",
+        "If you try to access a private member, an error occurs:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "class \n   MyClass {  \nint x;  \n // Private attribute  \nint y;  \n // Private attribute \n};"
+      ]
+    }
+  ]
+}

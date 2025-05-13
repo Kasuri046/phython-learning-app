@@ -1,0 +1,160 @@
+{
+  "title": "C++ Deque",
+  "content": [
+    {
+      "heading": "C++ Deque",
+      "paragraphs": [
+        "In the previous page, you learned that elements in a queue are added at the \nend and removed from the front.",
+        "A deque (stands for double-ended \nqueue) however, is more flexible, as elements can be added and removed \nfrom both ends (at the front and the back). You can also access elements by \nindex numbers.",
+        "To use a deque, you have to include the <deque> header file:"
+      ]
+    },
+    {
+      "heading": "Create a Deque",
+      "paragraphs": [
+        "To create a deque, use the deque keyword, \nand specify the type of values it should store within angle brackets <> \nand then the name of the deque, like: deque<type> \ndequeName.",
+        "If you want to add elements at the time of declaration, place them in a comma-separated list, inside curly braces {}:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a deque called cars that will store strings\n  deque<string> cars;"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a deque called cars that will store strings\n  deque<string> cars = {\"Volvo\", \"BMW\", \n  \"Ford\", \"Mazda\"};\n// Print deque elements\n  for (string car : cars) {  cout << car << \"\\n\"; }"
+      ]
+    },
+    {
+      "heading": "Access a Deque",
+      "paragraphs": [
+        "You can access a deque element by referring to the index number inside square brackets [].",
+        "Deques are 0-indexed, meaning that [0] is the first element, \n[1] is the second element, and so on:",
+        "You can also access the first or the last element of a deque \nwith the .front() and .back() \nfunctions:",
+        "To access an element at a specified index, you can use the .at() function \nand specify the index number:",
+        "Note: The .at() function is often preferred over square brackets [] because it throws an \nerror message if the element is out of range:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a deque called cars that will store strings\n  deque<string> cars = {\"Volvo\", \"BMW\", \n  \"Ford\", \"Mazda\"};\n// Get the first element\n  cout << cars[0]; // Outputs Volvo\n// Get the second element\n  cout << cars[1]; // Outputs BMW"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a deque called cars that will store strings\n  deque<string> cars = {\"Volvo\", \"BMW\", \n  \"Ford\", \"Mazda\"};\n// Get the first element\n  cout << cars.front();\n// Get the last element\n  cout << cars.back();"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a deque called cars that will store strings\n  deque<string> cars = {\"Volvo\", \"BMW\", \n  \"Ford\", \"Mazda\"};\n// Get the second element\n  cout << cars.at(1);\n// Get the third element\n  cout << cars.at(2);"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a deque called cars that will store strings\n  deque<string> cars = {\"Volvo\", \"BMW\", \n  \"Ford\", \"Mazda\"};\n// Try to access an element that does \n// not exist (will throw an exception)\n  cout << cars.at(6);"
+      ]
+    },
+    {
+      "heading": "Change a Deque Element",
+      "paragraphs": [
+        "To change the value of a specific element, you can refer to the index number:",
+        "However, it is safer to use the .at() function:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "deque<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n\n// Change the value of the first element\n  cars[0] = \"Opel\";\n\ncout << cars[0]; // Now outputs Opel instead of Volvo"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "deque<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n\n// Change the value of the first element\n  cars.at(0) = \"Opel\";\n\ncout << cars.at(0); // Now outputs Opel instead of Volvo"
+      ]
+    },
+    {
+      "heading": "Add Deque Elements",
+      "paragraphs": [
+        "To add elements to a deque, you can use .push_front() \nto insert an element at the beginning of the deque and .push_back() \nto add an element at the end:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "deque<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n// Add an element at the beginning\n  cars.push_front(\"Tesla\");\n// Add an element at the end\n  cars.push_back(\"VW\");"
+      ]
+    },
+    {
+      "heading": "Remove Deque Elements",
+      "paragraphs": [
+        "To remove elements from a deque, use .pop_front() \nto remove an element from the beginning of the deque and .pop_back() \nto remove an element at the end:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "deque<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n// Remove the first element\n  cars.pop_front();\n// Remove the last element\n  cars.pop_back();"
+      ]
+    },
+    {
+      "heading": "Deque Size",
+      "paragraphs": [
+        "To find out how many elements a deque has, use the .size() function:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "deque<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\ncout << cars.size(); // Outputs 4"
+      ]
+    },
+    {
+      "heading": "Check if a Deque is Empty",
+      "paragraphs": [
+        "Use the .empty() function to find out if a \ndeque is empty or not.",
+        "The .empty() function returns \n1 (true) if the deque is empty and 0 (false) \notherwise:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "deque<string> cars;\ncout << cars.empty(); // Outputs 1 (The deque is empty)"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "deque<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\ncout << cars.empty(); // Outputs 0 (not empty)"
+      ]
+    },
+    {
+      "heading": "Loop Through a Deque",
+      "paragraphs": [
+        "You can loop through the deque elements by using a for loop combined with the \n.size() function:",
+        "You can also use a for-each loop (introduced in C++ version 11 (2011), which is cleaner and more readable:",
+        "Tip: It is also possible to loop through deques with an iterator, which you will learn more about in a later chapter."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "deque<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\nfor (int i = 0; i < cars.size(); i++) {  cout << cars[i] << \"\\n\"; }"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "deque<string> cars = {\"Volvo\", \"BMW\", \"Ford\", \"Mazda\"};\n\nfor (string car : cars) {  cout << car << \"\\n\"; }"
+      ]
+    }
+  ]
+}

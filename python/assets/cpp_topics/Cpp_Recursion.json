@@ -1,0 +1,61 @@
+{
+  "title": "C++ Recursion",
+  "content": [
+    {
+      "heading": "Recursion",
+      "paragraphs": [
+        "Recursion is the technique of making a function call itself. This technique provides a way\nto break complicated problems down into simple problems which are easier to solve.",
+        "Recursion may be a bit difficult to understand. The\nbest way to figure out how it works is to experiment with it."
+      ]
+    },
+    {
+      "heading": "Recursion Example",
+      "paragraphs": [
+        "Adding two numbers together is easy to do, but adding a range of numbers is more\ncomplicated. In the following example, recursion is used to add a range of numbers\ntogether by breaking it down into the simple task of adding two numbers:"
+      ]
+    },
+    {
+      "heading": "Example",{
+      "title": "C++ Recursion",
+      "content": [
+        {
+          "heading": "Recursion",
+          "paragraphs": [
+            "Recursion is the technique of making a function call itself. This technique provides a way\nto break complicated problems down into simple problems which are easier to solve.",
+            "Recursion may be a bit difficult to understand. The\nbest way to figure out how it works is to experiment with it."
+          ]
+        },
+        {
+          "heading": "Recursion Example",
+          "paragraphs": [
+            "Adding two numbers together is easy to do, but adding a range of numbers is more\ncomplicated. In the following example, recursion is used to add a range of numbers\ntogether by breaking it down into the simple task of adding two numbers:"
+          ]
+        },
+        {
+          "heading": "Example",
+          "paragraphs": [
+            "int sum(int k) {\n  if (k > 0) {\n    return k + sum(k - 1);\n  } else {\n    return 0;\n  }\n}\n\nint main() {\n  int result = sum(10);\n  cout << result;\n  return 0;\n}"
+          ]
+        },
+        {
+          "heading": "Example Explained",
+          "paragraphs": [
+            "When the sum() function is called, it adds parameter k to the sum of all numbers smaller\nthan k and returns the result. When k becomes 0, the function just returns 0. When\nrunning, the program follows these steps:",
+            "Since the function does not call itself when k is 0, the program stops there and returns the\nresult."
+          ]
+        }
+      ]
+    },
+      "paragraphs": [
+        "int sum(int k) {  if (k > 0) {    return k + sum(k - 1) ;\n  } else {\n     \n  return 0 ;\n  }}int main() {  int result = sum(10) ;\n  cout << \n  result ;\n  return 0 ;\n}"
+      ]
+    },
+    {
+      "heading": "Example Explained",
+      "paragraphs": [
+        "When the sum() function is called, it adds parameter k to the sum of all numbers smaller\nthan k and returns the result. When k becomes 0, the function just returns 0. When\nrunning, the program follows these steps:",
+        "Since the function does not call itself when k is 0, the program stops there and returns the\nresult."
+      ]
+    }
+  ]
+}

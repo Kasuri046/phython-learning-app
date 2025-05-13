@@ -1,0 +1,29 @@
+{
+  "title": "C++ How To Add Two Numbers",
+  "content": [
+    {
+      "heading": "Add Two Numbers",
+      "paragraphs": [
+        "Learn how to add two numbers in C++:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "int x = 5 ;\nint y = 6 ;\nint sum = x + y ;\ncout << sum ;\n"
+      ]
+    },
+    {
+      "heading": "Add Two Numbers with User Input",
+      "paragraphs": [
+        "In this example, the user must input two numbers. Then we print the \nsum by calculating (adding) the two numbers:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "int x, y ;\nint sum ;\ncout << \"Type a number: \" ;\ncin >> x ;\ncout << \"Type another number: \" ;\ncin >> \n  y ;\nsum = x + y ;\ncout << \"Sum is: \" << sum ;\n"
+      ]
+    }
+  ]
+}

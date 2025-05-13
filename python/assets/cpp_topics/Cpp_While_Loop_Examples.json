@@ -1,0 +1,39 @@
+{
+  "title": "C++ While Loop Examples",
+  "content": [
+    {
+      "heading": "More Explanation",
+      "paragraphs": [
+        "To demonstrate a practical example of the while loop, we have created a simple \"countdown\" program:",
+        "In this example, we create a program that only prints even numbers between 0 and 10 (inclusive):",
+        "In this example, we use a while loop to reverse some numbers:",
+        "To demonstrate a practical example of the while loop combined with an if else statement, let's say we play a game of Yatzy:",
+        "If the loop passes the values ranging from 1 to 5, it prints \"No Yatzy\". Whenever it passes the value 6, it prints \"Yatzy!\"."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "int countdown = 3;\nwhile (countdown > 0) {\n    cout << countdown << \"\\n\";\n    countdown--;\n}\ncout << \"Happy New Year!!\\n\";"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "int i = 0;\nwhile (i <= 10) {\n  cout << i << \"\\n\";\n    i += 2;\n}"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// A variable with some specific numbers\nint numbers = 12345;\n// A variable to store the reversed number\nint revNumbers = 0;\n// Reverse and reorder the numbers\nwhile (numbers) {\n    // Get the last number of 'numbers' and add it to 'revNumbers'\n    revNumbers = revNumbers * 10 + numbers % 10;\n    // Remove the last number of 'numbers'\n    numbers /= 10;\n}\ncout << \"Reversed numbers: \" << revNumbers << \"\\n\";"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "int dice = 1;\nwhile (dice <= 6) {\n  if (dice < 6) {\n        cout << \"No Yatzy\\n\";\n    } else {\n        cout << \"Yatzy!\\n\";\n    }\n    dice = dice + 1;\n}"
+      ]
+    }
+  ]
+}

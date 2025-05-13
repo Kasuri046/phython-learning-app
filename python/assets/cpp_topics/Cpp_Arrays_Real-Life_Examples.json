@@ -1,0 +1,24 @@
+{
+  "title": "C++ Arrays Real-Life Examples",
+  "content": [
+    {
+      "heading": "Explanation",
+      "paragraphs": [
+        "To demonstrate a practical example of using arrays, let's create a program that calculates the average of different ages:",
+        "And in this example, we create a program that finds the lowest age among different ages:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// An array storing different ages\nint ages[8] = {20, 22, 18, 35, 48, 26, 87, 70} ;\nfloat avg, sum = 0 ;\nint i ;\n// Get the length of the array\nint length = sizeof(ages) / sizeof(ages[0]) ;\n// Loop through the elements of the array\nfor (int age : ages) { \n sum += age ;\n}\n  // Calculate the average by dividing the sum by the length\navg = sum / \n  length ;\n// Print the average\ncout << \"The average age is: \" << avg \n  << \"\\n\" ;\n"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// An array storing different ages\nint ages[8] = {20, 22, 18, 35, 48, 26, 87, 70} ;\nint i ;\n// Get the length of the array\nint length = \n  sizeof(ages) / sizeof(ages[0]) ;\n// Create a variable and assign the first array element of ages to it\nint lowestAge = ages[0] ;\n// Loop \n  through the elements of the ages array to find the lowest age\nfor (int age  : ages) { \n if (lowestAge > age) {\n lowestAge =  age ;\n  }}// Print the lowest age\ncout << \"The lowest age is: \" << lowestAge << \"\\n\" ;\n"
+      ]
+    }
+  ]
+}

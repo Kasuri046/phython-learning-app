@@ -1,0 +1,51 @@
+{
+  "title": "C++ Files",
+  "content": [
+    {
+      "heading": "C++ Files",
+      "paragraphs": [
+        "The fstream library allows us to work with files.",
+        "To use the fstream library, include both the standard <iostream> AND the <fstream> header file:",
+        "There are three classes included in the fstream library, \nwhich are used to create, write or read files:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "#include <iostream>\n#include <fstream>"
+      ]
+    },
+    {
+      "heading": "Create and Write To a File",
+      "paragraphs": [
+        "To create a file, use either the ofstream or fstream class, \nand specify the name of the file.",
+        "To write to the file, use the insertion operator (<<)."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "#include <iostream>\n#include <fstream>\nusing namespace std;\n\nint main() {\n    // Create and open a text file\n    ofstream MyFile(\"filename.txt\");\n    // Write to the file\n    MyFile << \"Files can be tricky, but it is fun enough!\";\n    // Close the file\n    MyFile.close();\n}"
+      ]
+    },
+    {
+      "heading": "Read a File",
+      "paragraphs": [
+        "To read from a file, use either the ifstream or fstream \nclass, and the name of the file.",
+        "Note that we also use a while loop together with the getline() function \n(which belongs to the ifstream class) to read the file line by line, and to print the content of the file:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Create a text string, which is used to output the text file\nstring myText;\n\n// Read from the text file\nifstream MyReadFile(\"filename.txt\");\n\n// Use a while loop together with the getline() function to read the file line by line\nwhile (getline(MyReadFile, myText)) {\n    // Output the text from the file\n    cout << myText;\n}\n\n// Close the file\nMyReadFile.close();"
+      ]
+    },
+    {
+      "heading": "Complete <fstream> Reference",
+      "paragraphs": [
+        "For a complete reference of <fstream> classes and functions, go to our C++ fstream Reference."
+      ]
+    }
+  ]
+}

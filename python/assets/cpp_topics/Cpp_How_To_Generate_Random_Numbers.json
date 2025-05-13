@@ -1,0 +1,32 @@
+{
+  "title": "C++ How To Generate Random Numbers",
+  "content": [
+    {
+      "heading": "Random Number",
+      "paragraphs": [
+        "You can use the rand() function, found in the \n<cstdlib> library, to generate a random number:",
+        "To get more control over the random number, for example, if you only want a random number between 0 and 100, you can use the following formula:",
+        "Note: The examples above just outputs a random number once. \nThey don't output different random numbers each time the program runs. To fix \nthis, you can use the srand() function \nand add the time() function from the <ctime> library.",
+        "This will generate a random number from 0 to 100 each time the program runs:"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "cout << rand() ;\n"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Generate a random number between 0 and 100int \n  randomNum = rand() % 101 ;\ncout << randomNum ;\nreturn 0 ;\n"
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "// Get a different random number each time the program runs\nrand(time(0)) ;\n// Generate a random number between 0 and 100\nint randomNum = rand() % 101 ;\ncout << randomNum ;\nreturn 0 ;\n"
+      ]
+    }
+  ]
+}

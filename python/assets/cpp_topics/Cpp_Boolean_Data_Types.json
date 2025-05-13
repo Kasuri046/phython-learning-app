@@ -1,0 +1,18 @@
+{
+  "title": "C++ Boolean Data Types",
+  "content": [
+    {
+      "heading": "Boolean Types",
+      "paragraphs": [
+        "A boolean data type is declared with the bool keyword and can only take the values true or false.",
+        "When the value is returned, \ntrue = 1 and \nfalse = 0."
+      ]
+    },
+    {
+      "heading": "Example",
+      "paragraphs": [
+        "bool isCodingFun = true;\nbool isFishTasty = false;\ncout << isCodingFun;  \n  // Outputs 1 (true)\ncout << isFishTasty; \n // Outputs 0 (false)"
+      ]
+    }
+  ]
+}
