@@ -1,0 +1,77 @@
+{
+  "topic": "tuples access",
+  "sections": [
+    {
+      "heading": "Access Tuple Items",
+      "description": "You can access tuple items by referring to the index number, inside square brackets:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Print the second item in the tuple:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thistuple = (\"apple\", \"banana\", \"cherry\")\n\nprint(thistuple[1])"
+        }
+      ]
+    },
+    {
+      "heading": "Negative Indexing",
+      "description": "Negative indexing means start from the end. -1 refers to the last item, -2 refers to the second last item etc.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Print the last item of the tuple:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thistuple = (\"apple\", \"banana\", \"cherry\")\n\nprint(thistuple[-1])"
+        }
+      ]
+    },
+    {
+      "heading": "Range of Indexes",
+      "description": "You can specify a range of indexes by specifying where to start and where to end the range. When specifying a range, the return value will be a new tuple with the specified items. By leaving out the start value, the range will start at the first item: By leaving out the end value, the range will go on to the end of the tuple:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Return the third, fourth, and fifth item:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thistuple = (\"apple\", \"banana\", \"cherry\", \"orange\", \"kiwi\", \"melon\", \"mango\")\n\nprint(thistuple[2:5])"
+        },
+        {
+          "example_title": "Example",
+          "notes": "This example returns the items from the beginning to, but NOT included, \"kiwi\":",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thistuple = (\"apple\", \"banana\", \"cherry\", \"orange\", \"kiwi\", \"melon\", \"mango\")\n\nprint(thistuple[:4])"
+        },
+        {
+          "example_title": "Example",
+          "notes": "This example returns the items from \"cherry\" and to the end:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thistuple = (\"apple\", \"banana\", \"cherry\", \"orange\", \"kiwi\", \"melon\", \"mango\")\n\nprint(thistuple[2:])"
+        }
+      ]
+    },
+    {
+      "heading": "Range of Negative Indexes",
+      "description": "Specify negative indexes if you want to start the search from the end of the tuple:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "This example returns the items from index -4 (included) to index -1 (excluded)",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thistuple = (\"apple\", \"banana\", \"cherry\", \"orange\", \"kiwi\", \"melon\", \"mango\")\n\nprint(thistuple[-4:-1])"
+        }
+      ]
+    },
+    {
+      "heading": "Check if Item Exists",
+      "description": "To determine if a specified item is present in a tuple use the in keyword:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Check if \"apple\" is present in the tuple:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thistuple = (\"apple\", \"banana\", \"cherry\")\n\n\u00bb\u00bbif \"apple\" in thistuple:\n\u00bb\u00bbprint(\"Yes, 'apple' is in the fruits\n\u00bb\u00bbtuple\")"
+        }
+      ]
+    }
+  ]
+}

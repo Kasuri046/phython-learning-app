@@ -1,0 +1,46 @@
+{
+  "topic": "lists copy",
+  "sections": [
+    {
+      "heading": "Copy a List",
+      "description": "You cannot copy a list simply by typing list2 = list1, because: list2 will only be a reference to list1, and changes made in list1 will automatically also be made in list2.",
+      "code_blocks": []
+    },
+    {
+      "heading": "Use the copy() method",
+      "description": "You can use the built-in List method copy() to copy a list.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Make a copy of a list with the copy() method:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\"]\nmylist\n\u00bb\u00bb= thislist.copy()\n\n\u00bb\u00bbprint(mylist)"
+        }
+      ]
+    },
+    {
+      "heading": "Use the list() method",
+      "description": "Another way to make a copy is to use the built-in method list().",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Make a copy of a list with the list() method:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\"]\nmylist\n\u00bb\u00bb= list(thislist)\n\n\u00bb\u00bbprint(mylist)"
+        }
+      ]
+    },
+    {
+      "heading": "Use the slice Operator",
+      "description": "You can also make a copy of a list by using the : (slice) operator.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Make a copy of a list with the : operator:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\"]\n\nmylist = thislist[:]\nprint(mylist)"
+        }
+      ]
+    }
+  ]
+}

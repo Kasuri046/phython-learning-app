@@ -1,0 +1,99 @@
+{
+  "topic": "arrays",
+  "sections": [
+    {
+      "heading": "Arrays",
+      "description": "Arrays are used to store multiple values in one single variable:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Create an array containing car names:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "cars = [\"Ford\", \"Volvo\", \"BMW\"]"
+        }
+      ]
+    },
+    {
+      "heading": "What is an Array?",
+      "description": "An array is a special variable, which can hold more than one value at a time. If you have a list of items (a list of car names, for example), storing the cars in single variables could look like this: However, what if you want to loop through the cars and find a specific one? And what if you had not 3 cars, but 300? The solution is an array! An array can hold many values under a single name, and you can access the values by referring to an index number.",
+      "code_blocks": []
+    },
+    {
+      "heading": "Access the Elements of an Array",
+      "description": "You refer to an array element by referring to the index number.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Get the value of the first array item:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = cars[0]"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Modify the value of the first array item:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "cars[0] = \"Toyota\""
+        }
+      ]
+    },
+    {
+      "heading": "The Length of an Array",
+      "description": "Use the len() method to return the length of an array (the number of elements in an array).",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Return the number of elements in the cars \narray:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = len(cars)"
+        }
+      ]
+    },
+    {
+      "heading": "Looping Array Elements",
+      "description": "You can use the for in loop to loop through all the elements of an array.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Print each item in the cars array:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "for x in cars:\n\u00bb\u00bbprint(x)"
+        }
+      ]
+    },
+    {
+      "heading": "Adding Array Elements",
+      "description": "You can use the append() method to add an element to an array.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Add one more element to the cars array:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "cars.append(\"Honda\")"
+        }
+      ]
+    },
+    {
+      "heading": "Removing Array Elements",
+      "description": "You can use the pop() method to remove an element from the array. You can also use the remove() method to remove an element from the array.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Delete the second element of the cars array:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "cars.pop(1)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Delete the element that has the value \"Volvo\":",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "cars.remove(\"Volvo\")"
+        }
+      ]
+    },
+    {
+      "heading": "Array Methods",
+      "description": "Python has a set of built-in methods that you can use on lists/arrays.",
+      "code_blocks": []
+    }
+  ]
+}

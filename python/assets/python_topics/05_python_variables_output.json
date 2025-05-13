@@ -1,0 +1,41 @@
+{
+  "topic": "variables output",
+  "sections": [
+    {
+      "heading": "Output Variables",
+      "description": "The Python print() function is often used to output variables. In the print() function, you output multiple variables, separated by a comma: You can also use the + operator to output multiple variables: For numbers, the + character works as a mathematical operator: In the print() function, when you try to combine a string and a number with the + operator, Python will give you an error: The best way to output multiple variables in the print() function is to separate them with commas, which even support different data types:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = \"Python is awesome\"\n\nprint(x)"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = \"Python\"\ny = \"is\"\nz = \"awesome\"\nprint(x, y, z)"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = \"Python \"\ny = \"is \"\nz = \"awesome\"\nprint(x\n\u00bb\u00bb+ y + z)"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = 5\ny = 10\nprint(x + y)"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh w3-border-red",
+          "code": "x = 5\ny = \"John\"\nprint(x + y)"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = 5\ny = \"John\"\nprint(x, y)"
+        }
+      ]
+    }
+  ]
+}

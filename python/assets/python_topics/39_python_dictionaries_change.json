@@ -1,0 +1,29 @@
+{
+  "topic": "dictionaries change",
+  "sections": [
+    {
+      "heading": "Change Values",
+      "description": "You can change the value of a specific item by referring to its key name:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Change the \"year\" to 2018:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisdict =\t{\n\n\u00bb\u00bb\"brand\": \"Ford\",\n\n\u00bb\u00bb\"model\": \"Mustang\",\n\n\u00bb\u00bb\"year\": 1964\n\n}\nthisdict[\"year\"] = 2018"
+        }
+      ]
+    },
+    {
+      "heading": "Update Dictionary",
+      "description": "The update() method will update the dictionary with the items from the given argument. The argument must be a dictionary, or an iterable object with key:value pairs.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Update the \"year\" of the car by using the update() \nmethod:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisdict =\t{\n\n\u00bb\u00bb\"brand\": \"Ford\",\n\n\u00bb\u00bb\"model\": \"Mustang\",\n\n\u00bb\u00bb\"year\": 1964\n\n}\nthisdict.update({\"year\": 2020})"
+        }
+      ]
+    }
+  ]
+}

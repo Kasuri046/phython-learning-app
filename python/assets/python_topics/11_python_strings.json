@@ -1,0 +1,127 @@
+{
+  "topic": "strings",
+  "sections": [
+    {
+      "heading": "Strings",
+      "description": "Strings in python are surrounded by either single quotation marks, or double quotation marks. 'hello' is the same as \"hello\". You can display a string literal with the print() function:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "print(\"Hello\")\n\nprint('Hello')"
+        }
+      ]
+    },
+    {
+      "heading": "Quotes Inside Quotes",
+      "description": "You can use quotes inside a string, as long as they don't match the quotes surrounding the string:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "print(\"It's alright\")\n\nprint(\"He is called 'Johnny'\")\n\nprint('He is called \"Johnny\"')"
+        }
+      ]
+    },
+    {
+      "heading": "Assign String to a Variable",
+      "description": "Assigning a string to a variable is done with the variable name followed by an equal sign and the string:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "a = \"Hello\"\nprint(a)"
+        }
+      ]
+    },
+    {
+      "heading": "Multiline Strings",
+      "description": "You can assign a multiline string to a variable by using three quotes: Or three single quotes:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "You can use three double quotes:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "a = \"\"\"Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit,\nsed do\n\u00bb\u00bbeiusmod tempor incididunt\nut labore et dolore magna aliqua.\"\"\"\nprint(a)"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "a = '''Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit,\nsed do\n\u00bb\u00bbeiusmod tempor incididunt\nut labore et dolore magna aliqua.'''\nprint(a)"
+        }
+      ]
+    },
+    {
+      "heading": "Strings are Arrays",
+      "description": "Like many other popular programming languages, strings in Python are arrays of bytes representing unicode characters. However, Python does not have a character data type, a single character is simply a string with a length of 1. Square brackets can be used to access elements of the string.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Get the character at position 1 (remember that the first character has the \nposition 0):",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "a = \"Hello, World!\"\n\nprint(a[1])"
+        }
+      ]
+    },
+    {
+      "heading": "Looping Through a String",
+      "description": "Since strings are arrays, we can loop through the characters in a string, with a for loop. Learn more about For Loops in our Python For Loops chapter.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Loop through the letters in the word \"banana\":",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "for x in \"banana\":\n\u00bb\u00bbprint(x)"
+        }
+      ]
+    },
+    {
+      "heading": "String Length",
+      "description": "To get the length of a string, use the len() function.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "The len() function returns the length of a string:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "a = \"Hello, World!\"\n\nprint(len(a))"
+        }
+      ]
+    },
+    {
+      "heading": "Check String",
+      "description": "To check if a certain phrase or character is present in a string, we can use the keyword in. Use it in an if statement: Learn more about If statements in our Python If...Else chapter.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Check if \"free\" is present in the following text:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "txt = \"The best things in life are free!\"\nprint(\"free\" in txt)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Print only if \"free\" is present:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "txt = \"The best things in life are free!\"\nif \"free\" in txt:\n\nprint(\"Yes, 'free' is present.\")"
+        }
+      ]
+    },
+    {
+      "heading": "Check if NOT",
+      "description": "To check if a certain phrase or character is NOT present in a string, we can use the keyword not in. Use it in an if statement:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Check if \"expensive\" is NOT present in the following text:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "txt = \"The best things in life are free!\"\nprint(\"expensive\" not in txt)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "print only if \"expensive\" is NOT present:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "txt = \"The best things in life are free!\"\nif \"expensive\" not in txt:\n\nprint(\"No, 'expensive' is NOT present.\")"
+        }
+      ]
+    }
+  ]
+}

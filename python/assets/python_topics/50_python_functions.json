@@ -1,0 +1,205 @@
+{
+  "topic": "functions",
+  "sections": [
+    {
+      "heading": "Creating a Function",
+      "description": "In Python a function is defined using the def keyword:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def my_function():\n\u00bb\u00bbprint(\"Hello from a function\")"
+        }
+      ]
+    },
+    {
+      "heading": "Calling a Function",
+      "description": "To call a function, use the function name followed by parenthesis:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def my_function():\n\u00bb\u00bbprint(\"Hello from a function\")\n\n\n\u00bb\u00bbmy_function()"
+        }
+      ]
+    },
+    {
+      "heading": "Arguments",
+      "description": "Information can be passed into functions as arguments. Arguments are specified after the function name, inside the parentheses. You can add as many arguments as you want, just separate them with a comma. The following example has a function with one argument (fname). When the function is called, we pass along a first name, which is used inside the function to print the full name:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def my_function(fname):\n\u00bb\u00bbprint(fname + \" Refsnes\")\n\n\n\u00bb\u00bbmy_function(\"Emil\")\nmy_function(\"Tobias\")\nmy_function(\"Linus\")"
+        }
+      ]
+    },
+    {
+      "heading": "Parameters or Arguments?",
+      "description": "The terms parameter and argument can be used for the same thing: information that are passed into a function.",
+      "code_blocks": []
+    },
+    {
+      "heading": "Number of Arguments",
+      "description": "By default, a function must be called with the correct number of arguments. Meaning that if your function expects 2 arguments, you have to call the function with 2 arguments, not more, and not less.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "This function expects 2 arguments, and gets 2 arguments:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def my_function(fname, lname):\n\u00bb\u00bbprint(fname + \" \" + lname)\n\n\n\u00bb\u00bbmy_function(\"Emil\", \"Refsnes\")"
+        },
+        {
+          "example_title": "Example",
+          "notes": "This function expects 2 arguments, but gets only 1:",
+          "raw_html_class": "w3-code notranslate pythonHigh w3-border-red",
+          "code": "def my_function(fname, lname):\n\u00bb\u00bbprint(fname + \" \" + lname)\n\n\n\u00bb\u00bbmy_function(\"Emil\")"
+        }
+      ]
+    },
+    {
+      "heading": "Arbitrary Arguments, *args",
+      "description": "If you do not know how many arguments that will be passed into your function, add a * before the parameter name in the function definition. This way the function will receive a tuple of arguments, and can access the items accordingly:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "If the number of arguments is unknown, add a * before the parameter name:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def my_function(*kids):\n\u00bb\u00bbprint(\"The youngest child\n\u00bb\u00bbis \" + kids[2])\n\n\n\u00bb\u00bbmy_function(\"Emil\", \"Tobias\", \"Linus\")"
+        }
+      ]
+    },
+    {
+      "heading": "Keyword Arguments",
+      "description": "You can also send arguments with the key = value syntax. This way the order of the arguments does not matter.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def my_function(child3, child2, child1):\n\u00bb\u00bbprint(\"The youngest child\n\u00bb\u00bbis \" + child3)\n\n\n\u00bb\u00bbmy_function(child1 = \"Emil\", child2 = \"Tobias\", child3 = \"Linus\")"
+        }
+      ]
+    },
+    {
+      "heading": "Arbitrary Keyword Arguments, **kwargs",
+      "description": "If you do not know how many keyword arguments that will be passed into your function, add two asterisk: ** before the parameter name in the function definition. This way the function will receive a dictionary of arguments, and can access the items accordingly:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "If the number of keyword arguments is unknown, add a double\n  ** before the parameter name:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def my_function(**kid):\n\u00bb\u00bbprint(\"His last name is \" + kid[\"lname\"])\n\n\nmy_function(fname = \"Tobias\", lname = \"Refsnes\")"
+        }
+      ]
+    },
+    {
+      "heading": "Default Parameter Value",
+      "description": "The following example shows how to use a default parameter value. If we call the function without argument, it uses the default value:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def my_function(country = \"Norway\"):\n\u00bb\u00bbprint(\"I am from \" +\n\u00bb\u00bbcountry)\n\n\n\u00bb\u00bbmy_function(\"Sweden\")\nmy_function(\"India\")\nmy_function()\nmy_function(\"Brazil\")"
+        }
+      ]
+    },
+    {
+      "heading": "Passing a List as an Argument",
+      "description": "You can send any data types of argument to a function (string, number, list, dictionary etc.), and it will be treated as the same data type inside the function. E.g. if you send a List as an argument, it will still be a List when it reaches the function:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def my_function(food):\n\u00bb\u00bbfor x in food:\n\n\u00bb\u00bbprint(x)\n\nfruits = [\"apple\", \"banana\", \"cherry\"]\n\n\n\u00bb\u00bbmy_function(fruits)"
+        }
+      ]
+    },
+    {
+      "heading": "Return Values",
+      "description": "To let a function return a value, use the return statement:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def my_function(x):\n\u00bb\u00bbreturn 5 * x\n\nprint(my_function(3))\nprint(my_function(5))\n\n\u00bb\u00bbprint(my_function(9))"
+        }
+      ]
+    },
+    {
+      "heading": "The pass Statement",
+      "description": "function definitions cannot be empty, but if you for some reason have a function definition with no content, put in the pass statement to avoid getting an error.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def myfunction():\n\u00bb\u00bbpass"
+        }
+      ]
+    },
+    {
+      "heading": "Positional-Only Arguments",
+      "description": "You can specify that a function can have ONLY positional arguments, or ONLY keyword arguments. To specify that a function can have only positional arguments, add , / after the arguments: Without the , / you are actually allowed to use keyword arguments even if the function expects positional arguments: But when adding the , / you will get an error if you try to send a keyword argument:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def my_function(x, /):\n\u00bb\u00bbprint(x)\n\nmy_function(3)"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def my_function(x):\n\u00bb\u00bbprint(x)\n\nmy_function(x = 3)"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def my_function(x, /):\n\u00bb\u00bbprint(x)\n\nmy_function(x = 3)"
+        }
+      ]
+    },
+    {
+      "heading": "Keyword-Only Arguments",
+      "description": "To specify that a function can have only keyword arguments, add *, before the arguments: Without the *, you are allowed to use positional arguments even if the function expects keyword arguments: But with the *, you will get an error if you try to send a positional argument:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def my_function(*, x):\n\u00bb\u00bbprint(x)\n\nmy_function(x = 3)"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def my_function(x):\n\u00bb\u00bbprint(x)\n\nmy_function(3)"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def my_function(*, x):\n\u00bb\u00bbprint(x)\n\nmy_function(3)"
+        }
+      ]
+    },
+    {
+      "heading": "Combine Positional-Only and Keyword-Only",
+      "description": "You can combine the two argument types in the same function. Any argument before the / , are positional-only, and any argument after the *, are keyword-only.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def my_function(a, b, /, *, c, d):\n\u00bb\u00bbprint(a + b + c + d)\n\n\n\u00bb\u00bbmy_function(5, 6, c = 7, d = 8)"
+        }
+      ]
+    },
+    {
+      "heading": "Recursion",
+      "description": "Python also accepts function recursion, which means a defined function can call itself. Recursion is a common mathematical and programming concept. It means that a function calls itself. This has the benefit of meaning that you can loop through data to reach a result. The developer should be very careful with recursion as it can be quite easy to slip into writing a function which never terminates, or one that uses excess amounts of memory or processor power. However, when written correctly recursion can be a very efficient and mathematically-elegant approach to programming. In this example, tri_recursion() is a function that we have defined to call itself (\"recurse\"). We use the k variable as the data, which decrements (-1) every time we recurse. The recursion ends when the condition is not greater than 0 (i.e. when it is 0). To a new developer it can take some time to work out how exactly this works, best way to find out is by testing and modifying it.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Recursion Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def tri_recursion(k):\n\n\nif(k > 0):\n\n\nresult = k + tri_recursion(k - 1)\n\n\nprint(result)\n\n\nelse:\n\n\nresult = 0\n\n\nreturn result\n\n\n\nprint(\"Recursion Example Results:\")\n\ntri_recursion(6)"
+        }
+      ]
+    }
+  ]
+}

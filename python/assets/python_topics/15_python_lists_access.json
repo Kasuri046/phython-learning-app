@@ -1,0 +1,59 @@
+{
+  "topic": "lists access",
+  "sections": [
+    {
+      "heading": "Access Items",
+      "description": "List items are indexed and you can access them by referring to the index number: Negative indexing means start from the end -1 refers to the last item, -2 refers to the second last item etc. You can specify a range of indexes by specifying where to start and where to end the range. When specifying a range, the return value will be a new list with the specified items. By leaving out the start value, the range will start at the first item: By leaving out the end value, the range will go on to the end of the list: Specify negative indexes if you want to start the search from the end of the list:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Print the second item of the list:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\"]\n\nprint(thislist[1])"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Print the last item of the list:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\"]\n\nprint(thislist[-1])"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Return the third, fourth, and fifth item:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\", \"orange\",\n\u00bb\u00bb\"kiwi\", \"melon\", \"mango\"]\n\nprint(thislist[2:5])"
+        },
+        {
+          "example_title": "Example",
+          "notes": "This example returns the items from the beginning to, but NOT including, \"kiwi\":",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\", \"orange\",\n\u00bb\u00bb\"kiwi\", \"melon\", \"mango\"]\n\nprint(thislist[:4])"
+        },
+        {
+          "example_title": "Example",
+          "notes": "This example returns the items from \"cherry\" to the end:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\", \"orange\",\n\u00bb\u00bb\"kiwi\", \"melon\", \"mango\"]\n\nprint(thislist[2:])"
+        },
+        {
+          "example_title": "Example",
+          "notes": "This example returns the items from \"orange\" (-4) to, but NOT including \n\"mango\" (-1):",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\", \"orange\",\n\u00bb\u00bb\"kiwi\", \"melon\", \"mango\"]\n\nprint(thislist[-4:-1])"
+        }
+      ]
+    },
+    {
+      "heading": "Check if Item Exists",
+      "description": "To determine if a specified item is present in a list use the in keyword:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Check if \"apple\" is present in the list:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\"]\n\n\u00bb\u00bbif \"apple\" in thislist:\n\u00bb\u00bbprint(\"Yes, 'apple' is in the fruits list\")"
+        }
+      ]
+    }
+  ]
+}

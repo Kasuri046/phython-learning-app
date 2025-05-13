@@ -1,0 +1,29 @@
+{
+  "topic": "sets access",
+  "sections": [
+    {
+      "heading": "Access Items",
+      "description": "You cannot access items in a set by referring to an index or a key. But you can loop through the set items using a for loop, or ask if a specified value is present in a set, by using the in keyword.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Loop through the set, and print the values:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisset = {\"apple\", \"banana\", \"cherry\"}\n\nfor x in thisset:\n\u00bb\u00bbprint(x)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Check if \"banana\" is present in the set:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisset = {\"apple\", \"banana\", \"cherry\"}\n\nprint(\"banana\"\n\u00bb\u00bbin thisset)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Check if \"banana\" is NOT present in the set:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisset = {\"apple\", \"banana\", \"cherry\"}\n\nprint(\"banana\"\n\u00bb\u00bbnot in thisset)"
+        }
+      ]
+    }
+  ]
+}

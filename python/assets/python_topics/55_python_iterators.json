@@ -1,0 +1,70 @@
+{
+  "topic": "iterators",
+  "sections": [
+    {
+      "heading": "Python Iterators",
+      "description": "An iterator is an object that contains a countable number of values. An iterator is an object that can be iterated upon, meaning that you can traverse through all the values. Technically, in Python, an iterator is an object which implements the iterator protocol, which consist of the methods __iter__() and __next__().",
+      "code_blocks": []
+    },
+    {
+      "heading": "Iterator vs Iterable",
+      "description": "Lists, tuples, dictionaries, and sets are all iterable objects. They are iterable containers which you can get an iterator from. All these objects have a iter() method which is used to get an iterator: Even strings are iterable objects, and can return an iterator:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Return an iterator from a tuple, and print each value:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "mytuple = (\"apple\", \"banana\", \"cherry\")\nmyit = iter(mytuple)\n\n\n\u00bb\u00bb\u00bb\u00bbprint(next(myit))\nprint(next(myit))\nprint(next(myit))"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Strings are also iterable objects, containing a sequence of characters:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "mystr = \"banana\"\nmyit = iter(mystr)\n\n\n\u00bb\u00bb\u00bb\u00bbprint(next(myit))\nprint(next(myit))\nprint(next(myit))\n\n\u00bb\u00bb\u00bb\u00bbprint(next(myit))\nprint(next(myit))\nprint(next(myit))"
+        }
+      ]
+    },
+    {
+      "heading": "Looping Through an Iterator",
+      "description": "We can also use a for loop to iterate through an iterable object: The for loop actually creates an iterator object and executes the next() method for each loop.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Iterate the values of a tuple:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "mytuple = (\"apple\", \"banana\", \"cherry\")\n\n\nfor x in mytuple:\n\n\u00bb\u00bb\u00bb\u00bb\u00bb\u00bbprint(x)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Iterate the characters of a string:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "mystr = \"banana\"\n\n\nfor x in mystr:\n\n\u00bb\u00bb\u00bb\u00bb\u00bb\u00bbprint(x)"
+        }
+      ]
+    },
+    {
+      "heading": "Create an Iterator",
+      "description": "To create an object/class as an iterator you have to implement the methods __iter__() and __next__() to your object. As you have learned in the Python Classes/Objects chapter, all classes have a function called __init__(), which allows you to do some initializing when the object is being created. The __iter__() method acts similar, you can do operations (initializing etc.), but must always return the iterator object itself. The __next__() method also allows you to do operations, and must return the next item in the sequence.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Create an iterator that returns numbers, starting with 1, and each sequence \nwill increase by one (returning 1,2,3,4,5 etc.):",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class MyNumbers:\n\u00bb\u00bbdef __iter__(self):\n\u00bb\u00bb\u00bb\u00bbself.a =\n\u00bb\u00bb1\n\u00bb\u00bb\u00bb\u00bbreturn self\n\n\u00bb\u00bbdef __next__(self):\n\n\u00bb\u00bbx = self.a\n\u00bb\u00bb\u00bb\u00bbself.a += 1\n\u00bb\u00bb\u00bb\u00bbreturn x\n\n\nmyclass = MyNumbers()\nmyiter =\n\u00bb\u00bb\u00bbiter(myclass)\n\nprint(next(myiter))\n\n\u00bb\u00bbprint(next(myiter))\nprint(next(myiter))\nprint(next(myiter))\n\n\u00bb\u00bbprint(next(myiter))"
+        }
+      ]
+    },
+    {
+      "heading": "StopIteration",
+      "description": "The example above would continue forever if you had enough next() statements, or if it was used in a for loop. To prevent the iteration from going on forever, we can use the StopIteration statement. In the __next__() method, we can add a terminating condition to raise an error if the iteration is done a specified number of times:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Stop after 20 iterations:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class MyNumbers:\n\u00bb\u00bbdef __iter__(self):\n\u00bb\u00bb\u00bb\u00bbself.a =\n\u00bb\u00bb1\n\u00bb\u00bb\u00bb\u00bbreturn self\n\n\u00bb\u00bbdef __next__(self):\n\n\u00bb\u00bbif self.a <= 20:\n\u00bb\u00bb\u00bb\u00bb\u00bb\u00bbx = self.a\n\n\u00bb\u00bbself.a += 1\n\u00bb\u00bb\u00bb\u00bb\u00bb\u00bbreturn x\n\n\u00bb\u00bbelse:\n\u00bb\u00bb\u00bb\u00bb\u00bb\u00bbraise StopIteration\n\nmyclass =\n\u00bb\u00bbMyNumbers()\nmyiter =\n\u00bb\u00bb\u00bbiter(myclass)\n\nfor x in myiter:\n\n\u00bb\u00bbprint(x)"
+        }
+      ]
+    }
+  ]
+}

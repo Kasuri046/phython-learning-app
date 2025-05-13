@@ -1,0 +1,53 @@
+{
+  "topic": "lists add",
+  "sections": [
+    {
+      "heading": "Append Items",
+      "description": "To add an item to the end of the list, use the append() method:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Using the append() method to append an item:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\"]\n\nthislist.append(\"orange\")\n\nprint(thislist)"
+        }
+      ]
+    },
+    {
+      "heading": "Insert Items",
+      "description": "To insert a list item at a specified index, use the insert() method. The insert() method inserts an item at the specified index:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Insert an item as the second position:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\"]\n\nthislist.insert(1, \"orange\")\n\nprint(thislist)"
+        }
+      ]
+    },
+    {
+      "heading": "Extend List",
+      "description": "To append elements from another list to the current list, use the extend() method. The elements will be added to the end of the list.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Add the elements of tropical to thislist:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\"]\n\ntropical = [\"mango\", \"pineapple\", \"papaya\"]\n\nthislist.extend(tropical)\n\nprint(thislist)"
+        }
+      ]
+    },
+    {
+      "heading": "Add Any Iterable",
+      "description": "The extend() method does not have to append lists, you can add any iterable object (tuples, sets, dictionaries etc.).",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Add elements of a tuple to a list:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\"]\n\n\u00bb\u00bbthistuple = (\"kiwi\", \"orange\")\n\nthislist.extend(thistuple)\n\nprint(thislist)"
+        }
+      ]
+    }
+  ]
+}

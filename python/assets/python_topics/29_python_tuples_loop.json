@@ -1,0 +1,41 @@
+{
+  "topic": "tuples loop",
+  "sections": [
+    {
+      "heading": "Loop Through a Tuple",
+      "description": "You can loop through the tuple items by using a for loop. Learn more about for loops in our Python For Loops Chapter.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Iterate through the items and print the values:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thistuple = (\"apple\", \"banana\", \"cherry\")\n\n\u00bb\u00bbfor x in thistuple:\n\u00bb\u00bbprint(x)"
+        }
+      ]
+    },
+    {
+      "heading": "Loop Through the Index Numbers",
+      "description": "You can also loop through the tuple items by referring to their index number. Use the range() and len() functions to create a suitable iterable.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Print all items by referring to their index number:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thistuple = (\"apple\", \"banana\", \"cherry\")\n\nfor i in range(len(thistuple)):\n\n\u00bb\u00bbprint(thistuple[i])"
+        }
+      ]
+    },
+    {
+      "heading": "Using a While Loop",
+      "description": "You can loop through the tuple items by using a while loop. Use the len() function to determine the length of the tuple, then start at 0 and loop your way through the tuple items by referring to their indexes. Remember to increase the index by 1 after each iteration. Learn more about while loops in our Python While Loops Chapter.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Print all items, using a while loop to go through all the index numbers:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thistuple = (\"apple\", \"banana\", \"cherry\")\n\ni = 0\n\nwhile i < len(thistuple):\n\n\u00bb\u00bbprint(thistuple[i])\n\n\u00bb\u00bbi = i + 1"
+        }
+      ]
+    }
+  ]
+}

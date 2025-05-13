@@ -1,0 +1,41 @@
+{
+  "topic": "sets add",
+  "sections": [
+    {
+      "heading": "Add Items",
+      "description": "To add one item to a set use the add() method.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Add an item to a set, using the add() \nmethod:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisset = {\"apple\", \"banana\", \"cherry\"}\n\n\n\u00bb\u00bbthisset.add(\"orange\")\n\nprint(thisset)"
+        }
+      ]
+    },
+    {
+      "heading": "Add Sets",
+      "description": "To add items from another set into the current set, use the update() method.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Add elements from tropical into \nthisset:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisset = {\"apple\", \"banana\", \"cherry\"}\ntropical = {\"pineapple\", \"mango\", \"papaya\"}\n\n\n\u00bb\u00bbthisset.update(tropical)\n\n\nprint(thisset)"
+        }
+      ]
+    },
+    {
+      "heading": "Add Any Iterable",
+      "description": "The object in the update() method does not have to be a set, it can be any iterable object (tuples, lists, dictionaries etc.).",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Add elements of a list to at set:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisset = {\"apple\", \"banana\", \"cherry\"}\n\n\u00bb\u00bbmylist = [\"kiwi\", \"orange\"]\n\n\n\u00bb\u00bbthisset.update(mylist)\n\n\nprint(thisset)"
+        }
+      ]
+    }
+  ]
+}

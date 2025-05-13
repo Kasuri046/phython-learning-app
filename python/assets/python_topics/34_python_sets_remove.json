@@ -1,0 +1,41 @@
+{
+  "topic": "sets remove",
+  "sections": [
+    {
+      "heading": "Remove Item",
+      "description": "To remove an item in a set, use the remove(), or the discard() method. You can also use the pop() method to remove an item, but this method will remove a random item, so you cannot be sure what item that gets removed. The return value of the pop() method is the removed item.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Remove \"banana\" by using the remove() \nmethod:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisset = {\"apple\", \"banana\", \"cherry\"}\n\n\n\u00bb\u00bbthisset.remove(\"banana\")\n\n\n\u00bb\u00bbprint(thisset)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Remove \"banana\" by using the discard() \nmethod:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisset = {\"apple\", \"banana\", \"cherry\"}\n\n\n\u00bb\u00bbthisset.discard(\"banana\")\n\n\n\u00bb\u00bbprint(thisset)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Remove a random item by using the pop() \nmethod:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisset = {\"apple\", \"banana\", \"cherry\"}\n\n\n\u00bb\u00bbx =\n\u00bb\u00bbthisset.pop()\n\nprint(x)\n\n\n\u00bb\u00bbprint(thisset)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "The clear() \nmethod empties the set:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisset = {\"apple\", \"banana\", \"cherry\"}\n\n\n\u00bb\u00bbthisset.clear()\n\n\n\u00bb\u00bbprint(thisset)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "The del keyword will delete the set \ncompletely:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisset = {\"apple\", \"banana\", \"cherry\"}\n\n\n\u00bb\u00bbdel\n\u00bb\u00bbthisset\n\n\n\u00bb\u00bbprint(thisset)"
+        }
+      ]
+    }
+  ]
+}

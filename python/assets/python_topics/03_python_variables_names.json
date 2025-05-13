@@ -1,0 +1,43 @@
+{
+  "topic": "variables names",
+  "sections": [
+    {
+      "heading": "Variable Names",
+      "description": "A variable can have a short name (like x and y) or a more descriptive name (age, carname, total_volume). Rules for Python variables:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Legal variable names:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "myvar = \"John\"\nmy_var = \"John\"\n_my_var = \"John\"\nmyVar = \"John\"\n\n\u00bb\u00bbMYVAR = \"John\"\nmyvar2 = \"John\""
+        },
+        {
+          "example_title": "Example",
+          "notes": "Illegal variable names:",
+          "raw_html_class": "w3-code notranslate pythonHigh w3-border-red",
+          "code": "2myvar = \"John\"\nmy-var = \"John\"\n\n\u00bb\u00bbmy var = \"John\""
+        }
+      ]
+    },
+    {
+      "heading": "Multi Words Variable Names",
+      "description": "Variable names with more than one word can be difficult to read. There are several techniques you can use to make them more readable:",
+      "code_blocks": []
+    },
+    {
+      "heading": "Camel Case",
+      "description": "Each word, except the first, starts with a capital letter:",
+      "code_blocks": []
+    },
+    {
+      "heading": "Pascal Case",
+      "description": "Each word starts with a capital letter:",
+      "code_blocks": []
+    },
+    {
+      "heading": "Snake Case",
+      "description": "Each word is separated by an underscore character:",
+      "code_blocks": []
+    }
+  ]
+}

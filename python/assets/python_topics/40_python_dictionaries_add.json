@@ -1,0 +1,28 @@
+{
+  "topic": "dictionaries add",
+  "sections": [
+    {
+      "heading": "Adding Items",
+      "description": "Adding an item to the dictionary is done by using a new index key and assigning a value to it:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisdict =\t{\n\n\u00bb\u00bb\"brand\": \"Ford\",\n\n\u00bb\u00bb\"model\": \"Mustang\",\n\n\u00bb\u00bb\"year\": 1964\n\n}\nthisdict[\"color\"] = \"red\"\nprint(thisdict)"
+        }
+      ]
+    },
+    {
+      "heading": "Update Dictionary",
+      "description": "The update() method will update the dictionary with the items from a given argument. If the item does not exist, the item will be added. The argument must be a dictionary, or an iterable object with key:value pairs.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Add a color item to the dictionary by using the update() \nmethod:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisdict =\t{\n\n\u00bb\u00bb\"brand\": \"Ford\",\n\n\u00bb\u00bb\"model\": \"Mustang\",\n\n\u00bb\u00bb\"year\": 1964\n\n}\nthisdict.update({\"color\":\n\u00bb\u00bb\"red\"})"
+        }
+      ]
+    }
+  ]
+}

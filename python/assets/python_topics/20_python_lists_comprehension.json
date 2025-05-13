@@ -1,0 +1,69 @@
+{
+  "topic": "lists comprehension",
+  "sections": [
+    {
+      "heading": "List Comprehension",
+      "description": "List comprehension offers a shorter syntax when you want to create a new list based on the values of an existing list. Example: Based on a list of fruits, you want a new list, containing only the fruits with the letter \"a\" in the name. Without list comprehension you will have to write a for statement with a conditional test inside: With list comprehension you can do all that with only one line of code:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "fruits = [\"apple\", \"banana\", \"cherry\", \"kiwi\", \"mango\"]\nnewlist = []\n\n\nfor x in fruits:\n\u00bb\u00bbif \"a\" in x:\n\n\u00bb\u00bbnewlist.append(x)\n\nprint(newlist)"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "fruits = [\"apple\", \"banana\", \"cherry\", \"kiwi\", \"mango\"]\n\nnewlist = [x\n\u00bb\u00bbfor x in fruits if \"a\" in x]\n\nprint(newlist)"
+        }
+      ]
+    },
+    {
+      "heading": "The Syntax",
+      "description": "The return value is a new list, leaving the old list unchanged. The condition is like a filter that only accepts the items that evaluate to True. The condition if x != \"apple\" will return True for all elements other than \"apple\", making the new list contain all fruits except \"apple\". The condition is optional and can be omitted: The iterable can be any iterable object, like a list, tuple, set etc. Same example, but with a condition: The expression is the current item in the iteration, but it is also the outcome, which you can manipulate before it ends up like a list item in the new list: You can set the outcome to whatever you like: The expression can also contain conditions, not like a filter, but as a way to manipulate the outcome: The expression in the example above says: \"Return the item if it is not banana, if it is banana return orange\".",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Only accept items that are not \"apple\":",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "newlist = [x for x in fruits if x != \"apple\"]"
+        },
+        {
+          "example_title": "Example",
+          "notes": "With no if statement:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "newlist = [x for x in fruits]"
+        },
+        {
+          "example_title": "Example",
+          "notes": "You can use the range() function to create an iterable:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "newlist = [x for x in range(10)]"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Accept only numbers lower than 5:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "newlist = [x for x in range(10) if x < 5]"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Set the values in the new list to upper case:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "newlist = [x.upper()\n\u00bb\u00bbfor x in fruits]"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Set all values in the new list to 'hello':",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "newlist = ['hello' for x in fruits]"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Return \"orange\" instead of \"banana\":",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "newlist = [x if x != \"banana\" else \"orange\"\n\u00bb\u00bbfor x in fruits]"
+        }
+      ]
+    }
+  ]
+}

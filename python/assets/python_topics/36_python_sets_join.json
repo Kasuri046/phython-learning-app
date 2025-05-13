@@ -1,0 +1,148 @@
+{
+  "topic": "sets join",
+  "sections": [
+    {
+      "heading": "Join Sets",
+      "description": "There are several ways to join two or more sets in Python. The union() and update() methods joins all items from both sets. The intersection() method keeps ONLY the duplicates. The difference() method keeps the items from the first set that are not in the other set(s). The symmetric_difference() method keeps all items EXCEPT the duplicates.",
+      "code_blocks": []
+    },
+    {
+      "heading": "Union",
+      "description": "The union() method returns a new set with all items from both sets. You can use the | operator instead of the union() method, and you will get the same result.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Join set1 and set2 into a new set:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "set1 = {\"a\", \"b\", \"c\"}\nset2 = {1, 2, 3}\n\n\n\u00bb\u00bbset3 = set1.union(set2)\nprint(set3)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Use | to join two sets:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "set1 = {\"a\", \"b\", \"c\"}\nset2 = {1, 2, 3}\n\n\n\u00bb\u00bbset3 = set1 | set2\nprint(set3)"
+        }
+      ]
+    },
+    {
+      "heading": "Join Multiple Sets",
+      "description": "All the joining methods and operators can be used to join multiple sets. When using a method, just add more sets in the parentheses, separated by commas: When using the | operator, separate the sets with more | operators:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Join multiple sets with the union() method:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "set1 = {\"a\", \"b\", \"c\"}\nset2 = {1, 2, 3}\nset3 = {\"John\", \"Elena\"}\nset4 = {\"apple\",\n\u00bb\u00bb\"bananas\", \"cherry\"}\n\n\n\u00bb\u00bbmyset = set1.union(set2, set3, set4)\nprint(myset)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Use | to join two sets:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "set1 = {\"a\", \"b\", \"c\"}\nset2 = {1, 2, 3}\nset3 = {\"John\", \"Elena\"}\nset4 = {\"apple\",\n\u00bb\u00bb\"bananas\", \"cherry\"}\n\n\n\u00bb\u00bbmyset = set1 | set2 | set3 |set4\nprint(myset)"
+        }
+      ]
+    },
+    {
+      "heading": "Join a Set and a Tuple",
+      "description": "The union() method allows you to join a set with other data types, like lists or tuples. The result will be a set.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Join a set with a tuple:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = {\"a\", \"b\", \"c\"}\ny = (1, 2, 3)\n\n\n\u00bb\u00bbz = x.union(y)\nprint(z)"
+        }
+      ]
+    },
+    {
+      "heading": "Update",
+      "description": "The update() method inserts all items from one set into another. The update() changes the original set, and does not return a new set.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "The update() method inserts the items in set2 into set1:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "set1 = {\"a\", \"b\" , \"c\"}\nset2 = {1, 2, 3}\n\n\n\u00bb\u00bbset1.update(set2)\nprint(set1)"
+        }
+      ]
+    },
+    {
+      "heading": "Intersection",
+      "description": "Keep ONLY the duplicates The intersection() method will return a new set, that only contains the items that are present in both sets. You can use the & operator instead of the intersection() method, and you will get the same result. The intersection_update() method will also keep ONLY the duplicates, but it will change the original set instead of returning a new set. The values True and 1 are considered the same value. The same goes for False and 0.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Join set1 and set2, but keep only the duplicates:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "set1 = {\"apple\", \"banana\", \"cherry\"}\nset2 = {\"google\", \"microsoft\", \"apple\"}\n\n\n\u00bb\u00bbset3 = set1.intersection(set2)\nprint(set3)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Use & to join two sets:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "set1 = {\"apple\", \"banana\", \"cherry\"}\nset2 = {\"google\", \"microsoft\", \"apple\"}\n\n\n\u00bb\u00bbset3 = set1\n\u00bb\u00bb& set2\nprint(set3)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Keep the items that exist in both set1, and \nset2:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "set1 = {\"apple\", \"banana\", \"cherry\"}\nset2 = {\"google\", \"microsoft\", \"apple\"}\n\n\nset1.intersection_update(set2)\n\nprint(set1)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Join sets that contains the values True,\nFalse, 1, and\n0, and see what is considered as duplicates:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "set1 = {\"apple\", 1,  \"banana\", 0, \"cherry\"}\n\n\u00bb\u00bbset2 = {False, \"google\",\n\u00bb\u00bb1, \"apple\", 2, True}\n\n\nset3 = set1.intersection(set2)\n\nprint(set3)"
+        }
+      ]
+    },
+    {
+      "heading": "Difference",
+      "description": "The difference() method will return a new set that will contain only the items from the first set that are not present in the other set. You can use the - operator instead of the difference() method, and you will get the same result. The difference_update() method will also keep the items from the first set that are not in the other set, but it will change the original set instead of returning a new set.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Keep all items from set1 that are not in set2:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "set1 = {\"apple\", \"banana\", \"cherry\"}\nset2 = {\"google\", \"microsoft\", \"apple\"}\n\n\nset3 = set1.difference(set2)\n\nprint(set3)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Use - to join two sets:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "set1 = {\"apple\", \"banana\", \"cherry\"}\nset2 = {\"google\", \"microsoft\", \"apple\"}\n\n\n\u00bb\u00bbset3 = set1 - set2\nprint(set3)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Use the difference_update() method to keep the items that are not present in both sets:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "set1 = {\"apple\", \"banana\", \"cherry\"}\nset2 = {\"google\", \"microsoft\", \"apple\"}\n\n\nset1.difference_update(set2)\n\nprint(set1)"
+        }
+      ]
+    },
+    {
+      "heading": "Symmetric Differences",
+      "description": "The symmetric_difference() method will keep only the elements that are NOT present in both sets. You can use the ^ operator instead of the symmetric_difference() method, and you will get the same result. The symmetric_difference_update() method will also keep all but the duplicates, but it will change the original set instead of returning a new set.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Keep the items that are not present in both sets:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "set1 = {\"apple\", \"banana\", \"cherry\"}\nset2 = {\"google\", \"microsoft\", \"apple\"}\n\n\nset3 = set1.symmetric_difference(set2)\n\nprint(set3)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Use ^ to join two sets:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "set1 = {\"apple\", \"banana\", \"cherry\"}\nset2 = {\"google\", \"microsoft\", \"apple\"}\n\n\n\u00bb\u00bbset3 = set1 ^ set2\nprint(set3)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Use the symmetric_difference_update() method to keep the items that are not present in both sets:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "set1 = {\"apple\", \"banana\", \"cherry\"}\nset2 = {\"google\", \"microsoft\", \"apple\"}\n\n\nset1.symmetric_difference_update(set2)\n\nprint(set1)"
+        }
+      ]
+    }
+  ]
+}

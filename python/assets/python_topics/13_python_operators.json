@@ -1,0 +1,75 @@
+{
+  "topic": "operators",
+  "sections": [
+    {
+      "heading": "Python Operators",
+      "description": "Operators are used to perform operations on variables and values. In the example below, we use the + operator to add together two values: Python divides the operators in the following groups:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "print(10 + 5)"
+        }
+      ]
+    },
+    {
+      "heading": "Python Arithmetic Operators",
+      "description": "Arithmetic operators are used with numeric values to perform common mathematical operations:",
+      "code_blocks": []
+    },
+    {
+      "heading": "Python Assignment Operators",
+      "description": "Assignment operators are used to assign values to variables:",
+      "code_blocks": []
+    },
+    {
+      "heading": "Python Comparison Operators",
+      "description": "Comparison operators are used to compare two values:",
+      "code_blocks": []
+    },
+    {
+      "heading": "Python Logical Operators",
+      "description": "Logical operators are used to combine conditional statements:",
+      "code_blocks": []
+    },
+    {
+      "heading": "Python Identity Operators",
+      "description": "Identity operators are used to compare the objects, not if they are equal, but if they are actually the same object, with the same memory location:",
+      "code_blocks": []
+    },
+    {
+      "heading": "Python Membership Operators",
+      "description": "Membership operators are used to test if a sequence is presented in an object:",
+      "code_blocks": []
+    },
+    {
+      "heading": "Python Bitwise Operators",
+      "description": "Bitwise operators are used to compare (binary) numbers:",
+      "code_blocks": []
+    },
+    {
+      "heading": "Operator Precedence",
+      "description": "Operator precedence describes the order in which operations are performed. The precedence order is described in the table below, starting with the highest precedence at the top: If two operators have the same precedence, the expression is evaluated from left to right.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Parentheses has the highest precedence, meaning that expressions inside \nparentheses must be evaluated first:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "print((6 + 3) - (6 + 3))"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Multiplication * has higher precedence than\naddition +, and therefore multiplications are \nevaluated before additions:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "print(100 + 5 * 3)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Addition + and\nsubtraction - has the same precedence, and therefore\nwe evaluate the expression from left to right:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "print(5 + 4 - 7 + 3)"
+        }
+      ]
+    }
+  ]
+}

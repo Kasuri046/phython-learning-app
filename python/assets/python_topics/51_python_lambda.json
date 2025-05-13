@@ -1,0 +1,54 @@
+{
+  "topic": "lambda",
+  "sections": [
+    {
+      "heading": "Syntax",
+      "description": "The expression is executed and the result is returned: Lambda functions can take any number of arguments:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Add 10 to argument a, and \n  return the result:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = lambda a : a + 10\nprint(x(5))"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Multiply argument a with argument \n  b and return the \n  result:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = lambda a, b : a * b\nprint(x(5, 6))"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Summarize argument a, \n  b, and c and \n  return the \n  result:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = lambda a, b, c : a + b + c\nprint(x(5, 6,\n\u00bb\u00bb2))"
+        }
+      ]
+    },
+    {
+      "heading": "Why Use Lambda Functions?",
+      "description": "The power of lambda is better shown when you use them as an anonymous function inside another function. Say you have a function definition that takes one argument, and that argument will be multiplied with an unknown number: Use that function definition to make a function that always doubles the number you send in: Or, use the same function definition to make a function that always triples the number you send in: Or, use the same function definition to make both functions, in the same program:",
+      "code_blocks": [
+        {
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def myfunc(n):\n\n\u00bb\u00bbreturn lambda a : a * n"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def myfunc(n):\n\n\u00bb\u00bbreturn lambda a : a * n\n\n\n\n\u00bb\u00bbmydoubler = myfunc(2)\n\n\nprint(mydoubler(11))"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def myfunc(n):\n\n\u00bb\u00bbreturn lambda a : a * n\n\n\n\n\u00bb\u00bbmytripler = myfunc(3)\n\n\nprint(mytripler(11))"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def myfunc(n):\n\n\u00bb\u00bbreturn lambda a : a * n\n\n\n\n\u00bb\u00bbmydoubler = myfunc(2)\nmytripler = myfunc(3)\n\n\nprint(mydoubler(11))\n\nprint(mytripler(11))"
+        }
+      ]
+    }
+  ]
+}

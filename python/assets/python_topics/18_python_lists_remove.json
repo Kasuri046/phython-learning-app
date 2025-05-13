@@ -1,0 +1,65 @@
+{
+  "topic": "lists remove",
+  "sections": [
+    {
+      "heading": "Remove Specified Item",
+      "description": "The remove() method removes the specified item. If there are more than one item with the specified value, the remove() method removes the first occurrence:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Remove \"banana\":",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\"]\n\nthislist.remove(\"banana\")\n\nprint(thislist)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Remove the first occurrence of \"banana\":",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\", \"banana\", \"kiwi\"]\n\nthislist.remove(\"banana\")\n\nprint(thislist)"
+        }
+      ]
+    },
+    {
+      "heading": "Remove Specified Index",
+      "description": "The pop() method removes the specified index. If you do not specify the index, the pop() method removes the last item. The del keyword also removes the specified index: The del keyword can also delete the list completely.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Remove the second item:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\"]\n\nthislist.pop(1)\n\nprint(thislist)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Remove the last item:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\"]\n\nthislist.pop()\n\nprint(thislist)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Remove the first item:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\"]\n\n\u00bb\u00bbdel\nthislist[0]\nprint(thislist)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Delete the entire list:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\"]\n\n\u00bb\u00bbdel\nthislist"
+        }
+      ]
+    },
+    {
+      "heading": "Clear the List",
+      "description": "The clear() method empties the list. The list still remains, but it has no content.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Clear the list content:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thislist = [\"apple\", \"banana\", \"cherry\"]\n\n\u00bb\u00bbthislist.clear()\nprint(thislist)"
+        }
+      ]
+    }
+  ]
+}

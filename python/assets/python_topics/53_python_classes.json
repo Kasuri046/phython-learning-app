@@ -1,0 +1,135 @@
+{
+  "topic": "classes",
+  "sections": [
+    {
+      "heading": "Python Classes/Objects",
+      "description": "Python is an object oriented programming language. Almost everything in Python is an object, with its properties and methods. A Class is like an object constructor, or a \"blueprint\" for creating objects.",
+      "code_blocks": []
+    },
+    {
+      "heading": "Create a Class",
+      "description": "To create a class, use the keyword class:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Create a class named MyClass, with a property named x:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class MyClass:\n\u00bb\u00bbx = 5"
+        }
+      ]
+    },
+    {
+      "heading": "Create Object",
+      "description": "Now we can use the class named MyClass to create objects:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Create an object named p1, and print the value of x:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "p1 = MyClass()\nprint(p1.x)"
+        }
+      ]
+    },
+    {
+      "heading": "The __init__() Function",
+      "description": "The examples above are classes and objects in their simplest form, and are not really useful in real life applications. To understand the meaning of classes we have to understand the built-in __init__() function. All classes have a function called __init__(), which is always executed when the class is being initiated. Use the __init__() function to assign values to object properties, or other operations that are necessary to do when the object is being created:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Create a class named Person, use the __init__() function to assign values \nfor name and age:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class Person:\n\u00bb\u00bbdef __init__(self, name, age):\n\n\u00bb\u00bbself.name = name\n\u00bb\u00bb\u00bb\u00bbself.age = age\n\np1 = Person(\"John\",\n\u00bb\u00bb36)\n\n\nprint(p1.name)\nprint(p1.age)"
+        }
+      ]
+    },
+    {
+      "heading": "The __str__() Function",
+      "description": "The __str__() function controls what should be returned when the class object is represented as a string. If the __str__() function is not set, the string representation of the object is returned:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "The string representation of an object WITHOUT the __str__() function:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class Person:\n\u00bb\u00bbdef __init__(self, name, age):\n\n\u00bb\u00bbself.name = name\n\u00bb\u00bb\u00bb\u00bbself.age = age\n\np1 = Person(\"John\",\n\u00bb\u00bb36)\n\n\nprint(p1)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "The string representation of an object WITH the __str__() function:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class Person:\n\u00bb\u00bbdef __init__(self, name, age):\n\n\u00bb\u00bbself.name = name\n\u00bb\u00bb\u00bb\u00bbself.age = age\n\n\n\u00bb\u00bbdef __str__(self):\n\u00bb\u00bb\u00bb\u00bbreturn f\"{self.name}({self.age})\"\n\n\np1 = Person(\"John\",\n\u00bb\u00bb36)\n\n\nprint(p1)"
+        }
+      ]
+    },
+    {
+      "heading": "Object Methods",
+      "description": "Objects can also contain methods. Methods in objects are functions that belong to the object. Let us create a method in the Person class:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Insert a function that prints a greeting, and execute it on the p1 object:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class Person:\n\u00bb\u00bbdef __init__(self, name, age):\n\n\u00bb\u00bbself.name = name\n\u00bb\u00bb\u00bb\u00bbself.age = age\n\n\u00bb\u00bbdef myfunc(self):\n\n\u00bb\u00bbprint(\"Hello my name is \" + self.name)\n\np1 = Person(\"John\",\n\u00bb\u00bb36)\np1.myfunc()"
+        }
+      ]
+    },
+    {
+      "heading": "The self Parameter",
+      "description": "The self parameter is a reference to the current instance of the class, and is used to access variables that belong to the class. It does not have to be named self, you can call it whatever you like, but it has to be the first parameter of any function in the class:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Use the words mysillyobject and abc instead of self:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class Person:\n\u00bb\u00bbdef __init__(mysillyobject, name, age):\n\n\u00bb\u00bbmysillyobject.name = name\n\u00bb\u00bb\u00bb\u00bbmysillyobject.age = age\n\n\u00bb\u00bbdef myfunc(abc):\n\n\u00bb\u00bbprint(\"Hello my name is \" + abc.name)\n\np1 = Person(\"John\",\n\u00bb\u00bb36)\np1.myfunc()"
+        }
+      ]
+    },
+    {
+      "heading": "Modify Object Properties",
+      "description": "You can modify properties on objects like this:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Set the age of p1 to 40:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "p1.age = 40"
+        }
+      ]
+    },
+    {
+      "heading": "Delete Object Properties",
+      "description": "You can delete properties on objects by using the del keyword:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Delete the age property from the p1 object:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "del p1.age"
+        }
+      ]
+    },
+    {
+      "heading": "Delete Objects",
+      "description": "You can delete objects by using the del keyword:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Delete the p1 object:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "del p1"
+        }
+      ]
+    },
+    {
+      "heading": "The pass Statement",
+      "description": "class definitions cannot be empty, but if you for some reason have a class definition with no content, put in the pass statement to avoid getting an error.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class Person:\n\u00bb\u00bbpass"
+        }
+      ]
+    }
+  ]
+}

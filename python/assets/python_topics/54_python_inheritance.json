@@ -1,0 +1,98 @@
+{
+  "topic": "inheritance",
+  "sections": [
+    {
+      "heading": "Python Inheritance",
+      "description": "Inheritance allows us to define a class that inherits all the methods and properties from another class. Parent class is the class being inherited from, also called base class. Child class is the class that inherits from another class, also called derived class.",
+      "code_blocks": []
+    },
+    {
+      "heading": "Create a Parent Class",
+      "description": "Any class can be a parent class, so the syntax is the same as creating any other class:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Create a class named Person, with\nfirstname and lastname properties, \nand a printname method:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class Person:\n\u00bb\u00bbdef __init__(self, fname, lname):\n\n\u00bb\u00bbself.firstname = fname\n\u00bb\u00bb\u00bb\u00bbself.lastname = lname\n\n\n\u00bb\u00bbdef printname(self):\n\u00bb\u00bb\u00bb\u00bbprint(self.firstname,\n\u00bb\u00bbself.lastname)\n\n#Use the Person class to create an object, and then\n\u00bb\u00bbexecute the printname method:\n\nx = Person(\"John\", \"Doe\")\n\n\u00bb\u00bbx.printname()"
+        }
+      ]
+    },
+    {
+      "heading": "Create a Child Class",
+      "description": "To create a class that inherits the functionality from another class, send the parent class as a parameter when creating the child class: Now the Student class has the same properties and methods as the Person class.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Create a class named Student, which will inherit the properties \nand methods from \nthe Person class:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class Student(Person):\n\u00bb\u00bbpass"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Use the Student class to create an object, \nand then execute the printname method:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = Student(\"Mike\", \"Olsen\")\nx.printname()"
+        }
+      ]
+    },
+    {
+      "heading": "Add the __init__() Function",
+      "description": "So far we have created a child class that inherits the properties and methods from its parent. We want to add the __init__() function to the child class (instead of the pass keyword). When you add the __init__() function, the child class will no longer inherit the parent's __init__() function. To keep the inheritance of the parent's __init__() function, add a call to the parent's __init__() function: Now we have successfully added the __init__() function, and kept the inheritance of the parent class, and we are ready to add functionality in the __init__() function.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Add the __init__() function to the\nStudent class:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class Student(Person):\n\u00bb\u00bbdef __init__(self, fname, lname):\n\n\u00bb\u00bb#add properties etc."
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class Student(Person):\n\u00bb\u00bbdef __init__(self, fname, lname):\n\n\u00bb\u00bbPerson.__init__(self, fname, lname)"
+        }
+      ]
+    },
+    {
+      "heading": "Use the super() Function",
+      "description": "Python also has a super() function that will make the child class inherit all the methods and properties from its parent: By using the super() function, you do not have to use the name of the parent element, it will automatically inherit the methods and properties from its parent.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class Student(Person):\n\u00bb\u00bbdef __init__(self, fname, lname):\n\n\u00bb\u00bb\u00bb\u00bbsuper().__init__(fname, lname)"
+        }
+      ]
+    },
+    {
+      "heading": "Add Properties",
+      "description": "In the example below, the year 2019 should be a variable, and passed into the Student class when creating student objects. To do so, add another parameter in the __init__() function:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Add a property called graduationyear to the\nStudent class:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class Student(Person):\n\u00bb\u00bbdef __init__(self, fname, lname):\n\n\u00bb\u00bbsuper().__init__(fname, lname)\n\u00bb\u00bb\u00bb\u00bbself.graduationyear\n\u00bb\u00bb= 2019"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Add a year parameter, and pass the correct \nyear when creating objects:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class Student(Person):\n\u00bb\u00bbdef __init__(self, fname, lname, year):\n\n\u00bb\u00bbsuper().__init__(fname, lname)\n\u00bb\u00bb\u00bb\u00bbself.graduationyear\n\u00bb\u00bb= year\n\nx = Student(\"Mike\", \"Olsen\", 2019)"
+        }
+      ]
+    },
+    {
+      "heading": "Add Methods",
+      "description": "If you add a method in the child class with the same name as a function in the parent class, the inheritance of the parent method will be overridden.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Add a method called welcome to the\nStudent class:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class Student(Person):\n\u00bb\u00bbdef __init__(self, fname, lname, year):\n\n\u00bb\u00bbsuper().__init__(fname, lname)\n\u00bb\u00bb\u00bb\u00bbself.graduationyear\n\u00bb\u00bb= year\n\n\u00bb\u00bbdef welcome(self):\n\u00bb\u00bb\u00bb\u00bbprint(\"Welcome\",\n\u00bb\u00bbself.firstname, self.lastname, \"to the class of\", self.graduationyear)"
+        }
+      ]
+    }
+  ]
+}

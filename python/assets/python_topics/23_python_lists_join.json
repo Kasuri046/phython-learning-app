@@ -1,0 +1,29 @@
+{
+  "topic": "lists join",
+  "sections": [
+    {
+      "heading": "Join Two Lists",
+      "description": "There are several ways to join, or concatenate, two or more lists in Python. One of the easiest ways are by using the + operator. Another way to join two lists is by appending all the items from list2 into list1, one by one: Or you can use the extend() method, where the purpose is to add elements from one list to another list:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Join two list:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "list1 = [\"a\", \"b\", \"c\"]\nlist2 = [1, 2, 3]\n\nlist3 = list1 + list2\n\n\u00bb\u00bbprint(list3)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Append list2 into list1:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "list1 = [\"a\", \"b\" , \"c\"]\nlist2 = [1, 2, 3]\n\n\nfor x in list2:\n\u00bb\u00bblist1.append(x)\n\nprint(list1)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Use the extend() method to add list2 at the end of list1:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "list1 = [\"a\", \"b\" , \"c\"]\nlist2 = [1, 2, 3]\n\nlist1.extend(list2)\n\n\u00bb\u00bbprint(list1)"
+        }
+      ]
+    }
+  ]
+}

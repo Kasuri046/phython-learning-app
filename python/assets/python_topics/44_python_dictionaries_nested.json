@@ -1,0 +1,47 @@
+{
+  "topic": "dictionaries nested",
+  "sections": [
+    {
+      "heading": "Nested Dictionaries",
+      "description": "A dictionary can contain dictionaries, this is called nested dictionaries. Or, if you want to add three dictionaries into a new dictionary:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Create a dictionary that contain three dictionaries:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "myfamily = {\n\u00bb\u00bb\"child1\" : {\n\u00bb\u00bb\u00bb\u00bb\"name\" : \"Emil\",\n\n\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\"year\" : 2004\n\u00bb\u00bb},\n\u00bb\u00bb\"child2\" : {\n\n\u00bb\u00bb\"name\" : \"Tobias\",\n\u00bb\u00bb\u00bb\u00bb\"year\" : 2007\n\u00bb\u00bb},\n\n\u00bb\u00bb\"child3\" : {\n\u00bb\u00bb\u00bb\u00bb\"name\" : \"Linus\",\n\n\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\"year\" : 2011\n\u00bb\u00bb}\n}"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Create three dictionaries, then create one dictionary that will contain the \nother three dictionaries:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "child1 = {\n\u00bb\u00bb\"name\" : \"Emil\",\n\u00bb\u00bb\"year\" : 2004\n}\nchild2 = {\n\n\u00bb\u00bb\"name\" : \"Tobias\",\n\u00bb\u00bb\"year\" : 2007\n}\nchild3 = {\n\u00bb\u00bb\"name\" : \"Linus\",\n\n\u00bb\u00bb\"year\" : 2011\n}\n\nmyfamily = {\n\u00bb\u00bb\"child1\" : child1,\n\n\u00bb\u00bb\"child2\" : child2,\n\u00bb\u00bb\"child3\" : child3\n}"
+        }
+      ]
+    },
+    {
+      "heading": "Access Items in Nested Dictionaries",
+      "description": "To access items from a nested dictionary, you use the name of the dictionaries, starting with the outer dictionary:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Print the name of child 2:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "print(myfamily[\"child2\"][\"name\"])"
+        }
+      ]
+    },
+    {
+      "heading": "Loop Through Nested Dictionaries",
+      "description": "You can loop through a dictionary by using the items() method like this:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Loop through the keys and values of all nested dictionaries:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "for x, obj in myfamily.items():\n\n\u00bb\u00bbprint(x)\n\n\n\n\u00bb\u00bbfor y in obj:\n\n\u00bb\u00bb\u00bb\u00bbprint(y + ':', obj[y])"
+        }
+      ]
+    }
+  ]
+}

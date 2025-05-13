@@ -1,0 +1,83 @@
+{
+  "topic": "json",
+  "sections": [
+    {
+      "heading": "JSON in Python",
+      "description": "Python has a built-in package called json, which can be used to work with JSON data.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Import the json module:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import json"
+        }
+      ]
+    },
+    {
+      "heading": "Parse JSON - Convert from JSON to Python",
+      "description": "If you have a JSON string, you can parse it by using the json.loads() method.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Convert from JSON to Python:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import json\n\n# some JSON:\nx =  '{ \"name\":\"John\", \"age\":30, \"city\":\"New\n\u00bb\u00bbYork\"}'\n\n# parse x:\ny = json.loads(x)\n\n# the result is a\n\u00bb\u00bbPython dictionary:\nprint(y[\"age\"])"
+        }
+      ]
+    },
+    {
+      "heading": "Convert from Python to JSON",
+      "description": "If you have a Python object, you can convert it into a JSON string by using the json.dumps() method. You can convert Python objects of the following types, into JSON strings: When you convert from Python to JSON, Python objects are converted into the JSON (JavaScript) equivalent:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Convert from Python to JSON:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import json\n\n# a Python object (dict):\nx = {\n\u00bb\u00bb\"name\":\n\u00bb\u00bb\"John\",\n\u00bb\u00bb\"age\": 30,\n\u00bb\u00bb\"city\": \"New York\"\n}\n\n#\n\u00bb\u00bbconvert into JSON:\ny = json.dumps(x)\n\n# the result is a JSON string:\n\n\u00bb\u00bbprint(y)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Convert Python objects into JSON strings, and print the values:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import json\n\nprint(json.dumps({\"name\": \"John\", \"age\": 30}))\nprint(json.dumps([\"apple\",\n\u00bb\u00bb\"bananas\"]))\nprint(json.dumps((\"apple\", \"bananas\")))\n\n\u00bb\u00bbprint(json.dumps(\"hello\"))\nprint(json.dumps(42))\nprint(json.dumps(31.76))\nprint(json.dumps(True))\nprint(json.dumps(False))\nprint(json.dumps(None))"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Convert a Python object containing all the legal data types:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import json\n\nx = {\n\u00bb\u00bb\"name\":\n\u00bb\u00bb\"John\",\n\u00bb\u00bb\"age\": 30,\n\u00bb\u00bb\"married\": True,\n\n\u00bb\u00bb\"divorced\": False,\n\u00bb\u00bb\"children\": (\"Ann\",\"Billy\"),\n\u00bb\u00bb\"pets\":\n\u00bb\u00bbNone,\n\u00bb\u00bb\"cars\": [\n\u00bb\u00bb\u00bb\u00bb{\"model\": \"BMW 230\", \"mpg\":\n\u00bb\u00bb27.5},\n\u00bb\u00bb\u00bb\u00bb{\"model\": \"Ford Edge\", \"mpg\": 24.1}\n\u00bb\u00bb]\n\n\u00bb\u00bb}\n\nprint(json.dumps(x))"
+        }
+      ]
+    },
+    {
+      "heading": "Format the Result",
+      "description": "The example above prints a JSON string, but it is not very easy to read, with no indentations and line breaks. The json.dumps() method has parameters to make it easier to read the result: You can also define the separators, default value is (\", \", \": \"), which means using a comma and a space to separate each object, and a colon and a space to separate keys from values:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Use the indent parameter to define the numbers \nof indents:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "json.dumps(x, indent=4)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Use the separators parameter to change the \ndefault separator:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "json.dumps(x, indent=4, separators=(\". \", \" = \"))"
+        }
+      ]
+    },
+    {
+      "heading": "Order the Result",
+      "description": "The json.dumps() method has parameters to order the keys in the result:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Use the sort_keys parameter to specify if \nthe result should be sorted or not:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "json.dumps(x, indent=4, sort_keys=True)"
+        }
+      ]
+    }
+  ]
+}

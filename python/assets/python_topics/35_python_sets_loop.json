@@ -1,0 +1,17 @@
+{
+  "topic": "sets loop",
+  "sections": [
+    {
+      "heading": "Loop Items",
+      "description": "You can loop through the set items by using a for loop:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Loop through the set, and print the values:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisset = {\"apple\", \"banana\", \"cherry\"}\n\nfor x in thisset:\n\u00bb\u00bbprint(x)"
+        }
+      ]
+    }
+  ]
+}

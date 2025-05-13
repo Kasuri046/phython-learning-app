@@ -1,0 +1,144 @@
+{
+  "topic": "conditions",
+  "sections": [
+    {
+      "heading": "Python Conditions and If statements",
+      "description": "Python supports the usual logical conditions from mathematics: These conditions can be used in several ways, most commonly in \"if statements\" and loops. An \"if statement\" is written by using the if keyword. In this example we use two variables, a and b, which are used as part of the if statement to test whether b is greater than a. As a is 33, and b is 200, we know that 200 is greater than 33, and so we print to screen that \"b is greater than a\".",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "If statement:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "a = 33\n\nb = 200\n\nif b > a:\n\u00bb\u00bbprint(\"b is greater than a\")"
+        }
+      ]
+    },
+    {
+      "heading": "Indentation",
+      "description": "Python relies on indentation (whitespace at the beginning of a line) to define scope in the code. Other programming languages often use curly-brackets for this purpose.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "If statement, without indentation (will raise an error):",
+          "raw_html_class": "w3-code notranslate pythonHigh w3-border-red",
+          "code": "a = 33\n\nb = 200\n\nif b > a:\n\nprint(\"b is greater than a\")\n# you will get an error"
+        }
+      ]
+    },
+    {
+      "heading": "Elif",
+      "description": "The elif keyword is Python's way of saying \"if the previous conditions were not true, then try this condition\". In this example a is equal to b, so the first condition is not true, but the elif condition is true, so we print to screen that \"a and b are equal\".",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "a = 33\n\nb = 33\n\nif b > a:\n\n\nprint(\"b is greater than a\")\n\nelif a == b:\n\n\nprint(\"a and b are equal\")"
+        }
+      ]
+    },
+    {
+      "heading": "Else",
+      "description": "The else keyword catches anything which isn't caught by the preceding conditions. In this example a is greater than b, so the first condition is not true, also the elif condition is not true, so we go to the else condition and print to screen that \"a is greater than b\". You can also have an else without the elif:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "a = 200\n\nb = 33\n\nif b > a:\n\n\nprint(\"b is greater than a\")\n\nelif a == b:\n\n\nprint(\"a and b are equal\")\n\n\u00bb\u00bbelse:\n\n\nprint(\"a is greater than b\")"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "a = 200\n\nb = 33\n\nif b > a:\n\n\nprint(\"b is greater than a\")\n\n\u00bb\u00bbelse:\n\n\nprint(\"b is not greater than a\")"
+        }
+      ]
+    },
+    {
+      "heading": "Short Hand If",
+      "description": "If you have only one statement to execute, you can put it on the same line as the if statement.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "One line if statement:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "if a > b: print(\"a is greater than b\")"
+        }
+      ]
+    },
+    {
+      "heading": "Short Hand If ... Else",
+      "description": "If you have only one statement to execute, one for if, and one for else, you can put it all on the same line: You can also have multiple else statements on the same line:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "One line if else statement:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "a = 2\nb = 330\nprint(\"A\") if a > b else print(\"B\")"
+        },
+        {
+          "example_title": "Example",
+          "notes": "One line if else statement, with 3 conditions:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "a = 330\nb = 330\nprint(\"A\") if a > b else print(\"=\") if a == b else print(\"B\")"
+        }
+      ]
+    },
+    {
+      "heading": "And",
+      "description": "The and keyword is a logical operator, and is used to combine conditional statements:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Test if a is greater than\n  b, AND if c \n  is greater than a:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "a = 200\nb = 33\nc = 500\nif a > b and c > a:\n\n\nprint(\"Both conditions are True\")"
+        }
+      ]
+    },
+    {
+      "heading": "Or",
+      "description": "The or keyword is a logical operator, and is used to combine conditional statements:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Test if a is greater than\n  b, OR if a \n  is greater than c:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "a = 200\nb = 33\nc = 500\nif a > b or a > c:\n\n\nprint(\"At least one of the conditions is True\")"
+        }
+      ]
+    },
+    {
+      "heading": "Not",
+      "description": "The not keyword is a logical operator, and is used to reverse the result of the conditional statement:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Test if a is NOT greater than\n  b:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "a = 33\nb = 200\nif not a > b:\n\n\nprint(\"a is NOT greater than b\")"
+        }
+      ]
+    },
+    {
+      "heading": "Nested If",
+      "description": "You can have if statements inside if statements, this is called nested if statements.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = 41\n\nif x > 10:\n\n\nprint(\"Above ten,\")\n\u00bb\u00bbif x > 20:\n\u00bb\u00bb\u00bb\u00bbprint(\"and\n\u00bb\u00bbalso above 20!\")\n\u00bb\u00bbelse:\n\u00bb\u00bb\u00bb\u00bbprint(\"but not\n\u00bb\u00bbabove 20.\")"
+        }
+      ]
+    },
+    {
+      "heading": "The pass Statement",
+      "description": "if statements cannot be empty, but if you for some reason have an if statement with no content, put in the pass statement to avoid getting an error.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "a = 33\nb = 200\n\nif b > a:\n\u00bb\u00bbpass"
+        }
+      ]
+    }
+  ]
+}

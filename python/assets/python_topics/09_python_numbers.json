@@ -1,0 +1,87 @@
+{
+  "topic": "numbers",
+  "sections": [
+    {
+      "heading": "Python Numbers",
+      "description": "There are three numeric types in Python: Variables of numeric types are created when you assign a value to them: To verify the type of any object in Python, use the type() function:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = 1\n\u00bb\u00bb# int\ny = 2.8  # float\nz = 1j   # complex"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "print(type(x))\nprint(type(y))\nprint(type(z))"
+        }
+      ]
+    },
+    {
+      "heading": "Int",
+      "description": "Int, or integer, is a whole number, positive or negative, without decimals, of unlimited length.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Integers:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = 1\ny = 35656222554887711\nz =\n\u00bb\u00bb-3255522\n\nprint(type(x))\nprint(type(y))\nprint(type(z))"
+        }
+      ]
+    },
+    {
+      "heading": "Float",
+      "description": "Float, or \"floating point number\" is a number, positive or negative, containing one or more decimals. Float can also be scientific numbers with an \"e\" to indicate the power of 10.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Floats:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = 1.10\ny = 1.0\nz = -35.59\n\nprint(type(x))\nprint(type(y))\nprint(type(z))"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Floats:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = 35e3\ny = 12E4\nz = -87.7e100\n\nprint(type(x))\nprint(type(y))\n\n\u00bb\u00bbprint(type(z))"
+        }
+      ]
+    },
+    {
+      "heading": "Complex",
+      "description": "Complex numbers are written with a \"j\" as the imaginary part:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Complex:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = 3+5j\ny = 5j\nz = -5j\n\nprint(type(x))\nprint(type(y))\n\n\u00bb\u00bbprint(type(z))"
+        }
+      ]
+    },
+    {
+      "heading": "Type Conversion",
+      "description": "You can convert from one type to another with the int(), float(), and complex() methods:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Convert from one type to another:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = 1    # int\ny = 2.8  # float\nz = 1j   # complex\n\n#convert from int to float:\n\n\u00bb\u00bba = float(x)\n\n#convert from float to int:\n\n\u00bb\u00bbb = int(y)\n\n#convert from int to complex:\nc = complex(x)\n\nprint(a)\nprint(b)\n\n\u00bb\u00bbprint(c)\n\nprint(type(a))\nprint(type(b))\n\n\u00bb\u00bbprint(type(c))"
+        }
+      ]
+    },
+    {
+      "heading": "Random Number",
+      "description": "Python does not have a random() function to make a random number, but Python has a built-in module called random that can be used to make random numbers: In our Random Module Reference you will learn more about the Random module.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Import the random module, and display a random number from 1 to 9:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import random\n\nprint(random.randrange(1, 10))"
+        }
+      ]
+    }
+  ]
+}

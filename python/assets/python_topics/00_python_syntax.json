@@ -1,0 +1,67 @@
+{
+  "topic": "syntax",
+  "sections": [
+    {
+      "heading": "Execute Python Syntax",
+      "description": "As we learned in the previous page, Python syntax can be executed by writing directly in the Command Line:",
+      "code_blocks": [
+        {
+          "raw_html_class": "w3-code notranslate w3-black",
+          "code": ">>> print(\"Hello, World!\")\n\n\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bbHello, World!"
+        }
+      ]
+    },
+    {
+      "heading": "Python Indentation",
+      "description": "Indentation refers to the spaces at the beginning of a code line. Where in other programming languages the indentation in code is for readability only, the indentation in Python is very important. Python uses indentation to indicate a block of code. Python will give you an error if you skip the indentation: The number of spaces is up to you as a programmer, the most common use is four, but it has to be at least one. You have to use the same number of spaces in the same block of code, otherwise Python will give you an error:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "if 5 > 2:\n\nprint(\"Five is greater than two!\")"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Syntax Error:",
+          "raw_html_class": "w3-code notranslate pythonHigh w3-border-red",
+          "code": "if 5 > 2:\n\nprint(\"Five is greater than two!\")"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "if 5 > 2:\n\u00bbprint(\"Five is greater than two!\")\n\nif 5 > 2:\n\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bbprint(\"Five is greater than two!\")"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Syntax Error:",
+          "raw_html_class": "w3-code notranslate pythonHigh w3-border-red",
+          "code": "if 5 > 2:\n\n\u00bbprint(\"Five is greater than two!\")\n\n\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bbprint(\"Five is greater than\n\u00bb\u00bbtwo!\")"
+        }
+      ]
+    },
+    {
+      "heading": "Python Variables",
+      "description": "In Python, variables are created when you assign a value to it: Python has no command for declaring a variable. You will learn more about variables in the Python Variables chapter.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Variables in Python:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = 5\ny = \"Hello, World!\""
+        }
+      ]
+    },
+    {
+      "heading": "Comments",
+      "description": "Python has commenting capability for the purpose of in-code documentation. Comments start with a #, and Python will render the rest of the line as a comment:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Comments in Python:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "#This is a comment.\n\nprint(\"Hello, World!\")"
+        }
+      ]
+    }
+  ]
+}

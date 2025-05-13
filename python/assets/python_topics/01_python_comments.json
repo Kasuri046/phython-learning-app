@@ -1,0 +1,42 @@
+{
+  "topic": "comments",
+  "sections": [
+    {
+      "heading": "Creating a Comment",
+      "description": "Comments starts with a #, and Python will ignore them: Comments can be placed at the end of a line, and Python will ignore the rest of the line: A comment does not have to be text that explains the code, it can also be used to prevent Python from executing code:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "#This is a comment\n\nprint(\"Hello, World!\")"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "print(\"Hello, World!\") #This is a comment"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "#print(\"Hello, World!\")\nprint(\"Cheers, Mate!\")"
+        }
+      ]
+    },
+    {
+      "heading": "Multiline Comments",
+      "description": "Python does not really have a syntax for multiline comments. To add a multiline comment you could insert a # for each line: Or, not quite as intended, you can use a multiline string. Since Python will ignore string literals that are not assigned to a variable, you can add a multiline string (triple quotes) in your code, and place your comment inside it: As long as the string is not assigned to a variable, Python will read the code, but then ignore it, and you have made a multiline comment.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "#This is a comment\n#written in\n#more than just one line\nprint(\"Hello,\n\u00bb\u00bbWorld!\")"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "\"\"\"\nThis is a comment\nwritten in\nmore than just\n\u00bb\u00bbone line\n\"\"\"\nprint(\"Hello, World!\")"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "topic": "booleans",
+  "sections": [
+    {
+      "heading": "Boolean Values",
+      "description": "In programming you often need to know if an expression is True or False. You can evaluate any expression in Python, and get one of two answers, True or False. When you compare two values, the expression is evaluated and Python returns the Boolean answer: When you run a condition in an if statement, Python returns True or False:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "print(10 > 9)\nprint(10 == 9)\nprint(10 < 9)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Print a message based on whether the condition is True or \n  False:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "a = 200\nb = 33\n\nif b > a:\n\u00bb\u00bbprint(\"b is greater than a\")\n\n\u00bb\u00bbelse:\n\u00bb\u00bbprint(\"b is not greater than a\")"
+        }
+      ]
+    },
+    {
+      "heading": "Evaluate Values and Variables",
+      "description": "The bool() function allows you to evaluate any value, and give you True or False in return,",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Evaluate a string and a number:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "print(bool(\"Hello\"))\nprint(bool(15))"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Evaluate two variables:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = \"Hello\"\ny = 15\n\nprint(bool(x))\nprint(bool(y))"
+        }
+      ]
+    },
+    {
+      "heading": "Most Values are True",
+      "description": "Almost any value is evaluated to True if it has some sort of content. Any string is True, except empty strings. Any number is True, except 0. Any list, tuple, set, and dictionary are True, except empty ones.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "The following will return True:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "bool(\"abc\")\nbool(123)\nbool([\"apple\", \"cherry\", \"banana\"])"
+        }
+      ]
+    },
+    {
+      "heading": "Some Values are False",
+      "description": "In fact, there are not many values that evaluate to False, except empty values, such as (), [], {}, \"\", the number 0, and the value None. And of course the value False evaluates to False. One more value, or object in this case, evaluates to False, and that is if you have an object that is made from a class with a __len__ function that returns 0 or False:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "The following will return False:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "bool(False)\nbool(None)\nbool(0)\nbool(\"\")\nbool(())\nbool([])\n\n\u00bb\u00bbbool({})"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class myclass():\n\u00bb\u00bbdef __len__(self):\n\u00bb\u00bb\u00bb\u00bbreturn 0\n\n\nmyobj = myclass()\nprint(bool(myobj))"
+        }
+      ]
+    },
+    {
+      "heading": "Functions can Return a Boolean",
+      "description": "You can create functions that returns a Boolean Value: You can execute code based on the Boolean answer of a function: Python also has many built-in functions that return a boolean value, like the isinstance() function, which can be used to determine if an object is of a certain data type:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Print the answer of a function:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def myFunction() :\n\u00bb\u00bbreturn True\n\nprint(myFunction())"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Print \"YES!\" if the function returns True, otherwise print \"NO!\":",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "def myFunction() :\n\u00bb\u00bbreturn True\n\nif myFunction():\n\n\u00bb\u00bbprint(\"YES!\")\nelse:\n\u00bb\u00bbprint(\"NO!\")"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Check if an object is an integer or not:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = 200\nprint(isinstance(x, int))"
+        }
+      ]
+    }
+  ]
+}

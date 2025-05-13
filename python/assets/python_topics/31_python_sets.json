@@ -1,0 +1,115 @@
+{
+  "topic": "sets",
+  "sections": [
+    {
+      "heading": "Set",
+      "description": "Sets are used to store multiple items in a single variable. Set is one of 4 built-in data types in Python used to store collections of data, the other 3 are List, Tuple, and Dictionary, all with different qualities and usage. A set is a collection which is unordered, unchangeable*, and unindexed. Sets are written with curly brackets.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Create a Set:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisset = {\"apple\", \"banana\", \"cherry\"}\nprint(thisset)"
+        }
+      ]
+    },
+    {
+      "heading": "Set Items",
+      "description": "Set items are unordered, unchangeable, and do not allow duplicate values.",
+      "code_blocks": []
+    },
+    {
+      "heading": "Unordered",
+      "description": "Unordered means that the items in a set do not have a defined order. Set items can appear in a different order every time you use them, and cannot be referred to by index or key.",
+      "code_blocks": []
+    },
+    {
+      "heading": "Unchangeable",
+      "description": "Set items are unchangeable, meaning that we cannot change the items after the set has been created.",
+      "code_blocks": []
+    },
+    {
+      "heading": "Duplicates Not Allowed",
+      "description": "Sets cannot have two items with the same value.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Duplicate values will be ignored:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisset = {\"apple\", \"banana\", \"cherry\", \"apple\"}\n\n\n\u00bb\u00bbprint(thisset)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "True\n  and 1 is considered the same value:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisset = {\"apple\", \"banana\", \"cherry\", True, 1, 2}\n\n\n\u00bb\u00bbprint(thisset)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "False\n  and 0 is considered the same value:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisset = {\"apple\", \"banana\", \"cherry\", False, True, 0}\n\n\n\u00bb\u00bbprint(thisset)"
+        }
+      ]
+    },
+    {
+      "heading": "Get the Length of a Set",
+      "description": "To determine how many items a set has, use the len() function.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Get the number of items in a set:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisset = {\"apple\", \"banana\", \"cherry\"}\n\n\n\u00bb\u00bbprint(len(thisset))"
+        }
+      ]
+    },
+    {
+      "heading": "Set Items - Data Types",
+      "description": "Set items can be of any data type: A set can contain different data types:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "String, int and boolean data types:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "set1 = {\"apple\", \"banana\", \"cherry\"}\n\n\u00bb\u00bbset2 = {1, 5, 7, 9, 3}\n\n\u00bb\u00bbset3 = {True, False, False}"
+        },
+        {
+          "example_title": "Example",
+          "notes": "A set with strings, integers and boolean values:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "set1 = {\"abc\", 34, True, 40, \"male\"}"
+        }
+      ]
+    },
+    {
+      "heading": "type()",
+      "description": "From Python's perspective, sets are defined as objects with the data type 'set':",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "What is the data type of a set?",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "myset = {\"apple\", \"banana\", \"cherry\"}\n\nprint(type(myset))"
+        }
+      ]
+    },
+    {
+      "heading": "The set() Constructor",
+      "description": "It is also possible to use the set() constructor to make a set.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Using the set() constructor to make a set:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisset = set((\"apple\", \"banana\", \"cherry\")) # note the double round-brackets\n\nprint(thisset)"
+        }
+      ]
+    },
+    {
+      "heading": "Python Collections (Arrays)",
+      "description": "There are four collection data types in the Python programming language: When choosing a collection type, it is useful to understand the properties of that type. Choosing the right type for a particular data set could mean retention of meaning, and, it could mean an increase in efficiency or security.",
+      "code_blocks": []
+    }
+  ]
+}

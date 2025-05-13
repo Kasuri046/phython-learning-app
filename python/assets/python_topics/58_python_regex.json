@@ -1,0 +1,154 @@
+{
+  "topic": "regex",
+  "sections": [
+    {
+      "heading": "RegEx Module",
+      "description": "Python has a built-in package called re, which can be used to work with Regular Expressions. Import the re module:",
+      "code_blocks": [
+        {
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import re"
+        }
+      ]
+    },
+    {
+      "heading": "RegEx in Python",
+      "description": "When you have imported the re module, you can start using regular expressions:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Search the string to see if it starts with \"The\" and ends with \"Spain\":",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import\n\u00bb\u00bb\u00bb\u00bbre\n\ntxt = \"The rain in Spain\"\nx = re.search(\"^The.*Spain$\", txt)"
+        }
+      ]
+    },
+    {
+      "heading": "RegEx Functions",
+      "description": "The re module offers a set of functions that allows us to search a string for a match:",
+      "code_blocks": []
+    },
+    {
+      "heading": "Metacharacters",
+      "description": "Metacharacters are characters with a special meaning:",
+      "code_blocks": []
+    },
+    {
+      "heading": "Flags",
+      "description": "You can add flags to the pattern when using regular expressions.",
+      "code_blocks": []
+    },
+    {
+      "heading": "Special Sequences",
+      "description": "A special sequence is a \\ followed by one of the characters in the list below, and has a special meaning:",
+      "code_blocks": []
+    },
+    {
+      "heading": "Sets",
+      "description": "A set is a set of characters inside a pair of square brackets [] with a special meaning:",
+      "code_blocks": []
+    },
+    {
+      "heading": "The findall() Function",
+      "description": "The findall() function returns a list containing all matches. The list contains the matches in the order they are found. If no matches are found, an empty list is returned:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Print a list of all matches:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import re\n\ntxt = \"The rain in Spain\"\nx = re.findall(\"ai\",\n\u00bb\u00bbtxt)\n\n\u00bb\u00bbprint(x)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Return an empty list if no match was found:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import re\n\ntxt = \"The rain in Spain\"\nx = re.findall(\"Portugal\",\n\u00bb\u00bbtxt)\n\n\u00bb\u00bbprint(x)"
+        }
+      ]
+    },
+    {
+      "heading": "The search() Function",
+      "description": "The search() function searches the string for a match, and returns a Match object if there is a match. If there is more than one match, only the first occurrence of the match will be returned: If no matches are found, the value None is returned:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Search for the first white-space character in the string:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import re\n\ntxt = \"The rain in Spain\"\nx = re.search(\"\\s\",\n\u00bb\u00bbtxt)\n\n\nprint(\"The first white-space character is located in\n\u00bb\u00bbposition:\", x.start())"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Make a search that returns no match:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import re\n\ntxt = \"The rain in Spain\"\nx = re.search(\"Portugal\",\n\u00bb\u00bbtxt)\n\n\u00bb\u00bbprint(x)"
+        }
+      ]
+    },
+    {
+      "heading": "The split() Function",
+      "description": "The split() function returns a list where the string has been split at each match: You can control the number of occurrences by specifying the maxsplit parameter:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Split at each white-space character:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import re\n\ntxt = \"The rain in Spain\"\nx = re.split(\"\\s\",\n\u00bb\u00bbtxt)\n\n\u00bb\u00bbprint(x)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Split the string only at the first occurrence:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import re\n\ntxt = \"The rain in Spain\"\nx = re.split(\"\\s\",\n\u00bb\u00bbtxt,\n\u00bb\u00bb1)\n\n\u00bb\u00bbprint(x)"
+        }
+      ]
+    },
+    {
+      "heading": "The sub() Function",
+      "description": "The sub() function replaces the matches with the text of your choice: You can control the number of replacements by specifying the count parameter:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Replace every white-space character with the number 9:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import re\n\ntxt = \"The rain in Spain\"\nx = re.sub(\"\\s\",\n\u00bb\u00bb\"9\", txt)\n\n\u00bb\u00bbprint(x)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Replace the first 2 occurrences:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import re\n\ntxt = \"The rain in Spain\"\nx = re.sub(\"\\s\",\n\u00bb\u00bb\"9\", txt, 2)\n\n\u00bb\u00bbprint(x)"
+        }
+      ]
+    },
+    {
+      "heading": "Match Object",
+      "description": "A Match Object is an object containing information about the search and the result. The Match object has properties and methods used to retrieve information about the search, and the result: .span() returns a tuple containing the start-, and end positions of the match. .string returns the string passed into the function .group() returns the part of the string where there was a match",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Do a search that will return a Match Object:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import re\n\ntxt = \"The rain in Spain\"\nx = re.search(\"ai\",\n\u00bb\u00bbtxt)\n\n\u00bb\u00bbprint(x) #this will print an object"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Print the position (start- and end-position) of the first match occurrence. The regular expression looks for any words that starts with an upper case \n  \"S\":",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import re\n\n\n\u00bb\u00bb\u00bb\u00bbtxt = \"The rain in Spain\"\n\n\u00bb\u00bb\u00bb\u00bbx = re.search(r\"\\bS\\w+\", txt)\n\n\u00bb\u00bb\u00bb\u00bbprint(x.span())"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Print the string passed into the function:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import re\n\n\n\u00bb\u00bb\u00bb\u00bbtxt = \"The rain in Spain\"\n\n\u00bb\u00bb\u00bb\u00bbx = re.search(r\"\\bS\\w+\", txt)\n\n\u00bb\u00bb\u00bb\u00bbprint(x.string)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Print the part of the string where there was a match. The regular expression looks for any words that starts with an upper case \n  \"S\":",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "import re\n\n\n\u00bb\u00bb\u00bb\u00bbtxt = \"The rain in Spain\"\n\n\u00bb\u00bb\u00bb\u00bbx = re.search(r\"\\bS\\w+\", txt)\n\n\u00bb\u00bb\u00bb\u00bbprint(x.group())"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "topic": "lists methods",
+  "sections": [
+    {
+      "heading": "List Methods",
+      "description": "Python has a set of built-in methods that you can use on lists.",
+      "code_blocks": []
+    }
+  ]
+}

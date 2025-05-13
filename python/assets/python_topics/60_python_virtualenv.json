@@ -1,0 +1,130 @@
+{
+  "topic": "virtualenv",
+  "sections": [
+    {
+      "heading": "What is a Virtual Environment?",
+      "description": "A virtual environment in Python is an isolated environment on your computer, where you can run and test your Python projects. It allows you to manage project-specific dependencies without interfering with other projects or the original Python installation. Think of a virtual environment as a separate container for each Python project. Each container: Using virtual environments is important because:",
+      "code_blocks": []
+    },
+    {
+      "heading": "Creating a Virtual Environment",
+      "description": "Python has the built-in venv module for creating virtual environments. To create a virtual environment on your computer, open the command prompt, and navigate to the folder where you want to create your project, then type this command: This will set up a virtual environment, and create a folder named \"myfirstproject\" with subfolders and files, like this:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Run this command to create a virtual environment named myfirstproject:",
+          "raw_html_class": "w3-code notranslate w3-black",
+          "code": "C:\\Users\\Your Name> python -m venv myfirstproject"
+        },
+        {
+          "example_title": "Result",
+          "notes": "The file/folder structure will look like this:",
+          "raw_html_class": "w3-code notranslate w3-black",
+          "code": "myfirstproject\n\n\u00bb\u00bbInclude\n\n\u00bb\u00bbLib\n\n\u00bb\u00bbScripts\n\n\u00bb\u00bb.gitignore\n\n\u00bb\u00bbpyvenv.cfg"
+        }
+      ]
+    },
+    {
+      "heading": "Activate Virtual Environment",
+      "description": "To use the virtual environment, you have to activate it with this command: After activation, your prompt will change to show that you are now working in the active environment:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Activate the virtual environment:",
+          "raw_html_class": "w3-code notranslate w3-black",
+          "code": "C:\\Users\\Your Name> myfirstproject\\Scripts\\activate"
+        },
+        {
+          "example_title": "Result",
+          "notes": "The command line will look like this when the virtual environment is active:",
+          "raw_html_class": "w3-code notranslate w3-black",
+          "code": "(myfirstproject) C:\\Users\\Your Name>"
+        }
+      ]
+    },
+    {
+      "heading": "Install Packages",
+      "description": "Once your virtual environment is activated, you can install packages in it, using pip. We will install a package called 'cowsay':",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Install 'cowsay' in the virtual environment:",
+          "raw_html_class": "w3-code notranslate w3-black",
+          "code": "(myfirstproject) C:\\Users\\Your Name> pip install cowsay"
+        },
+        {
+          "example_title": "Result",
+          "notes": "'cowsay' is installed only in the virtual environment:",
+          "raw_html_class": "w3-code notranslate w3-black",
+          "code": "Collecting cowsay\n\n\u00bb\u00bbDownloading cowsay-6.1-py3-none-any.whl.metadata (5.6 kB)\n\nDownloading cowsay-6.1-py3-none-any.whl (25 kB)\n\nInstalling collected packages: cowsay\n\nSuccessfully installed cowsay-6.1\n\n\n\n[notice] A new release of pip is available: 25.0.1 -> 25.1.1\n\n[notice] To update, run: python.exe -m pip install --upgrade pip"
+        }
+      ]
+    },
+    {
+      "heading": "Using Package",
+      "description": "Now that the 'cowsay' module is installed in your virtual environment, lets use it to display a talking cow. Create a file called test.py on your computer. You can place it wherever you want, but I will place it in the same location as the myfirstproject folder -not in the folder, but in the same location. Open the file and insert these three lines in it: Then, try to execute the file while you are in the virtual environment: As a result a cow will appear in you terminal:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Insert two lines in test.py:",
+          "raw_html_class": "w3-code notranslate w3-white",
+          "code": "import cowsay\n\n\n\ncowsay.cow(\"Good Mooooorning!\")"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Execute test.py in the virtual environment:",
+          "raw_html_class": "w3-code notranslate w3-black",
+          "code": "(myfirstproject) C:\\Users\\Your Name> python test.py"
+        },
+        {
+          "example_title": "Result",
+          "notes": "The purpose of the 'cowsay' module is to draw a cow that says whatever input \nyou give it:",
+          "raw_html_class": "w3-code notranslate w3-black",
+          "code": "_________________\n| Good Mooooorning! |\n\u00bb\u00bb=================\n\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\\\n\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\\\n\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb^__^\n\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb(oo)\\_______\n\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb(__)\\       )\\/\\\n\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb||----w |\n\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb||     ||"
+        }
+      ]
+    },
+    {
+      "heading": "Deactivate Virtual Environment",
+      "description": "To deactivate the virtual environment use this command: As a result, you are now back in the normal command line interface: If you try to execute the test.py file outside of the virtual environment, you will get an error because 'cowsay' is missing. It was only installed in the virtual environment:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Deactivate the virtual environment:",
+          "raw_html_class": "w3-code notranslate w3-black",
+          "code": "(myfirstproject) C:\\Users\\Your Name> deactivate"
+        },
+        {
+          "example_title": "Result",
+          "notes": "Normal command line interface:",
+          "raw_html_class": "w3-code notranslate w3-black",
+          "code": "C:\\Users\\Your Name>"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Execute test.py outside of the virtual environment:",
+          "raw_html_class": "w3-code notranslate w3-black",
+          "code": "C:\\Users\\Your Name> python test.py"
+        },
+        {
+          "example_title": "Result",
+          "notes": "Error because 'cowsay' is missing:",
+          "raw_html_class": "w3-code notranslate w3-black",
+          "code": "Traceback (most recent call last):\n\n\u00bb\u00bbFile \"C:\\Users\\Your Name\\test.py\", line 1, in\n\n\u00bb\u00bb\u00bb\u00bbimport cowsay\n\nModuleNotFoundError: No module named 'cowsay'"
+        }
+      ]
+    },
+    {
+      "heading": "Delete Virtual Environment",
+      "description": "Another nice thing about working with a virtual environment is that when you, for some reason want to delete it, there are no other projects depend on it, and only the modules and files in the specified virtual environment are deleted. To delete a virtual environment, you can simply delete its folder with all its content. Either directly in the file system, or use the command line interface like this:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Delete myfirstproject from the command line interface:",
+          "raw_html_class": "w3-code notranslate w3-black",
+          "code": "C:\\Users\\Your Name> rmdir /s /q myfirstproject"
+        }
+      ]
+    }
+  ]
+}

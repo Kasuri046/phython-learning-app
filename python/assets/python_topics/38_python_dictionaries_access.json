@@ -1,0 +1,101 @@
+{
+  "topic": "dictionaries access",
+  "sections": [
+    {
+      "heading": "Accessing Items",
+      "description": "You can access the items of a dictionary by referring to its key name, inside square brackets: There is also a method called get() that will give you the same result:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Get the value of the \"model\" key:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisdict =\t{\n\n\u00bb\u00bb\"brand\": \"Ford\",\n\n\u00bb\u00bb\"model\": \"Mustang\",\n\n\u00bb\u00bb\"year\": 1964\n\n}\nx = thisdict[\"model\"]"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Get the value of the \"model\" key:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = thisdict.get(\"model\")"
+        }
+      ]
+    },
+    {
+      "heading": "Get Keys",
+      "description": "The keys() method will return a list of all the keys in the dictionary. The list of the keys is a view of the dictionary, meaning that any changes done to the dictionary will be reflected in the keys list.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Get a list of the keys:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = thisdict.keys()"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Add a new item to the original dictionary, and see that the keys list gets \nupdated as well:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "car = {\n\"brand\": \"Ford\",\n\"model\": \"Mustang\",\n\"year\": 1964\n}\n\n\nx = car.keys()\n\nprint(x) #before the change\n\ncar[\"color\"] =\n\u00bb\u00bb\"white\"\n\nprint(x) #after the change"
+        }
+      ]
+    },
+    {
+      "heading": "Get Values",
+      "description": "The values() method will return a list of all the values in the dictionary. The list of the values is a view of the dictionary, meaning that any changes done to the dictionary will be reflected in the values list.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Get a list of the values:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = thisdict.values()"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Make a change in the original dictionary, and see that the values list gets \nupdated as well:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "car = {\n\"brand\": \"Ford\",\n\"model\": \"Mustang\",\n\"year\": 1964\n}\n\n\nx = car.values()\n\nprint(x) #before the change\n\ncar[\"year\"]\n\u00bb\u00bb= 2020\n\nprint(x) #after the change"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Add a new item to the original dictionary, and see that the values list gets \nupdated as well:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "car = {\n\"brand\": \"Ford\",\n\"model\": \"Mustang\",\n\"year\": 1964\n}\n\n\nx = car.values()\n\nprint(x) #before the change\n\ncar[\"color\"]\n\u00bb\u00bb= \"red\"\n\nprint(x) #after the change"
+        }
+      ]
+    },
+    {
+      "heading": "Get Items",
+      "description": "The items() method will return each item in a dictionary, as tuples in a list. The returned list is a view of the items of the dictionary, meaning that any changes done to the dictionary will be reflected in the items list.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Get a list of the key:value pairs",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = thisdict.items()"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Make a change in the original dictionary, and see that the items list gets \nupdated as well:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "car = {\n\"brand\": \"Ford\",\n\"model\": \"Mustang\",\n\"year\": 1964\n}\n\n\nx = car.items()\n\nprint(x) #before the change\n\ncar[\"year\"]\n\u00bb\u00bb= 2020\n\nprint(x) #after the change"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Add a new item to the original dictionary, and see that the items list gets \nupdated as well:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "car = {\n\"brand\": \"Ford\",\n\"model\": \"Mustang\",\n\"year\": 1964\n}\n\n\nx = car.items()\n\nprint(x) #before the change\n\ncar[\"color\"]\n\u00bb\u00bb= \"red\"\n\nprint(x) #after the change"
+        }
+      ]
+    },
+    {
+      "heading": "Check if Key Exists",
+      "description": "To determine if a specified key is present in a dictionary use the in keyword:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Check if \"model\" is present in the dictionary:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisdict =\t{\n\n\u00bb\u00bb\"brand\": \"Ford\",\n\n\u00bb\u00bb\"model\": \"Mustang\",\n\n\u00bb\u00bb\"year\": 1964\n\n}\n\n\u00bb\u00bbif \"model\" in thisdict:\n\u00bb\u00bbprint(\"Yes, 'model' is\n\u00bb\u00bbone of the keys in the thisdict dictionary\")"
+        }
+      ]
+    }
+  ]
+}

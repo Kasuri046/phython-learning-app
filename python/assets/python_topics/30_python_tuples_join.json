@@ -1,0 +1,29 @@
+{
+  "topic": "tuples join",
+  "sections": [
+    {
+      "heading": "Join Two Tuples",
+      "description": "To join two or more tuples you can use the + operator:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Join two tuples:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "tuple1 = (\"a\", \"b\" , \"c\")\ntuple2 = (1, 2, 3)\n\n\n\u00bb\u00bbtuple3 = tuple1 + tuple2\n\n\u00bb\u00bbprint(tuple3)"
+        }
+      ]
+    },
+    {
+      "heading": "Multiply Tuples",
+      "description": "If you want to multiply the content of a tuple a given number of times, you can use the * operator:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Multiply the fruits tuple by 2:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "fruits = (\"apple\", \"banana\", \"cherry\")\nmytuple = fruits * 2\n\n\n\u00bb\u00bbprint(mytuple)"
+        }
+      ]
+    }
+  ]
+}

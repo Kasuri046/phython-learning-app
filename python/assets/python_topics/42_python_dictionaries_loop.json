@@ -1,0 +1,41 @@
+{
+  "topic": "dictionaries loop",
+  "sections": [
+    {
+      "heading": "Loop Through a Dictionary",
+      "description": "You can loop through a dictionary by using a for loop. When looping through a dictionary, the return value are the keys of the dictionary, but there are methods to return the values as well.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Print all key names in the dictionary, one by one:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "for x in thisdict:\n\u00bb\u00bbprint(x)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Print all values in the dictionary, one by one:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "for x in thisdict:\n\u00bb\u00bbprint(thisdict[x])"
+        },
+        {
+          "example_title": "Example",
+          "notes": "You can also use the values() method to \nreturn values of a dictionary:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "for x in thisdict.values():\n\u00bb\u00bbprint(x)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "You can use the keys() method to \nreturn the keys of a dictionary:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "for x in thisdict.keys():\n\u00bb\u00bbprint(x)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Loop through both keys and values, by using the\nitems() method:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "for x, y in thisdict.items():\n\u00bb\u00bbprint(x, y)"
+        }
+      ]
+    }
+  ]
+}

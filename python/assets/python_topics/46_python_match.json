@@ -1,0 +1,54 @@
+{
+  "topic": "match",
+  "sections": [
+    {
+      "heading": "The Python Match Statement",
+      "description": "Instead of writing many if..else statements, you can use the match statement. The match statement selects one of many code blocks to be executed. This is how it works: The example below uses the weekday number to print the weekday name:",
+      "code_blocks": [
+        {
+          "example_title": "Syntax",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "match expression:\n\n\u00bb\u00bbcase x:\n\n\u00bb\u00bb\u00bb\u00bbcode block\n\n\u00bb\u00bbcase y:\n\n\u00bb\u00bb\u00bb\u00bbcode block\n\n\u00bb\u00bbcase z:\n\n\u00bb\u00bb\u00bb\u00bbcode block"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "day = 4\n\nmatch day:\n\n\u00bb\u00bbcase 1:\n\n\u00bb\u00bb\u00bb\u00bbprint(\"Monday\")\n\n\u00bb\u00bbcase 2:\n\n\u00bb\u00bb\u00bb\u00bbprint(\"Tuesday\")\n\n\u00bb\u00bbcase 3:\n\n\u00bb\u00bb\u00bb\u00bbprint(\"Wednesday\")\n\n\u00bb\u00bbcase 4:\n\n\u00bb\u00bb\u00bb\u00bbprint(\"Thursday\")\n\n\u00bb\u00bbcase 5:\n\n\u00bb\u00bb\u00bb\u00bbprint(\"Friday\")\n\n\u00bb\u00bbcase 6:\n\n\u00bb\u00bb\u00bb\u00bbprint(\"Saturday\")\n\n\u00bb\u00bbcase 7:\n\n\u00bb\u00bb\u00bb\u00bbprint(\"Sunday\")"
+        }
+      ]
+    },
+    {
+      "heading": "Default Value",
+      "description": "Use the underscore character _ as the last case value if you want a code block to execute when there are not other matches: The value _ will always match, so it is important to place it as the last case to make it beahave as a default case.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "day = 4\n\nmatch day:\n\n\u00bb\u00bbcase 6:\n\n\u00bb\u00bb\u00bb\u00bbprint(\"Today is Saturday\")\n\n\u00bb\u00bbcase 7:\n\n\u00bb\u00bb\u00bb\u00bbprint(\"Today is Sunday\")\n\n\u00bb\u00bbcase _:\n\n\u00bb\u00bb\u00bb\u00bbprint(\"Looking forward to the Weekend\")"
+        }
+      ]
+    },
+    {
+      "heading": "Combine Values",
+      "description": "Use the pipe character | as an or operator in the case evaluation to check for more than one value match in one case:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "day = 4\n\nmatch day:\n\n\u00bb\u00bbcase 1 | 2 | 3 | 4 | 5:\n\n\u00bb\u00bb\u00bb\u00bbprint(\"Today is a weekday\")\n\n\u00bb\u00bbcase 6 | 7:\n\n\u00bb\u00bb\u00bb\u00bbprint(\"I love\n\u00bb\u00bbweekends!\")"
+        }
+      ]
+    },
+    {
+      "heading": "If Statements as Guards",
+      "description": "You can add if statements in the case evaluation as an extra condition-check:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "month = 5\n\nday = 4\n\nmatch day:\n\n\u00bb\u00bbcase 1 | 2 | 3 | 4 | 5 if month == 4:\n\n\u00bb\u00bb\u00bb\u00bbprint(\"A weekday in April\")\n\n\u00bb\u00bbcase 1 | 2 | 3 | 4 | 5 if month == 5:\n\n\u00bb\u00bb\u00bb\u00bbprint(\"A weekday in May\")\n\n\u00bb\u00bbcase _:\n\n\u00bb\u00bb\u00bb\u00bbprint(\"No match\")"
+        }
+      ]
+    }
+  ]
+}

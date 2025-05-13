@@ -1,0 +1,124 @@
+{
+  "topic": "for loops",
+  "sections": [
+    {
+      "heading": "Python For Loops",
+      "description": "A for loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string). This is less like the for keyword in other programming languages, and works more like an iterator method as found in other object-orientated programming languages. With the for loop we can execute a set of statements, once for each item in a list, tuple, set etc. The for loop does not require an indexing variable to set beforehand.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Print each fruit in a fruit list:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "fruits = [\"apple\", \"banana\", \"cherry\"]\nfor\n\u00bb\u00bbx in fruits:\n\n\nprint(x)"
+        }
+      ]
+    },
+    {
+      "heading": "Looping Through a String",
+      "description": "Even strings are iterable objects, they contain a sequence of characters:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Loop through the letters in the word \"banana\":",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "for x in \"banana\":\n\u00bb\u00bbprint(x)"
+        }
+      ]
+    },
+    {
+      "heading": "The break Statement",
+      "description": "With the break statement we can stop the loop before it has looped through all the items:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Exit the loop when x is \"banana\":",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "fruits = [\"apple\", \"banana\", \"cherry\"]\nfor x in fruits:\n\u00bb\u00bbprint(x)\n\n\u00bb\u00bbif x ==\n\u00bb\u00bb\"banana\":\n\u00bb\u00bb\u00bb\u00bbbreak"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Exit the loop when x is \"banana\", \nbut this time the break comes before the print:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "fruits = [\"apple\", \"banana\", \"cherry\"]\nfor x in fruits:\n\u00bb\u00bbif x ==\n\u00bb\u00bb\"banana\":\n\u00bb\u00bb\u00bb\u00bbbreak\n\u00bb\u00bbprint(x)"
+        }
+      ]
+    },
+    {
+      "heading": "The continue Statement",
+      "description": "With the continue statement we can stop the current iteration of the loop, and continue with the next:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Do not print banana:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "fruits = [\"apple\", \"banana\", \"cherry\"]\nfor x in fruits:\n\u00bb\u00bbif x ==\n\u00bb\u00bb\"banana\":\n\u00bb\u00bb\u00bb\u00bbcontinue\n\u00bb\u00bbprint(x)"
+        }
+      ]
+    },
+    {
+      "heading": "The range() Function",
+      "description": "The range() function returns a sequence of numbers, starting from 0 by default, and increments by 1 (by default), and ends at a specified number. The range() function defaults to 0 as a starting value, however it is possible to specify the starting value by adding a parameter: range(2, 6), which means values from 2 to 6 (but not including 6): The range() function defaults to increment the sequence by 1, however it is possible to specify the increment value by adding a third parameter: range(2, 30, 3):",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Using the range() function:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "for x in range(6):\n\n\nprint(x)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Using the start parameter:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "for x in range(2, 6):\n\n\nprint(x)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Increment the sequence with 3 (default is 1):",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "for x in range(2, 30, 3):\n\n\nprint(x)"
+        }
+      ]
+    },
+    {
+      "heading": "Else in For Loop",
+      "description": "The else keyword in a for loop specifies a block of code to be executed when the loop is finished:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Print all numbers from 0 to 5, and print a message when the loop has ended:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "for x in range(6):\n\nprint(x)\nelse:\n\nprint(\"Finally finished!\")"
+        },
+        {
+          "example_title": "Example",
+          "notes": "Break the loop when x is 3, and see what happens with the \nelse block:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "for x in range(6):\n\u00bb\u00bbif x == 3: break\n\nprint(x)\nelse:\n\nprint(\"Finally finished!\")"
+        }
+      ]
+    },
+    {
+      "heading": "Nested Loops",
+      "description": "A nested loop is a loop inside a loop. The \"inner loop\" will be executed one time for each iteration of the \"outer loop\":",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Print each adjective for every fruit:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "adj = [\"red\", \"big\", \"tasty\"]\nfruits = [\"apple\", \"banana\", \"cherry\"]\n\n\nfor x in adj:\n\u00bb\u00bbfor y in fruits:\n\u00bb\u00bb\u00bb\u00bbprint(x, y)"
+        }
+      ]
+    },
+    {
+      "heading": "The pass Statement",
+      "description": "for loops cannot be empty, but if you for some reason have a for loop with no content, put in the pass statement to avoid getting an error.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "for x in [0, 1, 2]:\n\u00bb\u00bbpass"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "topic": "polymorphism",
+  "sections": [
+    {
+      "heading": "Function Polymorphism",
+      "description": "An example of a Python function that can be used on different objects is the len() function. For strings len() returns the number of characters: For tuples len() returns the number of items in the tuple: For dictionaries len() returns the number of key/value pairs in the dictionary:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "x = \"Hello World!\"\n\n\n\nprint(len(x))"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "mytuple = (\"apple\", \"banana\", \"cherry\")\n\n\n\nprint(len(mytuple))"
+        },
+        {
+          "example_title": "Example",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisdict =\t{\n\n\u00bb\u00bb\"brand\": \"Ford\",\n\n\u00bb\u00bb\"model\": \"Mustang\",\n\n\u00bb\u00bb\"year\": 1964\n\n}\n\n\n\nprint(len(thisdict))"
+        }
+      ]
+    },
+    {
+      "heading": "Class Polymorphism",
+      "description": "Polymorphism is often used in Class methods, where we can have multiple classes with the same method name. For example, say we have three classes: Car, Boat, and Plane, and they all have a method called move(): Look at the for loop at the end. Because of polymorphism we can execute the same method for all three classes.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Different classes with the same method:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class Car:\n\n\u00bb\u00bbdef __init__(self, brand, model):\n\n\u00bb\u00bb\u00bb\u00bbself.brand = brand\n\n\u00bb\u00bb\u00bb\u00bbself.model = model\n\n\n\n\u00bb\u00bbdef move(self):\n\n\u00bb\u00bb\u00bb\u00bbprint(\"Drive!\")\n\n\n\nclass Boat:\n\n\u00bb\u00bbdef __init__(self, brand, model):\n\n\u00bb\u00bb\u00bb\u00bbself.brand = brand\n\n\u00bb\u00bb\u00bb\u00bbself.model = model\n\n\n\n\u00bb\u00bbdef move(self):\n\n\u00bb\u00bb\u00bb\u00bbprint(\"Sail!\")\n\n\n\nclass Plane:\n\n\u00bb\u00bbdef __init__(self, brand, model):\n\n\u00bb\u00bb\u00bb\u00bbself.brand = brand\n\n\u00bb\u00bb\u00bb\u00bbself.model = model\n\n\n\n\u00bb\u00bbdef move(self):\n\n\u00bb\u00bb\u00bb\u00bbprint(\"Fly!\")\n\n\n\ncar1 = Car(\"Ford\", \"Mustang\")        #Create a Car object\n\nboat1 = Boat(\"Ibiza\", \"Touring 20\") #Create a Boat object\n\nplane1 = Plane(\"Boeing\", \"747\")     #Create a Plane object\n\n\n\nfor x in (car1, boat1, plane1):\n\n\u00bb\u00bbx.move()"
+        }
+      ]
+    },
+    {
+      "heading": "Inheritance Class Polymorphism",
+      "description": "What about classes with child classes with the same name? Can we use polymorphism there? Yes. If we use the example above and make a parent class called Vehicle, and make Car, Boat, Plane child classes of Vehicle, the child classes inherits the Vehicle methods, but can override them: Child classes inherits the properties and methods from the parent class. In the example above you can see that the Car class is empty, but it inherits brand, model, and move() from Vehicle. The Boat and Plane classes also inherit brand, model, and move() from Vehicle, but they both override the move() method. Because of polymorphism we can execute the same method for all classes.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Create a class called Vehicle and make Car, \nBoat, Plane\n  child classes of \n  Vehicle:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "class Vehicle:\n\u00bb\u00bbdef __init__(self, brand, model):\n\n\u00bb\u00bb\u00bb\u00bbself.brand = brand\n\u00bb\u00bb\u00bb\u00bbself.model = model\n\n\n\u00bb\u00bb\u00bb\u00bbdef move(self):\n\u00bb\u00bb\u00bb\u00bbprint(\"Move!\")\n\nclass\n\u00bb\u00bb\u00bb\u00bbCar(Vehicle):\n\u00bb\u00bbpass\n\nclass Boat(Vehicle):\n\u00bb\u00bbdef\n\u00bb\u00bb\u00bb\u00bbmove(self):\n\u00bb\u00bb\u00bb\u00bbprint(\"Sail!\")\n\nclass\n\u00bb\u00bb\u00bb\u00bbPlane(Vehicle):\n\u00bb\u00bbdef move(self):\n\n\u00bb\u00bb\u00bb\u00bbprint(\"Fly!\")\n\ncar1 = Car(\"Ford\", \"Mustang\")       #Create a Car object\n\n\u00bb\u00bb\u00bb\u00bbboat1 = Boat(\"Ibiza\", \"Touring 20\") #Create a Boat object\nplane1 =\n\u00bb\u00bb\u00bb\u00bbPlane(\"Boeing\", \"747\")     #Create a Plane object\n\nfor x in (car1, boat1,\n\u00bb\u00bb\u00bb\u00bbplane1):\n\u00bb\u00bbprint(x.brand)\n\u00bb\u00bbprint(x.model)\n\u00bb\u00bbx.move()"
+        }
+      ]
+    }
+  ]
+}

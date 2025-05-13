@@ -1,0 +1,58 @@
+{
+  "topic": "while loops",
+  "sections": [
+    {
+      "heading": "Python Loops",
+      "description": "Python has two primitive loop commands:",
+      "code_blocks": []
+    },
+    {
+      "heading": "The while Loop",
+      "description": "With the while loop we can execute a set of statements as long as a condition is true. The while loop requires relevant variables to be ready, in this example we need to define an indexing variable, i, which we set to 1.",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Print i as long as i is less than 6:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "i = 1\n\nwhile i < 6:\n\n\u00bb\u00bbprint(i)\n\n\u00bb\u00bbi += 1"
+        }
+      ]
+    },
+    {
+      "heading": "The break Statement",
+      "description": "With the break statement we can stop the loop even if the while condition is true:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Exit the loop when i is 3:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "i = 1\n\nwhile i < 6:\n\n\u00bb\u00bbprint(i)\n\n\u00bb\u00bb\u00bb\u00bbif i == 3:\n\u00bb\u00bb\u00bb\u00bbbreak\n\u00bb\u00bbi += 1"
+        }
+      ]
+    },
+    {
+      "heading": "The continue Statement",
+      "description": "With the continue statement we can stop the current iteration, and continue with the next:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Continue to the next iteration if i is 3:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "i = 0\n\nwhile i < 6:\n\n\u00bb\u00bb\u00bb\u00bbi += 1\n\n\u00bb\u00bbif i == 3:\n\u00bb\u00bb\u00bb\u00bbcontinue\n\u00bb\u00bbprint(i)"
+        }
+      ]
+    },
+    {
+      "heading": "The else Statement",
+      "description": "With the else statement we can run a block of code once when the condition no longer is true:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "Print a message once the condition is false:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "i = 1\n\nwhile i < 6:\n\n\u00bb\u00bbprint(i)\n\n\u00bb\u00bbi += 1\nelse:\n\u00bb\u00bbprint(\"i is no longer less than 6\")"
+        }
+      ]
+    }
+  ]
+}

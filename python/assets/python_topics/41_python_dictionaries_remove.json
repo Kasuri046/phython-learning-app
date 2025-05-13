@@ -1,0 +1,41 @@
+{
+  "topic": "dictionaries remove",
+  "sections": [
+    {
+      "heading": "Removing Items",
+      "description": "There are several methods to remove items from a dictionary:",
+      "code_blocks": [
+        {
+          "example_title": "Example",
+          "notes": "The pop() method removes the item with the specified key name:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisdict =\t{\n\n\u00bb\u00bb\"brand\": \"Ford\",\n\n\u00bb\u00bb\"model\": \"Mustang\",\n\n\u00bb\u00bb\"year\": 1964\n\n}\nthisdict.pop(\"model\")\n\n\u00bb\u00bbprint(thisdict)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "The popitem() method removes the last \n  inserted item (in versions before 3.7, a random item is removed instead):",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisdict =\t{\n\n\u00bb\u00bb\"brand\": \"Ford\",\n\n\u00bb\u00bb\"model\": \"Mustang\",\n\n\u00bb\u00bb\"year\": 1964\n\n}\nthisdict.popitem()\n\n\u00bb\u00bbprint(thisdict)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "The del keyword removes the item with the specified \n  key name:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisdict =\t{\n\n\u00bb\u00bb\"brand\": \"Ford\",\n\n\u00bb\u00bb\"model\": \"Mustang\",\n\n\u00bb\u00bb\"year\": 1964\n\n}\ndel thisdict[\"model\"]\nprint(thisdict)"
+        },
+        {
+          "example_title": "Example",
+          "notes": "The del keyword can also delete the \n  dictionary completely:",
+          "raw_html_class": "w3-code notranslate pythonHigh w3-border-red",
+          "code": "thisdict =\t{\n\n\u00bb\u00bb\"brand\": \"Ford\",\n\n\u00bb\u00bb\"model\": \"Mustang\",\n\n\u00bb\u00bb\"year\": 1964\n\n}\ndel thisdict\nprint(thisdict) #this will cause an error because \"thisdict\"\n\u00bb\u00bbno longer exists."
+        },
+        {
+          "example_title": "Example",
+          "notes": "The clear() method empties the \n  dictionary:",
+          "raw_html_class": "w3-code notranslate pythonHigh",
+          "code": "thisdict =\t{\n\n\u00bb\u00bb\"brand\": \"Ford\",\n\n\u00bb\u00bb\"model\": \"Mustang\",\n\n\u00bb\u00bb\"year\": 1964\n\n}\nthisdict.clear()\nprint(thisdict)"
+        }
+      ]
+    }
+  ]
+}
