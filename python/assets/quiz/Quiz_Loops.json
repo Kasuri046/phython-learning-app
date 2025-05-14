@@ -1,0 +1,55 @@
+{
+  "title": "Quiz: Loops",
+  "questions": [
+    {
+      "question": "What starts a while loop?",
+      "options": ["for", "while", "loop", "repeat"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to loop through a list?",
+      "options": ["for x in list", "while x in list", "loop x in list", "list.loop()"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What does 'break' do?",
+      "options": ["Continues loop", "Exits loop", "Skips iteration", "Errors"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What does 'continue' do?",
+      "options": ["Exits loop", "Skips iteration", "Restarts loop", "Ends program"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What is 'for i in range(5):'?",
+      "options": ["Loops 0-4", "Loops 1-5", "Loops 0-5", "Errors"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "Can loops be nested?",
+      "options": ["No", "Yes", "Only while", "Only for"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What stops an infinite loop?",
+      "options": ["break", "continue", "return", "None"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "How to loop through indices?",
+      "options": ["for i in range(len(list))", "for i in list", "while i in list", "list.indices()"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What is 'while True:'?",
+      "options": ["Finite loop", "Infinite loop", "Conditional loop", "Error"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to skip even numbers?",
+      "options": ["if i % 2 == 0: continue", "if i % 2 == 0: break", "if i % 2 == 0: pass", "if i % 2 == 0: return"],
+      "correctAnswer": "a"
+    }
+  ]
+}

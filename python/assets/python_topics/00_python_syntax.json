@@ -7,7 +7,7 @@
       "code_blocks": [
         {
           "raw_html_class": "w3-code notranslate w3-black",
-          "code": ">>> print(\"Hello, World!\")\n\n\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bbHello, World!"
+          "code": " print(\"Hello, World!\")\n\n\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bb\u00bbHello, World!"
         }
       ]
     },

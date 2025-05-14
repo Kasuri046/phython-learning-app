@@ -1,0 +1,55 @@
+{
+  "title": "Quiz: Operators & Booleans",
+  "questions": [
+    {
+      "question": "What does 5 + 3 return?",
+      "options": ["8", "15", "53", "Error"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "Which operator checks equality?",
+      "options": ["=", "==", "!=", "<>"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What is True and False?",
+      "options": ["True", "False", "None", "Error"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What does 10 % 3 return?",
+      "options": ["3", "1", "0", "10"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Which is a logical operator?",
+      "options": ["+", "-", "and", "%"],
+      "correctAnswer": "c"
+    },
+    {
+      "question": "What does 5 > 3 return?",
+      "options": ["True", "False", "5", "3"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What is not True?",
+      "options": ["True", "False", "None", "Error"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What does 2 ** 3 return?",
+      "options": ["6", "8", "9", "5"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Which has highest precedence?",
+      "options": ["+", "*", "and", "=="],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What is 3 <= 3?",
+      "options": ["True", "False", "None", "Error"],
+      "correctAnswer": "a"
+    }
+  ]
+}

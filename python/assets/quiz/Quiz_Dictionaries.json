@@ -1,0 +1,55 @@
+{
+  "title": "Quiz: Dictionaries",
+  "questions": [
+    {
+      "question": "How to create a dictionary?",
+      "options": ["[1, 2]", "(1, 2)", "{'a': 1}", "dict[1, 2]"],
+      "correctAnswer": "c"
+    },
+    {
+      "question": "How to access dict['key']?",
+      "options": ["dict['key']", "dict.get('key')", "dict.key", "Both a and b"],
+      "correctAnswer": "d"
+    },
+    {
+      "question": "How to add key-value pair?",
+      "options": ["dict['key'] = x", "dict.add('key', x)", "dict.put('key', x)", "dict.append('key', x)"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "How to remove key 'x'?",
+      "options": ["dict.pop('x')", "dict.delete('x')", "dict.remove('x')", "dict.clear('x')"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "How to loop through keys?",
+      "options": ["for k in dict", "dict.keys()", "for k in dict.keys()", "Both a and c"],
+      "correctAnswer": "d"
+    },
+    {
+      "question": "Can dict have duplicate keys?",
+      "options": ["Yes", "No", "Only numbers", "Only strings"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What is dict.get('x', 0)?",
+      "options": ["Returns x", "Returns 0 if x missing", "Errors", "Adds x"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to check if key exists?",
+      "options": ["key in dict", "dict.contains(key)", "dict.has(key)", "key.isin(dict)"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What does dict.clear() do?",
+      "options": ["Removes one key", "Empties dict", "Sorts dict", "Copies dict"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to update dict['key']?",
+      "options": ["dict['key'] = x", "dict.update('key', x)", "dict.set('key', x)", "dict.change('key', x)"],
+      "correctAnswer": "a"
+    }
+  ]
+}

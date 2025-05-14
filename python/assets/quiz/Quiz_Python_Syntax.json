@@ -1,0 +1,55 @@
+{
+  "title": "Quiz: Python Syntax & Basics",
+  "questions": [
+    {
+      "question": "What is Python's primary indentation method?",
+      "options": ["Tabs", "Spaces", "Braces", "Semicolons"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How do you start a single-line comment?",
+      "options": ["//", "#", "/*", "--"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Which keyword ends a block in Python?",
+      "options": ["end", "break", "None", "No keyword"],
+      "correctAnswer": "d"
+    },
+    {
+      "question": "What is the file extension for Python?",
+      "options": [".py", ".python", ".pt", ".p"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "How do you write a multi-line comment?",
+      "options": ["# Comment", "/* Comment */", "''' Comment '''", "// Comment"],
+      "correctAnswer": "c"
+    },
+    {
+      "question": "Which is a valid Python identifier?",
+      "options": ["2variable", "my_variable", "my-variable", "my variable"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What does 'print()' do in Python?",
+      "options": ["Inputs data", "Outputs data", "Declares variable", "Loops code"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What is Python's case sensitivity?",
+      "options": ["Case-insensitive", "Case-sensitive", "Mixed", "None"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Which is not a Python keyword?",
+      "options": ["if", "else", "print", "while"],
+      "correctAnswer": "c"
+    },
+    {
+      "question": "How many spaces for standard indentation?",
+      "options": ["2", "4", "6", "8"],
+      "correctAnswer": "b"
+    }
+  ]
+}

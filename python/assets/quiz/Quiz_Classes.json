@@ -1,0 +1,55 @@
+{
+  "title": "Quiz: Classes & OOP",
+  "questions": [
+    {
+      "question": "How to define a class?",
+      "options": ["class MyClass:", "def MyClass:", "MyClass():", "struct MyClass:"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What is 'self' in methods?",
+      "options": ["Class name", "Instance", "Function", "Variable"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to create an object?",
+      "options": ["obj = MyClass", "obj = MyClass()", "obj = new MyClass()", "obj = class MyClass"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What is inheritance?",
+      "options": ["Extending classes", "Creating objects", "Defining methods", "Looping classes"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "How to inherit from Parent?",
+      "options": ["class Child(Parent):", "class Child extends Parent:", "class Child: Parent", "class Child.Parent:"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What is polymorphism?",
+      "options": ["Same method, different behavior", "Multiple classes", "Single method", "No methods"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What does __init__ do?",
+      "options": ["Loops class", "Initializes object", "Deletes object", "Calls method"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Can classes have attributes?",
+      "options": ["No", "Yes", "Only methods", "Only strings"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to call parent method?",
+      "options": ["super().method()", "parent.method()", "self.method()", "class.method()"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What is obj.attribute?",
+      "options": ["Method call", "Attribute access", "Class definition", "Loop"],
+      "correctAnswer": "b"
+    }
+  ]
+}

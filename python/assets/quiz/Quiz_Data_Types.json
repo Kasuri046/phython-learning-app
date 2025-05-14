@@ -1,105 +1,55 @@
 {
-    "title": "Quiz: Data Types",
-    "questions": [
-      {
-        "question": "Which of the following is a fundamental data type in C++?",
-        "options": [
-          "int",
-          "string",
-          "array",
-          "structure"
-        ],
-        "correctAnswer": "int"
-      },
-      {
-        "question": "What type of data does the 'char' data type store?",
-        "options": [
-          "Integer values",
-          "Single characters",
-          "Floating-point numbers",
-          "Boolean values"
-        ],
-        "correctAnswer": "Single characters"
-      },
-      {
-        "question": "Which data type is used to store decimal numbers in C++?",
-        "options": [
-          "int",
-          "float",
-          "char",
-          "bool"
-        ],
-        "correctAnswer": "float"
-      },
-      {
-        "question": "What is the size of 'int' in C++ on most systems?",
-        "options": [
-          "2 bytes",
-          "4 bytes",
-          "8 bytes",
-          "16 bytes"
-        ],
-        "correctAnswer": "4 bytes"
-      },
-      {
-        "question": "Which of the following is not a user-defined data type?",
-        "options": [
-          "struct",
-          "enum",
-          "class",
-          "int"
-        ],
-        "correctAnswer": "int"
-      },
-      {
-        "question": "What is the range of values for a 'char' type variable?",
-        "options": [
-          "0 to 255",
-          "-128 to 127",
-          "-32768 to 32767",
-          "0 to 65535"
-        ],
-        "correctAnswer": "-128 to 127"
-      },
-      {
-        "question": "Which keyword is used to define a boolean type in C++?",
-        "options": [
-          "bool",
-          "boolean",
-          "bit",
-          "byte"
-        ],
-        "correctAnswer": "bool"
-      },
-      {
-        "question": "What is the appropriate data type for storing a large integer?",
-        "options": [
-          "int",
-          "long",
-          "short",
-          "float"
-        ],
-        "correctAnswer": "long"
-      },
-      {
-        "question": "Which of the following represents a float literal?",
-        "options": [
-          "10.0",
-          "10",
-          "10.0f",
-          "Both A and C"
-        ],
-        "correctAnswer": "Both A and C"
-      },
-      {
-        "question": "What is the correct way to declare a double variable?",
-        "options": [
-          "double x;",
-          "x double;",
-          "double x = 5;",
-          "Both A and C"
-        ],
-        "correctAnswer": "Both A and C"
-      }
-    ]
-  }
+  "title": "Quiz: Data Types & Casting",
+  "questions": [
+    {
+      "question": "What is the type of 3.14?",
+      "options": ["int", "float", "str", "bool"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to cast string to integer?",
+      "options": ["str(x)", "int(x)", "float(x)", "bool(x)"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Which is a valid string type?",
+      "options": ["'hello'", "123", "True", "[1, 2]"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What type is True?",
+      "options": ["int", "float", "bool", "str"],
+      "correctAnswer": "c"
+    },
+    {
+      "question": "What does int(3.7) return?",
+      "options": ["3", "4", "3.7", "Error"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "Which is not a numeric type?",
+      "options": ["int", "float", "complex", "list"],
+      "correctAnswer": "d"
+    },
+    {
+      "question": "How to cast 5 to float?",
+      "options": ["float(5)", "str(5)", "int(5)", "bool(5)"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What is type of [1, 2, 3]?",
+      "options": ["tuple", "list", "set", "dict"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Can you cast 'abc' to int?",
+      "options": ["Yes", "No", "Only with float", "Only with str"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What does str(123) return?",
+      "options": ["123", "'123'", "Error", "None"],
+      "correctAnswer": "b"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "title": "Quiz: Strings & Input",
+  "questions": [
+    {
+      "question": "How to create a string?",
+      "options": ["'hello'", "[hello]", "(hello)", "{hello}"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "How to get user input?",
+      "options": ["input()", "get()", "read()", "scan()"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What does 'hello'.upper() do?",
+      "options": ["Lowers case", "Uppers case", "Trims string", "Reverses string"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to concatenate strings?",
+      "options": ["'a' + 'b'", "'a' * 'b'", "'a' - 'b'", "'a' / 'b'"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What is 'hello'[0]?",
+      "options": ["h", "hello", "Error", "0"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What does input() return?",
+      "options": ["int", "float", "str", "bool"],
+      "correctAnswer": "c"
+    },
+    {
+      "question": "How to split 'a b'?",
+      "options": ["'a b'.split()", "'a b'.divide()", "'a b'.cut()", "'a b'.slice()"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What is 'hello'.strip()?",
+      "options": ["Removes spaces", "Removes letters", "Adds spaces", "Reverses string"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "How to check if 'x' in string?",
+      "options": ["x in string", "string.contains(x)", "string.has(x)", "x.isin(string)"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What is len('hello')?",
+      "options": ["4", "5", "6", "Error"],
+      "correctAnswer": "b"
+    }
+  ]
+}

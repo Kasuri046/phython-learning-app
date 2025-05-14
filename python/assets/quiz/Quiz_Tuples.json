@@ -1,0 +1,55 @@
+{
+  "title": "Quiz: Tuples",
+  "questions": [
+    {
+      "question": "How to create a tuple?",
+      "options": ["[1, 2]", "(1, 2)", "{1, 2}", "tuple[1, 2]"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Can tuples be modified?",
+      "options": ["Yes", "No", "Only numbers", "Only strings"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to access tuple[1]?",
+      "options": ["tuple[1]", "tuple.get(1)", "tuple.at(1)", "tuple(1)"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "How to unpack tuple (x, y)?",
+      "options": ["x, y = tuple", "unpack(tuple)", "tuple.unpack()", "x = tuple[0]"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "How to join two tuples?",
+      "options": ["tuple1 + tuple2", "tuple1.join(tuple2)", "tuple1.append(tuple2)", "tuple1.merge(tuple2)"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What is len(tuple)?",
+      "options": ["Tuple size", "Tuple sum", "Tuple type", "Tuple index"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "Can tuples hold mixed types?",
+      "options": ["No", "Yes", "Only numbers", "Only strings"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to convert list to tuple?",
+      "options": ["tuple(list)", "list.to_tuple()", "cast(list, tuple)", "list.tuple()"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What is tuple[1:3]?",
+      "options": ["Single item", "Sliced tuple", "Error", "List"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Why use tuples over lists?",
+      "options": ["Faster, immutable", "More flexible", "Larger capacity", "Easier syntax"],
+      "correctAnswer": "a"
+    }
+  ]
+}

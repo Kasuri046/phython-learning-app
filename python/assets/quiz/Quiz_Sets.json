@@ -1,0 +1,55 @@
+{
+  "title": "Quiz: Sets",
+  "questions": [
+    {
+      "question": "How to create a set?",
+      "options": ["[1, 2]", "(1, 2)", "{1, 2}", "set[1, 2]"],
+      "correctAnswer": "c"
+    },
+    {
+      "question": "Can sets have duplicates?",
+      "options": ["Yes", "No", "Only numbers", "Only strings"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to add to a set?",
+      "options": ["set.add()", "set.append()", "set.insert()", "set.push()"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "How to remove item x?",
+      "options": ["set.remove(x)", "set.delete(x)", "set.pop(x)", "set.clear(x)"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "How to loop through a set?",
+      "options": ["for x in set", "set.loop()", "while set", "set.forEach()"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "How to join two sets?",
+      "options": ["set1 + set2", "set1.union(set2)", "set1.join(set2)", "set1.merge(set2)"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What is set difference?",
+      "options": ["set1 - set2", "set1.diff(set2)", "set1.subtract(set2)", "set1.remove(set2)"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "Can sets be indexed?",
+      "options": ["Yes", "No", "Only numbers", "Only strings"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What does set.pop() do?",
+      "options": ["Removes random", "Removes first", "Removes last", "Clears set"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "How to check if x in set?",
+      "options": ["x in set", "set.contains(x)", "set.has(x)", "x.isin(set)"],
+      "correctAnswer": "a"
+    }
+  ]
+}

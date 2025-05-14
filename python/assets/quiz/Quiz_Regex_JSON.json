@@ -1,0 +1,55 @@
+{
+  "title": "Quiz: Regular Expressions & JSON",
+  "questions": [
+    {
+      "question": "What module handles regex?",
+      "options": ["json", "re", "regex", "pattern"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to parse JSON string?",
+      "options": ["json.load()", "json.loads()", "json.parse()", "json.read()"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What does re.search() do?",
+      "options": ["Finds all matches", "Finds first match", "Replaces text", "Splits text"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What is json.dumps()?",
+      "options": ["Loads JSON", "Dumps to string", "Reads file", "Writes file"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What does [a-z] match?",
+      "options": ["Digits", "Letters", "Spaces", "Symbols"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to write JSON to file?",
+      "options": ["json.dump()", "json.write()", "json.save()", "json.store()"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What does re.findall() return?",
+      "options": ["Single match", "List of matches", "Boolean", "Error"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What is JSON data type?",
+      "options": ["List", "Dict", "String", "All of above"],
+      "correctAnswer": "d"
+    },
+    {
+      "question": "What does \\d match?",
+      "options": ["Letters", "Digits", "Spaces", "Words"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Can JSON store functions?",
+      "options": ["Yes", "No", "Only lambda", "Only methods"],
+      "correctAnswer": "b"
+    }
+  ]
+}

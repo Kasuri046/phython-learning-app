@@ -1,0 +1,55 @@
+{
+  "title": "Quiz: Conditions & Match",
+  "questions": [
+    {
+      "question": "What keyword starts a condition?",
+      "options": ["if", "when", "case", "cond"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What follows 'if' condition?",
+      "options": ["else", "elif", "then", "Both a and b"],
+      "correctAnswer": "d"
+    },
+    {
+      "question": "What does 'match' do?",
+      "options": ["Loops", "Compares patterns", "Declares variable", "Ends program"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What is 'if x > 5:'?",
+      "options": ["Loop", "Condition", "Function", "Class"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to write 'else if'?",
+      "options": ["else", "elseif", "elif", "ifelse"],
+      "correctAnswer": "c"
+    },
+    {
+      "question": "What does 'match x:' need?",
+      "options": ["case", "if", "else", "loop"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "Can 'if' have multiple conditions?",
+      "options": ["No", "Yes", "Only one", "Only numbers"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What is 'if not x:'?",
+      "options": ["Checks True", "Checks False", "Loops", "Errors"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What ends a match-case block?",
+      "options": ["end", "break", "None", "case"],
+      "correctAnswer": "c"
+    },
+    {
+      "question": "What is 'if x and y:'?",
+      "options": ["Single condition", "Two conditions", "Loop", "Match"],
+      "correctAnswer": "b"
+    }
+  ]
+}

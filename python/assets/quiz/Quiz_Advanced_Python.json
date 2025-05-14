@@ -1,0 +1,55 @@
+{
+  "title": "Quiz: Advanced Python",
+  "questions": [
+    {
+      "question": "What is [x*2 for x in range(5)]?",
+      "options": ["[0, 2, 4, 6, 8]", "[2, 4, 6, 8, 10]", "[0, 1, 2, 3, 4]", "Error"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What is a nested dictionary?",
+      "options": ["Dict in dict", "List in dict", "Flat dict", "Dict in list"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What does iter() do?",
+      "options": ["Creates iterator", "Creates list", "Loops data", "Sorts data"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What is virtualenv used for?",
+      "options": ["Code editor", "Isolated environment", "Database", "Web server"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What does next(iterator) do?",
+      "options": ["Gets next item", "Gets first item", "Gets last item", "Errors"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "How to copy a dictionary?",
+      "options": ["dict.copy()", "dict.clone()", "dict.duplicate()", "dict.backup()"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What is [x for x in range(5) if x % 2]?",
+      "options": ["[0, 2, 4]", "[1, 3]", "[0, 1, 2, 3, 4]", "[1, 3, 5]"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to activate virtualenv?",
+      "options": ["source bin/activate", "run virtualenv", "start venv", "activate venv"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What is an iterator?",
+      "options": ["Loop structure", "Object with next()", "List type", "Function"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Can list comprehension filter?",
+      "options": ["No", "Yes", "Only numbers", "Only strings"],
+      "correctAnswer": "b"
+    }
+  ]
+}

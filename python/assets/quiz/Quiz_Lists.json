@@ -1,0 +1,55 @@
+{
+  "title": "Quiz: Lists & Arrays",
+  "questions": [
+    {
+      "question": "How to create a list?",
+      "options": ["[1, 2, 3]", "(1, 2, 3)", "{1, 2, 3}", "list[1, 2, 3]"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "How to access list[1]?",
+      "options": ["list.get(1)", "list[1]", "list.at(1)", "list(1)"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to append to a list?",
+      "options": ["list.add()", "list.append()", "list.insert()", "list.push()"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What does list.pop() do?",
+      "options": ["Adds item", "Removes last", "Clears list", "Sorts list"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to change list[0]?",
+      "options": ["list[0] = x", "list.set(0, x)", "list.change(0, x)", "list.update(0, x)"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What is len(list)?",
+      "options": ["List size", "List sum", "List type", "List index"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "Can lists hold mixed types?",
+      "options": ["No", "Yes", "Only numbers", "Only strings"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to remove item x?",
+      "options": ["list.remove(x)", "list.delete(x)", "list.pop(x)", "list.clear(x)"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What are arrays in Python?",
+      "options": ["Same as lists", "NumPy arrays", "Fixed-size lists", "Both b and c"],
+      "correctAnswer": "d"
+    },
+    {
+      "question": "How to insert at index 1?",
+      "options": ["list.insert(1, x)", "list.add(1, x)", "list.append(1, x)", "list.put(1, x)"],
+      "correctAnswer": "a"
+    }
+  ]
+}

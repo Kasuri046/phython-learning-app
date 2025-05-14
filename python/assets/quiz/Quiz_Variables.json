@@ -1,0 +1,55 @@
+{
+  "title": "Quiz: Comments & Variables",
+  "questions": [
+    {
+      "question": "How do you declare a variable in Python?",
+      "options": ["var x", "x = 5", "int x", "declare x"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Which is an invalid variable name?",
+      "options": ["my_var", "2var", "_var", "var2"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to assign multiple variables?",
+      "options": ["x, y = 1, 2", "x = y = 1", "x = 1; y = 2", "Both a and b"],
+      "correctAnswer": "d"
+    },
+    {
+      "question": "What does 'global' keyword do?",
+      "options": ["Declares local", "Accesses global", "Deletes variable", "Types variable"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to output variable x?",
+      "options": ["print(x)", "cout << x", "echo x", "display(x)"],
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What is a valid comment symbol?",
+      "options": ["//", "#", "/*", "%%"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Can variables change type?",
+      "options": ["No", "Yes", "Only strings", "Only numbers"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What does x = y = 10 do?",
+      "options": ["Assigns 10 to x", "Assigns 10 to both", "Assigns y to x", "Errors"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Where are global variables defined?",
+      "options": ["Inside function", "Outside function", "In loops", "In classes"],
+      "correctAnswer": "b"
+    },
+    {
+      "question": "How to check variable type?",
+      "options": ["type(x)", "typeof(x)", "x.type()", "gettype(x)"],
+      "correctAnswer": "a"
+    }
+  ]
+}
