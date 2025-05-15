@@ -263,7 +263,7 @@ class _CourseContentScreenState extends State<CourseContentScreen> {
                     bool isRead = progressProvider.isFileRead(widget.title, file);
 
                     return Card(
-                      color: isRead ? Colors.teal[50] : Colors.white.withOpacity(0.9),
+                      color: isRead ? Colors.blue[50] : Colors.white.withOpacity(0.9),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),

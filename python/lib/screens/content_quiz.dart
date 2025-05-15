@@ -364,24 +364,6 @@ class _QuizScreenState extends State<QuizScreen> {
                 ),
               ),
             ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                setState(() {
-                  _currentQuestionIndex = 0;
-                  _showResults = true;
-                });
-              },
-              child: const Text(
-                'Check Results',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: 12,
-                  color: Colors.grey,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
           ],
         );
       },
