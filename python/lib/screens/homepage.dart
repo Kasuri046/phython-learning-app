@@ -179,7 +179,7 @@ class _HomepageState extends State<Homepage> {
     {'icon': Icons.functions, 'title': 'Functions & Lambda'},
     {'icon': Icons.class_, 'title': 'Classes & OOP'},
     {'icon': Icons.text_fields, 'title': 'Strings & Input'},
-    {'icon': Icons.search, 'title': 'Regular Expressions & JSON'},
+    {'icon': Icons.search, 'title': 'Expressions & JSON'},
     {'icon': Icons.cloud, 'title': 'Advanced Python'},
   ];
 
@@ -272,7 +272,7 @@ class _HomepageState extends State<Homepage> {
       'assets/python_topics/59_python_user_input.json',
       'assets/quiz/Quiz_Strings.json', // Placeholder
     ],
-    'Regular Expressions & JSON': [
+    'Expressions & JSON': [
       'assets/python_topics/57_python_json.json',
       'assets/python_topics/58_python_regex.json',
       'assets/quiz/Quiz_Regex_JSON.json', // Placeholder
@@ -333,7 +333,7 @@ class _HomepageState extends State<Homepage> {
                     ),
                     SizedBox(height: 5),
                     Text(
-                      "Keep learning C++!",
+                      "Keep learning !",
                       style: TextStyle(
                         fontSize: 14,
                         fontFamily: 'Poppins',

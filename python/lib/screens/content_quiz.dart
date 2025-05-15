@@ -3,7 +3,6 @@ import 'package:cplus/screens/progressprovider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../components/bottom_navigation.dart';
 
 class QuizScreen extends StatefulWidget {
@@ -25,11 +24,65 @@ class _QuizScreenState extends State<QuizScreen> {
   List<String?> _answers = [];
   bool _quizSubmitted = false;
   bool _showResults = false;
+  bool _isLoading = false; // NEW: Tracks loading state for buttons
+  String _userName = 'User'; // NEW: Stores dynamic username
 
   @override
   void initState() {
     super.initState();
     _answers = List.filled(widget.quizData.length, null);
+    _fetchUserName(); // NEW: Fetch username when screen loads
+  }
+
+  // NEW: Fetch username dynamically from Firebase Auth or Firestore
+  Future<void> _fetchUserName() async {
+    final user = FirebaseAuth.instance.currentUser;
+    print("DEBUG: Fetching username... User: ${user?.uid ?? 'No user'}");
+
+    if (user != null) {
+      // Try Firebase Auth displayName first
+      String? authName = user.displayName;
+      print("DEBUG: Firebase Auth displayName: $authName");
+      if (authName != null && authName.isNotEmpty && authName.toLowerCase() != 'user') {
+        setState(() {
+          _userName = authName;
+        });
+        print("DEBUG: Set userName from Firebase Auth: $_userName");
+        return;
+      }
+
+      // Fallback to Firestore
+      try {
+        DocumentSnapshot userDoc = await FirebaseFirestore.instance
+            .collection('users')
+            .doc(user.uid)
+            .get();
+        print("DEBUG: Firestore fetch attempted. Doc exists: ${userDoc.exists}");
+        if (userDoc.exists) {
+          var data = userDoc.data() as Map<String, dynamic>?;
+          String fetchedName = data?['displayName'] ?? data?['name'] ?? 'User';
+          if (fetchedName.isNotEmpty && fetchedName.toLowerCase() != 'user') {
+            setState(() {
+              _userName = fetchedName;
+            });
+            if (user.displayName != fetchedName) {
+              await user.updateDisplayName(fetchedName);
+              print("DEBUG: Synced Firebase Auth displayName: $fetchedName");
+            }
+            print("DEBUG: Set userName from Firestore: $_userName");
+            return;
+          }
+        }
+      } catch (e) {
+        print("DEBUG: Error fetching from Firestore: $e");
+      }
+
+      // Default to 'User' if no name found
+      setState(() {
+        _userName = 'User';
+      });
+      print("DEBUG: Set userName to default: $_userName");
+    }
   }
 
   void _nextQuestion() {
@@ -53,81 +106,78 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   void _showResult() async {
-    if (!mounted) {
-      print("DEBUG: Widget unmounted, skipping showResult");
+    if (!mounted || _isLoading) {
+      print("DEBUG: Widget unmounted or loading, skipping showResult");
       return;
     }
     setState(() {
-      _quizSubmitted = true;
+      _isLoading = true; // NEW: Start loading
     });
-    int score = 0;
-    for (int i = 0; i < widget.quizData.length; i++) {
-      // Get correctAnswer as a letter (e.g., "b")
-      String? correctAnswerLetter = widget.quizData[i]['correctAnswer']
-          ?.toString()
-          .toLowerCase();
-      String? correctAnswerText;
-      if (correctAnswerLetter != null && correctAnswerLetter.isNotEmpty) {
-        // Map letter to index ("a"->0, "b"->1, etc.)
-        int optionIndex = correctAnswerLetter.codeUnitAt(0) - 'a'.codeUnitAt(0);
-        List<dynamic> options = widget.quizData[i]['options'] ?? [];
-        if (optionIndex >= 0 && optionIndex < options.length) {
-          correctAnswerText = options[optionIndex]?.toString().trim();
+
+    try {
+      setState(() {
+        _quizSubmitted = true;
+      });
+      int score = 0;
+      for (int i = 0; i < widget.quizData.length; i++) {
+        String? correctAnswerLetter = widget.quizData[i]['correctAnswer']?.toString().toLowerCase();
+        String? correctAnswerText;
+        if (correctAnswerLetter != null && correctAnswerLetter.isNotEmpty) {
+          int optionIndex = correctAnswerLetter.codeUnitAt(0) - 'a'.codeUnitAt(0);
+          List<dynamic> options = widget.quizData[i]['options'] ?? [];
+          if (optionIndex >= 0 && optionIndex < options.length) {
+            correctAnswerText = options[optionIndex]?.toString().trim();
+          } else {
+            print("DEBUG: Invalid optionIndex $optionIndex for question $i, options: $options");
+          }
         } else {
-          print(
-              "DEBUG: Invalid optionIndex $optionIndex for question $i, options: $options");
+          print("DEBUG: Invalid correctAnswerLetter for question $i: $correctAnswerLetter");
         }
-      } else {
-        print(
-            "DEBUG: Invalid correctAnswerLetter for question $i: $correctAnswerLetter");
+        String? selectedAnswer = _answers[i]?.trim();
+        print("DEBUG: Question $i, selected: '$selectedAnswer', correct: '$correctAnswerText'");
+        if (selectedAnswer != null && correctAnswerText != null && selectedAnswer == correctAnswerText) {
+          score++;
+          print("DEBUG: Question $i scored correct");
+        } else {
+          print("DEBUG: Question $i scored incorrect (selected: '$selectedAnswer', expected: '$correctAnswerText')");
+        }
       }
-      // Normalize selected answer
-      String? selectedAnswer = _answers[i]?.trim();
-      print(
-          "DEBUG: Question $i, selected: '$selectedAnswer', correct: '$correctAnswerText' (letter: $correctAnswerLetter)");
-      if (selectedAnswer != null && correctAnswerText != null &&
-          selectedAnswer == correctAnswerText) {
-        score++;
-        print("DEBUG: Question $i scored correct");
-      } else {
-        print(
-            "DEBUG: Question $i scored incorrect (selected: '$selectedAnswer', expected: '$correctAnswerText')");
+      double scoreFraction = widget.quizData.length > 0 ? score / widget.quizData.length : 0.0;
+      print("DEBUG: Quiz score: $score/${widget.quizData.length} ($scoreFraction)");
+
+      // Update progress
+      await Provider.of<ProgressProvider>(context, listen: false)
+          .updateQuizResult(widget.courseTitle, scoreFraction);
+      print("DEBUG: Quiz result updated for ${widget.courseTitle}, score: $score/${widget.quizData.length}");
+
+      if (!mounted) {
+        print("DEBUG: Widget unmounted after update, skipping dialog");
+        return;
       }
-    }
-    double scoreFraction = widget.quizData.length > 0 ? score /
-        widget.quizData.length : 0.0;
-    print(
-        "DEBUG: Quiz score: $score/${widget.quizData.length} ($scoreFraction)");
-
-    // Update progress with 2 arguments
-    await Provider.of<ProgressProvider>(context, listen: false)
-        .updateQuizResult(widget.courseTitle, scoreFraction);
-    print("DEBUG: Quiz result updated for ${widget
-        .courseTitle}, score: $score/${widget.quizData.length}");
-
-    if (!mounted) {
-      print("DEBUG: Widget unmounted after update, skipping dialog");
-      return;
-    }
-    // Show dialog based on score
-    if (score >= 7) {
-      await _showSuccessDialog(score);
-    } else {
-      await _showFailureDialog(score);
+      // Show dialog based on score
+      if (score >= 7) {
+        await _showSuccessDialog(score);
+      } else {
+        await _showFailureDialog(score);
+      }
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isLoading = false; // NEW: Stop loading
+        });
+      }
     }
   }
 
-
-   _showSuccessDialog(int score) {
-    showDialog(
+  Future<void> _showSuccessDialog(int score) async {
+    if (!mounted) return;
+    await showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) {
         String message = score == widget.quizData.length
             ? 'You aced it! Perfect score—way to go!'
             : 'Nice work! You passed the quiz—keep it up!';
-        final user = FirebaseAuth.instance.currentUser;
-        final userName = user?.displayName ?? 'User'; // Fetch the signed-in user's display name
         return AlertDialog(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
           backgroundColor: Colors.teal[50],
@@ -188,9 +238,13 @@ class _QuizScreenState extends State<QuizScreen> {
             ),
             TextButton(
               onPressed: () {
+                Navigator.of(context).pop();
+                setState(() {
+                  _isLoading = true; // NEW: Start loading for navigation
+                });
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (_) => CustomBottomNavigation(userName: userName)),
+                  MaterialPageRoute(builder: (_) => CustomBottomNavigation(userName: _userName)),
                       (route) => false,
                 );
               },
@@ -205,11 +259,11 @@ class _QuizScreenState extends State<QuizScreen> {
             ),
             TextButton(
               onPressed: () {
+                Navigator.of(context).pop();
                 setState(() {
                   _currentQuestionIndex = 0;
                   _showResults = true;
                 });
-                Navigator.of(context).pop();
               },
               child: const Text(
                 'Check Results',
@@ -227,16 +281,15 @@ class _QuizScreenState extends State<QuizScreen> {
     );
   }
 
-   _showFailureDialog(int score) {
-    showDialog(
+  Future<void> _showFailureDialog(int score) async {
+    if (!mounted) return;
+    await showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) {
         String message = score < 3
             ? 'Don’t worry! Every try counts—review and bounce back!'
             : 'Almost there! A little more practice and you’ll nail it!';
-        final user = FirebaseAuth.instance.currentUser;
-        final userName = user?.displayName ?? 'User'; // Fetch the signed-in user's display name
         return AlertDialog(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
           backgroundColor: Colors.teal[50],
@@ -298,9 +351,13 @@ class _QuizScreenState extends State<QuizScreen> {
             ),
             TextButton(
               onPressed: () {
+                Navigator.of(context).pop();
+                setState(() {
+                  _isLoading = true; // NEW: Start loading for navigation
+                });
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (_) => CustomBottomNavigation(userName: userName)),
+                  MaterialPageRoute(builder: (_) => CustomBottomNavigation(userName: _userName)),
                       (route) => false,
                 );
               },
@@ -314,7 +371,13 @@ class _QuizScreenState extends State<QuizScreen> {
               ),
             ),
             TextButton(
-              onPressed: null,
+              onPressed: () {
+                Navigator.of(context).pop();
+                setState(() {
+                  _currentQuestionIndex = 0;
+                  _showResults = true;
+                });
+              },
               child: const Text(
                 'Check Results',
                 style: TextStyle(
@@ -337,6 +400,7 @@ class _QuizScreenState extends State<QuizScreen> {
       _answers = List.filled(widget.quizData.length, null);
       _quizSubmitted = false;
       _showResults = false;
+      _isLoading = false; // NEW: Reset loading state
     });
   }
 
@@ -345,9 +409,6 @@ class _QuizScreenState extends State<QuizScreen> {
     if (widget.quizData.isEmpty) {
       return const Scaffold(body: Center(child: Text('No questions available.')));
     }
-
-    final user = FirebaseAuth.instance.currentUser;
-    final userName = user?.displayName ?? 'User'; // Fetch the signed-in user's display name
 
     final double screenWidth = MediaQuery.of(context).size.width;
     final double padding = screenWidth * 0.05;
@@ -485,7 +546,7 @@ class _QuizScreenState extends State<QuizScreen> {
                         value: optionText,
                         groupValue: _answers[_currentQuestionIndex],
                         activeColor: Color(0xff014062),
-                        onChanged: _quizSubmitted
+                        onChanged: _quizSubmitted || _isLoading
                             ? null
                             : (value) {
                           setState(() {
@@ -510,7 +571,7 @@ class _QuizScreenState extends State<QuizScreen> {
                         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
                         minimumSize: Size(screenWidth * 0.35, 0),
                       ),
-                      onPressed: _previousQuestion,
+                      onPressed: _isLoading ? null : _previousQuestion,
                       child: const Text('Previous', style: TextStyle(fontFamily: 'Poppins', color: Colors.white)),
                     )
                   else
@@ -526,20 +587,35 @@ class _QuizScreenState extends State<QuizScreen> {
                       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
                       minimumSize: Size(screenWidth * 0.35, 0),
                     ),
-                    onPressed: _answers[_currentQuestionIndex] == null && !_quizSubmitted
+                    onPressed: (_isLoading || (_answers[_currentQuestionIndex] == null && !_quizSubmitted))
                         ? null
                         : (_quizSubmitted && _currentQuestionIndex == widget.quizData.length - 1
-                        ? () {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (_) => CustomBottomNavigation(userName: userName)),
-                            (route) => false,
-                      );
+                        ? () async {
+                      setState(() {
+                        _isLoading = true; // NEW: Start loading
+                      });
+                      await Future.delayed(Duration(milliseconds: 500)); // Simulate navigation delay
+                      if (mounted) {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (_) => CustomBottomNavigation(userName: _userName)),
+                              (route) => false,
+                        );
+                      }
                     }
                         : (_currentQuestionIndex == widget.quizData.length - 1 && !_quizSubmitted
                         ? _showResult
                         : _nextQuestion)),
-                    child: Text(
+                    child: _isLoading
+                        ? SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                        strokeWidth: 2,
+                      ),
+                    )
+                        : Text(
                       _quizSubmitted && _currentQuestionIndex == widget.quizData.length - 1
                           ? 'Done'
                           : (_currentQuestionIndex == widget.quizData.length - 1 && !_quizSubmitted

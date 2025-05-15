@@ -36,8 +36,8 @@ class NotificationHelper {
       await androidPlugin?.createNotificationChannel(
         const AndroidNotificationChannel(
           'reminder_channel',
-          'C++ Reminders',
-          description: 'Reminders for C++ learning',
+          'Python Reminders',
+          description: 'Reminders for Python learning',
           importance: Importance.max,
           playSound: true,
           enableVibration: true,
@@ -85,9 +85,9 @@ class NotificationHelper {
 
   static Future<void> showWelcomeNotification() async {
     final messages = [
-      {'title': 'Welcome Back! 🌟', 'body': 'Ready to dive into C++?'},
-      {'title': 'Hello Again! 🚀', 'body': 'Let’s crush some C++ code!'},
-      {'title': 'Back for More? 💻', 'body': 'Time to level up C++ skills!'},
+      {'title': 'Welcome Back! 🌟', 'body': 'Ready to dive into Python?'},
+      {'title': 'Hello Again! 🚀', 'body': 'Let’s crush some Python code!'},
+      {'title': 'Back for More? 💻', 'body': 'Time to level up Python skills!'},
     ];
     final random = Random();
     final message = messages[random.nextInt(messages.length)];
@@ -105,8 +105,8 @@ class NotificationHelper {
   }) async {
     const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
       'reminder_channel',
-      'C++ Reminders',
-      channelDescription: 'Reminders for C++ learning',
+      'Python Reminders',
+      channelDescription: 'Reminders for Python learning',
       importance: Importance.max,
       priority: Priority.high,
       icon: '@mipmap/ic_launcher',
@@ -164,8 +164,8 @@ class NotificationHelper {
 
     const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
       'reminder_channel',
-      'C++ Reminders',
-      channelDescription: 'Reminders for C++ learning',
+      'Python Reminders',
+      channelDescription: 'Reminders for Python learning',
       importance: Importance.max,
       priority: Priority.high,
       icon: '@mipmap/ic_launcher',

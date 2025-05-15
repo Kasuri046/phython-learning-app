@@ -239,7 +239,7 @@ class _NotificationDisplayPageState extends State<NotificationDisplayPage> {
               padding: const EdgeInsets.only(top: 60),
               alignment: Alignment.center,
               child: const Text(
-                'Stay Updated with C ++',
+                'Stay Updated with Python',
                 style: TextStyle(
                   color: Colors.white70,
                   fontFamily: 'Poppins',
