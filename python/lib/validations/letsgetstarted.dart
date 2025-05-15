@@ -236,39 +236,26 @@ class _StartState extends State<Start> {
 
   @override
   Widget build(BuildContext context) {
-    // Get screen dimensions
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-    final isSmallScreen = screenWidth < 600; // Phone vs. tablet/desktop
-
-    // Responsive padding and font sizes
-    final horizontalPadding = screenWidth * 0.05; // 5% of screen width
-    final verticalSpacing = screenHeight * 0.02; // 2% of screen height
-    final titleFontSize = (screenWidth * 0.06).clamp(18.0, 24.0); // 18-24px
-    final buttonFontSize = (screenWidth * 0.04).clamp(14.0, 16.0); // 14-16px
-    final buttonHeight = screenHeight * 0.07; // 7% of screen height
-    final buttonWidth = isSmallScreen ? screenWidth * 0.9 : screenWidth * 0.42; // Full-width or side-by-side
+    // Get screen dimensions for dynamic sizing
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
+    // Dynamic font size: 5.5% of screen width, clamped between 18-24
+    final double titleFontSize = (screenWidth * 0.055).clamp(18.0, 24.0);
+    // Dynamic spacer height: 45% of screen height, clamped between 300-400
+    final double spacerHeight = (screenHeight * 0.40).clamp(280.0, 320.0);
 
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
         children: [
-          // Background image, scaled to contain
-          Image.asset(
-            'assets/pyt.png',
-            fit: BoxFit.cover, // Changed to contain to avoid distortion
-            width: screenWidth,
-            height: screenHeight,
-          ),
-          // Main content
+          Image.asset('assets/pyt.png', fit: BoxFit.cover),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Title
                 Padding(
-                  padding: EdgeInsets.only(top: screenHeight * 0.2), // 20% from top
+                  padding: const EdgeInsets.only(top: 155),
                   child: Text(
                     'Let\'s Get Started',
                     style: TextStyle(
@@ -280,17 +267,13 @@ class _StartState extends State<Start> {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                SizedBox(height: verticalSpacing * 2),
-                // Social sign-in button
+                SizedBox(height: spacerHeight),
                 if (Platform.isAndroid)
                   _buildSocialButton(
                     context,
                     'Continue With Google',
                     'assets/img.png',
                     _isLoading,
-                    buttonWidth,
-                    buttonHeight,
-                    buttonFontSize,
                         () => _handleGoogleSignIn(context),
                   )
                 else if (Platform.isIOS)
@@ -299,91 +282,25 @@ class _StartState extends State<Start> {
                     'Continue With Apple',
                     'assets/apple.png',
                     false, // Apple sign-in not implemented
-                    buttonWidth,
-                    buttonHeight,
-                    buttonFontSize,
                         () {},
                   ),
-                SizedBox(height: verticalSpacing),
-                // Divider with "or"
+                const SizedBox(height: 20),
                 Row(
-                  children: [
-                    Expanded(
-                      child: Divider(
-                        thickness: 1,
-                        color: Colors.grey,
-                        indent: horizontalPadding * 0.5,
-                        endIndent: horizontalPadding * 0.5,
-                      ),
-                    ),
+                  children: const <Widget>[
+                    Expanded(child: Divider(thickness: 1, color: Colors.grey)),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: horizontalPadding * 0.5),
-                      child: Text(
-                        "or",
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: buttonFontSize * 0.9,
-                        ),
-                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Text("or", style: TextStyle(fontFamily: 'Poppins')),
                     ),
-                    Expanded(
-                      child: Divider(
-                        thickness: 1,
-                        color: Colors.grey,
-                        indent: horizontalPadding * 0.5,
-                        endIndent: horizontalPadding * 0.5,
-                      ),
-                    ),
+                    Expanded(child: Divider(thickness: 1, color: Colors.grey)),
                   ],
                 ),
-                SizedBox(height: verticalSpacing),
-                // Log In and Sign Up buttons
-                isSmallScreen
-                    ? Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    _buildActionButton(
-                      context,
-                      'Log In',
-                      const Color(0xff023047),
-                      const Signin(),
-                      buttonWidth,
-                      buttonHeight,
-                      buttonFontSize,
-                    ),
-                    SizedBox(height: verticalSpacing),
-                    _buildActionButton(
-                      context,
-                      'Sign Up',
-                      const Color(0xff023047),
-                      const Signup(),
-                      buttonWidth,
-                      buttonHeight,
-                      buttonFontSize,
-                    ),
-                  ],
-                )
-                    : Row(
+                const SizedBox(height: 20),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    _buildActionButton(
-                      context,
-                      'Log In',
-                      const Color(0xff023047),
-                      const Signin(),
-                      buttonWidth,
-                      buttonHeight,
-                      buttonFontSize,
-                    ),
-                    _buildActionButton(
-                      context,
-                      'Sign Up',
-                      const Color(0xff023047),
-                      const Signup(),
-                      buttonWidth,
-                      buttonHeight,
-                      buttonFontSize,
-                    ),
+                    _buildActionButton(context, 'Log In', const Color(0xff023047), const Signin()),
+                    _buildActionButton(context, 'Sign Up', const Color(0xff023047), const Signup()),
                   ],
                 ),
               ],
@@ -394,21 +311,12 @@ class _StartState extends State<Start> {
     );
   }
 
-  Widget _buildSocialButton(
-      BuildContext context,
-      String title,
-      String imagePath,
-      bool isLoading,
-      double buttonWidth,
-      double buttonHeight,
-      double fontSize,
-      VoidCallback onTap,
-      ) {
+  Widget _buildSocialButton(BuildContext context, String title, String imagePath, bool isLoading, VoidCallback onTap) {
     return GestureDetector(
       onTap: isLoading ? null : onTap, // Disable tap when loading
       child: Container(
-        width: buttonWidth,
-        height: buttonHeight,
+        width: double.infinity,
+        height: 50,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
@@ -418,35 +326,28 @@ class _StartState extends State<Start> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (!isLoading) ...[
-              Image.asset(
-                imagePath,
-                height: buttonHeight * 0.5, // 50% of button height
-              ),
-              SizedBox(width: buttonWidth * 0.03),
+              Image.asset(imagePath, height: 24),
+              const SizedBox(width: 10),
               Text(
                 title,
                 style: TextStyle(
                   color: isLoading ? Colors.grey : Colors.black,
                   fontFamily: 'Poppins',
-                  fontSize: fontSize,
+                  fontSize: 16,
                 ),
               ),
             ] else ...[
-              SizedBox(
-                width: buttonHeight * 0.5,
-                height: buttonHeight * 0.5,
-                child: const CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Color(0xff023047)),
-                  strokeWidth: 2,
-                ),
+              const CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Color(0xff023047)),
+                strokeWidth: 2,
               ),
-              SizedBox(width: buttonWidth * 0.03),
-              Text(
+              const SizedBox(width: 10),
+              const Text(
                 'Signing In...',
                 style: TextStyle(
                   color: Colors.grey,
                   fontFamily: 'Poppins',
-                  fontSize: fontSize,
+                  fontSize: 16,
                 ),
               ),
             ],
@@ -456,22 +357,14 @@ class _StartState extends State<Start> {
     );
   }
 
-  Widget _buildActionButton(
-      BuildContext context,
-      String title,
-      Color color,
-      Widget navigateTo,
-      double buttonWidth,
-      double buttonHeight,
-      double fontSize,
-      ) {
+  Widget _buildActionButton(BuildContext context, String title, Color color, Widget navigateTo) {
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => navigateTo));
       },
       child: Container(
-        width: buttonWidth,
-        height: buttonHeight,
+        width: MediaQuery.of(context).size.width * 0.42,
+        height: 50,
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(12),
@@ -479,10 +372,10 @@ class _StartState extends State<Start> {
         child: Center(
           child: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontFamily: 'Poppins',
-              fontSize: fontSize,
+              fontSize: 16,
             ),
           ),
         ),
