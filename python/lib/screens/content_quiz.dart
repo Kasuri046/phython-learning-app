@@ -24,23 +24,21 @@ class _QuizScreenState extends State<QuizScreen> {
   List<String?> _answers = [];
   bool _quizSubmitted = false;
   bool _showResults = false;
-  bool _isLoading = false; // NEW: Tracks loading state for buttons
-  String _userName = 'User'; // NEW: Stores dynamic username
+  bool _isLoading = false;
+  String _userName = 'User';
 
   @override
   void initState() {
     super.initState();
     _answers = List.filled(widget.quizData.length, null);
-    _fetchUserName(); // NEW: Fetch username when screen loads
+    _fetchUserName();
   }
 
-  // NEW: Fetch username dynamically from Firebase Auth or Firestore
   Future<void> _fetchUserName() async {
     final user = FirebaseAuth.instance.currentUser;
     print("DEBUG: Fetching username... User: ${user?.uid ?? 'No user'}");
 
     if (user != null) {
-      // Try Firebase Auth displayName first
       String? authName = user.displayName;
       print("DEBUG: Firebase Auth displayName: $authName");
       if (authName != null && authName.isNotEmpty && authName.toLowerCase() != 'user') {
@@ -51,7 +49,6 @@ class _QuizScreenState extends State<QuizScreen> {
         return;
       }
 
-      // Fallback to Firestore
       try {
         DocumentSnapshot userDoc = await FirebaseFirestore.instance
             .collection('users')
@@ -77,7 +74,6 @@ class _QuizScreenState extends State<QuizScreen> {
         print("DEBUG: Error fetching from Firestore: $e");
       }
 
-      // Default to 'User' if no name found
       setState(() {
         _userName = 'User';
       });
@@ -111,7 +107,7 @@ class _QuizScreenState extends State<QuizScreen> {
       return;
     }
     setState(() {
-      _isLoading = true; // NEW: Start loading
+      _isLoading = true;
     });
 
     try {
@@ -145,7 +141,6 @@ class _QuizScreenState extends State<QuizScreen> {
       double scoreFraction = widget.quizData.length > 0 ? score / widget.quizData.length : 0.0;
       print("DEBUG: Quiz score: $score/${widget.quizData.length} ($scoreFraction)");
 
-      // Update progress
       await Provider.of<ProgressProvider>(context, listen: false)
           .updateQuizResult(widget.courseTitle, scoreFraction);
       print("DEBUG: Quiz result updated for ${widget.courseTitle}, score: $score/${widget.quizData.length}");
@@ -154,7 +149,6 @@ class _QuizScreenState extends State<QuizScreen> {
         print("DEBUG: Widget unmounted after update, skipping dialog");
         return;
       }
-      // Show dialog based on score
       if (score >= 7) {
         await _showSuccessDialog(score);
       } else {
@@ -163,7 +157,7 @@ class _QuizScreenState extends State<QuizScreen> {
     } finally {
       if (mounted) {
         setState(() {
-          _isLoading = false; // NEW: Stop loading
+          _isLoading = false;
         });
       }
     }
@@ -240,7 +234,7 @@ class _QuizScreenState extends State<QuizScreen> {
               onPressed: () {
                 Navigator.of(context).pop();
                 setState(() {
-                  _isLoading = true; // NEW: Start loading for navigation
+                  _isLoading = true;
                 });
                 Navigator.pushAndRemoveUntil(
                   context,
@@ -353,7 +347,7 @@ class _QuizScreenState extends State<QuizScreen> {
               onPressed: () {
                 Navigator.of(context).pop();
                 setState(() {
-                  _isLoading = true; // NEW: Start loading for navigation
+                  _isLoading = true;
                 });
                 Navigator.pushAndRemoveUntil(
                   context,
@@ -400,7 +394,7 @@ class _QuizScreenState extends State<QuizScreen> {
       _answers = List.filled(widget.quizData.length, null);
       _quizSubmitted = false;
       _showResults = false;
-      _isLoading = false; // NEW: Reset loading state
+      _isLoading = false;
     });
   }
 
@@ -466,7 +460,16 @@ class _QuizScreenState extends State<QuizScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(widget.quizData.length, (index) {
-                    bool isCorrect = _answers[index] == widget.quizData[index]['correctAnswer'];
+                    String? correctAnswerLetter = widget.quizData[index]['correctAnswer']?.toString().toLowerCase();
+                    String? correctAnswerText;
+                    if (correctAnswerLetter != null && correctAnswerLetter.isNotEmpty) {
+                      int optionIndex = correctAnswerLetter.codeUnitAt(0) - 'a'.codeUnitAt(0);
+                      List<dynamic> options = widget.quizData[index]['options'] ?? [];
+                      if (optionIndex >= 0 && optionIndex < options.length) {
+                        correctAnswerText = options[optionIndex]?.toString().trim();
+                      }
+                    }
+                    bool isCorrect = _answers[index]?.trim() == correctAnswerText;
                     bool isAnswered = _answers[index] != null && _showResults;
                     return GestureDetector(
                       onTap: () {
@@ -524,17 +527,35 @@ class _QuizScreenState extends State<QuizScreen> {
                   widget.quizData[_currentQuestionIndex]['options'].length,
                       (index) {
                     String optionText = widget.quizData[_currentQuestionIndex]['options'][index];
+                    String? correctAnswerLetter = widget.quizData[_currentQuestionIndex]['correctAnswer']?.toString().toLowerCase();
+                    String? correctAnswerText;
+                    if (correctAnswerLetter != null && correctAnswerLetter.isNotEmpty) {
+                      int optionIndex = correctAnswerLetter.codeUnitAt(0) - 'a'.codeUnitAt(0);
+                      List<dynamic> options = widget.quizData[_currentQuestionIndex]['options'] ?? [];
+                      if (optionIndex >= 0 && optionIndex < options.length) {
+                        correctAnswerText = options[optionIndex]?.toString().trim();
+                      }
+                    }
                     bool isSelected = _answers[_currentQuestionIndex] == optionText;
-                    bool isCorrect = optionText == widget.quizData[_currentQuestionIndex]['correctAnswer'];
+                    bool isCorrect = optionText == correctAnswerText;
+                    Color borderColor = Colors.black12;
+                    double borderWidth = 1.0;
+                    if (_showResults) {
+                      if (isCorrect) {
+                        borderColor = Colors.green;
+                        borderWidth = 2.0;
+                      } else if (isSelected && !isCorrect) {
+                        borderColor = Colors.red;
+                        borderWidth = 2.0;
+                      }
+                    }
                     return Container(
                       margin: const EdgeInsets.symmetric(vertical: 5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
-                          color: _showResults && isCorrect
-                              ? Colors.green
-                              : (isSelected && _showResults && !isCorrect ? Colors.red : Colors.black12),
-                          width: _showResults && (isCorrect || isSelected) ? 2 : 1,
+                          color: borderColor,
+                          width: borderWidth,
                         ),
                       ),
                       child: RadioListTile<String>(
@@ -592,9 +613,9 @@ class _QuizScreenState extends State<QuizScreen> {
                         : (_quizSubmitted && _currentQuestionIndex == widget.quizData.length - 1
                         ? () async {
                       setState(() {
-                        _isLoading = true; // NEW: Start loading
+                        _isLoading = true;
                       });
-                      await Future.delayed(Duration(milliseconds: 500)); // Simulate navigation delay
+                      await Future.delayed(Duration(milliseconds: 500));
                       if (mounted) {
                         Navigator.pushAndRemoveUntil(
                           context,

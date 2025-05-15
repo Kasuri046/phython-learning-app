@@ -63,7 +63,7 @@ class _LogoScreenState extends State<LogoScreen> with SingleTickerProviderStateM
           child: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/logog.png'),
+                image: AssetImage('assets/lop.png'),
                 fit: BoxFit.contain,
               ),
             ),
