@@ -161,7 +161,7 @@ class _CourseContentScreenState extends State<CourseContentScreen> {
                       ),
                       SizedBox(height: 8),
                       Text(
-                        "Let's Learn C++!",
+                        "Let's Learn !",
                         style: TextStyle(
                           fontSize: subtitleFontSize,
                           fontFamily: 'Poppins',
