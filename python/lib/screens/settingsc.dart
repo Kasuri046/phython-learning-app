@@ -9,11 +9,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+
+import '../components/bottom_navigation.dart';
+import '../resources/shared_preferences.dart';
+import '../validations/letsgetstarted.dart';
+import 'about.dart';
+
 class SettingsScreen extends StatelessWidget {
   final String userName;
   const SettingsScreen({Key? key, required this.userName}) : super(key: key);
 
-  // Function to show error SnackBar
+  // Function to show error snackbar
   void showErrorSnackbar(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -134,7 +140,6 @@ class SettingsScreen extends StatelessWidget {
     final double textFieldHeight = screenSize.height * 0.07; // Consistent with Signin
 
     return await showDialog<bool>(
-
       context: context,
       barrierDismissible: false,
       builder: (context) {
@@ -142,6 +147,7 @@ class SettingsScreen extends StatelessWidget {
         bool isObscure = true;
         String? errorMessage;
         bool isPassword = user.providerData.any((provider) => provider.providerId == 'password');
+        bool isDeleting = false; // Track deletion in progress
 
         return StatefulBuilder(
           builder: (context, setState) {
@@ -184,7 +190,9 @@ class SettingsScreen extends StatelessWidget {
                           isObscure ? Icons.visibility_off : Icons.visibility,
                           color: const Color(0xff023047),
                         ),
-                        onPressed: () {
+                        onPressed: isDeleting
+                            ? null
+                            : () {
                           setState(() {
                             isObscure = !isObscure;
                           });
@@ -199,13 +207,15 @@ class SettingsScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextButton(
-                          onPressed: () {
+                          onPressed: isDeleting
+                              ? null
+                              : () {
                             Navigator.of(context).pop(false);
                           },
                           child: Text(
                             'Cancel',
                             style: GoogleFonts.poppins(
-                              color: const Color(0xff023047),
+                              color: isDeleting ? Colors.grey : const Color(0xff023047),
                               fontSize: 14,
                             ),
                           ),
@@ -217,7 +227,9 @@ class SettingsScreen extends StatelessWidget {
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                           ),
-                          onPressed: () async {
+                          onPressed: isDeleting
+                              ? null
+                              : () async {
                             String input = controller.text.trim();
                             if (input.isEmpty) {
                               setState(() {
@@ -228,6 +240,7 @@ class SettingsScreen extends StatelessWidget {
                               return;
                             }
 
+                            bool isValid = false;
                             if (isPassword) {
                               try {
                                 final credential = EmailAuthProvider.credential(
@@ -235,7 +248,7 @@ class SettingsScreen extends StatelessWidget {
                                   password: input,
                                 );
                                 await user.reauthenticateWithCredential(credential);
-                                Navigator.of(context).pop(true);
+                                isValid = true;
                               } catch (e) {
                                 String error = 'That password doesn’t seem right. Try again?';
                                 if (e is FirebaseAuthException) {
@@ -269,15 +282,31 @@ class SettingsScreen extends StatelessWidget {
                                 return;
                               }
                               if (input.toLowerCase() == user.email?.toLowerCase()) {
-                                Navigator.of(context).pop(true);
+                                isValid = true;
                               } else {
                                 setState(() {
                                   errorMessage = 'Email does not match. Please try again.';
                                 });
                               }
                             }
+
+                            if (isValid) {
+                              setState(() {
+                                isDeleting = true; // Start deletion process
+                              });
+                              Navigator.of(context).pop(true);
+                            }
                           },
-                          child: Text(
+                          child: isDeleting
+                              ? SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              color: const Color(0xff023047),
+                              strokeWidth: 2,
+                            ),
+                          )
+                              : Text(
                             'Confirm',
                             style: GoogleFonts.poppins(
                               color: Colors.white,
