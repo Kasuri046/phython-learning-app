@@ -240,7 +240,7 @@ class _StartState extends State<Start> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          Image.asset('assets/get.png', fit: BoxFit.cover),
+          Image.asset('assets/pyt.png', fit: BoxFit.cover),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
