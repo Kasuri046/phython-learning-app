@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ProgressProvider with ChangeNotifier {
   double _globalProgress = 0.0;
-  double _globalTotal = 123.0; // 98 content files + 25 quizzes
+  double _globalTotal = 70.0;
   String? _currentUid;
   final Map<String, Set<String>> _readFiles = {};
   final Map<String, bool> _quizPassed = {};

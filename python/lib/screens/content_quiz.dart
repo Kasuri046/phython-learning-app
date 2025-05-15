@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cplus/screens/progressprovider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../components/bottom_navigation.dart';
 
 class QuizScreen extends StatefulWidget {
@@ -50,28 +53,72 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   void _showResult() async {
+    if (!mounted) {
+      print("DEBUG: Widget unmounted, skipping showResult");
+      return;
+    }
     setState(() {
       _quizSubmitted = true;
     });
     int score = 0;
     for (int i = 0; i < widget.quizData.length; i++) {
-      if (_answers[i] == widget.quizData[i]['correctAnswer']) {
+      // Get correctAnswer as a letter (e.g., "b")
+      String? correctAnswerLetter = widget.quizData[i]['correctAnswer']
+          ?.toString()
+          .toLowerCase();
+      String? correctAnswerText;
+      if (correctAnswerLetter != null && correctAnswerLetter.isNotEmpty) {
+        // Map letter to index ("a"->0, "b"->1, etc.)
+        int optionIndex = correctAnswerLetter.codeUnitAt(0) - 'a'.codeUnitAt(0);
+        List<dynamic> options = widget.quizData[i]['options'] ?? [];
+        if (optionIndex >= 0 && optionIndex < options.length) {
+          correctAnswerText = options[optionIndex]?.toString().trim();
+        } else {
+          print(
+              "DEBUG: Invalid optionIndex $optionIndex for question $i, options: $options");
+        }
+      } else {
+        print(
+            "DEBUG: Invalid correctAnswerLetter for question $i: $correctAnswerLetter");
+      }
+      // Normalize selected answer
+      String? selectedAnswer = _answers[i]?.trim();
+      print(
+          "DEBUG: Question $i, selected: '$selectedAnswer', correct: '$correctAnswerText' (letter: $correctAnswerLetter)");
+      if (selectedAnswer != null && correctAnswerText != null &&
+          selectedAnswer == correctAnswerText) {
         score++;
+        print("DEBUG: Question $i scored correct");
+      } else {
+        print(
+            "DEBUG: Question $i scored incorrect (selected: '$selectedAnswer', expected: '$correctAnswerText')");
       }
     }
+    double scoreFraction = widget.quizData.length > 0 ? score /
+        widget.quizData.length : 0.0;
+    print(
+        "DEBUG: Quiz score: $score/${widget.quizData.length} ($scoreFraction)");
 
-    // Update progress immediately after quiz submission
+    // Update progress with 2 arguments
     await Provider.of<ProgressProvider>(context, listen: false)
-        .updateQuizResult(widget.courseTitle, score / widget.quizData.length);
+        .updateQuizResult(widget.courseTitle, scoreFraction);
+    print("DEBUG: Quiz result updated for ${widget
+        .courseTitle}, score: $score/${widget.quizData.length}");
 
+    if (!mounted) {
+      print("DEBUG: Widget unmounted after update, skipping dialog");
+      return;
+    }
+    // Show dialog based on score
     if (score >= 7) {
-      _showSuccessDialog(score);
+      await _showSuccessDialog(score);
     } else {
-      _showFailureDialog(score);
+      await _showFailureDialog(score);
     }
   }
 
-  void _showSuccessDialog(int score) {
+
+   _showSuccessDialog(int score) {
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -79,6 +126,8 @@ class _QuizScreenState extends State<QuizScreen> {
         String message = score == widget.quizData.length
             ? 'You aced it! Perfect score—way to go!'
             : 'Nice work! You passed the quiz—keep it up!';
+        final user = FirebaseAuth.instance.currentUser;
+        final userName = user?.displayName ?? 'User'; // Fetch the signed-in user's display name
         return AlertDialog(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
           backgroundColor: Colors.teal[50],
@@ -141,7 +190,7 @@ class _QuizScreenState extends State<QuizScreen> {
               onPressed: () {
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (_) => CustomBottomNavigation(userName: 'kamrosh')),
+                  MaterialPageRoute(builder: (_) => CustomBottomNavigation(userName: userName)),
                       (route) => false,
                 );
               },
@@ -178,14 +227,16 @@ class _QuizScreenState extends State<QuizScreen> {
     );
   }
 
-  void _showFailureDialog(int score) {
+   _showFailureDialog(int score) {
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) {
-        String message = score < 4
+        String message = score < 3
             ? 'Don’t worry! Every try counts—review and bounce back!'
             : 'Almost there! A little more practice and you’ll nail it!';
+        final user = FirebaseAuth.instance.currentUser;
+        final userName = user?.displayName ?? 'User'; // Fetch the signed-in user's display name
         return AlertDialog(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
           backgroundColor: Colors.teal[50],
@@ -249,7 +300,7 @@ class _QuizScreenState extends State<QuizScreen> {
               onPressed: () {
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (_) => CustomBottomNavigation(userName: 'kamrosh')),
+                  MaterialPageRoute(builder: (_) => CustomBottomNavigation(userName: userName)),
                       (route) => false,
                 );
               },
@@ -294,6 +345,9 @@ class _QuizScreenState extends State<QuizScreen> {
     if (widget.quizData.isEmpty) {
       return const Scaffold(body: Center(child: Text('No questions available.')));
     }
+
+    final user = FirebaseAuth.instance.currentUser;
+    final userName = user?.displayName ?? 'User'; // Fetch the signed-in user's display name
 
     final double screenWidth = MediaQuery.of(context).size.width;
     final double padding = screenWidth * 0.05;
@@ -478,7 +532,7 @@ class _QuizScreenState extends State<QuizScreen> {
                         ? () {
                       Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (_) => CustomBottomNavigation(userName: 'kamrosh')),
+                        MaterialPageRoute(builder: (_) => CustomBottomNavigation(userName: userName)),
                             (route) => false,
                       );
                     }
