@@ -39,6 +39,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Get screen width for 90% calculation
+    final double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -113,29 +115,33 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 30),
-              child: ElevatedButton(
-                onPressed: () {
-                  if (_currentPage < _pages.length - 1) {
-                    _pageController.nextPage(
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeIn,
-                    );
-                  } else {
-                    _onGetStarted();
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xff023047),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+              child: SizedBox(
+                width: screenWidth * 0.9, // 90% of screen width
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (_currentPage < _pages.length - 1) {
+                      _pageController.nextPage(
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeIn,
+                      );
+                    } else {
+                      _onGetStarted();
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xff023047),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 16), // Adjust vertical padding for better appearance
                   ),
-                ),
-                child: Text(
-                  _currentPage == _pages.length - 1 ? 'Get Started' : 'Next',
-                  style: const TextStyle(
-                    fontFamily: 'Poppins',
-                    color: Colors.white,
-                    fontSize: 16,
+                  child: Text(
+                    _currentPage == _pages.length - 1 ? 'Get Started' : 'Next',
+                    style: const TextStyle(
+                      fontFamily: 'Poppins',
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
               ),
