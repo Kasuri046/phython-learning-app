@@ -19,7 +19,7 @@ class SettingsScreen extends StatelessWidget {
   final String userName;
   const SettingsScreen({Key? key, required this.userName}) : super(key: key);
 
-  // Function to show error snackbar
+
   void showErrorSnackbar(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(

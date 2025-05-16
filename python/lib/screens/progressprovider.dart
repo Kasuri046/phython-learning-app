@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ProgressProvider with ChangeNotifier {
   double _globalProgress = 0.0;
-  double _globalTotal = 70.0; // Adjust based on total files
+  double _globalTotal = 0.0; // Will be calculated dynamically
   String? _currentUid;
   final Map<String, Set<String>> _readFiles = {};
   final Map<String, bool> _quizPassed = {};
@@ -123,8 +123,10 @@ class ProgressProvider with ChangeNotifier {
   Map<String, bool> get isCompleted => _isCompleted;
 
   ProgressProvider() {
+    // Calculate _globalTotal dynamically
+    _globalTotal = topicSubtopicFiles.values.fold(0, (sum, files) => sum + files.length).toDouble();
+    print("DEBUG: ProgressProvider initialized, _globalTotal: $_globalTotal files");
     _listenToAuthChanges();
-    print("DEBUG: ProgressProvider initialized");
   }
 
   void _listenToAuthChanges() {
@@ -165,7 +167,7 @@ class ProgressProvider with ChangeNotifier {
       }, SetOptions(merge: true));
       _updateTopicProgress(topic);
       await _recalculateProgress();
-      print("DEBUG: Marked file read: $filePath, topic: $topic, progress: ${_topicProgress[topic]! * 100}%");
+      print("DEBUG: Marked file read: $filePath, topic: $topic, topic progress: ${_topicProgress[topic]! * 100}%");
       notifyListeners();
     } catch (e) {
       print("DEBUG: Error saving file to Firestore: $e");
@@ -202,7 +204,7 @@ class ProgressProvider with ChangeNotifier {
       }, SetOptions(merge: true));
 
       _updateTopicProgress(topic);
-      // Explicitly check if all files are read and quiz is passed
+      // Check if all files are read and quiz is passed
       if (newQuizPassed && topicSubtopicFiles[topic] != null) {
         bool allFilesRead = topicSubtopicFiles[topic]!.every((file) => _readFiles[topic]?.contains(file) ?? false);
         if (allFilesRead) {
@@ -232,7 +234,6 @@ class ProgressProvider with ChangeNotifier {
 
   void _updateTopicProgress(String topic) {
     _readFiles[topic] ??= {};
-    // Use topicSubtopicFiles for accurate total file count
     int totalFiles = topicSubtopicFiles[topic]?.length ?? 5; // Fallback to 5 if topic not found
     double progressPerFile = 1.0 / totalFiles;
     double topicProgress = _readFiles[topic]!.length * progressPerFile;
@@ -256,11 +257,19 @@ class ProgressProvider with ChangeNotifier {
   }
 
   Future<void> _recalculateProgress() async {
-    double totalFilesRead = 0.0;
-    for (var topic in _readFiles.keys) {
-      totalFilesRead += _readFiles[topic]!.length;
+    double totalProgress = 0.0;
+    double progressPerFile = 100.0 / _globalTotal; // Each file contributes 100/totalFiles %
+
+    for (var topic in topicSubtopicFiles.keys) {
+      _readFiles[topic] ??= {};
+      for (var file in topicSubtopicFiles[topic]!) {
+        if (_readFiles[topic]!.contains(file)) {
+          totalProgress += progressPerFile;
+        }
+      }
     }
-    _globalProgress = (totalFilesRead / _globalTotal) * 100;
+
+    _globalProgress = totalProgress.clamp(0.0, 100.0); // Ensure progress is capped at 100%
 
     if (_currentUid != null) {
       await FirebaseFirestore.instance
@@ -269,7 +278,7 @@ class ProgressProvider with ChangeNotifier {
           .set({'progress': _globalProgress / 100}, SetOptions(merge: true));
     }
 
-    print("DEBUG: Recalculated global progress: ${_globalProgress.toStringAsFixed(1)}% (totalFilesRead: $totalFilesRead/$_globalTotal)");
+    print("DEBUG: Recalculated global progress: ${_globalProgress.toStringAsFixed(1)}% (progressPerFile: $progressPerFile%)");
     notifyListeners();
   }
 
@@ -363,7 +372,7 @@ class ProgressProvider with ChangeNotifier {
 
   void _resetProgress() {
     _globalProgress = 0.0;
-    _globalTotal = 123.0; // Adjust if needed
+    _globalTotal = topicSubtopicFiles.values.fold(0, (sum, files) => sum + files.length).toDouble();
     _readFiles.clear();
     _quizPassed.clear();
     _topicProgress.clear();
