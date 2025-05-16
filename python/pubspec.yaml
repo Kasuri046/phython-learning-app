@@ -34,6 +34,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  #device_preview: ^1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -46,9 +47,9 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
   cupertino_icons: ^1.0.8
-  flutter_heatmap_calendar: ^1.0.5
+
   flutter_highlight: ^0.7.0
-  timeline_tile: ^2.0.0
+
   google_fonts: ^6.2.1
   calendar_date_picker2: ^1.1.8
   provider: ^6.1.2

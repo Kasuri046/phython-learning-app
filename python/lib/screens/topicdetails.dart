@@ -496,7 +496,7 @@ class _TopicDetailScreenState extends State<TopicDetailScreen> {
                   _filteredContent.isEmpty
                       ? const Center(
                     child: Text(
-                      'No content available',
+                      '',
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         color: Colors.grey,
