@@ -11,15 +11,19 @@ extension StringExtension on String {
   String capitalizeWords() {
     if (isEmpty) return this;
     return split(' ')
-        .map((word) => word.isNotEmpty
-        ? '${word[0].toUpperCase()}${word.substring(1).toLowerCase()}'
-        : word)
+        .map(
+          (word) =>
+              word.isNotEmpty
+                  ? '${word[0].toUpperCase()}${word.substring(1).toLowerCase()}'
+                  : word,
+        )
         .join(' ');
   }
 }
 
 class Homepage extends StatefulWidget {
   final String userName;
+
   const Homepage({super.key, required this.userName});
 
   @override
@@ -42,15 +46,16 @@ class _HomepageState extends State<Homepage> {
   Future<void> _loadOpenedTopics() async {
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-      DocumentSnapshot doc = await FirebaseFirestore.instance
-          .collection('users')
-          .doc(user.uid)
-          .collection('progress')
-          .doc('openedTopics')
-          .get();
+      DocumentSnapshot doc =
+          await FirebaseFirestore.instance
+              .collection('users')
+              .doc(user.uid)
+              .collection('progress')
+              .doc('openedTopics')
+              .get();
       if (doc.exists) {
         List<String>? opened = List<String>.from(doc['topics'] ?? []);
-        if (mounted) { // Check if widget is still mounted
+        if (mounted) {
           setState(() {
             _openedTopics = opened.toSet();
           });
@@ -70,11 +75,9 @@ class _HomepageState extends State<Homepage> {
             .doc(user.uid)
             .collection('progress')
             .doc('openedTopics')
-            .set({
-          'topics': _openedTopics.toList(),
-        }, SetOptions(merge: true));
+            .set({'topics': _openedTopics.toList()}, SetOptions(merge: true));
         print("DEBUG: Saved opened topic to Firestore: $topic");
-        if (mounted) { // Check if widget is still mounted
+        if (mounted) {
           setState(() {});
         }
       }
@@ -87,7 +90,9 @@ class _HomepageState extends State<Homepage> {
 
     if (user != null) {
       print("DEBUG: widget.userName: ${widget.userName}");
-      if (widget.userName.isNotEmpty && widget.userName.toLowerCase() != 'learner' && widget.userName.toLowerCase() != 'user') {
+      if (widget.userName.isNotEmpty &&
+          widget.userName.toLowerCase() != 'learner' &&
+          widget.userName.toLowerCase() != 'user') {
         setState(() {
           displayName = widget.userName.capitalizeWords();
         });
@@ -98,7 +103,10 @@ class _HomepageState extends State<Homepage> {
 
       String? authName = user.displayName;
       print("DEBUG: Firebase Auth displayName: $authName");
-      if (authName != null && authName.isNotEmpty && authName.toLowerCase() != 'learner' && authName.toLowerCase() != 'user') {
+      if (authName != null &&
+          authName.isNotEmpty &&
+          authName.toLowerCase() != 'learner' &&
+          authName.toLowerCase() != 'user') {
         setState(() {
           displayName = authName.capitalizeWords();
         });
@@ -108,16 +116,21 @@ class _HomepageState extends State<Homepage> {
       }
 
       try {
-        DocumentSnapshot userDoc = await FirebaseFirestore.instance
-            .collection('users')
-            .doc(user.uid)
-            .get();
-        print("DEBUG: Firestore fetch attempted. Doc exists: ${userDoc.exists}");
+        DocumentSnapshot userDoc =
+            await FirebaseFirestore.instance
+                .collection('users')
+                .doc(user.uid)
+                .get();
+        print(
+          "DEBUG: Firestore fetch attempted. Doc exists: ${userDoc.exists}",
+        );
         if (userDoc.exists) {
           var data = userDoc.data() as Map<String, dynamic>?;
           String fetchedName = data?['displayName'] ?? data?['name'] ?? '';
           print("DEBUG: Firestore displayName: $fetchedName");
-          if (fetchedName.isNotEmpty && fetchedName.toLowerCase() != 'learner' && fetchedName.toLowerCase() != 'user') {
+          if (fetchedName.isNotEmpty &&
+              fetchedName.toLowerCase() != 'learner' &&
+              fetchedName.toLowerCase() != 'user') {
             setState(() {
               displayName = fetchedName.capitalizeWords();
             });
@@ -136,7 +149,10 @@ class _HomepageState extends State<Homepage> {
 
       String? storedName = await SharedPrefHelper.getUserName();
       print("DEBUG: Stored name from SharedPreferences: $storedName");
-      if (storedName != null && storedName.isNotEmpty && storedName.toLowerCase() != 'learner' && storedName.toLowerCase() != 'user') {
+      if (storedName != null &&
+          storedName.isNotEmpty &&
+          storedName.toLowerCase() != 'learner' &&
+          storedName.toLowerCase() != 'user') {
         setState(() {
           displayName = storedName.capitalizeWords();
         });
@@ -154,7 +170,9 @@ class _HomepageState extends State<Homepage> {
         displayName = "Learner";
       });
       await SharedPrefHelper.setUserName("Learner");
-      print("DEBUG: No user logged in. Set displayName to default: $displayName");
+      print(
+        "DEBUG: No user logged in. Set displayName to default: $displayName",
+      );
     }
   }
 
@@ -187,7 +205,7 @@ class _HomepageState extends State<Homepage> {
     'Python Syntax & Basics': [
       'assets/python_topics/00_python_syntax.json',
       'assets/python_topics/01_python_comments.json',
-      'assets/quiz/Quiz_Python_Syntax.json', // Placeholder: Create if needed
+      'assets/quiz/Quiz_Python_Syntax.json',
     ],
     'Comments & Variables': [
       'assets/python_topics/02_python_variables.json',
@@ -196,18 +214,18 @@ class _HomepageState extends State<Homepage> {
       'assets/python_topics/05_python_variables_output.json',
       'assets/python_topics/06_python_variables_global.json',
       'assets/python_topics/07_python_variables_exercises.json',
-      'assets/quiz/Quiz_Variables.json', // Placeholder
+      'assets/quiz/Quiz_Variables.json',
     ],
     'Data Types & Casting': [
       'assets/python_topics/08_python_datatypes.json',
       'assets/python_topics/09_python_numbers.json',
       'assets/python_topics/10_python_casting.json',
-      'assets/quiz/Quiz_Data_Types.json', // Placeholder
+      'assets/quiz/Quiz_Data_Types.json',
     ],
     'Operators & Booleans': [
       'assets/python_topics/12_python_booleans.json',
       'assets/python_topics/13_python_operators.json',
-      'assets/quiz/Quiz_Operators.json', // Placeholder
+      'assets/quiz/Quiz_Operators.json',
     ],
     'Lists & Arrays': [
       'assets/python_topics/14_python_lists.json',
@@ -216,7 +234,7 @@ class _HomepageState extends State<Homepage> {
       'assets/python_topics/17_python_lists_add.json',
       'assets/python_topics/18_python_lists_remove.json',
       'assets/python_topics/52_python_arrays.json',
-      'assets/quiz/Quiz_Lists.json', // Placeholder
+      'assets/quiz/Quiz_Lists.json',
     ],
     'Tuples': [
       'assets/python_topics/25_python_tuples.json',
@@ -224,7 +242,7 @@ class _HomepageState extends State<Homepage> {
       'assets/python_topics/27_python_tuples_update.json',
       'assets/python_topics/28_python_tuples_unpack.json',
       'assets/python_topics/30_python_tuples_join.json',
-      'assets/quiz/Quiz_Tuples.json', // Placeholder
+      'assets/quiz/Quiz_Tuples.json',
     ],
     'Sets': [
       'assets/python_topics/31_python_sets.json',
@@ -233,7 +251,7 @@ class _HomepageState extends State<Homepage> {
       'assets/python_topics/34_python_sets_remove.json',
       'assets/python_topics/35_python_sets_loop.json',
       'assets/python_topics/36_python_sets_join.json',
-      'assets/quiz/Quiz_Sets.json', // Placeholder
+      'assets/quiz/Quiz_Sets.json',
     ],
     'Dictionaries': [
       'assets/python_topics/37_python_dictionaries.json',
@@ -242,40 +260,40 @@ class _HomepageState extends State<Homepage> {
       'assets/python_topics/40_python_dictionaries_add.json',
       'assets/python_topics/41_python_dictionaries_remove.json',
       'assets/python_topics/42_python_dictionaries_loop.json',
-      'assets/quiz/Quiz_Dictionaries.json', // Placeholder
+      'assets/quiz/Quiz_Dictionaries.json',
     ],
     'Conditions & Match': [
       'assets/python_topics/45_python_conditions.json',
       'assets/python_topics/46_python_match.json',
       'assets/python_topics/47_python_match.json',
-      'assets/quiz/Quiz_Conditions.json', // Placeholder
+      'assets/quiz/Quiz_Conditions.json',
     ],
     'Loops': [
       'assets/python_topics/19_python_lists_loop.json',
       'assets/python_topics/48_python_while_loops.json',
       'assets/python_topics/49_python_for_loops.json',
-      'assets/quiz/Quiz_Loops.json', // Placeholder
+      'assets/quiz/Quiz_Loops.json',
     ],
     'Functions & Lambda': [
       'assets/python_topics/50_python_functions.json',
       'assets/python_topics/51_python_lambda.json',
-      'assets/quiz/Quiz_Functions.json', // Placeholder
+      'assets/quiz/Quiz_Functions.json',
     ],
     'Classes & OOP': [
       'assets/python_topics/53_python_classes.json',
       'assets/python_topics/54_python_inheritance.json',
       'assets/python_topics/56_python_polymorphism.json',
-      'assets/quiz/Quiz_Classes.json', // Placeholder
+      'assets/quiz/Quiz_Classes.json',
     ],
     'Strings & Input': [
       'assets/python_topics/11_python_strings.json',
       'assets/python_topics/59_python_user_input.json',
-      'assets/quiz/Quiz_Strings.json', // Placeholder
+      'assets/quiz/Quiz_Strings.json',
     ],
     'Expressions & JSON': [
       'assets/python_topics/57_python_json.json',
       'assets/python_topics/58_python_regex.json',
-      'assets/quiz/Quiz_Regex_JSON.json', // Placeholder
+      'assets/quiz/Quiz_Regex_JSON.json',
     ],
     'Advanced Python': [
       'assets/python_topics/20_python_lists_comprehension.json',
@@ -283,7 +301,7 @@ class _HomepageState extends State<Homepage> {
       'assets/python_topics/44_python_dictionaries_nested.json',
       'assets/python_topics/55_python_iterators.json',
       'assets/python_topics/60_python_virtualenv.json',
-      'assets/quiz/Quiz_Advanced_Python.json', // Placeholder
+      'assets/quiz/Quiz_Advanced_Python.json',
     ],
   };
 
@@ -297,7 +315,7 @@ class _HomepageState extends State<Homepage> {
       backgroundColor: Colors.white,
       drawer: CustomDrawer(userName: displayName),
       appBar: AppBar(
-        backgroundColor:Color(0xff023047),
+        backgroundColor: Color(0xff023047),
         elevation: 0,
         toolbarHeight: screenSize.height * 0.25,
         automaticallyImplyLeading: false,
@@ -313,13 +331,18 @@ class _HomepageState extends State<Homepage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Builder(
-                      builder: (BuildContext drawerContext) => GestureDetector(
-                        onTap: () {
-                          print("DEBUG: Menu icon tapped, opening drawer");
-                          Scaffold.of(drawerContext).openDrawer();
-                        },
-                        child: const Icon(Icons.menu, color: Colors.white, size: 30),
-                      ),
+                      builder:
+                          (BuildContext drawerContext) => GestureDetector(
+                            onTap: () {
+                              print("DEBUG: Menu icon tapped, opening drawer");
+                              Scaffold.of(drawerContext).openDrawer();
+                            },
+                            child: const Icon(
+                              Icons.menu,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                          ),
                     ),
                     const SizedBox(height: 15),
                     Text(
@@ -343,16 +366,21 @@ class _HomepageState extends State<Homepage> {
                     SizedBox(height: 20),
                     Consumer<ProgressProvider>(
                       builder: (context, progressProvider, child) {
-                        double progressValue = progressProvider.globalProgress / 100.0; // Convert percentage to 0.0-1.0
+                        double progressValue =
+                            progressProvider.globalProgress / 100.0;
 
-                        print("DEBUG: Global progress: ${(progressValue * 100).toStringAsFixed(1)}%");
+                        print(
+                          "DEBUG: Global progress: ${(progressValue * 100).toStringAsFixed(1)}%",
+                        );
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             LinearProgressIndicator(
                               value: progressValue.clamp(0.0, 1.0),
                               backgroundColor: Colors.grey[400],
-                              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Colors.white,
+                              ),
                               minHeight: 10,
                               borderRadius: BorderRadius.circular(5),
                             ),
@@ -389,10 +417,7 @@ class _HomepageState extends State<Homepage> {
       ),
       body: Stack(
         children: [
-          Container(
-            height: 50,
-            color: Color(0xff023047),
-          ),
+          Container(height: 50, color: Color(0xff023047)),
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
@@ -403,7 +428,9 @@ class _HomepageState extends State<Homepage> {
             ),
             child: Consumer<ProgressProvider>(
               builder: (context, progressProvider, child) {
-                print("DEBUG: Rebuilding GridView with ${courses.length} courses");
+                print(
+                  "DEBUG: Rebuilding GridView with ${courses.length} courses",
+                );
                 return GridView.builder(
                   padding: EdgeInsets.all(padding),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -415,12 +442,16 @@ class _HomepageState extends State<Homepage> {
                   itemCount: courses.length,
                   itemBuilder: (context, index) {
                     final title = courses[index]['title'];
-                    final progress = progressProvider.topicProgress[title] ?? 0.0;
+                    final progress =
+                        progressProvider.topicProgress[title] ?? 0.0;
+                    final isCompleted =
+                        progressProvider.isCompleted[title] ?? false;
                     return _courseContent(
                       context,
                       icon: courses[index]['icon'],
                       title: title,
                       progress: progress,
+                      isCompleted: isCompleted,
                       isOpened: _openedTopics.contains(title),
                     );
                   },
@@ -433,11 +464,17 @@ class _HomepageState extends State<Homepage> {
     );
   }
 
-
-  Widget _courseContent(BuildContext context,
-      {required IconData icon, required String title, required double progress, required bool isOpened}) {
-    bool isCompleted = progress >= 1.0;
-    print("DEBUG: Rendering tile: $title, progress: ${(progress * 100).toStringAsFixed(1)}%, isCompleted: $isCompleted, isOpened: $isOpened");
+  Widget _courseContent(
+    BuildContext context, {
+    required IconData icon,
+    required String title,
+    required double progress,
+    required bool isCompleted,
+    required bool isOpened,
+  }) {
+    print(
+      "DEBUG: Rendering tile: $title, progress: ${(progress * 100).toStringAsFixed(1)}%, isCompleted: $isCompleted, isOpened: $isOpened",
+    );
     return GestureDetector(
       onTap: () {
         _saveOpenedTopic(title);
@@ -445,10 +482,11 @@ class _HomepageState extends State<Homepage> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => CourseContentScreen(
-              filenames: topicSubtopicFiles[title] ?? [],
-              title: title,
-            ),
+            builder:
+                (context) => CourseContentScreen(
+                  filenames: ProgressProvider.topicSubtopicFiles[title] ?? [],
+                  title: title,
+                ),
           ),
         );
       },
@@ -456,7 +494,7 @@ class _HomepageState extends State<Homepage> {
         height: 160,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Color(0xffE6ECEF), // Replaced Color(0xffD0F0F5)
+          color: Color(0xffE6ECEF),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.2),
@@ -476,16 +514,12 @@ class _HomepageState extends State<Homepage> {
                   child: ShaderMask(
                     shaderCallback: (Rect bounds) {
                       return LinearGradient(
-                        colors: [Color(0xff014062), Color(0xff1e679a)], // Replaced Colors.teal.shade400, Colors.teal.shade700
+                        colors: [Color(0xff014062), Color(0xff1e679a)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ).createShader(bounds);
                     },
-                    child: Icon(
-                      icon,
-                      size: 70,
-                      color: Colors.white,
-                    ),
+                    child: Icon(icon, size: 70, color: Colors.white),
                   ),
                 ),
                 SizedBox(height: 5),
@@ -509,8 +543,10 @@ class _HomepageState extends State<Homepage> {
                     value: progress.clamp(0.0, 1.0),
                     borderRadius: BorderRadius.circular(20),
                     minHeight: 8,
-                    backgroundColor: Color(0xffB3C7D1), // Replaced Colors.teal.shade200
-                    valueColor: AlwaysStoppedAnimation<Color>(Color(0xff023047)), // Replaced Colors.teal.shade600
+                    backgroundColor: Color(0xffB3C7D1),
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Color(0xff023047),
+                    ),
                   ),
                 ),
               ],
@@ -521,7 +557,7 @@ class _HomepageState extends State<Homepage> {
                 right: 10,
                 child: Icon(
                   Icons.check_circle,
-                  color: Color(0xff023047), // Replaced Colors.teal.shade600
+                  color: Color(0xff023047),
                   size: 24,
                 ),
               ),

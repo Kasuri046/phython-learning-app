@@ -26,12 +26,50 @@ class _QuizScreenState extends State<QuizScreen> {
   bool _showResults = false;
   bool _isLoading = false;
   String _userName = 'User';
+  String _normalizedCourseTitle = '';
 
   @override
   void initState() {
     super.initState();
     _answers = List.filled(widget.quizData.length, null);
+    _normalizeCourseTitle();
     _fetchUserName();
+    print(
+      "DEBUG: QuizScreen initialized, courseTitle: ${widget.courseTitle}, normalized: $_normalizedCourseTitle",
+    );
+  }
+
+  void _normalizeCourseTitle() {
+    // Map to convert courseTitle to match topicSubtopicFiles keys and expected quiz file naming
+    final Map<String, String> titleToNormalized = {
+      'Python Syntax & Basics': 'Python Syntax & Basics',
+      'Comments & Variables': 'Comments & Variables',
+      'Data Types & Casting': 'Data Types & Casting',
+      'Operators & Booleans': 'Operators & Booleans',
+      'Lists & Arrays': 'Lists & Arrays',
+      'Tuples': 'Tuples',
+      'Sets': 'Sets',
+      'Dictionaries': 'Dictionaries',
+      'Conditions & Match': 'Conditions & Match',
+      'Loops': 'Loops',
+      'Functions & Lambda': 'Functions & Lambda',
+      'Classes & OOP': 'Classes & OOP',
+      'Strings & Input': 'Strings & Input',
+      'Expressions & JSON': 'Expressions & JSON',
+      'Advanced Python': 'Advanced Python',
+    };
+
+    String inputTitle = widget.courseTitle.trim();
+    String? matchedKey = titleToNormalized.keys.firstWhere(
+      (key) => key.toLowerCase() == inputTitle.toLowerCase(),
+      orElse: () => inputTitle,
+    );
+    setState(() {
+      _normalizedCourseTitle = titleToNormalized[matchedKey] ?? inputTitle;
+    });
+    print(
+      "DEBUG: Normalized courseTitle: $inputTitle -> $_normalizedCourseTitle",
+    );
   }
 
   Future<void> _fetchUserName() async {
@@ -41,7 +79,9 @@ class _QuizScreenState extends State<QuizScreen> {
     if (user != null) {
       String? authName = user.displayName;
       print("DEBUG: Firebase Auth displayName: $authName");
-      if (authName != null && authName.isNotEmpty && authName.toLowerCase() != 'user') {
+      if (authName != null &&
+          authName.isNotEmpty &&
+          authName.toLowerCase() != 'user') {
         setState(() {
           _userName = authName;
         });
@@ -50,11 +90,14 @@ class _QuizScreenState extends State<QuizScreen> {
       }
 
       try {
-        DocumentSnapshot userDoc = await FirebaseFirestore.instance
-            .collection('users')
-            .doc(user.uid)
-            .get();
-        print("DEBUG: Firestore fetch attempted. Doc exists: ${userDoc.exists}");
+        DocumentSnapshot userDoc =
+            await FirebaseFirestore.instance
+                .collection('users')
+                .doc(user.uid)
+                .get();
+        print(
+          "DEBUG: Firestore fetch attempted. Doc exists: ${userDoc.exists}",
+        );
         if (userDoc.exists) {
           var data = userDoc.data() as Map<String, dynamic>?;
           String fetchedName = data?['displayName'] ?? data?['name'] ?? 'User';
@@ -87,6 +130,7 @@ class _QuizScreenState extends State<QuizScreen> {
         setState(() {
           _currentQuestionIndex++;
         });
+        print("DEBUG: Navigated to question ${_currentQuestionIndex + 1}");
       } else if (!_quizSubmitted) {
         _showResult();
       }
@@ -98,6 +142,7 @@ class _QuizScreenState extends State<QuizScreen> {
       setState(() {
         _currentQuestionIndex--;
       });
+      print("DEBUG: Navigated to question ${_currentQuestionIndex + 1}");
     }
   }
 
@@ -116,34 +161,56 @@ class _QuizScreenState extends State<QuizScreen> {
       });
       int score = 0;
       for (int i = 0; i < widget.quizData.length; i++) {
-        String? correctAnswerLetter = widget.quizData[i]['correctAnswer']?.toString().toLowerCase();
+        String? correctAnswerLetter =
+            widget.quizData[i]['correctAnswer']?.toString().toLowerCase();
         String? correctAnswerText;
         if (correctAnswerLetter != null && correctAnswerLetter.isNotEmpty) {
-          int optionIndex = correctAnswerLetter.codeUnitAt(0) - 'a'.codeUnitAt(0);
+          int optionIndex =
+              correctAnswerLetter.codeUnitAt(0) - 'a'.codeUnitAt(0);
           List<dynamic> options = widget.quizData[i]['options'] ?? [];
           if (optionIndex >= 0 && optionIndex < options.length) {
             correctAnswerText = options[optionIndex]?.toString().trim();
           } else {
-            print("DEBUG: Invalid optionIndex $optionIndex for question $i, options: $options");
+            print(
+              "DEBUG: Invalid optionIndex $optionIndex for question $i, options: $options",
+            );
           }
         } else {
-          print("DEBUG: Invalid correctAnswerLetter for question $i: $correctAnswerLetter");
+          print(
+            "DEBUG: Invalid correctAnswerLetter for question $i: $correctAnswerLetter",
+          );
         }
         String? selectedAnswer = _answers[i]?.trim();
-        print("DEBUG: Question $i, selected: '$selectedAnswer', correct: '$correctAnswerText'");
-        if (selectedAnswer != null && correctAnswerText != null && selectedAnswer == correctAnswerText) {
+        print(
+          "DEBUG: Question $i, selected: '$selectedAnswer', correct: '$correctAnswerText'",
+        );
+        if (selectedAnswer != null &&
+            correctAnswerText != null &&
+            selectedAnswer == correctAnswerText) {
           score++;
           print("DEBUG: Question $i scored correct");
         } else {
-          print("DEBUG: Question $i scored incorrect (selected: '$selectedAnswer', expected: '$correctAnswerText')");
+          print(
+            "DEBUG: Question $i scored incorrect (selected: '$selectedAnswer', expected: '$correctAnswerText')",
+          );
         }
       }
-      double scoreFraction = widget.quizData.length > 0 ? score / widget.quizData.length : 0.0;
-      print("DEBUG: Quiz score: $score/${widget.quizData.length} ($scoreFraction)");
+      double scoreFraction =
+          widget.quizData.length > 0 ? score / widget.quizData.length : 0.0;
+      print(
+        "DEBUG: Quiz score: $score/${widget.quizData.length} ($scoreFraction)",
+      );
 
-      await Provider.of<ProgressProvider>(context, listen: false)
-          .updateQuizResult(widget.courseTitle, scoreFraction);
-      print("DEBUG: Quiz result updated for ${widget.courseTitle}, score: $score/${widget.quizData.length}");
+      // Since ProgressProvider expects quiz file names like Quiz_${topic.replaceAll(' ', '_')}.json,
+      // we need to ensure the topic key will generate the correct quiz file name
+      String topicForProgress = _normalizedCourseTitle;
+      await Provider.of<ProgressProvider>(
+        context,
+        listen: false,
+      ).updateQuizResult(topicForProgress, scoreFraction);
+      print(
+        "DEBUG: Quiz result updated for $topicForProgress, score: $score/${widget.quizData.length}",
+      );
 
       if (!mounted) {
         print("DEBUG: Widget unmounted after update, skipping dialog");
@@ -154,6 +221,8 @@ class _QuizScreenState extends State<QuizScreen> {
       } else {
         await _showFailureDialog(score);
       }
+    } catch (e) {
+      print("DEBUG: Error in showResult: $e");
     } finally {
       if (mounted) {
         setState(() {
@@ -169,11 +238,14 @@ class _QuizScreenState extends State<QuizScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) {
-        String message = score == widget.quizData.length
-            ? 'You aced it! Perfect score—way to go!'
-            : 'Nice work! You passed the quiz—keep it up!';
+        String message =
+            score == widget.quizData.length
+                ? 'You aced it! Perfect score—way to go!'
+                : 'Nice work! You passed the quiz—keep it up!';
         return AlertDialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16.0),
+          ),
           backgroundColor: Colors.teal[50],
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -238,8 +310,10 @@ class _QuizScreenState extends State<QuizScreen> {
                 });
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (_) => CustomBottomNavigation(userName: _userName)),
-                      (route) => false,
+                  MaterialPageRoute(
+                    builder: (_) => CustomBottomNavigation(userName: _userName),
+                  ),
+                  (route) => false,
                 );
               },
               child: Text(
@@ -281,11 +355,14 @@ class _QuizScreenState extends State<QuizScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) {
-        String message = score < 3
-            ? 'Don’t worry! Every try counts—review and bounce back!'
-            : 'Almost there! A little more practice and you’ll nail it!';
+        String message =
+            score < 3
+                ? 'Don’t worry! Every try counts—review and bounce back!'
+                : 'Almost there! A little more practice and you’ll nail it!';
         return AlertDialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16.0),
+          ),
           backgroundColor: Colors.teal[50],
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -351,8 +428,10 @@ class _QuizScreenState extends State<QuizScreen> {
                 });
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (_) => CustomBottomNavigation(userName: _userName)),
-                      (route) => false,
+                  MaterialPageRoute(
+                    builder: (_) => CustomBottomNavigation(userName: _userName),
+                  ),
+                  (route) => false,
                 );
               },
               child: Text(
@@ -360,7 +439,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 12,
-                  color: Color(0xff014062),
+                  color: Color(0xff023047),
                 ),
               ),
             ),
@@ -378,12 +457,15 @@ class _QuizScreenState extends State<QuizScreen> {
       _showResults = false;
       _isLoading = false;
     });
+    print("DEBUG: Quiz reset");
   }
 
   @override
   Widget build(BuildContext context) {
     if (widget.quizData.isEmpty) {
-      return const Scaffold(body: Center(child: Text('No questions available.')));
+      return const Scaffold(
+        body: Center(child: Text('No questions available.')),
+      );
     }
 
     final double screenWidth = MediaQuery.of(context).size.width;
@@ -399,7 +481,14 @@ class _QuizScreenState extends State<QuizScreen> {
         preferredSize: Size.fromHeight(70),
         child: AppBar(
           iconTheme: const IconThemeData(color: Colors.white),
-          title: const Text('Quiz', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontFamily: 'Poppins')),
+          title: const Text(
+            'Quiz',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              fontFamily: 'Poppins',
+            ),
+          ),
           backgroundColor: Color(0xff023047),
         ),
       ),
@@ -418,7 +507,7 @@ class _QuizScreenState extends State<QuizScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                widget.courseTitle,
+                _normalizedCourseTitle,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Poppins',
@@ -442,32 +531,42 @@ class _QuizScreenState extends State<QuizScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(widget.quizData.length, (index) {
-                    String? correctAnswerLetter = widget.quizData[index]['correctAnswer']?.toString().toLowerCase();
+                    String? correctAnswerLetter =
+                        widget.quizData[index]['correctAnswer']
+                            ?.toString()
+                            .toLowerCase();
                     String? correctAnswerText;
-                    if (correctAnswerLetter != null && correctAnswerLetter.isNotEmpty) {
-                      int optionIndex = correctAnswerLetter.codeUnitAt(0) - 'a'.codeUnitAt(0);
-                      List<dynamic> options = widget.quizData[index]['options'] ?? [];
+                    if (correctAnswerLetter != null &&
+                        correctAnswerLetter.isNotEmpty) {
+                      int optionIndex =
+                          correctAnswerLetter.codeUnitAt(0) - 'a'.codeUnitAt(0);
+                      List<dynamic> options =
+                          widget.quizData[index]['options'] ?? [];
                       if (optionIndex >= 0 && optionIndex < options.length) {
-                        correctAnswerText = options[optionIndex]?.toString().trim();
+                        correctAnswerText =
+                            options[optionIndex]?.toString().trim();
                       }
                     }
-                    bool isCorrect = _answers[index]?.trim() == correctAnswerText;
+                    bool isCorrect =
+                        _answers[index]?.trim() == correctAnswerText;
                     bool isAnswered = _answers[index] != null && _showResults;
                     return GestureDetector(
                       onTap: () {
                         setState(() {
                           _currentQuestionIndex = index;
                         });
+                        print("DEBUG: Selected question ${index + 1}");
                       },
                       child: Container(
                         margin: const EdgeInsets.symmetric(horizontal: 5),
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: index == _currentQuestionIndex
-                              ? Color(0xff023047)
-                              : (isAnswered && _showResults
-                              ? (isCorrect ? Colors.green : Colors.red)
-                              : Color(0xffE6ECEF)),
+                          color:
+                              index == _currentQuestionIndex
+                                  ? Color(0xff023047)
+                                  : (isAnswered && _showResults
+                                      ? (isCorrect ? Colors.green : Colors.red)
+                                      : Color(0xffE6ECEF)),
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(color: Colors.black12),
                         ),
@@ -477,7 +576,11 @@ class _QuizScreenState extends State<QuizScreen> {
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
-                              color: index == _currentQuestionIndex || (isAnswered && _showResults) ? Colors.white : Colors.black,
+                              color:
+                                  index == _currentQuestionIndex ||
+                                          (isAnswered && _showResults)
+                                      ? Colors.white
+                                      : Colors.black,
                             ),
                           ),
                         ),
@@ -507,18 +610,29 @@ class _QuizScreenState extends State<QuizScreen> {
               Column(
                 children: List.generate(
                   widget.quizData[_currentQuestionIndex]['options'].length,
-                      (index) {
-                    String optionText = widget.quizData[_currentQuestionIndex]['options'][index];
-                    String? correctAnswerLetter = widget.quizData[_currentQuestionIndex]['correctAnswer']?.toString().toLowerCase();
+                  (index) {
+                    String optionText =
+                        widget
+                            .quizData[_currentQuestionIndex]['options'][index];
+                    String? correctAnswerLetter =
+                        widget.quizData[_currentQuestionIndex]['correctAnswer']
+                            ?.toString()
+                            .toLowerCase();
                     String? correctAnswerText;
-                    if (correctAnswerLetter != null && correctAnswerLetter.isNotEmpty) {
-                      int optionIndex = correctAnswerLetter.codeUnitAt(0) - 'a'.codeUnitAt(0);
-                      List<dynamic> options = widget.quizData[_currentQuestionIndex]['options'] ?? [];
+                    if (correctAnswerLetter != null &&
+                        correctAnswerLetter.isNotEmpty) {
+                      int optionIndex =
+                          correctAnswerLetter.codeUnitAt(0) - 'a'.codeUnitAt(0);
+                      List<dynamic> options =
+                          widget.quizData[_currentQuestionIndex]['options'] ??
+                          [];
                       if (optionIndex >= 0 && optionIndex < options.length) {
-                        correctAnswerText = options[optionIndex]?.toString().trim();
+                        correctAnswerText =
+                            options[optionIndex]?.toString().trim();
                       }
                     }
-                    bool isSelected = _answers[_currentQuestionIndex] == optionText;
+                    bool isSelected =
+                        _answers[_currentQuestionIndex] == optionText;
                     bool isCorrect = optionText == correctAnswerText;
                     Color borderColor = Colors.black12;
                     double borderWidth = 1.0;
@@ -543,19 +657,26 @@ class _QuizScreenState extends State<QuizScreen> {
                       child: RadioListTile<String>(
                         title: Text(
                           optionText,
-                          style: TextStyle(fontFamily: 'Poppins', fontSize: optionFontSize),
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: optionFontSize,
+                          ),
                           softWrap: true,
                         ),
                         value: optionText,
                         groupValue: _answers[_currentQuestionIndex],
-                        activeColor: Color(0xff014062),
-                        onChanged: _quizSubmitted || _isLoading
-                            ? null
-                            : (value) {
-                          setState(() {
-                            _answers[_currentQuestionIndex] = value;
-                          });
-                        },
+                        activeColor: Color(0xff023047),
+                        onChanged:
+                            _quizSubmitted || _isLoading
+                                ? null
+                                : (value) {
+                                  setState(() {
+                                    _answers[_currentQuestionIndex] = value;
+                                  });
+                                  print(
+                                    "DEBUG: Selected option for question ${_currentQuestionIndex + 1}: $value",
+                                  );
+                                },
                         dense: true,
                       ),
                     );
@@ -570,62 +691,102 @@ class _QuizScreenState extends State<QuizScreen> {
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xff023047),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 12,
+                          horizontal: 24,
+                        ),
                         minimumSize: Size(screenWidth * 0.35, 0),
                       ),
                       onPressed: _isLoading ? null : _previousQuestion,
-                      child: const Text('Previous', style: TextStyle(fontFamily: 'Poppins', color: Colors.white)),
+                      child: const Text(
+                        'Previous',
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
+                        ),
+                      ),
                     )
                   else
                     const SizedBox(width: 0),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: _showResults
-                          ? Color(0xff023047)
-                          : (_answers[_currentQuestionIndex] == null && !_quizSubmitted
-                          ? Color(0xffE6ECEF)
-                          : Color(0xff023047)),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                      backgroundColor:
+                          _showResults
+                              ? Color(0xff023047)
+                              : (_answers[_currentQuestionIndex] == null &&
+                                      !_quizSubmitted
+                                  ? Color(0xffE6ECEF)
+                                  : Color(0xff023047)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 12,
+                        horizontal: 24,
+                      ),
                       minimumSize: Size(screenWidth * 0.35, 0),
                     ),
-                    onPressed: (_isLoading || (_answers[_currentQuestionIndex] == null && !_quizSubmitted))
-                        ? null
-                        : (_quizSubmitted && _currentQuestionIndex == widget.quizData.length - 1
-                        ? () async {
-                      setState(() {
-                        _isLoading = true;
-                      });
-                      await Future.delayed(Duration(milliseconds: 500));
-                      if (mounted) {
-                        Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(builder: (_) => CustomBottomNavigation(userName: _userName)),
-                              (route) => false,
-                        );
-                      }
-                    }
-                        : (_currentQuestionIndex == widget.quizData.length - 1 && !_quizSubmitted
-                        ? _showResult
-                        : _nextQuestion)),
-                    child: _isLoading
-                        ? SizedBox(
-                      width: 20,
-                      height: 20,
-                      child: CircularProgressIndicator(
-                        color: Colors.white,
-                        strokeWidth: 2,
-                      ),
-                    )
-                        : Text(
-                      _quizSubmitted && _currentQuestionIndex == widget.quizData.length - 1
-                          ? 'Done'
-                          : (_currentQuestionIndex == widget.quizData.length - 1 && !_quizSubmitted
-                          ? 'Submit'
-                          : 'Next'),
-                      style: const TextStyle(fontFamily: 'Poppins', color: Colors.white),
-                    ),
+                    onPressed:
+                        (_isLoading ||
+                                (_answers[_currentQuestionIndex] == null &&
+                                    !_quizSubmitted))
+                            ? null
+                            : (_quizSubmitted &&
+                                    _currentQuestionIndex ==
+                                        widget.quizData.length - 1
+                                ? () async {
+                                  setState(() {
+                                    _isLoading = true;
+                                  });
+                                  await Future.delayed(
+                                    Duration(milliseconds: 500),
+                                  );
+                                  if (mounted) {
+                                    Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder:
+                                            (_) => CustomBottomNavigation(
+                                              userName: _userName,
+                                            ),
+                                      ),
+                                      (route) => false,
+                                    );
+                                  }
+                                }
+                                : (_currentQuestionIndex ==
+                                            widget.quizData.length - 1 &&
+                                        !_quizSubmitted
+                                    ? _showResult
+                                    : _nextQuestion)),
+                    child:
+                        _isLoading
+                            ? SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                                strokeWidth: 2,
+                              ),
+                            )
+                            : Text(
+                              _quizSubmitted &&
+                                      _currentQuestionIndex ==
+                                          widget.quizData.length - 1
+                                  ? 'Done'
+                                  : (_currentQuestionIndex ==
+                                              widget.quizData.length - 1 &&
+                                          !_quizSubmitted
+                                      ? 'Submit'
+                                      : 'Next'),
+                              style: const TextStyle(
+                                fontFamily: 'Poppins',
+                                color: Colors.white,
+                              ),
+                            ),
                   ),
                 ],
               ),
