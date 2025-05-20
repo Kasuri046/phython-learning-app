@@ -343,15 +343,14 @@ class _HomepageState extends State<Homepage> {
                     SizedBox(height: 20),
                     Consumer<ProgressProvider>(
                       builder: (context, progressProvider, child) {
-                        double progress = progressProvider.globalTotal > 0
-                            ? progressProvider.globalProgress / progressProvider.globalTotal
-                            : 0.0;
-                        print("DEBUG: Global progress: ${(progress * 100).toStringAsFixed(1)}%");
+                        double progressValue = progressProvider.globalProgress / 100.0; // Convert percentage to 0.0-1.0
+
+                        print("DEBUG: Global progress: ${(progressValue * 100).toStringAsFixed(1)}%");
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             LinearProgressIndicator(
-                              value: progress.clamp(0.0, 1.0),
+                              value: progressValue.clamp(0.0, 1.0),
                               backgroundColor: Colors.grey[400],
                               valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                               minHeight: 10,
@@ -359,7 +358,7 @@ class _HomepageState extends State<Homepage> {
                             ),
                             SizedBox(height: 5),
                             Text(
-                              'Overall Progress: ${(progress * 100).toStringAsFixed(1)}%',
+                              'Overall Progress: ${(progressValue * 100).toStringAsFixed(1)}%',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'Poppins',

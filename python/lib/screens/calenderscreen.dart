@@ -105,9 +105,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     const SizedBox(height: 20),
                     Consumer<ProgressProvider>(
                       builder: (context, progressProvider, child) {
-                        double progressValue = progressProvider.globalTotal > 0
-                            ? progressProvider.globalProgress / progressProvider.globalTotal
-                            : 0.0;
+                        double progressValue = progressProvider.globalProgress / 100.0; // Convert percentage to 0.0-1.0
+
                         print("DEBUG: CalendarScreen progress: ${(progressValue * 100).toStringAsFixed(1)}%");
                         return Card(
                           color: Colors.blue[50],

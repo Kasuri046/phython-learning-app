@@ -1,23 +1,24 @@
-import 'package:cplus/screens/policy.dart';
-import '../components/bottom_navigation.dart';
-import '../resources/shared_preferences.dart';
-import '../validations/letsgetstarted.dart';
-import 'about.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cplus/screens/policy.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
-
 import '../components/bottom_navigation.dart';
 import '../resources/shared_preferences.dart';
 import '../validations/letsgetstarted.dart';
 import 'about.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
   final String userName;
   const SettingsScreen({Key? key, required this.userName}) : super(key: key);
+
+  @override
+  _SettingsScreenState createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  bool isDeleting = false; // Track deletion state for CircularProgressIndicator
 
 
   void showErrorSnackbar(BuildContext context, String message) {
@@ -147,7 +148,7 @@ class SettingsScreen extends StatelessWidget {
         bool isObscure = true;
         String? errorMessage;
         bool isPassword = user.providerData.any((provider) => provider.providerId == 'password');
-        bool isDeleting = false; // Track deletion in progress
+        bool isDialogDeleting = false; // Track deletion in dialog
 
         return StatefulBuilder(
           builder: (context, setState) {
@@ -190,7 +191,7 @@ class SettingsScreen extends StatelessWidget {
                           isObscure ? Icons.visibility_off : Icons.visibility,
                           color: const Color(0xff023047),
                         ),
-                        onPressed: isDeleting
+                        onPressed: isDialogDeleting
                             ? null
                             : () {
                           setState(() {
@@ -207,7 +208,7 @@ class SettingsScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextButton(
-                          onPressed: isDeleting
+                          onPressed: isDialogDeleting
                               ? null
                               : () {
                             Navigator.of(context).pop(false);
@@ -215,7 +216,7 @@ class SettingsScreen extends StatelessWidget {
                           child: Text(
                             'Cancel',
                             style: GoogleFonts.poppins(
-                              color: isDeleting ? Colors.grey : const Color(0xff023047),
+                              color: isDialogDeleting ? Colors.grey : const Color(0xff023047),
                               fontSize: 14,
                             ),
                           ),
@@ -227,7 +228,7 @@ class SettingsScreen extends StatelessWidget {
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                           ),
-                          onPressed: isDeleting
+                          onPressed: isDialogDeleting
                               ? null
                               : () async {
                             String input = controller.text.trim();
@@ -292,12 +293,12 @@ class SettingsScreen extends StatelessWidget {
 
                             if (isValid) {
                               setState(() {
-                                isDeleting = true; // Start deletion process
+                                isDialogDeleting = true; // Start deletion process in dialog
                               });
                               Navigator.of(context).pop(true);
                             }
                           },
-                          child: isDeleting
+                          child: isDialogDeleting
                               ? SizedBox(
                             width: 20,
                             height: 20,
@@ -350,6 +351,12 @@ class SettingsScreen extends StatelessWidget {
       isProcessing = false;
       return;
     }
+
+    // Show CircularProgressIndicator on ListTile
+    setState(() {
+      isDeleting = true;
+      debugPrint("DEBUG: Setting isDeleting to true for CircularProgressIndicator");
+    });
 
     try {
       // Delete Firestore user data
@@ -423,6 +430,12 @@ class SettingsScreen extends StatelessWidget {
         showErrorSnackbar(context, errorMessage);
       }
     } finally {
+      if (context.mounted) {
+        setState(() {
+          isDeleting = false; // Hide CircularProgressIndicator
+          debugPrint("DEBUG: Setting isDeleting to false");
+        });
+      }
       isProcessing = false;
     }
   }
@@ -477,7 +490,7 @@ class SettingsScreen extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => CustomBottomNavigation(
-                          userName: userName,
+                          userName: widget.userName,
                           initialIndex: 3,
                         ),
                       ),
@@ -492,7 +505,7 @@ class SettingsScreen extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => CustomBottomNavigation(
-                          userName: userName,
+                          userName: widget.userName,
                           initialIndex: 2,
                         ),
                       ),
@@ -519,13 +532,22 @@ class SettingsScreen extends StatelessWidget {
                     );
                   },
                 ),
+                isDeleting ? Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.red,
+                    strokeWidth: 3,
+                  ),
+                ):
                 ListTile(
-                  leading: const Icon(
+                  leading:
+                  const Icon(
                     Icons.delete_forever_rounded,
                     color: Colors.red,
                     size: 28,
                   ),
-                  title: const Text(
+                  title: isDeleting
+                      ? const SizedBox.shrink() // Hide text during deletion
+                      : const Text(
                     'Delete Account',
                     style: TextStyle(
                       fontFamily: 'Poppins',
@@ -533,7 +555,7 @@ class SettingsScreen extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  onTap: () => _deleteAccount(context),
+                  onTap: isDeleting ? null : () => _deleteAccount(context),
                 ),
               ],
             ),

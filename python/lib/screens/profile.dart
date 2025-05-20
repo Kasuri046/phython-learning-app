@@ -382,9 +382,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     const SizedBox(height: 30),
                     Consumer<ProgressProvider>(
                       builder: (context, progressProvider, child) {
-                        double progressValue = progressProvider.globalTotal > 0
-                            ? progressProvider.globalProgress / progressProvider.globalTotal
-                            : 0.0;
+                        double progressValue = progressProvider.globalProgress / 100.0; // Convert percentage to 0.0-1.0
+
                         print("DEBUG: ProfileScreen progress: ${(progressValue * 100).toStringAsFixed(1)}%");
                         return Card(
                           color: Colors.blue[50],
