@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class ProgressProvider with ChangeNotifier {
   double _globalProgress = 0.0;
@@ -117,13 +116,19 @@ class ProgressProvider with ChangeNotifier {
   };
 
   double get globalProgress => _globalProgress;
+
   double get globalTotal => _globalTotal;
+
   Map<String, double> get topicProgress => _topicProgress;
+
   Map<String, bool> get isCompleted => _isCompleted;
 
   ProgressProvider() {
-    _globalTotal = topicSubtopicFiles.values.fold(0, (sum, files) => sum + files.length).toDouble();
-    print("DEBUG: ProgressProvider initialized, _globalTotal: $_globalTotal files");
+    _globalTotal =
+        topicSubtopicFiles.values.fold(0, (sum, files) => sum + files.length)
+            .toDouble();
+    print(
+        "DEBUG: ProgressProvider initialized, _globalTotal: $_globalTotal files");
     _listenToAuthChanges();
   }
 
@@ -135,7 +140,7 @@ class ProgressProvider with ChangeNotifier {
         print("DEBUG: User logged in, UID: $_currentUid");
       } else {
         _currentUid = null;
-        _resetProgress();
+     
         print("DEBUG: No user logged in, progress reset");
       }
     });
@@ -146,13 +151,14 @@ class ProgressProvider with ChangeNotifier {
       print("DEBUG: No user logged in, skipping markFileRead");
       return;
     }
-    // Validate filePath exists and isn't a quiz file
-    if (!topicSubtopicFiles.containsKey(topic) || !topicSubtopicFiles[topic]!.contains(filePath)) {
+    if (!topicSubtopicFiles.containsKey(topic) ||
+        !topicSubtopicFiles[topic]!.contains(filePath)) {
       print("DEBUG: Invalid filePath $filePath for topic $topic, skipping");
       return;
     }
     if (filePath.contains('assets/quiz/')) {
-      print("DEBUG: Quiz file $filePath cannot be marked read directly, use updateQuizResult");
+      print(
+          "DEBUG: Quiz file $filePath cannot be marked read directly, use updateQuizResult");
       return;
     }
     _readFiles[topic] ??= {};
@@ -174,7 +180,9 @@ class ProgressProvider with ChangeNotifier {
       }, SetOptions(merge: true));
       _updateTopicProgress(topic);
       await _recalculateProgress();
-      print("DEBUG: Marked file read: $filePath, topic: $topic, topic progress: ${_topicProgress[topic]! * 100}%");
+      print(
+          "DEBUG: Marked file read: $filePath, topic: $topic, topic progress: ${_topicProgress[topic]! *
+              100}%");
       notifyListeners();
     } catch (e) {
       print("DEBUG: Error saving file to Firestore: $e");
@@ -193,34 +201,24 @@ class ProgressProvider with ChangeNotifier {
         .collection('quizzes')
         .doc(topic);
     final snapshot = await topicDoc.get();
-    bool existingQuizPassed = snapshot.exists && (snapshot.data()?['quizPassed'] ?? false);
+    bool existingQuizPassed = snapshot.exists &&
+        (snapshot.data()?['quizPassed'] ?? false);
     bool newQuizPassed = score >= 0.7;
     if (!existingQuizPassed || newQuizPassed) {
       _quizPassed[topic] = newQuizPassed;
-      if (newQuizPassed) {
-        String? quizFile = topicSubtopicFiles[topic]?.firstWhere(
-              (file) => file.toLowerCase().contains('quiz'),
-          orElse: () => '',
-        );
-        if (topicSubtopicFiles[topic]?.contains(quizFile) ?? false) {
-          _readFiles[topic] ??= {};
-          if (!_readFiles[topic]!.contains(quizFile)) {
-            _readFiles[topic]!.add(quizFile!);
-            await FirebaseFirestore.instance
-                .collection('users')
-                .doc(_currentUid)
-                .collection('progress')
-                .doc(topic)
-                .set({
-              'readFiles': _readFiles[topic]!.toList(),
-              'progress': _topicProgress[topic] ?? 0.0,
-              'isCompleted': _isCompleted[topic] ?? false,
-            }, SetOptions(merge: true));
-            print("DEBUG: Marked quiz file read: $quizFile for topic $topic");
-          }
-        } else {
-          print("DEBUG: Quiz file $quizFile not in topicSubtopicFiles for $topic");
+      String? quizFile = topicSubtopicFiles[topic]?.firstWhere(
+            (file) => file.toLowerCase().contains('quiz'),
+        orElse: () => '',
+      );
+      if (newQuizPassed && quizFile != null && quizFile.isNotEmpty) {
+        _readFiles[topic] ??= {};
+        if (!_readFiles[topic]!.contains(quizFile)) {
+          _readFiles[topic]!.add(quizFile);
+          print("DEBUG: Marked quiz file read: $quizFile for topic $topic");
         }
+      } else {
+        print(
+            "DEBUG: Quiz file $quizFile not found or invalid for topic $topic");
       }
       await topicDoc.set({
         'score': score,
@@ -228,24 +226,21 @@ class ProgressProvider with ChangeNotifier {
         'lastUpdated': FieldValue.serverTimestamp(),
       }, SetOptions(merge: true));
       _updateTopicProgress(topic);
-      if (newQuizPassed && topicSubtopicFiles[topic] != null) {
-        bool allFilesRead = topicSubtopicFiles[topic]!.every((file) => _readFiles[topic]?.contains(file) ?? false);
-        if (allFilesRead) {
-          _isCompleted[topic] = true;
-          await FirebaseFirestore.instance
-              .collection('users')
-              .doc(_currentUid)
-              .collection('progress')
-              .doc(topic)
-              .set({'isCompleted': true}, SetOptions(merge: true));
-          print("DEBUG: Marked topic $topic as completed");
-        }
-      }
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(_currentUid)
+          .collection('progress')
+          .doc(topic)
+          .set({
+        'readFiles': _readFiles[topic]!.toList(),
+        'progress': _topicProgress[topic] ?? 0.0,
+        'isCompleted': _isCompleted[topic] ?? false,
+      }, SetOptions(merge: true));
       await _recalculateProgress();
-      print('DEBUG: Quiz result for $topic: score=$score, passed=$newQuizPassed, topic progress: ${_topicProgress[topic]! * 100}%');
+      print(
+          'DEBUG: Quiz result for $topic: score=$score, passed=$newQuizPassed, topic progress: ${_topicProgress[topic]! *
+              100}%');
       notifyListeners();
-    } else {
-      print('DEBUG: Skipped quiz update for $topic: already passed, score=$score');
     }
   }
 
@@ -255,11 +250,17 @@ class ProgressProvider with ChangeNotifier {
 
   void _updateTopicProgress(String topic) {
     _readFiles[topic] ??= {};
-    int totalFiles = topicSubtopicFiles[topic]?.length ?? 5;
-    double progressPerFile = 1.0 / totalFiles;
-    double topicProgress = _readFiles[topic]!.length * progressPerFile;
-    _topicProgress[topic] = topicProgress.clamp(0.0, 1.0);
-    _isCompleted[topic] = _readFiles[topic]!.length >= totalFiles && (_quizPassed[topic] ?? false);
+    final files = topicSubtopicFiles[topic] ?? [];
+    if (files.isEmpty) {
+      _topicProgress[topic] = 0.0;
+      _isCompleted[topic] = false;
+      return;
+    }
+    final readCount = _readFiles[topic]!.length;
+    _topicProgress[topic] = (readCount / files.length).clamp(0.0, 1.0);
+    bool allFilesRead = files.every((file) =>
+        _readFiles[topic]!.contains(file));
+    _isCompleted[topic] = allFilesRead && (_quizPassed[topic] ?? false);
     if (_currentUid != null) {
       FirebaseFirestore.instance
           .collection('users')
@@ -267,43 +268,49 @@ class ProgressProvider with ChangeNotifier {
           .collection('progress')
           .doc(topic)
           .set({
+        'readFiles': _readFiles[topic]!.toList(),
         'progress': _topicProgress[topic],
         'isCompleted': _isCompleted[topic],
       }, SetOptions(merge: true));
     }
-    print("DEBUG: Updated topic progress: $topic, ${_topicProgress[topic]! * 100}% (readFiles: ${_readFiles[topic]!.length}/$totalFiles)");
+    print("DEBUG: Updated topic progress: $topic, ${_topicProgress[topic]! *
+        100}% (readFiles: $readCount/${files.length})");
   }
 
   Future<void> _recalculateProgress() async {
-    double totalProgress = 0.0;
-    double progressPerFile = 100.0 / _globalTotal;
     int totalReadFiles = 0;
     for (var topic in topicSubtopicFiles.keys) {
       _readFiles[topic] ??= {};
-      for (var file in topicSubtopicFiles[topic]!) {
-        if (_readFiles[topic]!.contains(file)) {
-          totalProgress += progressPerFile;
-          totalReadFiles++;
-        }
-      }
+      totalReadFiles += _readFiles[topic]!.length;
     }
-    if (totalReadFiles > _globalTotal) {
-      print("DEBUG: Warning: totalReadFiles ($totalReadFiles) exceeds _globalTotal ($_globalTotal), capping progress");
-      totalProgress = 100.0;
-    }
-    _globalProgress = totalProgress.clamp(0.0, 100.0);
+    _globalProgress = _globalTotal > 0
+        ? (totalReadFiles / _globalTotal * 100).clamp(0.0, 100.0)
+        : 0.0;
     if (_currentUid != null) {
       await FirebaseFirestore.instance
           .collection('users')
           .doc(_currentUid)
           .set({'progress': _globalProgress / 100}, SetOptions(merge: true));
     }
-    print("DEBUG: Recalculated global progress: ${_globalProgress.toStringAsFixed(1)}% (progressPerFile: $progressPerFile%, totalReadFiles: $totalReadFiles)");
+    print(
+        "DEBUG: Recalculated global progress: ${_globalProgress.toStringAsFixed(
+            1)}% (totalReadFiles: $totalReadFiles, globalTotal: $_globalTotal)");
     notifyListeners();
   }
 
   Future<void> _loadProgress(String uid) async {
     try {
+      // Load quizzes first to ensure _quizPassed is populated
+      QuerySnapshot quizDocs = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .collection('quizzes')
+          .get();
+      _quizPassed.clear();
+      for (var doc in quizDocs.docs) {
+        _quizPassed[doc.id] = doc['quizPassed'] ?? false;
+      }
+      // Load progress
       QuerySnapshot progressDocs = await FirebaseFirestore.instance
           .collection('users')
           .doc(uid)
@@ -315,84 +322,52 @@ class ProgressProvider with ChangeNotifier {
       for (var doc in progressDocs.docs) {
         String topic = doc.id;
         var data = doc.data() as Map<String, dynamic>;
-        // Sanitize readFiles: only include valid files
         List<String> validFiles = List<String>.from(data['readFiles'] ?? [])
             .where((file) => topicSubtopicFiles[topic]?.contains(file) ?? false)
             .toList();
-        // Exclude quiz files unless passed
-        validFiles = validFiles.where((file) {
-          if (file.contains('assets/quiz/')) {
-            return _quizPassed[topic] ?? false;
-          }
-          return true;
-        }).toList();
         _readFiles[topic] = validFiles.toSet();
-        _topicProgress[topic] = (data['progress'] ?? 0.0).toDouble().clamp(0.0, 1.0);
-        _isCompleted[topic] = data['isCompleted'] ?? false;
+        _topicProgress[topic] =
+            (validFiles.length / (topicSubtopicFiles[topic]?.length ?? 1))
+                .clamp(0.0, 1.0);
+        bool allFilesRead = topicSubtopicFiles[topic]?.every((file) =>
+            _readFiles[topic]!.contains(file)) ?? false;
+        _isCompleted[topic] = allFilesRead && (_quizPassed[topic] ?? false);
       }
-      QuerySnapshot quizDocs = await FirebaseFirestore.instance
-          .collection('users')
-          .doc(uid)
-          .collection('quizzes')
-          .get();
-      _quizPassed.clear();
-      for (var doc in quizDocs.docs) {
-        _quizPassed[doc.id] = doc['quizPassed'] ?? false;
+      // Fix missing quiz files for passed quizzes
+      for (var topic in topicSubtopicFiles.keys) {
+        if (_quizPassed[topic] == true) {
+          String? quizFile = topicSubtopicFiles[topic]?.firstWhere(
+                (file) => file.toLowerCase().contains('quiz'),
+            orElse: () => '',
+          );
+          if (quizFile != null && quizFile.isNotEmpty) {
+            _readFiles[topic] ??= {};
+            if (!_readFiles[topic]!.contains(quizFile)) {
+              _readFiles[topic]!.add(quizFile);
+              print(
+                  "DEBUG: Added missing quiz file $quizFile for topic $topic");
+              await FirebaseFirestore.instance
+                  .collection('users')
+                  .doc(uid)
+                  .collection('progress')
+                  .doc(topic)
+                  .set({
+                'readFiles': _readFiles[topic]!.toList(),
+                'progress': _topicProgress[topic] ?? 0.0,
+                'isCompleted': _isCompleted[topic] ?? false,
+              }, SetOptions(merge: true));
+            }
+          }
+        }
       }
-      final userDoc = await FirebaseFirestore.instance.collection('users').doc(uid).get();
-      _globalProgress = (userDoc.data()?['progress'] ?? 0.0).toDouble() * 100;
-      _globalProgress = _globalProgress.clamp(0.0, 100.0);
-      await _recalculateProgress(); // Ensure recalculate overrides loaded progress
-      print("DEBUG: Loaded progress for $uid: ${_globalProgress.toStringAsFixed(1)}%");
+      await _recalculateProgress();
+      print("DEBUG: Loaded progress for $uid: ${_globalProgress.toStringAsFixed(
+          1)}%");
       notifyListeners();
     } catch (e) {
       print("DEBUG: Error loading Firestore: $e");
-      _resetProgress();
+
     }
   }
 
-  Future<void> resetProgress() async {
-    if (_currentUid != null) {
-      try {
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(_currentUid)
-            .collection('progress')
-            .get()
-            .then((snapshot) {
-          for (var doc in snapshot.docs) {
-            doc.reference.delete();
-          }
-        });
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(_currentUid)
-            .collection('quizzes')
-            .get()
-            .then((snapshot) {
-          for (var doc in snapshot.docs) {
-            doc.reference.delete();
-          }
-        });
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(_currentUid)
-            .set({'progress': 0.0}, SetOptions(merge: true));
-      } catch (e) {
-        print("DEBUG: Error clearing Firestore: $e");
-      }
-      _resetProgress();
-    }
-  }
-
-  void _resetProgress() {
-    _globalProgress = 0.0;
-    _globalTotal = topicSubtopicFiles.values.fold(0, (sum, files) => sum + files.length).toDouble();
-    _readFiles.clear();
-    _quizPassed.clear();
-    _topicProgress.clear();
-    _isCompleted.clear();
-    print("DEBUG: Reset progress: ${_globalProgress.toStringAsFixed(1)}%");
-    notifyListeners();
-  }
 }

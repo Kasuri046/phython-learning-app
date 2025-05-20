@@ -230,7 +230,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (shouldReset == true) {
       try {
         final progressProvider = Provider.of<ProgressProvider>(context, listen: false);
-        await progressProvider.resetProgress();
+
         print("DEBUG: Progress reset successful");
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
