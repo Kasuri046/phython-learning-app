@@ -198,11 +198,14 @@ class ProgressProvider with ChangeNotifier {
     if (!existingQuizPassed || newQuizPassed) {
       _quizPassed[topic] = newQuizPassed;
       if (newQuizPassed) {
-        String quizFile = 'assets/quiz/Quiz_${topic.replaceAll(' ', '_')}.json';
+        String? quizFile = topicSubtopicFiles[topic]?.firstWhere(
+              (file) => file.toLowerCase().contains('quiz'),
+          orElse: () => '',
+        );
         if (topicSubtopicFiles[topic]?.contains(quizFile) ?? false) {
           _readFiles[topic] ??= {};
           if (!_readFiles[topic]!.contains(quizFile)) {
-            _readFiles[topic]!.add(quizFile);
+            _readFiles[topic]!.add(quizFile!);
             await FirebaseFirestore.instance
                 .collection('users')
                 .doc(_currentUid)

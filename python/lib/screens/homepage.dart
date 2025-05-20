@@ -10,7 +10,7 @@ import 'coursecontent.dart';
 extension StringExtension on String {
   String capitalizeWords() {
     if (isEmpty) return this;
-    return split(' ')
+    return split('')
         .map(
           (word) =>
               word.isNotEmpty
