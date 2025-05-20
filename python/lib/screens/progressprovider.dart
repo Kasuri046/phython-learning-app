@@ -140,7 +140,7 @@ class ProgressProvider with ChangeNotifier {
         print("DEBUG: User logged in, UID: $_currentUid");
       } else {
         _currentUid = null;
-     
+
         print("DEBUG: No user logged in, progress reset");
       }
     });

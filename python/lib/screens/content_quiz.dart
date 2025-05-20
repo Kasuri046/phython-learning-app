@@ -246,7 +246,7 @@ class _QuizScreenState extends State<QuizScreen> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.0),
           ),
-          backgroundColor: Colors.teal[50],
+          backgroundColor: Colors.blue[50],
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -363,7 +363,7 @@ class _QuizScreenState extends State<QuizScreen> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.0),
           ),
-          backgroundColor: Colors.teal[50],
+          backgroundColor: Colors.blue[50],
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
