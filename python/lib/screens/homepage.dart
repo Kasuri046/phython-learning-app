@@ -17,7 +17,7 @@ extension StringExtension on String {
                   ? '${word[0].toUpperCase()}${word.substring(1).toLowerCase()}'
                   : word,
         )
-        .join(' ');
+        .join('');
   }
 }
 
